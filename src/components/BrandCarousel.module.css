@@ -1,0 +1,68 @@
+.brandsCarousel {
+    max-width: 100%;
+    max-height: 180px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
+}
+
+.carouselTrack {
+    width: fit-content;
+    animation: infiniteLoop 30s linear infinite;
+    animation-fill-mode: forwards;
+    will-change: transform;
+    display: flex;
+}
+
+.paused .carouselTrack {
+    animation-play-state: paused;
+}
+
+.brandLogo {
+    width: 220px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem;
+    overflow: hidden;
+}
+
+.brandLogo :global(svg) {
+    width: 180px;
+    height: 90px;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.brandLogo:hover :global(svg) {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+@keyframes infiniteLoop {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100% / 3));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carouselTrack {
+        animation: none;
+    }
+}

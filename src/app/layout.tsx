@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: "Advanced engineering and agentic solutions.",
 };
 
+import { LanguageProvider } from "../context/LanguageContext";
+
+import ChatWidget from "@/components/ChatWidget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -13,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ChatWidget />
+      </body>
     </html>
   );
 }

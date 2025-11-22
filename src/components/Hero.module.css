@@ -1,135 +1,109 @@
-.heroSection {
+@import url("https://fonts.cdnfonts.com/css/pp-neue-montreal");
+
+@font-face {
+  font-family: "PPSupplyMono";
+  src: url("https://assets.codepen.io/7558/PPSupplyMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --warm-off-white: #ffffff;
+  --warm-off-white-dim: #cccccc;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --background-dark: #1a1a1a;
+  --background-gradient-1: #222222;
+  --background-gradient-2: #1a1a1a;
+  --font-primary: "PP Neue Montreal", sans-serif;
+  --font-secondary: "PPSupplyMono", monospace;
+  --font-sans: "PP Neue Montreal", sans-serif;
+  --font-size-small: 10px;
+  --font-size-regular: 1rem;
+  --font-size-medium: 1.5rem;
+  --font-size-large: 4rem;
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 2rem;
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.section {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  overflow: hidden;
-  font-family: "PPSupplyMono", monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f0f;
 }
 
-.canvasContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
+.heroSection {
+  padding: var(--spacing-large);
 }
 
-.uiContainer {
-  position: absolute;
+.finSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-dark);
+  z-index: 20;
+  position: relative;
+}
+
+.finText {
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  color: var(--text-secondary);
+  text-transform: none;
+  letter-spacing: 0.05em;
+}
+
+#ui-container {
+  position: fixed;
   top: 10px;
   right: 10px;
   z-index: 100;
   opacity: 0.8;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-fast);
 }
 
-.uiContainer:hover {
+#ui-container:hover {
   opacity: 1;
 }
 
-.stats {
-  position: absolute;
+#stats {
+  position: fixed;
   top: 10px;
   left: 10px;
   z-index: 100;
 }
 
-/* Liquid Glass Styles */
-.liquidGlassWrapper {
-  position: relative;
+.headerArea {
+  position: absolute;
+  top: var(--spacing-large);
+  left: 0;
+  width: 100%;
+  padding: 0 var(--spacing-large);
   display: flex;
-  font-weight: 600;
-  overflow: hidden;
-  color: black;
-  cursor: pointer;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-  border-radius: 1.8rem;
-}
-
-.liquidGlassEffect {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  backdrop-filter: blur(3px);
-  /* The filter URL needs to match the ID in the SVG */
-  filter: url(#glass-distortion);
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.liquidGlassTint {
-  z-index: 1;
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.liquidGlassShine {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  overflow: hidden;
-  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
-}
-
-.liquidGlassText {
-  z-index: 3;
-  font-size: 1rem;
-  color: black;
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.4rem;
-}
-
-.menuItem {
-  font-size: 14px;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.8rem;
-  transition: all 0.1s ease-in;
-  text-transform: uppercase;
-  font-family: "PPSupplyMono", monospace;
-  cursor: pointer;
-  position: relative;
-  z-index: 4;
-}
-
-.menuItem:hover,
-.menuItem.active {
-  background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-  color: black;
-}
-
-/* Header Positioning */
-.headerContainer {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .logoContainer {
   position: absolute;
-  left: 2rem;
-  top: 0;
+  left: var(--spacing-large);
+  top: var(--spacing-large);
   display: flex;
   align-items: center;
   height: 2rem;
   z-index: 10;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .logoCircles {
@@ -141,10 +115,10 @@
 .circle {
   position: absolute;
   border-radius: 50%;
-  transition: transform 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: transform var(--transition-medium);
   width: 1.4rem;
   height: 1.4rem;
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   top: 50%;
 }
 
@@ -173,100 +147,150 @@
   height: 2rem;
 }
 
-.logoText {
-  font-family: "PP Neue Montreal", sans-serif;
+#logo-text {
+  font-family: var(--font-primary);
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: var(--font-size-medium);
   line-height: 1;
   margin: 0;
-  color: #ffffff;
+  color: var(--text-primary);
   text-transform: none;
 }
 
-.heroContent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.hero {
+  position: relative;
   text-align: center;
   z-index: 10;
-  color: #ffffff;
+  color: var(--text-primary);
   width: 90%;
   max-width: 800px;
-  pointer-events: none;
+  margin-top: 100px;
 }
 
-.heroContent h1 {
-  font-size: 4rem;
+.hero h1 {
+  font-family: var(--font-primary);
   font-weight: 400;
+  font-size: var(--font-size-large);
   line-height: 0.9;
-  margin-bottom: 2rem;
   letter-spacing: -0.02em;
-  font-family: "PP Neue Montreal", sans-serif;
+  color: var(--text-primary);
+  text-transform: none;
+  margin-bottom: 2rem;
+  margin: 0 0 2rem 0;
 }
 
-.storyText {
-  font-family: "PPSupplyMono", monospace;
-  font-size: 10px;
-  color: #cccccc;
+.hero h2 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.4;
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-fast);
   font-weight: normal;
   margin: 0;
 }
 
-.heroContent:hover .storyText {
+.hero:hover h2 {
   opacity: 1;
 }
 
 .contactInfo {
   position: absolute;
   top: 50%;
-  left: 2rem;
+  left: var(--spacing-large);
   transform: translateY(-50%);
   z-index: 10;
-  font-family: "PPSupplyMono", monospace;
+  font-family: var(--font-secondary);
   letter-spacing: 0.05em;
-  font-size: 10px;
-  color: #ffffff;
+  font-size: var(--font-size-small);
+  color: var(--text-primary);
   text-transform: uppercase;
-  pointer-events: auto;
+}
+
+.contactHeading {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-small);
+}
+
+.contactEmail {
+  display: block;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.contactEmail:hover {
+  color: var(--text-secondary);
+}
+
+.footerLinks {
+  position: absolute;
+  bottom: var(--spacing-large);
+  left: var(--spacing-large);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--font-size-regular);
+}
+
+.footerLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+  padding-left: 0;
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.footerLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background-color: var(--text-primary);
+  transform: translateY(-50%);
+  transition: width var(--transition-fast), opacity var(--transition-fast);
+  opacity: 0;
+}
+
+.footerLink:hover {
+  color: var(--text-primary);
+  padding-left: 1.2rem;
+}
+
+.footerLink:hover::before {
+  width: 0.8rem;
+  opacity: 1;
 }
 
 .coordinates {
   position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: var(--spacing-large);
+  right: var(--spacing-large);
   text-align: right;
   z-index: 10;
-  font-family: "PPSupplyMono", monospace;
-  font-size: 10px;
-  color: #cccccc;
-  pointer-events: none;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
 }
 
-/* Overlay texture - Fixed blend mode */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://img.freepik.com/premium-photo/white-dust-scratches-black-background_279525-2.jpg?w=640");
-  background-repeat: repeat;
-  opacity: 0.2;
-  mix-blend-mode: multiply;
-  /* Changed to multiply as requested */
-  pointer-events: none;
-  z-index: 1;
-  filter: invert(0);
+.section {
+  transition: all 0.6s ease;
 }
 
 @media (max-width: 768px) {
-  .heroContent h1 {
+  .hero h1 {
     font-size: 3rem;
   }
 
@@ -277,29 +301,60 @@
   .coordinates {
     font-size: 10px;
   }
+
+  .hero p {
+    font-size: 10px;
+  }
+
+  .contactInfo {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
   .heroSection {
-    padding: 1rem;
+    padding: var(--spacing-medium);
   }
 
+  .headerArea,
   .contactInfo,
   .footerLinks,
   .coordinates {
-    padding: 0 1rem;
+    padding: 0 var(--spacing-medium);
   }
 
+  .logoContainer,
   .contactInfo,
   .footerLinks {
-    left: 1rem;
+    left: var(--spacing-medium);
   }
 
   .coordinates {
-    right: 1rem;
+    right: var(--spacing-medium);
   }
 
-  .heroContent h1 {
+  .hero h1 {
     font-size: 2.2rem;
+  }
+
+  .circle {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .circle2 {
+    left: 0.7rem;
+  }
+
+  #logo-text {
+    font-size: 1.3rem;
+  }
+
+  .contactHeading {
+    font-size: 10px;
+  }
+
+  .contactEmail {
+    font-size: 10px;
   }
 }

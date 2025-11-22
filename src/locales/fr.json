@@ -1,0 +1,51 @@
+{
+    "nav": {
+        "home": "Home",
+        "products": "Products",
+        "news": "News",
+        "careers": "Careers",
+        "contact": "Contact"
+    },
+    "hero": {
+        "story": {
+            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
+            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
+        }
+    },
+    "home": {
+        "innovation": {
+            "title": "Innovation",
+            "subtitle": "Pipeline",
+            "description": "From deep space infrastructure to autonomous earth-observation agents.",
+            "viewAll": "View all Projects"
+        },
+        "projects": {
+            "alpha": {
+                "title": "Project Alpha-{i}",
+                "description": "Autonomous swarm coordination for orbital debris removal.",
+                "learnMore": "Learn more"
+            }
+        },
+        "news": {
+            "title": "Latest",
+            "subtitle": "Intel",
+            "pressRelease": "PRESS RELEASE",
+            "fundingTitle": "BimoTech Secures Series B Funding",
+            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
+            "agentSuccess": "Deployment of Agent-{i} Successful",
+            "efficiency": "Operational efficiency increased by 45%."
+        },
+        "careers": {
+            "title": "Join the",
+            "subtitle": "Mission",
+            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
+            "button": "View Open Positions"
+        },
+        "contact": {
+            "title": "Contact",
+            "subtitle": "HQ",
+            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
+            "button": "Initiate Uplink"
+        }
+    }
+}
