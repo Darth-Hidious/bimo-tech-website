@@ -1,51 +1,194 @@
 {
-    "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "news": "News",
+    "careers": "Careers",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Advanced Materials",
+    "subtitle": "for Space & Beyond",
+    "description": "ESA Space Prime delivering high-performance metallic materials and precision components for the most demanding applications",
+    "cta": "Explore Products"
+  },
+  "home": {
+    "partners": {
+      "title": "Trusted by Industry Leaders"
     },
-    "hero": {
-        "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
-        }
+    "innovation": {
+      "title": "Advanced",
+      "subtitle": "Materials",
+      "description": "From refractory metals to high-entropy alloys, powering the future of space exploration and energy systems.",
+      "viewAll": "View All Products"
     },
-    "home": {
-        "innovation": {
-            "title": "Innovation",
-            "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
-        },
-        "projects": {
-            "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
-            }
-        },
-        "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
-        },
-        "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
-        },
-        "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
-        }
+    "products": {
+      "viewDetails": "View Details"
+    },
+    "news": {
+      "title": "Latest",
+      "subtitle": "Intel",
+      "pressRelease": "PRESS RELEASE",
+      "featured": "FEATURED",
+      "readMore": "Read More"
+    },
+    "careers": {
+      "title": "Join the",
+      "subtitle": "Mission",
+      "description": "We're looking for engineers, scientists, and visionaries to help build the infrastructure of tomorrow. Join our team working on ESA projects.",
+      "button": "View Open Positions"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "HQ",
+      "description": "Interested in our technology or partnership opportunities? Connect with our team in Wrocław, Poland.",
+      "button": "Get in Touch"
     }
+  },
+  "products": {
+    "hero": {
+      "title": "Advanced Materials",
+      "subtitle": "Catalog",
+      "description": "Comprehensive range of refractory metals, sputtering targets, and custom components for space, defense, and energy applications"
+    },
+    "categories": {
+      "all": "All Products",
+      "refractoryMetals": "Refractory Metals",
+      "sputteringTargets": "Sputtering Targets",
+      "powders": "Powders & Nanomaterials",
+      "customComponents": "Custom Components",
+      "hea": "High-Entropy Alloys"
+    },
+    "card": {
+      "viewDetails": "View Details",
+      "specifications": "Specifications",
+      "applications": "Applications"
+    },
+    "cta": {
+      "title": "Need Custom Materials?",
+      "description": "Our engineering team can develop custom alloys and components to your specifications",
+      "button": "Request Quote"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Latest",
+      "subtitle": "Intel",
+      "description": "News, updates, and insights from Bimo Tech"
+    },
+    "categories": {
+      "all": "All",
+      "awards": "Awards",
+      "projects": "Projects",
+      "company": "Company News",
+      "partnerships": "Partnerships",
+      "certifications": "Certifications",
+      "events": "Events"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Subscribe to receive the latest news and updates",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Join the",
+      "subtitle": "Mission",
+      "description": "Build the future of space materials with us"
+    },
+    "stats": {
+      "heritage": "30+ Years Heritage",
+      "countries": "12 Countries Served",
+      "projects": "50+ ESA Projects"
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": "Innovation",
+      "innovationDesc": "Pushing boundaries in materials science",
+      "excellence": "Excellence",
+      "excellenceDesc": "Highest quality standards in everything we do",
+      "collaboration": "Collaboration",
+      "collaborationDesc": "Working together with partners worldwide",
+      "sustainability": "Sustainability",
+      "sustainabilityDesc": "Building a sustainable future for space"
+    },
+    "positions": {
+      "title": "Open Positions",
+      "apply": "Apply Now",
+      "noResults": "No positions matching your criteria"
+    },
+    "benefits": {
+      "title": "Why Join Us",
+      "esaProjects": "ESA Projects",
+      "internationalTeam": "International Team",
+      "rdFocus": "R&D Focus",
+      "careerGrowth": "Career Growth",
+      "flexibleWork": "Flexible Work",
+      "competitiveSalary": "Competitive Salary"
+    },
+    "cta": {
+      "title": "Don't See Your Role?",
+      "description": "We're always looking for talented individuals. Send us your CV.",
+      "button": "General Application"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact",
+      "subtitle": "HQ",
+      "description": "Connect with our team for partnerships, inquiries, or technical support"
+    },
+    "info": {
+      "location": "Location",
+      "address": "Ul. Francuska 11, 54-405 Wrocław, Poland",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours",
+      "hoursValue": "Mon-Fri: 8:00 - 16:00 CET"
+    },
+    "form": {
+      "title": "Send a Message",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "subjects": {
+      "general": "General Inquiry",
+      "technical": "Technical Support",
+      "partnership": "Partnership",
+      "quote": "Quote Request",
+      "careers": "Careers"
+    },
+    "departments": {
+      "title": "Department Contacts",
+      "sales": "Sales",
+      "technical": "Technical Support",
+      "careers": "Careers",
+      "investors": "Investors"
+    }
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "backToTop": "Back to Top",
+    "loading": "Loading...",
+    "error": "Something went wrong"
+  },
+  "footer": {
+    "company": "Bimo Tech Sp. z o.o.",
+    "tagline": "ESA Space Prime for Advanced Materials",
+    "address": "Ul. Francuska 11, 54-405 Wrocław, Poland",
+    "phone": "+48 71 349 89 67",
+    "email": "info@bimotech.pl",
+    "copyright": "© 2024 Bimo Tech. All rights reserved."
+  }
 }

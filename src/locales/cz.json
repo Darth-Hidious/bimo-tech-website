@@ -1,51 +1,194 @@
 {
-    "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+  "nav": {
+    "home": "Domů",
+    "products": "Produkty",
+    "news": "Novinky",
+    "careers": "Kariéra",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Pokročilé Materiály",
+    "subtitle": "pro Vesmír a Dál",
+    "description": "ESA Space Prime dodávající vysoce výkonné kovové materiály a přesné komponenty pro nejnáročnější aplikace",
+    "cta": "Prozkoumat Produkty"
+  },
+  "home": {
+    "partners": {
+      "title": "Důvěra Průmyslových Lídrů"
     },
-    "hero": {
-        "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
-        }
+    "innovation": {
+      "title": "Pokročilé",
+      "subtitle": "Materiály",
+      "description": "Od žáruvzdorných kovů po slitiny s vysokou entropií, pohánějící budoucnost průzkumu vesmíru a energetických systémů.",
+      "viewAll": "Zobrazit Všechny Produkty"
     },
-    "home": {
-        "innovation": {
-            "title": "Innovation",
-            "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
-        },
-        "projects": {
-            "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
-            }
-        },
-        "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
-        },
-        "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
-        },
-        "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
-        }
+    "products": {
+      "viewDetails": "Zobrazit Detail"
+    },
+    "news": {
+      "title": "Nejnovější",
+      "subtitle": "Zprávy",
+      "pressRelease": "TISKOVÁ ZPRÁVA",
+      "featured": "DOPORUČENÉ",
+      "readMore": "Číst Více"
+    },
+    "careers": {
+      "title": "Připojte se k",
+      "subtitle": "Misi",
+      "description": "Hledáme inženýry, vědce a vizionáře, kteří pomohou budovat infrastrukturu zítřka. Připojte se k našemu týmu pracujícímu na projektech ESA.",
+      "button": "Zobrazit Volné Pozice"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Ústředí",
+      "description": "Máte zájem o naši technologii nebo příležitosti partnerství? Spojte se s naším týmem ve Vratislavi v Polsku.",
+      "button": "Kontaktujte Nás"
     }
+  },
+  "products": {
+    "hero": {
+      "title": "Pokročilé Materiály",
+      "subtitle": "Katalog",
+      "description": "Komplexní sortiment žáruvzdorných kovů, rozprašovacích terčů a zakázkových komponent pro vesmírné, obranné a energetické aplikace"
+    },
+    "categories": {
+      "all": "Všechny Produkty",
+      "refractoryMetals": "Žáruvzdorné Kovy",
+      "sputteringTargets": "Rozprašovací Terče",
+      "powders": "Prášky a Nanomateriály",
+      "customComponents": "Zakázkové Komponenty",
+      "hea": "Slitiny s Vysokou Entropií"
+    },
+    "card": {
+      "viewDetails": "Zobrazit Detail",
+      "specifications": "Specifikace",
+      "applications": "Aplikace"
+    },
+    "cta": {
+      "title": "Potřebujete Zakázkové Materiály?",
+      "description": "Náš inženýrský tým může vyvinout zakázkové slitiny a komponenty podle vašich specifikací",
+      "button": "Požádat o Nabídku"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Nejnovější",
+      "subtitle": "Zprávy",
+      "description": "Novinky, aktualizace a postřehy od Bimo Tech"
+    },
+    "categories": {
+      "all": "Vše",
+      "awards": "Ocenění",
+      "projects": "Projekty",
+      "company": "Firemní Zprávy",
+      "partnerships": "Partnerství",
+      "certifications": "Certifikace",
+      "events": "Události"
+    },
+    "newsletter": {
+      "title": "Zůstaňte Informováni",
+      "description": "Přihlaste se k odběru nejnovějších zpráv a aktualizací",
+      "placeholder": "Zadejte svůj e-mail",
+      "button": "Přihlásit se"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Připojte se k",
+      "subtitle": "Misi",
+      "description": "Budujte budoucnost vesmírných materiálů s námi"
+    },
+    "stats": {
+      "heritage": "Více než 30 Let Zkušeností",
+      "countries": "12 Obsluhovaných Zemí",
+      "projects": "Více než 50 Projektů ESA"
+    },
+    "values": {
+      "title": "Naše Hodnoty",
+      "innovation": "Inovace",
+      "innovationDesc": "Posouvání hranic ve vědě o materiálech",
+      "excellence": "Excelence",
+      "excellenceDesc": "Nejvyšší standardy kvality ve všem, co děláme",
+      "collaboration": "Spolupráce",
+      "collaborationDesc": "Spolupráce s partnery po celém světě",
+      "sustainability": "Udržitelnost",
+      "sustainabilityDesc": "Budování udržitelné budoucnosti pro vesmír"
+    },
+    "positions": {
+      "title": "Volné Pozice",
+      "apply": "Podat Žádost",
+      "noResults": "Žádné pozice neodpovídají vašim kritériím"
+    },
+    "benefits": {
+      "title": "Proč se k Nám Připojit",
+      "esaProjects": "Projekty ESA",
+      "internationalTeam": "Mezinárodní Tým",
+      "rdFocus": "Zaměření na VaV",
+      "careerGrowth": "Kariérní Růst",
+      "flexibleWork": "Flexibilní Práce",
+      "competitiveSalary": "Konkurenční Plat"
+    },
+    "cta": {
+      "title": "Nevidíte Svou Roli?",
+      "description": "Vždy hledáme talentované jedince. Pošlete nám svůj životopis.",
+      "button": "Obecná Žádost"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Kontakt",
+      "subtitle": "Ústředí",
+      "description": "Spojte se s naším týmem pro partnerství, dotazy nebo technickou podporu"
+    },
+    "info": {
+      "location": "Umístění",
+      "address": "Ul. Francuska 11, 54-405 Vratislav, Polsko",
+      "phone": "Telefon",
+      "email": "E-mail",
+      "hours": "Pracovní Doba",
+      "hoursValue": "Po-Pá: 8:00 - 16:00 CET"
+    },
+    "form": {
+      "title": "Poslat Zprávu",
+      "name": "Jméno",
+      "email": "E-mail",
+      "company": "Společnost",
+      "subject": "Předmět",
+      "message": "Zpráva",
+      "submit": "Odeslat Zprávu",
+      "sending": "Odesílání...",
+      "success": "Zpráva úspěšně odeslána!",
+      "error": "Nepodařilo se odeslat zprávu. Zkuste to prosím znovu."
+    },
+    "subjects": {
+      "general": "Obecný Dotaz",
+      "technical": "Technická Podpora",
+      "partnership": "Partnerství",
+      "quote": "Žádost o Nabídku",
+      "careers": "Kariéra"
+    },
+    "departments": {
+      "title": "Kontakty na Oddělení",
+      "sales": "Prodej",
+      "technical": "Technická Podpora",
+      "careers": "Kariéra",
+      "investors": "Investoři"
+    }
+  },
+  "common": {
+    "learnMore": "Zjistit Více",
+    "viewAll": "Zobrazit Vše",
+    "readMore": "Číst Více",
+    "backToTop": "Zpět Nahoru",
+    "loading": "Načítání...",
+    "error": "Něco se pokazilo"
+  },
+  "footer": {
+    "company": "Bimo Tech Sp. z o.o.",
+    "tagline": "ESA Space Prime pro Pokročilé Materiály",
+    "address": "Ul. Francuska 11, 54-405 Vratislav, Polsko",
+    "phone": "+48 71 349 89 67",
+    "email": "info@bimotech.pl",
+    "copyright": "© 2024 Bimo Tech. Všechna práva vyhrazena."
+  }
 }

@@ -1,0 +1,437 @@
+/* ============================================
+   HERO SECTION ANIMATIONS
+   ============================================ */
+
+/* Animated Grid Background */
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
+/* Gradient Overlay */
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(5, 5, 5, 0.5) 50%,
+    rgba(5, 5, 5, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating Particles */
+.particlesContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8), transparent);
+  border-radius: 50%;
+  animation: particleFloat 15s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100vh) translateX(50px) scale(1.5);
+  }
+}
+
+/* Fade In Up Animation */
+.fadeInUp {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fadeInUp.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.scrollArrow {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+  border-radius: 20px;
+  position: relative;
+}
+
+.scrollArrow::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0% {
+    top: 10px;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    top: 30px;
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   PRODUCT CARDS
+   ============================================ */
+
+/* Glass Morphism Card */
+.glassCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glassCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.1);
+}
+
+/* Gradient Border Effect */
+.gradientBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.3) 50%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glassCard:hover .gradientBorder {
+  opacity: 1;
+  animation: rotateBorder 3s linear infinite;
+}
+
+@keyframes rotateBorder {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Featured Card Animation */
+.featuredCard {
+  animation: fadeInScale 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Product Card Animation */
+.productCard {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.productCard.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Animation for Grid Items */
+.productCard:nth-child(1) { transition-delay: 0.05s; }
+.productCard:nth-child(2) { transition-delay: 0.1s; }
+.productCard:nth-child(3) { transition-delay: 0.15s; }
+.productCard:nth-child(4) { transition-delay: 0.2s; }
+.productCard:nth-child(5) { transition-delay: 0.25s; }
+.productCard:nth-child(6) { transition-delay: 0.3s; }
+.productCard:nth-child(7) { transition-delay: 0.35s; }
+.productCard:nth-child(8) { transition-delay: 0.4s; }
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+
+.glowEffect {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: pulse 4s ease-in-out infinite;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .gridBackground {
+    background-size: 40px 40px;
+  }
+
+  @keyframes gridMove {
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+
+  .scrollIndicator {
+    bottom: 20px;
+  }
+
+  .glowEffect {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridBackground {
+    background-size: 30px 30px;
+  }
+
+  .glassCard:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ============================================
+   CATEGORY FILTER ANIMATIONS
+   ============================================ */
+
+/* Active category glow */
+@keyframes categoryGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU Acceleration */
+.glassCard,
+.productCard,
+.featuredCard,
+.particle,
+.gridBackground {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .particle {
+    display: none;
+  }
+
+  .gridBackground {
+    animation: none;
+  }
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+
+/* Icon hover animation */
+.glassCard .icon-container {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glassCard:hover .icon-container {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Text glow on hover */
+.glassCard h3 {
+  transition: all 0.3s ease;
+}
+
+.glassCard:hover h3 {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Button hover effects */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
