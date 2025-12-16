@@ -815,6 +815,44 @@ export function getProductsByCertification(certification: string): Product[] {
 }
 
 // ============================================================================
+// STATIC DATA EXPORTS
+// ============================================================================
+
+/**
+ * Static array of all category names including "All" for filtering
+ */
+export const categories: string[] = [
+  'All',
+  'Refractory Metals',
+  'Sputtering Targets',
+  'Powders & Nanomaterials',
+  'Custom Components',
+  'High-Entropy Alloys',
+];
+
+/**
+ * Technologies data for the CTA section
+ */
+export const technologies = [
+  {
+    name: 'Powder Metallurgy',
+    description: 'Advanced sintering & HIP processes',
+  },
+  {
+    name: 'Vacuum Melting',
+    description: 'Ultra-high purity production',
+  },
+  {
+    name: 'CNC Machining',
+    description: '5-axis precision manufacturing',
+  },
+  {
+    name: 'Additive Manufacturing',
+    description: '3D metal printing capabilities',
+  },
+];
+
+// ============================================================================
 // EXPORTS
 // ============================================================================
 

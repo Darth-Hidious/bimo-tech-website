@@ -8,187 +8,328 @@
   },
   "hero": {
     "title": "Zaawansowane Materiały",
-    "subtitle": "dla Kosmosu i Przemysłu",
-    "description": "Główny dostawca ESA dostarczający wysokowydajne materiały metalowe i precyzyjne komponenty dla najbardziej wymagających zastosowań",
+    "subtitle": "dla Kosmosu i więcej",
+    "description": "ESA Space Prime dostarczający wysokowydajne materiały metaliczne i precyzyjne komponenty dla najbardziej wymagających zastosowań",
     "cta": "Zobacz Produkty"
   },
   "home": {
+    "purpose": {
+      "label": "Nasz Cel",
+      "title": "Tworzymy materiały, które czynią",
+      "highlight": "niemożliwe",
+      "titleEnd": "możliwym."
+    },
+    "stats": {
+      "years": "Lat",
+      "purity": "Czystość",
+      "projects": "Projektów",
+      "partners": "Partnerów"
+    },
     "partners": {
-      "title": "Zaufali Nam Liderzy Branży"
+      "title": "Zaufali nam liderzy branży",
+      "label": "Zaufali nam"
+    },
+    "capabilities": {
+      "label": "Możliwości",
+      "title": "Zaawansowane materiały dla ekstremalnych środowisk",
+      "description": "Od reaktorów fuzyjnych po głęboki kosmos — rozwijamy materiały, które działają tam, gdzie inne zawodzą."
+    },
+    "featured": {
+      "label": "Wyróżnione",
+      "readCase": "Przeczytaj case study"
+    },
+    "applications": {
+      "label": "Zastosowania",
+      "space": "Kosmos",
+      "spaceDesc": "Systemy napędowe, ochrona termiczna i komponenty strukturalne dla satelitów i rakiet nośnych.",
+      "fusion": "Energia Fuzji",
+      "fusionDesc": "Materiały i komponenty stykające się z plazmą dla ITER i reaktorów fuzyjnych nowej generacji.",
+      "aerospace": "Lotnictwo",
+      "aerospaceDesc": "Stopy wysokotemperaturowe i powłoki do silników turbinowych i pojazdów hipersonicznych."
+    },
+    "about": {
+      "label": "O nas",
+      "title": "Zbudowane przez naukowców.",
+      "description": "Bimo Tech zostało założone przez naukowców materiałoznawców z wieloletnim doświadczeniem w badaniach nad zaawansowanymi materiałami. Łączymy najnowocześniejszą naukę z zastosowaniami przemysłowymi.",
+      "location": "Siedziba w Warszawie, Polska. Działamy globalnie.",
+      "joinTeam": "Dołącz do zespołu"
+    },
+    "cta": {
+      "title": "Zbudujmy coś razem.",
+      "button": "Skontaktuj się"
     },
     "innovation": {
       "title": "Zaawansowane",
       "subtitle": "Materiały",
-      "description": "Od metali trudnotopliwych po stopy wysokoentropowe, napędzamy przyszłość eksploracji kosmosu i systemów energetycznych.",
-      "viewAll": "Zobacz Wszystkie Produkty"
+      "description": "Od metali ogniotrwałych po stopy wysokoentropijne — napędzamy przyszłość eksploracji kosmicznej i systemów energetycznych.",
+      "viewAll": "Zobacz wszystkie produkty"
     },
     "products": {
-      "viewDetails": "Zobacz Szczegóły"
+      "viewDetails": "Zobacz szczegóły"
     },
     "news": {
       "title": "Najnowsze",
       "subtitle": "Wiadomości",
       "pressRelease": "KOMUNIKAT PRASOWY",
       "featured": "WYRÓŻNIONE",
-      "readMore": "Czytaj Więcej"
+      "readMore": "Czytaj więcej"
     },
     "careers": {
       "title": "Dołącz do",
       "subtitle": "Misji",
-      "description": "Szukamy inżynierów, naukowców i wizjonerów, którzy pomogą budować infrastrukturę jutra. Dołącz do zespołu pracującego nad projektami ESA.",
-      "button": "Zobacz Oferty Pracy"
+      "description": "Szukamy inżynierów, naukowców i wizjonerów, którzy pomogą budować infrastrukturę jutra.",
+      "button": "Zobacz otwarte stanowiska"
     },
     "contact": {
       "title": "Kontakt",
-      "subtitle": "z Nami",
-      "description": "Zainteresowany naszą technologią lub możliwościami współpracy? Skontaktuj się z naszym zespołem we Wrocławiu.",
+      "subtitle": "Centrala",
+      "description": "Zainteresowany naszą technologią lub możliwościami partnerstwa? Skontaktuj się z naszym zespołem w Warszawie.",
       "button": "Skontaktuj się"
     }
   },
   "products": {
     "hero": {
-      "title": "Katalog",
-      "subtitle": "Materiałów",
-      "description": "Kompleksowa oferta metali trudnotopliwych, targetów do napylania i komponentów na zamówienie dla sektora kosmicznego, obronnego i energetycznego"
+      "label": "Produkty i Materiały",
+      "title": "Oferujemy szeroki zakres materiałów i surowców",
+      "description": "Od wielu lat produkujemy komponenty i dostarczamy materiały stosowane w lotnictwie, energetyce i ochronie środowiska, w tym biomateriały, materiały elektroniczne, magnetyczne, optyczne i fotoniczne.",
+      "industries": "Naszymi klientami są firmy z branży lotniczej, samochodowej, spożywczej, chemicznej, energetycznej, medycznej, górniczej, paliwowej, opakowaniowej i wielu innych."
     },
-    "categories": {
-      "all": "Wszystkie Produkty",
-      "refractoryMetals": "Metale Trudnotopliwe",
-      "sputteringTargets": "Targety do Napylania",
-      "powders": "Proszki i Nanomateriały",
-      "customComponents": "Komponenty na Zamówienie",
-      "hea": "Stopy Wysokoentropowe"
-    },
-    "card": {
-      "viewDetails": "Zobacz Szczegóły",
-      "specifications": "Specyfikacja",
-      "applications": "Zastosowania"
+    "sections": {
+      "properties": "Właściwości",
+      "productsAndSizes": "Dostępne produkty i wymiary",
+      "alloysAndGrades": "Stopy i gatunki",
+      "applications": "Zastosowania",
+      "standards": "Normy i certyfikaty"
     },
     "cta": {
-      "title": "Potrzebujesz Materiałów na Zamówienie?",
-      "description": "Nasz zespół inżynierów może opracować niestandardowe stopy i komponenty zgodnie z Twoimi wymaganiami",
-      "button": "Zapytaj o Wycenę"
+      "requestQuote": "Zapytaj o cenę",
+      "technicalInquiry": "Zapytanie techniczne",
+      "title": "Potrzebujesz czegoś specjalnego?",
+      "description": "Skontaktuj się z naszym zespołem technicznym, aby omówić Twoje wymagania. Specjalizujemy się w rozwiązaniach na zamówienie.",
+      "button": "Skontaktuj się"
+    },
+    "custom": {
+      "label": "Produkcja na zamówienie",
+      "title": "Części według Twoich specyfikacji",
+      "description": "Produkujemy części ze wszystkich wymienionych metali według specyfikacji i rysunków klienta. Jeśli szukanego produktu nie ma na tej liście, prosimy o kontakt z działem zamówień i sprzedaży."
+    },
+    "quality": {
+      "label": "Zapewnienie jakości",
+      "iso9001": "Zarządzanie jakością",
+      "en9100": "Standard lotniczy",
+      "esa": "Zastosowania kosmiczne",
+      "traceability": "Certyfikacja materiałów"
+    },
+    "categories": {
+      "all": "Wszystkie produkty",
+      "refractoryMetals": "Metale ogniotrwałe",
+      "sputteringTargets": "Targety do rozpylania",
+      "powders": "Proszki i nanomateriały",
+      "customComponents": "Komponenty na zamówienie",
+      "hea": "Stopy wysokoentropijne"
+    },
+    "materials": {
+      "rhenium": "Ren",
+      "tungsten": "Wolfram",
+      "titanium": "Tytan",
+      "molybdenum": "Molibden",
+      "tantalum": "Tantal",
+      "niobium": "Niob",
+      "zirconium": "Cyrkon",
+      "nickel": "Nikiel",
+      "stellite": "Stelit",
+      "copper": "Miedź",
+      "aluminumBronze": "Brązy aluminiowe",
+      "tungstenCarbide": "Węglik wolframu",
+      "sputteringTargets": "Targety do rozpylania (PVD)",
+      "superClean": "Metale superczyste (4N-7N)"
+    },
+    "card": {
+      "viewDetails": "Zobacz szczegóły",
+      "specifications": "Specyfikacje",
+      "applications": "Zastosowania"
     }
   },
   "news": {
     "hero": {
-      "title": "Najnowsze",
-      "subtitle": "Wiadomości",
-      "description": "Aktualności i informacje z Bimo Tech"
+      "label": "Aktualności",
+      "title": "Wiadomości z",
+      "highlight": "laboratorium"
+    },
+    "featured": {
+      "label": "Nagroda"
+    },
+    "allUpdates": "Wszystkie aktualizacje",
+    "subscribe": {
+      "label": "Bądź na bieżąco",
+      "title": "Otrzymuj wiadomości od Bimo Tech",
+      "description": "Okazjonalne aktualizacje o naszych projektach, publikacjach i rozwoju nauki o materiałach.",
+      "placeholder": "twoj@email.pl",
+      "button": "Subskrybuj"
     },
     "categories": {
       "all": "Wszystkie",
-      "awards": "Nagrody",
-      "projects": "Projekty",
-      "company": "Firma",
-      "partnerships": "Partnerstwa",
-      "certifications": "Certyfikaty",
-      "events": "Wydarzenia"
+      "award": "Nagroda",
+      "delivery": "Dostawa",
+      "partnership": "Partnerstwo",
+      "contract": "Kontrakt",
+      "research": "Badania",
+      "certification": "Certyfikacja"
     },
     "newsletter": {
-      "title": "Bądź na Bieżąco",
-      "description": "Zapisz się, aby otrzymywać najnowsze wiadomości i aktualizacje",
+      "title": "Bądź na bieżąco",
+      "description": "Subskrybuj, aby otrzymywać najnowsze wiadomości i aktualizacje",
       "placeholder": "Wpisz swój email",
-      "button": "Zapisz się"
+      "button": "Subskrybuj"
     }
   },
   "careers": {
     "hero": {
-      "title": "Dołącz do",
-      "subtitle": "Misji",
-      "description": "Buduj z nami przyszłość materiałów kosmicznych"
+      "label": "Kariera",
+      "title": "Twórz materiały, które kształtują",
+      "highlight": "przyszłość",
+      "description": "Dołącz do zespołu naukowców i inżynierów pracujących nad przełomowymi materiałami dla kosmosu, fuzji i lotnictwa."
     },
-    "stats": {
-      "heritage": "30+ Lat Doświadczenia",
-      "countries": "12 Obsługiwanych Krajów",
-      "projects": "50+ Projektów ESA"
+    "culture": {
+      "label": "Kultura",
+      "title": "Co nas napędza",
+      "description": "Jesteśmy zespołem ponad 30 naukowców, inżynierów i specjalistów, zjednoczonych pasją do przesuwania granic nauki o materiałach."
     },
     "values": {
-      "title": "Nasze Wartości",
-      "innovation": "Innowacja",
-      "innovationDesc": "Przesuwamy granice w nauce o materiałach",
-      "excellence": "Doskonałość",
-      "excellenceDesc": "Najwyższe standardy jakości we wszystkim co robimy",
-      "collaboration": "Współpraca",
-      "collaborationDesc": "Współpracujemy z partnerami na całym świecie",
-      "sustainability": "Zrównoważony Rozwój",
-      "sustainabilityDesc": "Budujemy zrównoważoną przyszłość dla kosmosu"
+      "title": "Nasze wartości",
+      "scientificRigor": "Rygor naukowy",
+      "scientificRigorDesc": "Każda decyzja oparta na danych i badaniach. Nie zgadujemy, mierzymy.",
+      "qualityObsession": "Obsesja jakości",
+      "qualityObsessionDesc": "Nigdy nie idziemy na kompromis w kwestii integralności materiałów. 99,95% czystości nie wystarczy, gdy możliwe jest 99,99%.",
+      "collaboration": "Duch współpracy",
+      "collaborationDesc": "Najlepsze rozwiązania pochodzą z różnych perspektyw. Pracujemy ponad dyscyplinami i granicami.",
+      "learning": "Ciągłe uczenie się",
+      "learningDesc": "Nauka o materiałach ciągle ewoluuje, my też. 20% czasu na osobiste badania."
     },
-    "positions": {
-      "title": "Otwarte Stanowiska",
-      "apply": "Aplikuj",
-      "noResults": "Brak stanowisk spełniających kryteria"
+    "openings": {
+      "label": "Oferty pracy",
+      "title": "Aktualne stanowiska",
+      "roles": "stanowisk"
     },
     "benefits": {
-      "title": "Dlaczego My",
-      "esaProjects": "Projekty ESA",
-      "internationalTeam": "Międzynarodowy Zespół",
-      "rdFocus": "Fokus na R&D",
-      "careerGrowth": "Rozwój Kariery",
-      "flexibleWork": "Elastyczna Praca",
-      "competitiveSalary": "Konkurencyjne Wynagrodzenie"
+      "label": "Korzyści",
+      "research": "Wolność badawcza",
+      "researchDesc": "20% czasu na osobiste projekty badawcze. Dostęp do najnowocześniejszego sprzętu i obiektów.",
+      "growth": "Rozwój",
+      "growthDesc": "Udział w konferencjach, programy szkoleniowe i ścieżki do liderstwa dla zainteresowanych.",
+      "impact": "Wpływ",
+      "impactDesc": "Pracuj nad materiałami, które zasilą reaktory fuzyjne i umożliwią eksplorację kosmosu."
     },
     "cta": {
-      "title": "Nie Widzisz Swojej Roli?",
-      "description": "Zawsze szukamy utalentowanych osób. Wyślij nam swoje CV.",
-      "button": "Aplikacja Ogólna"
+      "title": "Nie widzisz odpowiedniej roli?",
+      "description": "Zawsze szukamy wyjątkowych talentów. Wyślij nam swoje CV i powiedz, dlaczego chcesz dołączyć.",
+      "button": "Skontaktuj się"
+    },
+    "stats": {
+      "heritage": "30+ lat doświadczenia",
+      "countries": "12 krajów obsługiwanych",
+      "projects": "50+ projektów ESA"
+    },
+    "positions": {
+      "title": "Otwarte stanowiska",
+      "apply": "Aplikuj teraz",
+      "noResults": "Brak stanowisk spełniających Twoje kryteria"
     }
   },
   "contact": {
     "hero": {
-      "title": "Kontakt",
-      "subtitle": "z Nami",
-      "description": "Skontaktuj się z naszym zespołem w sprawie partnerstw, zapytań lub wsparcia technicznego"
-    },
-    "info": {
-      "location": "Lokalizacja",
-      "address": "Ul. Francuska 11, 54-405 Wrocław, Polska",
-      "phone": "Telefon",
-      "email": "Email",
-      "hours": "Godziny Pracy",
-      "hoursValue": "Pon-Pt: 8:00 - 16:00"
+      "label": "Kontakt",
+      "title": "Omówmy Twoje",
+      "highlight": "wymagania",
+      "description": "Niezależnie od tego, czy potrzebujesz standardowych materiałów, czy rozwiązań na zamówienie, nasz zespół jest gotowy pomóc."
     },
     "form": {
-      "title": "Wyślij Wiadomość",
-      "name": "Imię i Nazwisko",
+      "label": "Wyślij wiadomość",
+      "name": "Imię i nazwisko",
       "email": "Email",
       "company": "Firma",
       "subject": "Temat",
       "message": "Wiadomość",
-      "submit": "Wyślij Wiadomość",
+      "submit": "Wyślij wiadomość",
       "sending": "Wysyłanie...",
       "success": "Wiadomość wysłana pomyślnie!",
-      "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+      "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+      "selectSubject": "Wybierz..."
     },
     "subjects": {
-      "general": "Zapytanie Ogólne",
-      "technical": "Wsparcie Techniczne",
+      "quote": "Zapytanie ofertowe",
+      "technical": "Zapytanie techniczne",
       "partnership": "Partnerstwo",
-      "quote": "Zapytanie o Wycenę",
-      "careers": "Kariera"
+      "careers": "Kariera",
+      "other": "Inne"
+    },
+    "direct": {
+      "label": "Kontakt bezpośredni",
+      "email": "Email",
+      "phone": "Telefon",
+      "address": "Adres"
+    },
+    "response": {
+      "general": "Typowy czas odpowiedzi na ogólne zapytania",
+      "technical": "Na oferty techniczne i specyfikacje",
+      "custom": "Na propozycje projektów na zamówienie"
+    },
+    "info": {
+      "location": "Lokalizacja",
+      "address": "ul. Pawińskiego 5B, 02-106 Warszawa, Polska",
+      "phone": "Telefon",
+      "email": "Email",
+      "hours": "Godziny pracy",
+      "hoursValue": "Pn-Pt: 8:00 - 16:00"
     },
     "departments": {
-      "title": "Kontakty Działów",
+      "title": "Kontakty do działów",
       "sales": "Sprzedaż",
-      "technical": "Wsparcie Techniczne",
+      "technical": "Wsparcie techniczne",
       "careers": "Kariera",
       "investors": "Inwestorzy"
     }
   },
+  "rfq": {
+    "title": "Zapytanie ofertowe",
+    "basket": "Koszyk zapytań",
+    "addItem": "Dodaj pozycję",
+    "removeItem": "Usuń",
+    "material": "Materiał",
+    "form": "Forma",
+    "specification": "Specyfikacja",
+    "quantity": "Ilość",
+    "submit": "Wyślij zapytanie",
+    "uploadDesign": "Wgraj projekt",
+    "supportedFormats": "Obsługiwane: PDF, STEP, DXF, DWG",
+    "emptyBasket": "Twój koszyk zapytań jest pusty",
+    "addFromChat": "Dodaj pozycje rozmawiając z naszym asystentem lub przeglądając produkty"
+  },
+  "chat": {
+    "title": "Asystent Materiałowy",
+    "placeholder": "Zapytaj o materiały, poproś o wycenę...",
+    "welcome": "Cześć! Mogę pomóc Ci znaleźć materiały, uzyskać specyfikacje lub rozpocząć zapytanie ofertowe. Czego szukasz?",
+    "addToRfq": "Dodaj do zapytania",
+    "viewBasket": "Zobacz koszyk zapytań"
+  },
   "common": {
-    "learnMore": "Dowiedz się Więcej",
-    "viewAll": "Zobacz Wszystko",
-    "readMore": "Czytaj Więcej",
-    "backToTop": "Powrót na Górę",
+    "learnMore": "Dowiedz się więcej",
+    "viewAll": "Zobacz wszystko",
+    "readMore": "Czytaj więcej",
+    "backToTop": "Powrót na górę",
     "loading": "Ładowanie...",
-    "error": "Coś poszło nie tak"
+    "error": "Coś poszło nie tak",
+    "or": "lub"
   },
   "footer": {
     "company": "Bimo Tech Sp. z o.o.",
-    "tagline": "Główny Dostawca ESA w Zaawansowanych Materiałach",
-    "address": "Ul. Francuska 11, 54-405 Wrocław, Polska",
-    "phone": "+48 71 349 89 67",
-    "email": "info@bimotech.pl",
-    "copyright": "© 2024 Bimo Tech. Wszelkie prawa zastrzeżone."
+    "tagline": "Zaawansowane materiały dla kosmosu, fuzji i lotnictwa. Warszawa, Polska.",
+    "navigate": "Nawigacja",
+    "contact": "Kontakt",
+    "address": "ul. Pawińskiego 5B, 02-106 Warszawa, Polska",
+    "privacy": "Prywatność",
+    "terms": "Regulamin",
+    "impressum": "Impressum",
+    "copyright": "© {year} Bimo Tech Sp. z o.o."
   }
 }

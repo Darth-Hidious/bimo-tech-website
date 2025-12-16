@@ -9,10 +9,12 @@ import styles from "./Hero.module.css";
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
   const uiContainerRef = useRef<HTMLDivElement>(null);
   const storyTextRef = useRef<HTMLHeadingElement>(null);
+  const maskRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
   const tRef = useRef(t);
 
@@ -620,11 +622,11 @@ export default function Hero() {
 
       const canvas = renderer.domElement;
       canvas.style.cssText = `
-        position: fixed !important;
+        position: absolute !important;
         top: 0 !important;
         left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
+        width: 100% !important;
+        height: 100% !important;
         z-index: 0 !important;
         display: block !important;
       `;
@@ -1154,6 +1156,25 @@ export default function Hero() {
     };
   }, []);
 
+  // Scroll-based mask effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      // Progress from 0 to 1 based on scroll (complete at 100% of viewport height)
+      // This gives us the full scroll distance to complete the effect
+      const progress = Math.min(scrollY / windowHeight, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     const handleEmailClick = (e: MouseEvent) => {
       e.preventDefault();
@@ -1181,12 +1202,34 @@ export default function Hero() {
     }
   }, []);
 
+  // Calculate mask styles based on scroll progress
+  // Using easing for smoother feel
+  const easedProgress = scrollProgress < 0.5 
+    ? 2 * scrollProgress * scrollProgress 
+    : 1 - Math.pow(-2 * scrollProgress + 2, 2) / 2;
+  
+  const maskInset = easedProgress * 8; // Max 8% inset from edges for more dramatic effect
+  const maskBorderRadius = easedProgress * 60; // Max 60px border radius
+  const maskOpacity = easedProgress * 0.95; // Max opacity for the surrounding dark area
+
   return (
     <>
       <section ref={heroSectionRef} className={`${styles.section} ${styles.heroSection}`}>
         <div ref={containerRef} id="container"></div>
         <div id="stats"></div>
         {/* <div ref={uiContainerRef} id="ui-container"></div> */}
+
+        {/* Scroll-triggered rounded mask overlay */}
+        <div
+          ref={maskRef}
+          className={styles.scrollMask}
+          style={{
+            inset: `${maskInset}%`,
+            borderRadius: `${maskBorderRadius}px`,
+            opacity: scrollProgress > 0.01 ? 1 : 0,
+            boxShadow: `0 0 0 100vmax rgba(0, 0, 0, ${maskOpacity})`,
+          }}
+        />
 
         <div className={styles.headerArea}>
           {/* Logo will be added here later */}
