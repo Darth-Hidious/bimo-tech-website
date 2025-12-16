@@ -13,8 +13,50 @@
     "cta": "Explore Products"
   },
   "home": {
+    "purpose": {
+      "label": "Our Purpose",
+      "title": "We engineer the materials that make",
+      "highlight": "the impossible",
+      "titleEnd": "possible."
+    },
+    "stats": {
+      "years": "Years",
+      "purity": "Purity",
+      "projects": "Projects",
+      "partners": "Partners"
+    },
     "partners": {
-      "title": "Trusted by Industry Leaders"
+      "title": "Trusted by Industry Leaders",
+      "label": "Trusted By"
+    },
+    "capabilities": {
+      "label": "Capabilities",
+      "title": "Advanced materials for extreme environments",
+      "description": "From fusion reactors to deep space, we develop materials that perform where others fail."
+    },
+    "featured": {
+      "label": "Featured",
+      "readCase": "Read the case study"
+    },
+    "applications": {
+      "label": "Applications",
+      "space": "Space",
+      "spaceDesc": "Propulsion systems, thermal protection, and structural components for satellites and launch vehicles.",
+      "fusion": "Fusion Energy",
+      "fusionDesc": "Plasma-facing materials and components for ITER and next-generation fusion reactors.",
+      "aerospace": "Aerospace",
+      "aerospaceDesc": "High-temperature alloys and coatings for turbine engines and hypersonic vehicles."
+    },
+    "about": {
+      "label": "About",
+      "title": "Built by scientists.",
+      "description": "Bimo Tech was founded by material scientists with decades of experience in advanced materials research. We bridge the gap between cutting-edge science and industrial applications.",
+      "location": "Based in Warsaw, Poland. Working globally.",
+      "joinTeam": "Join the team"
+    },
+    "cta": {
+      "title": "Let's build something.",
+      "button": "Get in touch"
     },
     "innovation": {
       "title": "Advanced",
@@ -41,15 +83,42 @@
     "contact": {
       "title": "Contact",
       "subtitle": "HQ",
-      "description": "Interested in our technology or partnership opportunities? Connect with our team in Wrocław, Poland.",
+      "description": "Interested in our technology or partnership opportunities? Connect with our team in Warsaw, Poland.",
       "button": "Get in Touch"
     }
   },
   "products": {
     "hero": {
-      "title": "Advanced Materials",
-      "subtitle": "Catalog",
-      "description": "Comprehensive range of refractory metals, sputtering targets, and custom components for space, defense, and energy applications"
+      "label": "Products & Materials",
+      "title": "We offer a wide range of materials and raw materials",
+      "description": "For many years, we have been manufacturing components and supplying materials used in aviation, energy, and the environment, including biomaterials, electronic, magnetic, optical, and photonic materials.",
+      "industries": "Our clients include companies in the aerospace, automotive, food, chemical, energy, medical, mining, fuel, packaging, and many other industries."
+    },
+    "sections": {
+      "properties": "Properties",
+      "productsAndSizes": "Available Products & Sizes",
+      "alloysAndGrades": "Alloys & Grades",
+      "applications": "Applications",
+      "standards": "Standards & Certifications"
+    },
+    "cta": {
+      "requestQuote": "Request quote",
+      "technicalInquiry": "Technical inquiry",
+      "title": "Need something specific?",
+      "description": "Contact our technical team to discuss your requirements. We specialize in custom solutions.",
+      "button": "Get in touch"
+    },
+    "custom": {
+      "label": "Custom Manufacturing",
+      "title": "Parts to your specifications",
+      "description": "We manufacture parts from all listed metals according to customer specifications and drawings. If the product you are looking for is not on this list, please contact our orders and sales department."
+    },
+    "quality": {
+      "label": "Quality Assurance",
+      "iso9001": "Quality Management",
+      "en9100": "Aerospace Standard",
+      "esa": "Space Applications",
+      "traceability": "Material Certification"
     },
     "categories": {
       "all": "All Products",
@@ -59,31 +128,53 @@
       "customComponents": "Custom Components",
       "hea": "High-Entropy Alloys"
     },
+    "materials": {
+      "rhenium": "Rhenium",
+      "tungsten": "Tungsten",
+      "titanium": "Titanium",
+      "molybdenum": "Molybdenum",
+      "tantalum": "Tantalum",
+      "niobium": "Niobium",
+      "zirconium": "Zirconium",
+      "nickel": "Nickel",
+      "stellite": "Stellite",
+      "copper": "Copper",
+      "aluminumBronze": "Aluminum Bronzes",
+      "tungstenCarbide": "Tungsten Carbide",
+      "sputteringTargets": "Sputtering Targets (PVD)",
+      "superClean": "Super Clean Metals (4N-7N)"
+    },
     "card": {
       "viewDetails": "View Details",
       "specifications": "Specifications",
       "applications": "Applications"
-    },
-    "cta": {
-      "title": "Need Custom Materials?",
-      "description": "Our engineering team can develop custom alloys and components to your specifications",
-      "button": "Request Quote"
     }
   },
   "news": {
     "hero": {
-      "title": "Latest",
-      "subtitle": "Intel",
-      "description": "News, updates, and insights from Bimo Tech"
+      "label": "News",
+      "title": "Updates from",
+      "highlight": "the lab"
+    },
+    "featured": {
+      "label": "Award"
+    },
+    "allUpdates": "All Updates",
+    "subscribe": {
+      "label": "Stay updated",
+      "title": "Get news from Bimo Tech",
+      "description": "Occasional updates on our projects, publications, and material science developments.",
+      "placeholder": "your@email.com",
+      "button": "Subscribe"
     },
     "categories": {
       "all": "All",
-      "awards": "Awards",
-      "projects": "Projects",
-      "company": "Company News",
-      "partnerships": "Partnerships",
-      "certifications": "Certifications",
-      "events": "Events"
+      "award": "Award",
+      "delivery": "Delivery",
+      "partnership": "Partnership",
+      "contract": "Contract",
+      "research": "Research",
+      "certification": "Certification"
     },
     "newsletter": {
       "title": "Stay Updated",
@@ -94,78 +185,102 @@
   },
   "careers": {
     "hero": {
-      "title": "Join the",
-      "subtitle": "Mission",
-      "description": "Build the future of space materials with us"
+      "label": "Careers",
+      "title": "Build the materials that shape",
+      "highlight": "the future",
+      "description": "Join a team of scientists and engineers working on breakthrough materials for space, fusion, and aerospace."
+    },
+    "culture": {
+      "label": "Culture",
+      "title": "What drives us",
+      "description": "We're a team of 30+ scientists, engineers, and specialists united by a passion for pushing the boundaries of materials science."
+    },
+    "values": {
+      "title": "Our Values",
+      "scientificRigor": "Scientific rigor",
+      "scientificRigorDesc": "Every decision grounded in data and research. We don't guess, we measure.",
+      "qualityObsession": "Quality obsession",
+      "qualityObsessionDesc": "We never compromise on material integrity. 99.95% purity isn't good enough when 99.99% is possible.",
+      "collaboration": "Collaborative spirit",
+      "collaborationDesc": "The best solutions come from diverse perspectives. We work across disciplines and borders.",
+      "learning": "Continuous learning",
+      "learningDesc": "Materials science never stops evolving, neither do we. 20% time for personal research."
+    },
+    "openings": {
+      "label": "Openings",
+      "title": "Current positions",
+      "roles": "roles"
+    },
+    "benefits": {
+      "label": "Benefits",
+      "research": "Research freedom",
+      "researchDesc": "20% time for personal research projects. Access to state-of-the-art equipment and facilities.",
+      "growth": "Growth",
+      "growthDesc": "Conference attendance, training programs, and pathways to leadership for those who want it.",
+      "impact": "Impact",
+      "impactDesc": "Work on materials that will power fusion reactors and enable deep space exploration."
+    },
+    "cta": {
+      "title": "Don't see the right role?",
+      "description": "We're always looking for exceptional talent. Send us your CV and tell us why you want to join.",
+      "button": "Get in touch"
     },
     "stats": {
       "heritage": "30+ Years Heritage",
       "countries": "12 Countries Served",
       "projects": "50+ ESA Projects"
     },
-    "values": {
-      "title": "Our Values",
-      "innovation": "Innovation",
-      "innovationDesc": "Pushing boundaries in materials science",
-      "excellence": "Excellence",
-      "excellenceDesc": "Highest quality standards in everything we do",
-      "collaboration": "Collaboration",
-      "collaborationDesc": "Working together with partners worldwide",
-      "sustainability": "Sustainability",
-      "sustainabilityDesc": "Building a sustainable future for space"
-    },
     "positions": {
       "title": "Open Positions",
       "apply": "Apply Now",
       "noResults": "No positions matching your criteria"
-    },
-    "benefits": {
-      "title": "Why Join Us",
-      "esaProjects": "ESA Projects",
-      "internationalTeam": "International Team",
-      "rdFocus": "R&D Focus",
-      "careerGrowth": "Career Growth",
-      "flexibleWork": "Flexible Work",
-      "competitiveSalary": "Competitive Salary"
-    },
-    "cta": {
-      "title": "Don't See Your Role?",
-      "description": "We're always looking for talented individuals. Send us your CV.",
-      "button": "General Application"
     }
   },
   "contact": {
     "hero": {
-      "title": "Contact",
-      "subtitle": "HQ",
-      "description": "Connect with our team for partnerships, inquiries, or technical support"
-    },
-    "info": {
-      "location": "Location",
-      "address": "Ul. Francuska 11, 54-405 Wrocław, Poland",
-      "phone": "Phone",
-      "email": "Email",
-      "hours": "Business Hours",
-      "hoursValue": "Mon-Fri: 8:00 - 16:00 CET"
+      "label": "Contact",
+      "title": "Let's discuss your",
+      "highlight": "requirements",
+      "description": "Whether you need standard materials or custom solutions, our team is ready to help."
     },
     "form": {
-      "title": "Send a Message",
+      "label": "Send a message",
       "name": "Name",
       "email": "Email",
       "company": "Company",
       "subject": "Subject",
       "message": "Message",
-      "submit": "Send Message",
+      "submit": "Send message",
       "sending": "Sending...",
       "success": "Message sent successfully!",
-      "error": "Failed to send message. Please try again."
+      "error": "Failed to send message. Please try again.",
+      "selectSubject": "Select..."
     },
     "subjects": {
-      "general": "General Inquiry",
-      "technical": "Technical Support",
+      "quote": "Request a quote",
+      "technical": "Technical inquiry",
       "partnership": "Partnership",
-      "quote": "Quote Request",
-      "careers": "Careers"
+      "careers": "Careers",
+      "other": "Other"
+    },
+    "direct": {
+      "label": "Direct contact",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
+    },
+    "response": {
+      "general": "Typical response time for general inquiries",
+      "technical": "For technical quotes and specifications",
+      "custom": "For custom engineering proposals"
+    },
+    "info": {
+      "location": "Location",
+      "address": "ul. Pawińskiego 5B, 02-106 Warsaw, Poland",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours",
+      "hoursValue": "Mon-Fri: 8:00 - 16:00 CET"
     },
     "departments": {
       "title": "Department Contacts",
@@ -175,20 +290,46 @@
       "investors": "Investors"
     }
   },
+  "rfq": {
+    "title": "Request for Quote",
+    "basket": "RFQ Basket",
+    "addItem": "Add Item",
+    "removeItem": "Remove",
+    "material": "Material",
+    "form": "Form",
+    "specification": "Specification",
+    "quantity": "Quantity",
+    "submit": "Submit RFQ",
+    "uploadDesign": "Upload Design",
+    "supportedFormats": "Supported: PDF, STEP, DXF, DWG",
+    "emptyBasket": "Your RFQ basket is empty",
+    "addFromChat": "Add items by chatting with our assistant or browsing products"
+  },
+  "chat": {
+    "title": "Material Assistant",
+    "placeholder": "Ask about materials, request a quote...",
+    "welcome": "Hello! I can help you find materials, get specifications, or start a quote request. What are you looking for?",
+    "addToRfq": "Add to RFQ",
+    "viewBasket": "View RFQ Basket"
+  },
   "common": {
     "learnMore": "Learn More",
     "viewAll": "View All",
     "readMore": "Read More",
     "backToTop": "Back to Top",
     "loading": "Loading...",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "or": "or"
   },
   "footer": {
     "company": "Bimo Tech Sp. z o.o.",
-    "tagline": "ESA Space Prime for Advanced Materials",
-    "address": "Ul. Francuska 11, 54-405 Wrocław, Poland",
-    "phone": "+48 71 349 89 67",
-    "email": "info@bimotech.pl",
-    "copyright": "© 2024 Bimo Tech. All rights reserved."
+    "tagline": "Advanced materials for space, fusion, and aerospace. Warsaw, Poland.",
+    "navigate": "Navigate",
+    "contact": "Contact",
+    "address": "ul. Pawińskiego 5B, 02-106 Warsaw, Poland",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "impressum": "Impressum",
+    "copyright": "© {year} Bimo Tech Sp. z o.o."
   }
 }
