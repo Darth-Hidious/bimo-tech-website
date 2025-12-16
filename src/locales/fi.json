@@ -1,51 +1,194 @@
 {
-    "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+  "nav": {
+    "home": "Etusivu",
+    "products": "Tuotteet",
+    "news": "Uutiset",
+    "careers": "Ura",
+    "contact": "Yhteystiedot"
+  },
+  "hero": {
+    "title": "Edistyneitä Materiaaleja",
+    "subtitle": "Avaruuteen & Sitä Pidemmälle",
+    "description": "ESA Space Prime toimittaa korkealaatuisia metallisia materiaaleja ja tarkkuuskomponentteja vaativimpiin sovelluksiin",
+    "cta": "Tutustu Tuotteisiin"
+  },
+  "home": {
+    "partners": {
+      "title": "Alan Johtajien Luottama"
     },
-    "hero": {
-        "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
-        }
+    "innovation": {
+      "title": "Edistyneitä",
+      "subtitle": "Materiaaleja",
+      "description": "Tulenkestävistä metalleista korkean entropian seoksiin, jotka voimistavat avaruustutkimuksen ja energiajärjestelmien tulevaisuutta.",
+      "viewAll": "Näytä Kaikki Tuotteet"
     },
-    "home": {
-        "innovation": {
-            "title": "Innovation",
-            "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
-        },
-        "projects": {
-            "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
-            }
-        },
-        "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
-        },
-        "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
-        },
-        "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
-        }
+    "products": {
+      "viewDetails": "Näytä Tiedot"
+    },
+    "news": {
+      "title": "Viimeisimmät",
+      "subtitle": "Uutiset",
+      "pressRelease": "LEHDISTÖTIEDOTE",
+      "featured": "ESILLÄ",
+      "readMore": "Lue Lisää"
+    },
+    "careers": {
+      "title": "Liity",
+      "subtitle": "Tehtävään",
+      "description": "Etsimme insinöörejä, tutkijoita ja visionäärejä rakentamaan huomisen infrastruktuuria. Liity tiimimme, joka työskentelee ESA-projekteissa.",
+      "button": "Näytä Avoimet Työpaikat"
+    },
+    "contact": {
+      "title": "Yhteystiedot",
+      "subtitle": "HQ",
+      "description": "Kiinnostunut teknologiastamme tai yhteistyömahdollisuuksista? Ota yhteyttä tiimiimme Wroclawissa, Puolassa.",
+      "button": "Ota Yhteyttä"
     }
+  },
+  "products": {
+    "hero": {
+      "title": "Edistyneitä Materiaaleja",
+      "subtitle": "Luettelo",
+      "description": "Kattava valikoima tulenkestäviä metalleja, sputterointikohteita ja räätälöityjä komponentteja avaruus-, puolustus- ja energiasovelluksiin"
+    },
+    "categories": {
+      "all": "Kaikki Tuotteet",
+      "refractoryMetals": "Tulenkestävät Metallit",
+      "sputteringTargets": "Sputterointikohteet",
+      "powders": "Jauheet & Nanomateriaalit",
+      "customComponents": "Räätälöidyt Komponentit",
+      "hea": "Korkean Entropian Seokset"
+    },
+    "card": {
+      "viewDetails": "Näytä Tiedot",
+      "specifications": "Tekniset Tiedot",
+      "applications": "Sovellukset"
+    },
+    "cta": {
+      "title": "Tarvitsetko Räätälöityjä Materiaaleja?",
+      "description": "Suunnittelutiimimme voi kehittää räätälöityjä seoksia ja komponentteja vaatimusten mukaan",
+      "button": "Pyydä Tarjous"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Viimeisimmät",
+      "subtitle": "Uutiset",
+      "description": "Uutisia, päivityksiä ja näkemyksiä Bimo Techiltä"
+    },
+    "categories": {
+      "all": "Kaikki",
+      "awards": "Palkinnot",
+      "projects": "Projektit",
+      "company": "Yrityksen Uutiset",
+      "partnerships": "Kumppanuudet",
+      "certifications": "Sertifioinnit",
+      "events": "Tapahtumat"
+    },
+    "newsletter": {
+      "title": "Pysy Ajan Tasalla",
+      "description": "Tilaa saadaksesi viimeisimmät uutiset ja päivitykset",
+      "placeholder": "Syötä sähköpostiosoitteesi",
+      "button": "Tilaa"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Liity",
+      "subtitle": "Tehtävään",
+      "description": "Rakenna kanssamme avaruusmateriaalien tulevaisuutta"
+    },
+    "stats": {
+      "heritage": "30+ Vuoden Perintö",
+      "countries": "12 Maata Palveltu",
+      "projects": "50+ ESA Projektia"
+    },
+    "values": {
+      "title": "Arvomme",
+      "innovation": "Innovaatio",
+      "innovationDesc": "Rajojen venyttäminen materiaalitieteessä",
+      "excellence": "Huippuosaaminen",
+      "excellenceDesc": "Korkein laatustandardi kaikessa mitä teemme",
+      "collaboration": "Yhteistyö",
+      "collaborationDesc": "Työskentelemme kumppaneiden kanssa maailmanlaajuisesti",
+      "sustainability": "Kestävyys",
+      "sustainabilityDesc": "Kestävän tulevaisuuden rakentaminen avaruudelle"
+    },
+    "positions": {
+      "title": "Avoimet Työpaikat",
+      "apply": "Hae Nyt",
+      "noResults": "Ei hakukriteereitä vastaavia paikkoja"
+    },
+    "benefits": {
+      "title": "Miksi Liittyä Joukkoomme",
+      "esaProjects": "ESA Projektit",
+      "internationalTeam": "Kansainvälinen Tiimi",
+      "rdFocus": "T&K Painopiste",
+      "careerGrowth": "Urakehitys",
+      "flexibleWork": "Joustava Työ",
+      "competitiveSalary": "Kilpailukykyinen Palkka"
+    },
+    "cta": {
+      "title": "Etkö Näe Rooliasi?",
+      "description": "Etsimme aina lahjakkaita henkilöitä. Lähetä meille CV:si.",
+      "button": "Yleinen Hakemus"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Yhteystiedot",
+      "subtitle": "HQ",
+      "description": "Ota yhteyttä tiimiimme kumppanuuksien, kyselyjen tai teknisen tuen osalta"
+    },
+    "info": {
+      "location": "Sijainti",
+      "address": "Ul. Francuska 11, 54-405 Wrocław, Puola",
+      "phone": "Puhelin",
+      "email": "Sähköposti",
+      "hours": "Aukioloajat",
+      "hoursValue": "Ma-Pe: 8:00 - 16:00 CET"
+    },
+    "form": {
+      "title": "Lähetä Viesti",
+      "name": "Nimi",
+      "email": "Sähköposti",
+      "company": "Yritys",
+      "subject": "Aihe",
+      "message": "Viesti",
+      "submit": "Lähetä Viesti",
+      "sending": "Lähetetään...",
+      "success": "Viesti lähetetty onnistuneesti!",
+      "error": "Viestin lähetys epäonnistui. Yritä uudelleen."
+    },
+    "subjects": {
+      "general": "Yleinen Kysely",
+      "technical": "Tekninen Tuki",
+      "partnership": "Kumppanuus",
+      "quote": "Tarjouspyyntö",
+      "careers": "Ura"
+    },
+    "departments": {
+      "title": "Osastojen Yhteystiedot",
+      "sales": "Myynti",
+      "technical": "Tekninen Tuki",
+      "careers": "Ura",
+      "investors": "Sijoittajat"
+    }
+  },
+  "common": {
+    "learnMore": "Lue Lisää",
+    "viewAll": "Näytä Kaikki",
+    "readMore": "Lue Lisää",
+    "backToTop": "Takaisin Ylös",
+    "loading": "Ladataan...",
+    "error": "Jotain meni pieleen"
+  },
+  "footer": {
+    "company": "Bimo Tech Sp. z o.o.",
+    "tagline": "ESA Space Prime Edistyneille Materiaaleille",
+    "address": "Ul. Francuska 11, 54-405 Wrocław, Puola",
+    "phone": "+48 71 349 89 67",
+    "email": "info@bimotech.pl",
+    "copyright": "© 2024 Bimo Tech. Kaikki oikeudet pidätetään."
+  }
 }

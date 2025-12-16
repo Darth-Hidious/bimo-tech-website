@@ -1,51 +1,51 @@
 {
     "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+        "home": "Inicio",
+        "products": "Productos",
+        "news": "Noticias",
+        "careers": "Carreras",
+        "contact": "Contacto"
     },
     "hero": {
         "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
+            "mobile": "nave: ({x}, {y})<br>campo: {radius}u<br>fusiones: {merges}<br>flujo: {fps}hz",
+            "desktop": "nuestra nave se desplaza en las coordenadas ({x}, {y})<br>el campo gravitacional se extiende {radius} unidades en la espuma cuántica<br>actualmente fusionándose con {merges} otras entidades<br>flujo temporal: {fps} ciclos por segundo"
         }
     },
     "home": {
         "innovation": {
-            "title": "Innovation",
+            "title": "Innovación",
             "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
+            "description": "Desde infraestructura espacial profunda hasta agentes autónomos de observación terrestre.",
+            "viewAll": "Ver todos los proyectos"
         },
         "projects": {
             "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
+                "title": "Proyecto Alpha-{i}",
+                "description": "Coordinación autónoma en enjambre para la eliminación de desechos orbitales.",
+                "learnMore": "Saber más"
             }
         },
         "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
+            "title": "Últimas",
+            "subtitle": "Noticias",
+            "pressRelease": "COMUNICADO DE PRENSA",
+            "fundingTitle": "BimoTech Obtiene Financiación Serie B",
+            "fundingDesc": "Acelerando el desarrollo de nuestro núcleo de fabricación agéntica.",
+            "agentSuccess": "Despliegue del Agente-{i} Exitoso",
+            "efficiency": "Eficiencia operativa incrementada en un 45%."
         },
         "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
+            "title": "Únete a la",
+            "subtitle": "Misión",
+            "description": "Buscamos ingenieros, soñadores y arquitectos agénticos para construir la infraestructura del mañana.",
+            "button": "Ver posiciones abiertas"
         },
         "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
+            "title": "Contacto",
+            "subtitle": "Sede Central",
+            "description": "¿Interesado en nuestra tecnología u oportunidades de asociación? Contacte con nuestra interfaz agéntica dedicada.",
+            "button": "Iniciar enlace"
         }
     }
 }

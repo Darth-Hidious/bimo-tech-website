@@ -1,51 +1,194 @@
 {
-    "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+  "nav": {
+    "home": "Hjem",
+    "products": "Produkter",
+    "news": "Nyheder",
+    "careers": "Karriere",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Avancerede Materialer",
+    "subtitle": "til Rummet & Videre",
+    "description": "ESA Space Prime leverer højtydende metalliske materialer og præcisionskomponenter til de mest krævende anvendelser",
+    "cta": "Udforsk Produkter"
+  },
+  "home": {
+    "partners": {
+      "title": "Betroet af Branchens Ledere"
     },
-    "hero": {
-        "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
-        }
+    "innovation": {
+      "title": "Avancerede",
+      "subtitle": "Materialer",
+      "description": "Fra ildfast metaller til høj-entropi legeringer, der driver fremtidens rumforskning og energisystemer.",
+      "viewAll": "Se Alle Produkter"
     },
-    "home": {
-        "innovation": {
-            "title": "Innovation",
-            "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
-        },
-        "projects": {
-            "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
-            }
-        },
-        "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
-        },
-        "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
-        },
-        "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
-        }
+    "products": {
+      "viewDetails": "Se Detaljer"
+    },
+    "news": {
+      "title": "Seneste",
+      "subtitle": "Nyt",
+      "pressRelease": "PRESSEMEDDELELSE",
+      "featured": "FREMHÆVET",
+      "readMore": "Læs Mere"
+    },
+    "careers": {
+      "title": "Bliv Med på",
+      "subtitle": "Missionen",
+      "description": "Vi søger ingeniører, forskere og visionære til at hjælpe med at bygge morgendagens infrastruktur. Deltag i vores team på ESA-projekter.",
+      "button": "Se Ledige Stillinger"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Hovedkvarter",
+      "description": "Interesseret i vores teknologi eller partnerskabsmuligheder? Kontakt vores team i Wrocław, Polen.",
+      "button": "Kom i Kontakt"
     }
+  },
+  "products": {
+    "hero": {
+      "title": "Avancerede Materialer",
+      "subtitle": "Katalog",
+      "description": "Omfattende sortiment af ildfast metaller, sputtertargets og kundetilpassede komponenter til rum-, forsvars- og energiapplikationer"
+    },
+    "categories": {
+      "all": "Alle Produkter",
+      "refractoryMetals": "Ildfast Metaller",
+      "sputteringTargets": "Sputtertargets",
+      "powders": "Pulvere & Nanomaterialer",
+      "customComponents": "Kundetilpassede Komponenter",
+      "hea": "Høj-Entropi Legeringer"
+    },
+    "card": {
+      "viewDetails": "Se Detaljer",
+      "specifications": "Specifikationer",
+      "applications": "Anvendelser"
+    },
+    "cta": {
+      "title": "Brug for Specialmaterialer?",
+      "description": "Vores ingeniørteam kan udvikle kundetilpassede legeringer og komponenter efter dine specifikationer",
+      "button": "Anmod om Tilbud"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Seneste",
+      "subtitle": "Nyt",
+      "description": "Nyheder, opdateringer og indsigter fra Bimo Tech"
+    },
+    "categories": {
+      "all": "Alle",
+      "awards": "Priser",
+      "projects": "Projekter",
+      "company": "Virksomhedsnyheder",
+      "partnerships": "Partnerskaber",
+      "certifications": "Certificeringer",
+      "events": "Begivenheder"
+    },
+    "newsletter": {
+      "title": "Hold Dig Opdateret",
+      "description": "Abonner for at modtage de seneste nyheder og opdateringer",
+      "placeholder": "Indtast din e-mail",
+      "button": "Abonner"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Bliv Med på",
+      "subtitle": "Missionen",
+      "description": "Byg fremtidens rummaterialer sammen med os"
+    },
+    "stats": {
+      "heritage": "30+ Års Erfaring",
+      "countries": "12 Lande Betjent",
+      "projects": "50+ ESA Projekter"
+    },
+    "values": {
+      "title": "Vores Værdier",
+      "innovation": "Innovation",
+      "innovationDesc": "Skubber grænserne inden for materialevidenskab",
+      "excellence": "Ekspertise",
+      "excellenceDesc": "Højeste kvalitetsstandarder i alt, hvad vi gør",
+      "collaboration": "Samarbejde",
+      "collaborationDesc": "Arbejder sammen med partnere verden over",
+      "sustainability": "Bæredygtighed",
+      "sustainabilityDesc": "Bygger en bæredygtig fremtid for rummet"
+    },
+    "positions": {
+      "title": "Ledige Stillinger",
+      "apply": "Ansøg Nu",
+      "noResults": "Ingen stillinger matcher dine kriterier"
+    },
+    "benefits": {
+      "title": "Hvorfor Blive Med",
+      "esaProjects": "ESA Projekter",
+      "internationalTeam": "Internationalt Team",
+      "rdFocus": "F&U Fokus",
+      "careerGrowth": "Karriereudvikling",
+      "flexibleWork": "Fleksibelt Arbejde",
+      "competitiveSalary": "Konkurrencedygtig Løn"
+    },
+    "cta": {
+      "title": "Kan Du Ikke Se Din Rolle?",
+      "description": "Vi søger altid talentfulde personer. Send os dit CV.",
+      "button": "Åben Ansøgning"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Kontakt",
+      "subtitle": "Hovedkvarter",
+      "description": "Kontakt vores team for partnerskaber, forespørgsler eller teknisk support"
+    },
+    "info": {
+      "location": "Placering",
+      "address": "Ul. Francuska 11, 54-405 Wrocław, Polen",
+      "phone": "Telefon",
+      "email": "E-mail",
+      "hours": "Åbningstider",
+      "hoursValue": "Man-Fre: 8:00 - 16:00 CET"
+    },
+    "form": {
+      "title": "Send en Besked",
+      "name": "Navn",
+      "email": "E-mail",
+      "company": "Virksomhed",
+      "subject": "Emne",
+      "message": "Besked",
+      "submit": "Send Besked",
+      "sending": "Sender...",
+      "success": "Besked sendt!",
+      "error": "Kunne ikke sende besked. Prøv venligst igen."
+    },
+    "subjects": {
+      "general": "Generel Forespørgsel",
+      "technical": "Teknisk Support",
+      "partnership": "Partnerskab",
+      "quote": "Anmodning om Tilbud",
+      "careers": "Karriere"
+    },
+    "departments": {
+      "title": "Afdelingskontakter",
+      "sales": "Salg",
+      "technical": "Teknisk Support",
+      "careers": "Karriere",
+      "investors": "Investorer"
+    }
+  },
+  "common": {
+    "learnMore": "Lær Mere",
+    "viewAll": "Se Alle",
+    "readMore": "Læs Mere",
+    "backToTop": "Tilbage til Top",
+    "loading": "Indlæser...",
+    "error": "Noget gik galt"
+  },
+  "footer": {
+    "company": "Bimo Tech Sp. z o.o.",
+    "tagline": "ESA Space Prime for Avancerede Materialer",
+    "address": "Ul. Francuska 11, 54-405 Wrocław, Polen",
+    "phone": "+48 71 349 89 67",
+    "email": "info@bimotech.pl",
+    "copyright": "© 2024 Bimo Tech. Alle rettigheder forbeholdes."
+  }
 }

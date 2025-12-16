@@ -1,51 +1,194 @@
 {
-    "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+  "nav": {
+    "home": "Início",
+    "products": "Produtos",
+    "news": "Notícias",
+    "careers": "Carreiras",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Materiais Avançados",
+    "subtitle": "para o Espaço e Além",
+    "description": "ESA Space Prime fornecendo materiais metálicos de alto desempenho e componentes de precisão para as aplicações mais exigentes",
+    "cta": "Explorar Produtos"
+  },
+  "home": {
+    "partners": {
+      "title": "Confiança dos Líderes da Indústria"
     },
-    "hero": {
-        "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
-        }
+    "innovation": {
+      "title": "Materiais",
+      "subtitle": "Avançados",
+      "description": "De metais refratários a ligas de alta entropia, impulsionando o futuro da exploração espacial e sistemas de energia.",
+      "viewAll": "Ver Todos os Produtos"
     },
-    "home": {
-        "innovation": {
-            "title": "Innovation",
-            "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
-        },
-        "projects": {
-            "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
-            }
-        },
-        "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
-        },
-        "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
-        },
-        "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
-        }
+    "products": {
+      "viewDetails": "Ver Detalhes"
+    },
+    "news": {
+      "title": "Últimas",
+      "subtitle": "Notícias",
+      "pressRelease": "COMUNICADO DE IMPRENSA",
+      "featured": "DESTAQUE",
+      "readMore": "Ler Mais"
+    },
+    "careers": {
+      "title": "Junte-se à",
+      "subtitle": "Missão",
+      "description": "Procuramos engenheiros, cientistas e visionários para ajudar a construir a infraestrutura de amanhã. Junte-se à nossa equipa nos projetos da ESA.",
+      "button": "Ver Posições Abertas"
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Sede",
+      "description": "Interessado na nossa tecnologia ou oportunidades de parceria? Conecte-se com a nossa equipa em Wrocław, Polónia.",
+      "button": "Entre em Contacto"
     }
+  },
+  "products": {
+    "hero": {
+      "title": "Materiais Avançados",
+      "subtitle": "Catálogo",
+      "description": "Gama abrangente de metais refratários, alvos de pulverização catódica e componentes personalizados para aplicações espaciais, de defesa e energia"
+    },
+    "categories": {
+      "all": "Todos os Produtos",
+      "refractoryMetals": "Metais Refratários",
+      "sputteringTargets": "Alvos de Pulverização",
+      "powders": "Pós e Nanomateriais",
+      "customComponents": "Componentes Personalizados",
+      "hea": "Ligas de Alta Entropia"
+    },
+    "card": {
+      "viewDetails": "Ver Detalhes",
+      "specifications": "Especificações",
+      "applications": "Aplicações"
+    },
+    "cta": {
+      "title": "Precisa de Materiais Personalizados?",
+      "description": "A nossa equipa de engenharia pode desenvolver ligas e componentes personalizados de acordo com as suas especificações",
+      "button": "Solicitar Orçamento"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Últimas",
+      "subtitle": "Notícias",
+      "description": "Notícias, atualizações e insights da Bimo Tech"
+    },
+    "categories": {
+      "all": "Todas",
+      "awards": "Prémios",
+      "projects": "Projetos",
+      "company": "Notícias da Empresa",
+      "partnerships": "Parcerias",
+      "certifications": "Certificações",
+      "events": "Eventos"
+    },
+    "newsletter": {
+      "title": "Mantenha-se Atualizado",
+      "description": "Subscreva para receber as últimas notícias e atualizações",
+      "placeholder": "Insira o seu e-mail",
+      "button": "Subscrever"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Junte-se à",
+      "subtitle": "Missão",
+      "description": "Construa o futuro dos materiais espaciais connosco"
+    },
+    "stats": {
+      "heritage": "Mais de 30 Anos de História",
+      "countries": "12 Países Servidos",
+      "projects": "Mais de 50 Projetos ESA"
+    },
+    "values": {
+      "title": "Os Nossos Valores",
+      "innovation": "Inovação",
+      "innovationDesc": "Expandindo fronteiras na ciência dos materiais",
+      "excellence": "Excelência",
+      "excellenceDesc": "Padrões de qualidade mais elevados em tudo o que fazemos",
+      "collaboration": "Colaboração",
+      "collaborationDesc": "Trabalhando em conjunto com parceiros em todo o mundo",
+      "sustainability": "Sustentabilidade",
+      "sustainabilityDesc": "Construindo um futuro sustentável para o espaço"
+    },
+    "positions": {
+      "title": "Posições Abertas",
+      "apply": "Candidatar Agora",
+      "noResults": "Nenhuma posição corresponde aos seus critérios"
+    },
+    "benefits": {
+      "title": "Por Que Se Juntar a Nós",
+      "esaProjects": "Projetos ESA",
+      "internationalTeam": "Equipa Internacional",
+      "rdFocus": "Foco em I&D",
+      "careerGrowth": "Crescimento de Carreira",
+      "flexibleWork": "Trabalho Flexível",
+      "competitiveSalary": "Salário Competitivo"
+    },
+    "cta": {
+      "title": "Não Encontra a Sua Função?",
+      "description": "Estamos sempre à procura de pessoas talentosas. Envie-nos o seu CV.",
+      "button": "Candidatura Geral"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contacto",
+      "subtitle": "Sede",
+      "description": "Conecte-se com a nossa equipa para parcerias, consultas ou suporte técnico"
+    },
+    "info": {
+      "location": "Localização",
+      "address": "Ul. Francuska 11, 54-405 Wrocław, Polónia",
+      "phone": "Telefone",
+      "email": "E-mail",
+      "hours": "Horário de Funcionamento",
+      "hoursValue": "Seg-Sex: 8:00 - 16:00 CET"
+    },
+    "form": {
+      "title": "Enviar Mensagem",
+      "name": "Nome",
+      "email": "E-mail",
+      "company": "Empresa",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "submit": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Falha ao enviar mensagem. Por favor, tente novamente."
+    },
+    "subjects": {
+      "general": "Consulta Geral",
+      "technical": "Suporte Técnico",
+      "partnership": "Parceria",
+      "quote": "Pedido de Orçamento",
+      "careers": "Carreiras"
+    },
+    "departments": {
+      "title": "Contactos dos Departamentos",
+      "sales": "Vendas",
+      "technical": "Suporte Técnico",
+      "careers": "Carreiras",
+      "investors": "Investidores"
+    }
+  },
+  "common": {
+    "learnMore": "Saber Mais",
+    "viewAll": "Ver Todas",
+    "readMore": "Ler Mais",
+    "backToTop": "Voltar ao Topo",
+    "loading": "Carregando...",
+    "error": "Algo correu mal"
+  },
+  "footer": {
+    "company": "Bimo Tech Sp. z o.o.",
+    "tagline": "ESA Space Prime para Materiais Avançados",
+    "address": "Ul. Francuska 11, 54-405 Wrocław, Polónia",
+    "phone": "+48 71 349 89 67",
+    "email": "info@bimotech.pl",
+    "copyright": "© 2024 Bimo Tech. Todos os direitos reservados."
+  }
 }

@@ -1,51 +1,194 @@
 {
-    "nav": {
-        "home": "Home",
-        "products": "Products",
-        "news": "News",
-        "careers": "Careers",
-        "contact": "Contact"
+  "nav": {
+    "home": "Home",
+    "products": "Producten",
+    "news": "Nieuws",
+    "careers": "Carrières",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Geavanceerde Materialen",
+    "subtitle": "voor Ruimtevaart & Verder",
+    "description": "ESA Space Prime levert hoogwaardige metalen materialen en precisiecomponenten voor de meest veeleisende toepassingen",
+    "cta": "Ontdek Producten"
+  },
+  "home": {
+    "partners": {
+      "title": "Vertrouwd door Toonaangevende Bedrijven"
     },
-    "hero": {
-        "story": {
-            "mobile": "vessel: ({x}, {y})<br>field: {radius}u<br>merges: {merges}<br>flux: {fps}hz",
-            "desktop": "our vessel drifts at coordinates ({x}, {y})<br>gravitational field extends {radius} units into quantum foam<br>currently merging with {merges} other entities<br>temporal flux: {fps} cycles per second"
-        }
+    "innovation": {
+      "title": "Geavanceerde",
+      "subtitle": "Materialen",
+      "description": "Van vuurvaste metalen tot hoge-entropie legeringen, die de toekomst van ruimteverkenning en energiesystemen aandrijven.",
+      "viewAll": "Bekijk Alle Producten"
     },
-    "home": {
-        "innovation": {
-            "title": "Innovation",
-            "subtitle": "Pipeline",
-            "description": "From deep space infrastructure to autonomous earth-observation agents.",
-            "viewAll": "View all Projects"
-        },
-        "projects": {
-            "alpha": {
-                "title": "Project Alpha-{i}",
-                "description": "Autonomous swarm coordination for orbital debris removal.",
-                "learnMore": "Learn more"
-            }
-        },
-        "news": {
-            "title": "Latest",
-            "subtitle": "Intel",
-            "pressRelease": "PRESS RELEASE",
-            "fundingTitle": "BimoTech Secures Series B Funding",
-            "fundingDesc": "Accelerating the development of our agentic manufacturing core.",
-            "agentSuccess": "Deployment of Agent-{i} Successful",
-            "efficiency": "Operational efficiency increased by 45%."
-        },
-        "careers": {
-            "title": "Join the",
-            "subtitle": "Mission",
-            "description": "We are looking for engineers, dreamers, and agentic architects to build the infrastructure of tomorrow.",
-            "button": "View Open Positions"
-        },
-        "contact": {
-            "title": "Contact",
-            "subtitle": "HQ",
-            "description": "Interested in our technology or partnership opportunities? Reach out to our dedicated agentic interface.",
-            "button": "Initiate Uplink"
-        }
+    "products": {
+      "viewDetails": "Bekijk Details"
+    },
+    "news": {
+      "title": "Laatste",
+      "subtitle": "Nieuws",
+      "pressRelease": "PERSBERICHT",
+      "featured": "UITGELICHT",
+      "readMore": "Lees Meer"
+    },
+    "careers": {
+      "title": "Word Deel van de",
+      "subtitle": "Missie",
+      "description": "We zoeken ingenieurs, wetenschappers en visionairs om de infrastructuur van morgen te bouwen. Sluit je aan bij ons team dat werkt aan ESA-projecten.",
+      "button": "Bekijk Open Posities"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "HQ",
+      "description": "Geïnteresseerd in onze technologie of partnerschapsmogelijkheden? Neem contact op met ons team in Wrocław, Polen.",
+      "button": "Neem Contact Op"
     }
+  },
+  "products": {
+    "hero": {
+      "title": "Geavanceerde Materialen",
+      "subtitle": "Catalogus",
+      "description": "Uitgebreid assortiment vuurvaste metalen, sputterdoelen en maatwerk componenten voor ruimtevaart, defensie en energietoepassingen"
+    },
+    "categories": {
+      "all": "Alle Producten",
+      "refractoryMetals": "Vuurvaste Metalen",
+      "sputteringTargets": "Sputterdoelen",
+      "powders": "Poeders & Nanomaterialen",
+      "customComponents": "Maatwerk Componenten",
+      "hea": "Hoge-Entropie Legeringen"
+    },
+    "card": {
+      "viewDetails": "Bekijk Details",
+      "specifications": "Specificaties",
+      "applications": "Toepassingen"
+    },
+    "cta": {
+      "title": "Behoefte aan Maatwerk Materialen?",
+      "description": "Ons engineering team kan legeringen en componenten op maat ontwikkelen volgens uw specificaties",
+      "button": "Vraag Offerte Aan"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Laatste",
+      "subtitle": "Nieuws",
+      "description": "Nieuws, updates en inzichten van Bimo Tech"
+    },
+    "categories": {
+      "all": "Alles",
+      "awards": "Onderscheidingen",
+      "projects": "Projecten",
+      "company": "Bedrijfsnieuws",
+      "partnerships": "Partnerschappen",
+      "certifications": "Certificeringen",
+      "events": "Evenementen"
+    },
+    "newsletter": {
+      "title": "Blijf Op de Hoogte",
+      "description": "Abonneer om het laatste nieuws en updates te ontvangen",
+      "placeholder": "Voer uw e-mailadres in",
+      "button": "Abonneren"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Word Deel van de",
+      "subtitle": "Missie",
+      "description": "Bouw met ons de toekomst van ruimtematerialen"
+    },
+    "stats": {
+      "heritage": "30+ Jaar Erfgoed",
+      "countries": "12 Landen Bediend",
+      "projects": "50+ ESA Projecten"
+    },
+    "values": {
+      "title": "Onze Waarden",
+      "innovation": "Innovatie",
+      "innovationDesc": "Grenzen verleggen in materiaalwetenschap",
+      "excellence": "Excellentie",
+      "excellenceDesc": "Hoogste kwaliteitsnormen in alles wat we doen",
+      "collaboration": "Samenwerking",
+      "collaborationDesc": "Samenwerken met partners wereldwijd",
+      "sustainability": "Duurzaamheid",
+      "sustainabilityDesc": "Een duurzame toekomst bouwen voor de ruimtevaart"
+    },
+    "positions": {
+      "title": "Open Posities",
+      "apply": "Solliciteer Nu",
+      "noResults": "Geen posities die aan uw criteria voldoen"
+    },
+    "benefits": {
+      "title": "Waarom Bij Ons Werken",
+      "esaProjects": "ESA Projecten",
+      "internationalTeam": "Internationaal Team",
+      "rdFocus": "R&D Focus",
+      "careerGrowth": "Carrièregroei",
+      "flexibleWork": "Flexibel Werken",
+      "competitiveSalary": "Competitief Salaris"
+    },
+    "cta": {
+      "title": "Staat Uw Functie Er Niet Bij?",
+      "description": "We zijn altijd op zoek naar getalenteerde mensen. Stuur ons uw CV.",
+      "button": "Algemene Sollicitatie"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact",
+      "subtitle": "HQ",
+      "description": "Neem contact op met ons team voor partnerschappen, vragen of technische ondersteuning"
+    },
+    "info": {
+      "location": "Locatie",
+      "address": "Ul. Francuska 11, 54-405 Wrocław, Polen",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "hours": "Openingstijden",
+      "hoursValue": "Ma-Vr: 8:00 - 16:00 CET"
+    },
+    "form": {
+      "title": "Stuur een Bericht",
+      "name": "Naam",
+      "email": "E-mail",
+      "company": "Bedrijf",
+      "subject": "Onderwerp",
+      "message": "Bericht",
+      "submit": "Verstuur Bericht",
+      "sending": "Verzenden...",
+      "success": "Bericht succesvol verzonden!",
+      "error": "Verzenden mislukt. Probeer het opnieuw."
+    },
+    "subjects": {
+      "general": "Algemene Vraag",
+      "technical": "Technische Ondersteuning",
+      "partnership": "Partnerschap",
+      "quote": "Offerte Aanvraag",
+      "careers": "Carrières"
+    },
+    "departments": {
+      "title": "Afdelingscontacten",
+      "sales": "Verkoop",
+      "technical": "Technische Ondersteuning",
+      "careers": "Carrières",
+      "investors": "Investeerders"
+    }
+  },
+  "common": {
+    "learnMore": "Meer Informatie",
+    "viewAll": "Bekijk Alles",
+    "readMore": "Lees Meer",
+    "backToTop": "Terug naar Boven",
+    "loading": "Laden...",
+    "error": "Er is iets misgegaan"
+  },
+  "footer": {
+    "company": "Bimo Tech Sp. z o.o.",
+    "tagline": "ESA Space Prime voor Geavanceerde Materialen",
+    "address": "Ul. Francuska 11, 54-405 Wrocław, Polen",
+    "phone": "+48 71 349 89 67",
+    "email": "info@bimotech.pl",
+    "copyright": "© 2024 Bimo Tech. Alle rechten voorbehouden."
+  }
 }
