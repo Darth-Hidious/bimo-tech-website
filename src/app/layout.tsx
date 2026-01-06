@@ -99,9 +99,9 @@ const organizationJsonLd = {
   foundingDate: '1992',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'ul. Pawińskiego 5B',
-    addressLocality: 'Warsaw',
-    postalCode: '02-106',
+    streetAddress: 'Francuska 11',
+    addressLocality: 'Wroclaw',
+    postalCode: '54-405',
     addressCountry: 'PL',
   },
   geo: {
@@ -145,6 +145,21 @@ const organizationJsonLd = {
   ],
 };
 
+import { Inter, Space_Mono } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -161,7 +176,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="bg-black text-white antialiased">
+      <body className={`${inter.variable} ${spaceMono.variable} bg-black text-white antialiased`}>
         <Providers>
           {children}
         </Providers>

@@ -53,3 +53,4 @@ async def search(q: str):
     results = search_materials(q)
     return {"results": results, "count": len(results)}
 
+

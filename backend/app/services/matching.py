@@ -145,3 +145,4 @@ async def get_recommended_suppliers(
     
     return recommendations[:5]
 
+

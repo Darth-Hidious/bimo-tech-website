@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from 'next/link';
 import * as THREE from "three";
 import { Pane } from "tweakpane";
 import { useLanguage } from "../context/LanguageContext";
@@ -15,7 +16,7 @@ export default function Hero() {
   const uiContainerRef = useRef<HTMLDivElement>(null);
   const storyTextRef = useRef<HTMLHeadingElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const tRef = useRef(t);
 
   useEffect(() => {
@@ -331,14 +332,14 @@ export default function Hero() {
     const setupUI = () => {
       if (!uiContainerRef.current) return;
 
-      const pane = new Pane({
+      const pane: any = new Pane({
         container: uiContainerRef.current,
         title: "Theme",
         expanded: true
       });
 
       // Main preset selector - always visible
-      pane
+      (pane as any)
         .addBinding(settings, "preset", {
           label: "Preset",
           options: {
@@ -863,14 +864,14 @@ export default function Hero() {
             // Reduced shadow samples for better performance
             float result = 1.0;
             float t = mint;
-            int maxSteps = uIsMobile > 0.5 ? 2 : (uIsLowPower > 0.5 ? 3 : 8);
+            int maxSteps = uIsMobile > 0.5 ? 2 : (uIsLowPower >0.5 ? 3 : 8);
             
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i< 8; i++) {
               if (i >= maxSteps) break;
               if (t >= maxt) break;
               
               float h = sceneSDF(ro + rd * t);
-              if (h < EPSILON) return 0.0;
+              if (h< EPSILON) return 0.0;
               result = min(result, k * h / t);
               t += max(h, 0.02);
             }
@@ -880,15 +881,15 @@ export default function Hero() {
           float rayMarch(vec3 ro, vec3 rd) {
             float t = 0.0;
             // Reduced ray march steps for better performance
-            int maxSteps = uIsMobile > 0.5 ? 12 : (uIsSafari > 0.5 ? 16 : 32);
+            int maxSteps = uIsMobile > 0.5 ? 12 : (uIsSafari >0.5 ? 16 : 32);
             
-            for (int i = 0; i < 32; i++) {
+            for (int i = 0; i< 32; i++) {
               if (i >= maxSteps) break;
               
               vec3 p = ro + rd * t;
               float d = sceneSDF(p);
               
-              if (d < EPSILON) {
+              if (d< EPSILON) {
                 return t;
               }
               
@@ -1204,10 +1205,10 @@ export default function Hero() {
 
   // Calculate mask styles based on scroll progress
   // Using easing for smoother feel
-  const easedProgress = scrollProgress < 0.5 
-    ? 2 * scrollProgress * scrollProgress 
+  const easedProgress = scrollProgress < 0.5
+    ? 2 * scrollProgress * scrollProgress
     : 1 - Math.pow(-2 * scrollProgress + 2, 2) / 2;
-  
+
   const maskInset = easedProgress * 8; // Max 8% inset from edges for more dramatic effect
   const maskBorderRadius = easedProgress * 60; // Max 60px border radius
   const maskOpacity = easedProgress * 0.95; // Max opacity for the surrounding dark area
@@ -1246,11 +1247,11 @@ export default function Hero() {
         </div>
 
         <div className={styles.footerLinks}>
-          <a href="#" className={styles.footerLink}>Materials</a>
-          <a href="#" className={styles.footerLink}>Research</a>
-          <a href="#" className={styles.footerLink}>Innovation</a>
-          <a href="#" className={styles.footerLink}>About</a>
-          <a href="#" className={styles.footerLink}>Contact</a>
+          <Link href={`/${language}/products`} className={styles.footerLink}>Materials</Link>
+          <Link href={`/${language}/news`} className={styles.footerLink}>Research</Link>
+          <Link href={`/${language}/news`} className={styles.footerLink}>Innovation</Link>
+          <Link href={`/${language}/impressum`} className={styles.footerLink}>About</Link>
+          <Link href={`/${language}/contact`} className={styles.footerLink}>Contact</Link>
         </div>
 
         <div className={styles.coordinates}>

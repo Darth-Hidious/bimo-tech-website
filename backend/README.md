@@ -117,3 +117,4 @@ gcloud run deploy bimotech-backend \
   --allow-unauthenticated
 ```
 
+

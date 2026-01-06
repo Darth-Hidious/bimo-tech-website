@@ -51,7 +51,7 @@
       "label": "Über uns",
       "title": "Von Wissenschaftlern gegründet.",
       "description": "Bimo Tech wurde von Materialwissenschaftlern mit jahrzehntelanger Erfahrung in der Forschung an fortschrittlichen Materialien gegründet. Wir schlagen die Brücke zwischen modernster Wissenschaft und industriellen Anwendungen.",
-      "location": "Sitz in Warschau, Polen. Weltweit tätig.",
+      "location": "Sitz in Breslau (Wrocław), Polen. Weltweit tätig.",
       "joinTeam": "Team beitreten"
     },
     "cta": {
@@ -83,7 +83,7 @@
     "contact": {
       "title": "Kontakt",
       "subtitle": "Zentrale",
-      "description": "Interessiert an unserer Technologie oder Partnerschaftsmöglichkeiten? Kontaktieren Sie unser Team in Warschau, Polen.",
+      "description": "Interessiert an unserer Technologie oder Partnerschaftsmöglichkeiten? Kontaktieren Sie unser Team in Breslau (Wrocław), Polen.",
       "button": "Kontakt aufnehmen"
     }
   },
@@ -276,7 +276,7 @@
     },
     "info": {
       "location": "Standort",
-      "address": "ul. Pawińskiego 5B, 02-106 Warschau, Polen",
+      "address": "Francuska 11, 54-405 Wroclaw, Poland",
       "phone": "Telefon",
       "email": "E-Mail",
       "hours": "Geschäftszeiten",
@@ -323,10 +323,10 @@
   },
   "footer": {
     "company": "Bimo Tech Sp. z o.o.",
-    "tagline": "Hochleistungsmaterialien für Raumfahrt, Fusion und Luftfahrt. Warschau, Polen.",
+    "tagline": "Hochleistungsmaterialien für Raumfahrt, Fusion und Luftfahrt. Breslau (Wrocław), Polen.",
     "navigate": "Navigation",
     "contact": "Kontakt",
-    "address": "ul. Pawińskiego 5B, 02-106 Warschau, Polen",
+    "address": "Francuska 11, 54-405 Wroclaw, Poland",
     "privacy": "Datenschutz",
     "terms": "AGB",
     "impressum": "Impressum",

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ArrowUpRight, AlertTriangle, CheckCircle, XCircle, RefreshCw, Lock } from 'lucide-react';
 import { onAuthStateChanged, signInWithEmailAndPassword, User, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Mock Data - To be replaced by Notion/Firestore integration
 // const projects = ... (removed)
@@ -11,17 +12,18 @@ import { auth } from '@/lib/firebase';
 const StatusBadge = ({ status }: { status: string }) => {
     switch (status) {
         case "Success":
-            return <span className="flex items-center gap-1 text-green-400 bg-green-400/10 px-2 py-1 rounded text-xs"><CheckCircle size={12} /> Success</span>;
+            return <span className="flex items-center gap-1 text-green-400 bg-green-400/10 px-2 py-1 rounded text-xs"><CheckCircle size={12} />Success</span>;
         case "Failed":
-            return <span className="flex items-center gap-1 text-red-400 bg-red-400/10 px-2 py-1 rounded text-xs"><XCircle size={12} /> Failed</span>;
+            return <span className="flex items-center gap-1 text-red-400 bg-red-400/10 px-2 py-1 rounded text-xs"><XCircle size={12} />Failed</span>;
         case "Deathloop":
-            return <span className="flex items-center gap-1 text-orange-400 bg-orange-400/10 px-2 py-1 rounded text-xs"><RefreshCw size={12} /> Deathloop</span>;
+            return <span className="flex items-center gap-1 text-orange-400 bg-orange-400/10 px-2 py-1 rounded text-xs"><RefreshCw size={12} />Deathloop</span>;
         default:
             return <span className="text-gray-400">{status}</span>;
     }
 };
 
 export default function InvestorRelations() {
+    const { t } = useLanguage();
     const [projects, setProjects] = useState<any[]>([]);
     const [user, setUser] = useState<User | null>(null);
     const [email, setEmail] = useState('');
@@ -70,7 +72,7 @@ export default function InvestorRelations() {
         }
     };
 
-    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    if (loading) return <div className="min-h-screen flex items-center justify-center">{t('common.loading')}</div>;
 
     if (!user) {
         return (
@@ -106,9 +108,7 @@ export default function InvestorRelations() {
                             />
                         </div>
                         {error && <p className="text-red-400 text-sm text-center">{error}</p>}
-                        <button type="submit" className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded transition-colors">
-                            Access Portal
-                        </button>
+                        <button type="submit" className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded transition-colors">Access Portal</button>
                     </form>
                 </div>
             </div>
@@ -120,22 +120,17 @@ export default function InvestorRelations() {
             <div className="container">
                 <header className="mb-16 flex justify-between items-end">
                     <div>
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4">Investor <span className="text-gradient">Relations</span></h1>
-                        <p className="text-xl text-gray-400 max-w-2xl">
-                            Transparent tracking of our project portfolio, financials, and strategic initiatives.
-                        </p>
+                        <h1 className="text-4xl md:text-6xl font-bold mb-4">Investor<span className="text-gradient">Relations</span></h1>
+                        <p className="text-xl text-gray-400 max-w-2xl">Transparent tracking of our project portfolio, financials, and strategic initiatives.</p>
                     </div>
-                    <button onClick={() => signOut(auth)} className="text-sm text-gray-400 hover:text-white transition-colors">
-                        Sign Out
-                    </button>
+                    <button onClick={() => signOut(auth)} className="text-sm text-gray-400 hover:text-white transition-colors">Sign Out</button>
                 </header>
 
                 {/* Financial Highlights */}
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     <div className="glass-panel p-6">
                         <h3 className="text-sm text-gray-400 mb-2">Total Funding Secured</h3>
-                        <div className="text-3xl font-bold flex items-end gap-2">
-                            $12.5M <span className="text-green-400 text-sm mb-1 flex items-center"><ArrowUpRight size={14} /> +15%</span>
+                        <div className="text-3xl font-bold flex items-end gap-2">$12.5M<span className="text-green-400 text-sm mb-1 flex items-center"><ArrowUpRight size={14} />+15%</span>
                         </div>
                     </div>
                     <div className="glass-panel p-6">
@@ -144,16 +139,14 @@ export default function InvestorRelations() {
                     </div>
                     <div className="glass-panel p-6">
                         <h3 className="text-sm text-gray-400 mb-2">Burn Rate</h3>
-                        <div className="text-3xl font-bold flex items-end gap-2">
-                            $120k<span className="text-sm text-gray-500 mb-1">/mo</span>
+                        <div className="text-3xl font-bold flex items-end gap-2">$120k<span className="text-sm text-gray-500 mb-1">/mo</span>
                         </div>
                     </div>
                 </section>
 
                 {/* Project Portfolio */}
                 <section>
-                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                        Project Portfolio <span className="text-xs font-normal px-2 py-1 bg-white/5 rounded text-gray-400">Live Sync</span>
+                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">Project Portfolio<span className="text-xs font-normal px-2 py-1 bg-white/5 rounded text-gray-400">Live Sync</span>
                     </h2>
 
                     <div className="glass-panel overflow-hidden">

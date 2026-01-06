@@ -62,17 +62,9 @@ export default function BrandCarousel({ brandLogos }: BrandCarouselProps) {
                         <Image
                             src={`/brands/${brand.filename}`}
                             alt={brand.name}
-                            width={180}
-                            height={90}
-                            style={{
-                                objectFit: 'contain',
-                                filter: 'brightness(0) invert(1)',
-                                opacity: 0.85,
-                                transition: 'all 0.3s ease'
-                            }}
-                            onError={(e) => {
-                                console.error(`Failed to load ${brand.filename}`);
-                            }}
+                            fill
+                            sizes="(max-width: 768px) 100px, 160px"
+                            className={styles.logoImage}
                         />
                     </div>
                 ))}

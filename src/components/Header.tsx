@@ -6,15 +6,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 import { usePathname, useRouter } from 'next/navigation';
-import { ChevronDown, Check, Home, Box, Newspaper, Briefcase, Mail } from 'lucide-react';
+import { ChevronDown, Check, Home, Box, Newspaper, Briefcase, Mail, Info, FileText } from 'lucide-react';
 
 const Header = () => {
-  const [selected, setSelected] = useState("home");
+  const [selected, setSelected] = useState("");
   const { language, t } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Language Dropdown
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const langDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Company Dropdown
+  const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
+  const companyDropdownRef = useRef<HTMLDivElement>(null);
 
   // Refs for nav items to calculate indicator position
   const navRefs = useRef<(HTMLLabelElement | null)[]>([]);
@@ -33,21 +39,33 @@ const Header = () => {
     { code: 'da', label: 'Dansk' },
     { code: 'pt', label: 'Português' },
     { code: 'cz', label: 'Čeština' },
+    { code: 'ja', label: '日本語' },
   ];
 
+  // Main Navigation Items
   const options = [
-    { id: "1", value: "home", label: t("nav.home"), href: `/${language}`, icon: Home },
-    { id: "2", value: "products", label: t("nav.products"), href: `/${language}/products`, icon: Box },
-    { id: "3", value: "news", label: t("nav.news"), href: `/${language}/news`, icon: Newspaper },
-    { id: "4", value: "careers", label: t("nav.careers"), href: `/${language}/careers`, icon: Briefcase },
-    { id: "5", value: "contact", label: t("nav.contact"), href: `/${language}/contact`, icon: Mail },
+    { id: "services", value: "services", label: "Services", href: `/${language}/services`, icon: Box },
+    { id: "products", value: "products", label: t("nav.products"), href: `/${language}/products`, icon: Box },
   ];
 
-  // Close dropdown when clicking outside
+  // Company Dropdown Items
+  const companyOptions = [
+    { id: "about", value: "about", label: t("nav.about"), href: `/${language}/impressum`, icon: Info },
+    { id: "careers", value: "careers", label: t("nav.careers"), href: `/${language}/careers`, icon: Briefcase },
+    { id: "news", value: "news", label: t("nav.news"), href: `/${language}/news`, icon: Newspaper },
+    { id: "contact", value: "contact", label: t("nav.contact"), href: `/${language}/contact`, icon: Mail },
+  ];
+
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
+      // Language Dropdown
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+        setIsLangDropdownOpen(false);
+      }
+      // Company Dropdown
+      if (companyDropdownRef.current && !companyDropdownRef.current.contains(event.target as Node)) {
+        setIsCompanyDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -56,22 +74,33 @@ const Header = () => {
 
   // Update selected based on pathname
   useEffect(() => {
-    // Simple matching logic
-    const path = pathname.split('/').slice(2).join('/') || 'home'; // remove /lang
-    // Map path to value
-    let found = options.find(opt => {
-      if (opt.value === 'home') return pathname === `/${language}`;
-      return pathname.startsWith(opt.href);
-    });
-
-    if (found) {
-      setSelected(found.value);
+    // Check main options
+    const foundMain = options.find(opt => pathname.startsWith(opt.href));
+    if (foundMain) {
+      setSelected(foundMain.value);
+      return;
     }
+
+    // Check company options
+    const foundCompany = companyOptions.find(opt => pathname.startsWith(opt.href));
+    if (foundCompany) {
+      setSelected("company");
+      return;
+    }
+
+    setSelected(""); // No valid selection (e.g. on Home)
   }, [pathname, language]);
 
   // Update indicator position
   useEffect(() => {
-    const index = options.findIndex(opt => opt.value === selected);
+    // We treat "company" as an index after the main options
+    let index = options.findIndex(opt => opt.value === selected);
+
+    // If selected is "company", point to the company trigger (which we'll need to ref)
+    if (selected === "company") {
+      index = options.length; // The Company trigger is right after the main options
+    }
+
     if (index !== -1 && navRefs.current[index]) {
       const el = navRefs.current[index];
       if (el) {
@@ -81,20 +110,25 @@ const Header = () => {
           opacity: 1
         });
       }
+    } else {
+      setIndicatorStyle(prev => ({ ...prev, opacity: 0 }));
     }
   }, [selected]);
 
-  const handleChange = (value: string) => {
+  const handleNavClick = (value: string, href: string) => {
     setSelected(value);
-    const option = options.find(opt => opt.value === value);
-    if (option) {
-      router.push(option.href);
-    }
+    router.push(href);
+  };
+
+  const handleCompanyItemClick = (href: string) => {
+    setIsCompanyDropdownOpen(false);
+    setSelected("company");
+    router.push(href);
   };
 
   const handleLanguageChange = (newLang: string) => {
     if (newLang === language) return;
-    setIsDropdownOpen(false);
+    setIsLangDropdownOpen(false);
 
     const segments = pathname.split('/');
     if (segments.length > 1) {
@@ -140,12 +174,13 @@ const Header = () => {
           }}
         />
 
+        {/* Main Options */}
         {options.map((opt, index) => (
           <label
             key={opt.id}
             className={styles.switcherOption}
             ref={el => { navRefs.current[index] = el }}
-            onClick={() => handleChange(opt.value)}
+            onClick={() => handleNavClick(opt.value, opt.href)}
           >
             <input
               className={styles.switcherInput}
@@ -159,28 +194,66 @@ const Header = () => {
             <opt.icon className={styles.navIcon} size={20} />
           </label>
         ))}
+
+        {/* Company Dropdown Trigger */}
+        <div
+          className={styles.switcherOption}
+          ref={el => { navRefs.current[options.length] = el as unknown as HTMLLabelElement }} // Casting for the ref array
+          onClick={() => setIsCompanyDropdownOpen(!isCompanyDropdownOpen)}
+        >
+          <div ref={companyDropdownRef} style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <span className={styles.navText}>Company</span>
+            <ChevronDown size={14} className={`${styles.chevron} ${isCompanyDropdownOpen ? styles.rotate : ''}`} />
+
+            <div className={`${styles.dropdownMenu} ${isCompanyDropdownOpen ? styles.open : ''} ${styles.companyDropdownPosition}`}>
+              {companyOptions.map((item) => (
+                <div
+                  key={item.id}
+                  className={styles.dropdownItem}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCompanyItemClick(item.href);
+                  }}
+                >
+                  <item.icon size={16} />
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </nav>
 
-      <div className={styles.langContainer} ref={dropdownRef}>
-        <button
-          className={`${styles.langButton} ${scrolled ? styles.scrolled : ''}`}
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        >
-          {language.toUpperCase()}
-          <ChevronDown size={16} />
-        </button>
+      <div className={styles.rightSection}>
+        {/* CTA Button */}
+        <Link href={`/${language}/quote`} className={styles.ctaButton}>
+          <span>Get Quote</span>
+          <Mail size={16} />
+        </Link>
 
-        <div className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.open : ''}`}>
-          {languages.map((lang) => (
-            <div
-              key={lang.code}
-              className={`${styles.dropdownItem} ${language === lang.code ? styles.active : ''}`}
-              onClick={() => handleLanguageChange(lang.code)}
-            >
-              <span>{lang.label}</span>
-              {language === lang.code && <Check size={14} />}
-            </div>
-          ))}
+        {/* Language Switcher */}
+        <div className={styles.langContainer} ref={langDropdownRef}>
+          <button
+            className={`${styles.langButton} ${scrolled ? styles.scrolled : ''}`}
+            onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+          >
+            {language.toUpperCase()}
+            <ChevronDown size={16} />
+          </button>
+
+          <div className={`${styles.dropdownMenu} ${isLangDropdownOpen ? styles.open : ''}`}>
+            {languages.map((lang) => (
+              <div
+                key={lang.code}
+                className={`${styles.dropdownItem} ${language === lang.code ? styles.active : ''}`}
+                onClick={() => handleLanguageChange(lang.code)}
+              >
+                <span>{lang.label}</span>
+                {language === lang.code && <Check size={14} />}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </header>

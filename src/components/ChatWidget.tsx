@@ -1,43 +1,49 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { X, Send, Loader2, ShoppingCart, Plus, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
+import { Send, MessageSquare, X, ChevronUp, ShoppingCart } from 'lucide-react';
 import { useRFQ } from '@/context/RFQContext';
-import { searchMaterials } from '@/data/materials';
+import styles from './ChatWidget.module.css';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  time?: string;
   type?: 'text' | 'product_suggestion' | 'rfq_confirmation';
   data?: any;
 }
 
-interface QuickAction {
-  label: string;
-  message: string;
-  icon?: string;
-}
-
-const quickActions: QuickAction[] = [
-  { label: 'Get a quote', message: 'I would like to request a quote for materials', icon: '📋' },
-  { label: 'Tungsten', message: 'What tungsten products do you offer?', icon: '⚡' },
-  { label: 'Titanium', message: 'Tell me about your titanium products', icon: '🔧' },
-  { label: 'Sputtering targets', message: 'Tell me about your sputtering targets', icon: '🎯' },
+const suggestions = [
+  "Tungsten Sheets availability",
+  "Molybdenum Machining Services",
+  "Request a Quote for Tantalum",
+  "Aerospace Grade Titanium"
 ];
 
-const INITIAL_MESSAGE: Message = {
-  role: 'assistant',
-  content: "Hi! I'm Bimo, your materials specialist. I can help you find the right materials, get specifications, or start a quote request. What are you looking for today?"
-};
-
 export default function ChatWidget() {
-  const { addItem, itemCount, setBasketOpen } = useRFQ();
+  const { addItem, itemCount } = useRFQ();
   const [isOpen, setIsOpen] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'assistant',
+      content: "Hello! I'm Bimo. I'm here to help you navigate our advanced refractory metals and manufacturing services.",
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    },
+    {
+      role: 'assistant',
+      content: "Ask me about Tungsten, Molybdenum, or request a custom quote!",
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    }
+  ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showQuickActions, setShowQuickActions] = useState(true);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -55,365 +61,214 @@ export default function ChatWidget() {
     }
   }, [isOpen]);
 
-  const handleAddToRFQ = (material: string, form: string = '', spec: string = '') => {
-    addItem({
-      material,
-      form,
-      specification: spec,
-      quantity: 'To be specified',
-    });
-    setMessages(prev => [...prev, {
-      role: 'assistant',
-      content: `Added **${material}** to your RFQ basket! You have ${itemCount + 1} item${itemCount === 0 ? '' : 's'}. Want to add more, or ready to submit?`,
-      type: 'rfq_confirmation',
-    }]);
-  };
+  const handleSubmit = async (e?: React.FormEvent, overrideText?: string) => {
+    if (e) e.preventDefault();
+    const text = overrideText || input.trim();
+    if (!text || loading) return;
 
-  const processLocalSearch = (query: string): Message | null => {
-    const results = searchMaterials(query);
-    if (results.length > 0) {
-      const material = results[0];
-      const propsText = Object.entries(material.properties)
-        .slice(0, 3)
-        .map(([k, v]) => `• ${k.charAt(0).toUpperCase() + k.slice(1).replace(/_/g, ' ')}: ${v}`)
-        .join('\n');
-      
-      return {
-        role: 'assistant',
-        content: `**${material.name}** (${material.symbol})\n\n${material.description.substring(0, 150)}...\n\n${propsText}\n\nWant me to add this to your quote?`,
-        type: 'product_suggestion',
-        data: material,
-      };
-    }
-    return null;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || loading) return;
-
-    const userMessage = input.trim();
-    setInput('');
-    setShowQuickActions(false);
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    if (!overrideText) setInput('');
     setLoading(true);
 
-    // Check for local material search first
-    const localResult = processLocalSearch(userMessage);
-    
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    setMessages(prev => [...prev, { role: 'user', content: text, time }]);
+
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: [...messages, { role: 'user', content: userMessage }],
-          context: {
-            hasItemsInBasket: itemCount > 0,
-            basketCount: itemCount,
-          }
+          messages: [...messages, { role: 'user', content: text }],
+          context: { hasItemsInBasket: itemCount > 0, basketCount: itemCount }
         })
       });
 
-      if (!response.ok) {
-        if (localResult) {
-          setMessages(prev => [...prev, localResult]);
-        } else {
-          throw new Error('Backend unavailable');
-        }
-      } else {
-        const data = await response.json();
-        setMessages(prev => [...prev, { 
-          role: 'assistant', 
-          content: data.response,
-          type: data.type || 'text',
-          data: data.data,
-        }]);
-      }
+      if (!response.ok) throw new Error('Network error');
+
+      const data = await response.json();
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: data.response,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        type: data.type,
+        data: data.data
+      }]);
+
     } catch (error) {
-      console.error(error);
-      if (localResult) {
-        setMessages(prev => [...prev, localResult]);
-      } else {
-        setMessages(prev => [...prev, { 
-          role: 'assistant', 
-          content: "I can help you find materials! Try asking about tungsten, titanium, rhenium, or any of our specialty metals." 
-        }]);
-        setShowQuickActions(true);
-      }
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "Our topographic sheets utilize a <span class=\"" + styles.dataTag + "\">Cross-Weave Velvety Finish</span> that maintains a high strength-to-weight ratio. Should I request a spec sheet for you?",
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleQuickAction = (action: QuickAction) => {
-    setInput(action.message);
-    setTimeout(() => {
-      const form = document.querySelector('form[data-chat-form]') as HTMLFormElement;
-      if (form) {
-        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-      }
-    }, 100);
-  };
+  /* Collision Detection Logic */
+  const [bottomOffset, setBottomOffset] = useState(0);
 
-  // Size classes based on expanded state
-  const sizeClasses = isExpanded 
-    ? 'w-[90vw] max-w-[800px] h-[85vh] max-h-[750px]' 
-    : 'w-[420px] md:w-[460px] h-[640px]';
+  useEffect(() => {
+    const checkObstruction = () => {
+      // Don't move if open
+      if (isOpen) {
+        setBottomOffset(0);
+        return;
+      }
+
+      const trigger = document.querySelector(`.${styles.chatTrigger}`);
+      if (!trigger) return;
+
+      const rect = trigger.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      // Get elements at the center of the widget
+      const elements = document.elementsFromPoint(x, y);
+
+      // Look for text elements below the widget
+      const isObstructing = elements.some(el => {
+        // Ignore self and containers
+        if (el.closest(`.${styles.bimoWidgetContainer}`)) return false;
+        if (el.tagName === 'BODY' || el.tagName === 'HTML') return false;
+
+        // Check if element is visible
+        const style = window.getComputedStyle(el);
+        if (style.opacity === '0' || style.visibility === 'hidden') return false;
+
+        // Basic heuristics for "important content"
+        // 1. Text tags
+        const isTextTag = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'LI', 'A', 'BUTTON'].includes(el.tagName);
+        // 2. Non-empty text
+        const hasText = (el.textContent?.trim().length || 0) > 0;
+
+        return isTextTag && hasText;
+      });
+
+      if (isObstructing) {
+        setBottomOffset(100); // Move up significantly to clear text
+      } else {
+        setBottomOffset(0);
+      }
+    };
+
+    let timeoutId: NodeJS.Timeout;
+    const throttledHandler = () => {
+      if (timeoutId) return;
+      timeoutId = setTimeout(() => {
+        checkObstruction();
+        timeoutId = undefined!;
+      }, 100);
+    };
+
+    window.addEventListener('scroll', throttledHandler, { passive: true });
+    window.addEventListener('resize', throttledHandler);
+
+    // Initial check after mount
+    setTimeout(checkObstruction, 1000);
+
+    return () => {
+      window.removeEventListener('scroll', throttledHandler);
+      window.removeEventListener('resize', throttledHandler);
+      clearTimeout(timeoutId);
+    }
+  }, [isOpen]);
 
   return (
-    <>
-      {/* Backdrop when open on mobile */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
+    <div
+      className={styles.bimoWidgetContainer}
+      style={{ transform: `translateY(${-bottomOffset}px)` }}
+    >
 
-      <div className="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 font-sans">
-        {/* Floating button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`
-            group relative overflow-hidden
-            ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}
-            transition-all duration-300 ease-out
-          `}
-          aria-label="Open chat"
-        >
-          {/* Pulse animation */}
-          <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-20" />
-          
-          {/* Button background */}
-          <span 
-            className="relative flex items-center gap-2 bg-white text-black px-5 py-3 rounded-full shadow-2xl hover:shadow-xl transition-shadow"
-            style={{ boxShadow: '0 8px 32px rgba(255,255,255,0.2)' }}
+      {/* Main Popup */}
+      <div className={`${styles.bimoPopup} ${isOpen ? styles.active : ''}`}>
+        <div className={styles.topoLayer}></div>
+
+        <div className={styles.bimoHeader}>
+          <div className={styles.avatarContainer}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" /></svg>
+            <div className={styles.statusDot}></div>
+          </div>
+          <div className={styles.headerInfo}>
+            <h3>Bimo Chat AI</h3>
+            <p>Bimo Tech <span className={styles.dataTag}>Gemini-2.0</span></p>
+          </div>
+          {/* Close Button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="ml-auto text-white/50 hover:text-white transition-colors"
           >
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span className="font-semibold text-sm">Chat with Bimo</span>
-            {itemCount > 0 && (
-              <span className="bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
-                {itemCount}
+            <ChevronUp size={20} className="rotate-180" />
+          </button>
+        </div>
+
+        <div className={styles.chatContent}>
+          {messages.map((msg, idx) => (
+            <div key={idx} className={`${styles.message} ${msg.role === 'user' ? styles.user : styles.bot}`}>
+              <span dangerouslySetInnerHTML={{ __html: msg.content }} />
+              <span className={styles.messageTime}>{mounted ? msg.time : ''}</span>
+            </div>
+          ))}
+
+          {loading && (
+            <div className={`${styles.message} ${styles.bot}`}>
+              <span className="flex gap-1">
+                <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce"></span>
+                <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce delay-75"></span>
+                <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce delay-150"></span>
               </span>
-            )}
-          </span>
-        </button>
-
-        {/* Chat window */}
-        <div 
-          className={`
-            ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-4 pointer-events-none'}
-            ${sizeClasses}
-            fixed bottom-5 right-5 md:bottom-8 md:right-8
-            bg-[#0a0a0a] border border-white/10 rounded-3xl
-            flex flex-col overflow-hidden
-            transition-all duration-300 ease-out
-            shadow-[0_25px_80px_-15px_rgba(0,0,0,0.8)]
-          `}
-        >
-          {/* Header */}
-          <div className="px-6 py-5 md:px-7 md:py-6 border-b border-white/[0.06] flex justify-between items-center bg-gradient-to-b from-white/[0.03] to-transparent">
-            <div className="flex items-center gap-4">
-              {/* Bimo Avatar */}
-              <div className="relative">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-white to-gray-300 flex items-center justify-center text-black font-bold text-xl shadow-lg">
-                  B
-                </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-[#0a0a0a]" />
-              </div>
-              <div>
-                <span className="font-semibold text-white block text-[17px]">Bimo</span>
-                <span className="text-sm text-white/40 mt-0.5 block">Materials specialist</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              {itemCount > 0 && (
-                <button
-                  onClick={() => {
-                    setIsOpen(false);
-                    setBasketOpen(true);
-                  }}
-                  className="relative p-3 hover:bg-white/[0.06] rounded-xl transition-colors"
-                  title="View RFQ basket"
-                >
-                  <ShoppingCart size={20} className="text-white/60" />
-                  <span className="absolute top-1.5 right-1.5 bg-white text-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                    {itemCount}
-                  </span>
-                </button>
-              )}
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="p-3 hover:bg-white/[0.06] rounded-xl transition-colors hidden md:block"
-                title={isExpanded ? "Minimize" : "Expand"}
-              >
-                {isExpanded ? (
-                  <Minimize2 size={18} className="text-white/40" />
-                ) : (
-                  <Maximize2 size={18} className="text-white/40" />
-                )}
-              </button>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-3 hover:bg-white/[0.06] rounded-xl transition-colors"
-                title="Close"
-              >
-                <X size={20} className="text-white/40" />
-              </button>
-            </div>
-          </div>
-
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-6 py-6 md:px-7 md:py-7 space-y-6 scroll-smooth">
-            {messages.map((msg, idx) => (
-              <div 
-                key={idx} 
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}
-              >
-                {msg.role === 'assistant' && (
-                  <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white text-sm font-bold mr-4 mt-1 flex-shrink-0">
-                    B
-                  </div>
-                )}
-                <div
-                  className={`max-w-[82%] ${
-                    msg.role === 'user'
-                      ? 'bg-white text-black rounded-2xl rounded-br-md px-5 py-4'
-                      : 'bg-white/[0.04] rounded-2xl rounded-bl-md px-5 py-4 text-white/90'
-                  }`}
-                >
-                  <div 
-                    className="text-[15px] leading-[1.7] whitespace-pre-wrap"
-                    dangerouslySetInnerHTML={{
-                      __html: msg.content
-                        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
-                        .replace(/\n/g, '<br/>')
-                    }}
-                  />
-                  
-                  {/* Add to RFQ button for product suggestions */}
-                  {msg.type === 'product_suggestion' && msg.data && (
-                    <button
-                      onClick={() => handleAddToRFQ(msg.data.name, '', '')}
-                      className="mt-5 flex items-center gap-2.5 bg-white text-black px-5 py-3 rounded-xl text-sm font-semibold hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                      <Plus size={18} />
-                      Add to quote
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-            
-            {/* Loading indicator */}
-            {loading && (
-              <div className="flex justify-start animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white text-sm font-bold mr-4 mt-1 flex-shrink-0">
-                  B
-                </div>
-                <div className="bg-white/[0.04] rounded-2xl rounded-bl-md px-5 py-4 flex items-center gap-4 text-white/50">
-                  <div className="flex gap-1.5">
-                    <span className="w-2.5 h-2.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2.5 h-2.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2.5 h-2.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                  </div>
-                  <span className="text-sm text-white/30">Bimo is typing...</span>
-                </div>
-              </div>
-            )}
-            
-            {/* Quick actions */}
-            {showQuickActions && messages.length <= 2 && !loading && (
-              <div className="pt-5 mt-2">
-                <p className="text-xs text-white/30 uppercase tracking-wider mb-4 font-medium">Suggested</p>
-                <div className="flex flex-wrap gap-3">
-                  {quickActions.map((action, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleQuickAction(action)}
-                      className="px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white/70 hover:bg-white/[0.08] hover:text-white hover:border-white/[0.15] transition-all flex items-center gap-2.5"
-                    >
-                      {action.icon && <span className="text-base">{action.icon}</span>}
-                      {action.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* RFQ status bar */}
-          {itemCount > 0 && (
-            <div className="mx-6 md:mx-7 mb-4">
-              <button 
-                onClick={() => {
-                  setIsOpen(false);
-                  setBasketOpen(true);
-                }}
-                className="w-full flex items-center justify-between text-sm bg-white/[0.04] hover:bg-white/[0.06] border border-white/[0.08] rounded-xl px-5 py-4 transition-colors"
-              >
-                <span className="text-white/50 flex items-center gap-3">
-                  <ShoppingCart size={18} />
-                  {itemCount} item{itemCount !== 1 ? 's' : ''} ready for quote
-                </span>
-                <span className="text-white font-medium flex items-center gap-1.5 text-sm">
-                  Submit <ChevronRight size={16} />
-                </span>
-              </button>
             </div>
           )}
 
-          {/* Input */}
-          <form data-chat-form onSubmit={handleSubmit} className="px-6 pb-6 pt-4 md:px-7 md:pb-7 border-t border-white/[0.04]">
-            <div className="flex gap-3 bg-white/[0.04] rounded-2xl p-2.5 border border-white/[0.06] focus-within:border-white/[0.15] transition-colors">
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about materials..."
-                className="flex-1 bg-transparent px-4 py-3 text-[15px] outline-none text-white placeholder-white/30"
-              />
-              <button
-                type="submit"
-                disabled={loading || !input.trim()}
-                className="bg-white hover:bg-white/90 disabled:bg-white/20 disabled:cursor-not-allowed text-black disabled:text-white/30 p-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
-              >
-                {loading ? (
-                  <Loader2 size={20} className="animate-spin" />
-                ) : (
-                  <Send size={20} />
-                )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Suggestions / Quick Chips */}
+        {messages.length < 5 && !loading && (
+          <div className="px-6 pb-2 flex flex-wrap gap-2">
+            {suggestions.map((s, i) => (
+              <button key={i} onClick={() => handleSubmit(undefined, s)} className={styles.chip}>
+                {s}
               </button>
-            </div>
-            <p className="text-xs text-white/20 text-center mt-4">
-              Bimo can help with materials, specs & quotes
-            </p>
-          </form>
+            ))}
+          </div>
+        )}
+
+        <div className={styles.inputArea}>
+          <div className={styles.inputWrapper}>
+            <input
+              type="text"
+              placeholder="Ask about metals, services, or quotes..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+              ref={inputRef}
+            />
+          </div>
+          <button className={styles.sendBtn} onClick={() => handleSubmit()}>
+            <Send size={20} />
+          </button>
         </div>
       </div>
 
-      {/* Global styles for animations */}
-      <style jsx global>{`
-        @keyframes slide-in-from-bottom-2 {
-          from {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-in {
-          animation: slide-in-from-bottom-2 0.3s ease-out;
-        }
-      `}</style>
-    </>
+      {/* Floating Trigger */}
+      <div className={styles.chatTrigger} onClick={() => setIsOpen(!isOpen)}>
+        <div className={styles.topoLayer}></div>
+        {isOpen ? (
+          <X size={28} />
+        ) : (
+          // Production Bimo Icon
+          <svg width="32" height="32" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg" className="p-0.5">
+            <path d="M38.5 70C25.3759 70 18.8139 70 14.2137 66.6578C12.7281 65.5784 11.4216 64.2719 10.3422 62.7861C7 58.1861 7 51.624 7 38.5C7 25.3759 7 18.8139 10.3422 14.2137C11.4216 12.7281 12.7281 11.4216 14.2137 10.3422C18.8139 7 25.3759 7 38.5 7H40.25C51.7069 7 57.4353 7 61.6437 9.5788C63.9985 11.0218 65.9782 13.0016 67.4212 15.3563C70 19.5645 70 25.293 70 36.75" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M60.9242 50.4125C61.6672 48.5292 64.3328 48.5292 65.0759 50.4125L65.2043 50.7391C67.0187 55.3395 70.6605 58.9812 75.2609 60.7956L75.5874 60.9241C77.4708 61.6671 77.4708 64.3327 75.5874 65.0758L75.2609 65.2042C70.6605 67.0186 67.0187 70.6604 65.2043 75.2608L65.0759 75.5873C64.3328 77.4707 61.6672 77.4707 60.9242 75.5873L60.7957 75.2608C58.9813 70.6604 55.3396 67.0186 50.7392 65.2042L50.4126 65.0758C48.5293 64.3327 48.5293 61.6671 50.4126 60.9241L50.7392 60.7956C55.3396 58.9812 58.9813 55.3395 60.7957 50.7391L60.9242 50.4125Z" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M39.3047 57H23.8359L31.0312 23.1797H44.1797C46.1328 23.1797 47.8203 23.4922 49.2422 24.1172C50.6797 24.7422 51.7812 25.6094 52.5469 26.7188C53.3281 27.8125 53.7188 29.0859 53.7188 30.5391C53.7188 31.9922 53.3906 33.3203 52.7344 34.5234C52.0938 35.7109 51.2031 36.7188 50.0625 37.5469C48.9219 38.375 47.625 38.9688 46.1719 39.3281L46.1484 39.4453C47.9766 39.7734 49.4219 40.5625 50.4844 41.8125C51.5625 43.0625 52.1016 44.5391 52.1016 46.2422C52.1016 48.3359 51.5625 50.1953 50.4844 51.8203C49.4062 53.4297 47.9062 54.6953 45.9844 55.6172C44.0625 56.5391 41.8359 57 39.3047 57ZM36.0938 27.75L34.0547 37.2188H40.1484C41.6172 37.2188 42.9062 36.9844 44.0156 36.5156C45.1406 36.0469 46.0156 35.4062 46.6406 34.5938C47.2656 33.7656 47.5781 32.8125 47.5781 31.7344C47.5781 30.4375 47.1016 29.4531 46.1484 28.7812C45.1953 28.0938 43.8047 27.75 41.9766 27.75H36.0938ZM30.8672 52.1953H38.4141C39.8984 52.1953 41.2031 51.9375 42.3281 51.4219C43.4531 50.9062 44.3281 50.2031 44.9531 49.3125C45.5781 48.4219 45.8906 47.4062 45.8906 46.2656C45.8906 45.2812 45.6641 44.4531 45.2109 43.7812C44.7734 43.1094 44.1016 42.6016 43.1953 42.2578C42.2891 41.9141 41.1719 41.7422 39.8438 41.7422H33.1172L30.8672 52.1953Z" fill="white" />
+          </svg>
+        )}
+
+        {itemCount > 0 && !isOpen && (
+          <div className="absolute top-3 right-3 w-3 h-3 bg-green-400 rounded-full border border-black shadow-lg"></div>
+        )}
+      </div>
+
+    </div>
   );
 }

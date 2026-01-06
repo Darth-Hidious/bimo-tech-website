@@ -161,3 +161,4 @@ ul. Pawińskiego 5B
         print(f"[EMAIL] Confirmation to: {email}")
         print(f"[EMAIL] Content:\n{content}")
 
+

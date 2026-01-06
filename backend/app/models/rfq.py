@@ -58,3 +58,4 @@ class SupplierMatch(BaseModel):
     estimated_lead_time: Optional[int] = None  # days
     price_tier: Optional[str] = None
 
+
