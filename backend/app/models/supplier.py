@@ -36,3 +36,4 @@ class SupplierQuote(BaseModel):
     notes: Optional[str] = None
     valid_until: Optional[str] = None
 
+

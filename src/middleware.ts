@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const locales = ["pl", "en", "de", "fr", "es", "it", "nl", "sv", "fi", "da", "pt", "cz"];
+const locales = ["pl", "en", "de", "fr", "es", "it", "nl", "sv", "fi", "da", "pt", "cz", "ja"];
 const defaultLocale = "pl";
 
 function getLocale(request: NextRequest) {
@@ -31,6 +31,6 @@ export function middleware(request: NextRequest) {
 export const config = {
     matcher: [
         // Skip all internal paths (_next)
-        '/((?!_next|favicon.ico|logo.png|api|.*\\..*).*)',
+        '/((?!_next|favicon.ico|logo.png|api|admin|.*\\..*).*)',
     ],
 };

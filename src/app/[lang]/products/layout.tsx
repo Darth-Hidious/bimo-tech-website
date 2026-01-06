@@ -87,9 +87,9 @@ const jsonLd = {
       },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'ul. Pawińskiego 5B',
-        addressLocality: 'Warsaw',
-        postalCode: '02-106',
+        streetAddress: 'Francuska 11',
+        addressLocality: 'Wroclaw',
+        postalCode: '54-405',
         addressCountry: 'PL',
       },
       contactPoint: {
@@ -225,4 +225,5 @@ export default function ProductsLayout({
     </>
   )
 }
+
 

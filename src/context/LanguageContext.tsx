@@ -14,17 +14,19 @@ import da from '../locales/da.json';
 import pt from '../locales/pt.json';
 import cz from '../locales/cz.json';
 
-type LocaleData = typeof en;
-type Language = 'en' | 'pl' | 'de' | 'fr' | 'es' | 'it' | 'nl' | 'sv' | 'fi' | 'da' | 'pt' | 'cz';
+import ja from '../locales/ja.json';
 
-const translations: Record<Language, LocaleData> = {
-    en, pl, de, fr, es, it, nl, sv, fi, da, pt, cz
+type LocaleData = typeof en;
+type Language = 'en' | 'pl' | 'de' | 'fr' | 'es' | 'it' | 'nl' | 'sv' | 'fi' | 'da' | 'pt' | 'cz' | 'ja';
+
+const translations: Record<Language, any> = {
+    en, pl, de, fr, es, it, nl, sv, fi, da, pt, cz, ja
 };
 
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
-    t: (key: string) => string;
+    t: (key: string) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -38,7 +40,7 @@ export const LanguageProvider = ({ children, initialLang }: { children: ReactNod
         }
     }, [initialLang]);
 
-    const t = (key: string): string => {
+    const t = (key: string): any => {
         const keys = key.split('.');
         let value: any = translations[language];
 
@@ -50,7 +52,7 @@ export const LanguageProvider = ({ children, initialLang }: { children: ReactNod
             }
         }
 
-        return typeof value === 'string' ? value : key;
+        return value;
     };
 
     return (
@@ -63,7 +65,12 @@ export const LanguageProvider = ({ children, initialLang }: { children: ReactNod
 export const useLanguage = () => {
     const context = useContext(LanguageContext);
     if (context === undefined) {
-        throw new Error('useLanguage must be used within a LanguageProvider');
+        // Fallback for build/static generation edge cases
+        return {
+            language: 'en' as Language,
+            setLanguage: () => { },
+            t: (key: string) => key
+        };
     }
     return context;
 };

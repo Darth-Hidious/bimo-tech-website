@@ -3,20 +3,22 @@
 import { useState } from 'react';
 import { X, Trash2, Plus, Upload, Send, ShoppingCart, FileText } from 'lucide-react';
 import { useRFQ, RFQItem } from '@/context/RFQContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function RFQBasket() {
-  const { 
-    session, 
-    removeItem, 
-    updateItem, 
-    clearBasket, 
-    submitRFQ, 
-    itemCount, 
-    isBasketOpen, 
+  const { t } = useLanguage();
+  const {
+    session,
+    removeItem,
+    updateItem,
+    clearBasket,
+    submitRFQ,
+    itemCount,
+    isBasketOpen,
     setBasketOpen,
     addItem,
   } = useRFQ();
-  
+
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -31,11 +33,11 @@ export default function RFQBasket() {
 
   const handleSubmit = async () => {
     if (!email || itemCount === 0) return;
-    
+
     setIsSubmitting(true);
     const success = await submitRFQ(email);
     setIsSubmitting(false);
-    
+
     if (success) {
       setSubmitSuccess(true);
     }
@@ -43,7 +45,7 @@ export default function RFQBasket() {
 
   const handleAddItem = () => {
     if (!newItem.material || !newItem.quantity) return;
-    
+
     addItem(newItem);
     setNewItem({
       material: '',
@@ -60,11 +62,11 @@ export default function RFQBasket() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
         onClick={() => setBasketOpen(false)}
       />
-      
+
       {/* Modal */}
       <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
@@ -74,7 +76,7 @@ export default function RFQBasket() {
               <ShoppingCart size={20} className="text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-medium text-white">RFQ Basket</h2>
+              <h2 className="text-xl font-medium text-white">{t('rfq.basket')}</h2>
               <p className="text-sm text-gray-400">{itemCount} item{itemCount !== 1 ? 's' : ''}</p>
             </div>
           </div>
@@ -93,7 +95,7 @@ export default function RFQBasket() {
               <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText size={32} className="text-green-500" />
               </div>
-              <h3 className="text-xl font-medium text-white mb-2">RFQ Submitted!</h3>
+              <h3 className="text-xl font-medium text-white mb-2">{t('rfq.submitSuccess')}</h3>
               <p className="text-gray-400 mb-6">
                 We've received your request and will get back to you at {email} within 24-48 hours.
               </p>
@@ -105,30 +107,20 @@ export default function RFQBasket() {
                   setBasketOpen(false);
                 }}
                 className="mt-6 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
-            </div>
-          ) : itemCount === 0 ? (
-            <div className="text-center py-12">
+              >{t('chat.close')}</button>
+            </div>) : itemCount === 0 ? (<div className="text-center py-12">
               <ShoppingCart size={48} className="text-gray-600 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">Your basket is empty</h3>
-              <p className="text-gray-400 text-sm mb-6">
-                Add materials by chatting with our assistant or browsing products.
-              </p>
+              <h3 className="text-lg font-medium text-white mb-2">{t('rfq.emptyBasket')}</h3>
+              <p className="text-gray-400 text-sm mb-6">{t('rfq.addFromChat')}</p>
               <button
                 onClick={() => setShowAddForm(true)}
                 className="px-6 py-3 border border-white/20 text-white rounded-full font-medium hover:bg-white/10 transition-colors inline-flex items-center gap-2"
               >
-                <Plus size={18} />
-                Add Item Manually
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-4">
+                <Plus size={18} />{t('rfq.addItem')}</button>
+            </div>) : (<div className="space-y-4">
               {/* Items list */}
               {session.items.map((item) => (
-                <div 
+                <div
                   key={item.id}
                   className="bg-white/5 border border-white/10 rounded-xl p-4"
                 >
@@ -137,7 +129,7 @@ export default function RFQBasket() {
                       <h4 className="font-medium text-white">{item.material}</h4>
                       <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
                         <div>
-                          <span className="text-gray-500">Form: </span>
+                          <span className="text-gray-500">{t('rfq.form')}</span>
                           <input
                             type="text"
                             value={item.form}
@@ -147,17 +139,17 @@ export default function RFQBasket() {
                           />
                         </div>
                         <div>
-                          <span className="text-gray-500">Spec: </span>
+                          <span className="text-gray-500">{t('rfq.specification')}</span>
                           <input
                             type="text"
                             value={item.specification}
                             onChange={(e) => updateItem(item.id, { specification: e.target.value })}
-                            placeholder="e.g., 0.5mm × 100mm"
+                            placeholder="e.g., 0.5mm x 100mm"
                             className="bg-transparent border-b border-white/20 text-white focus:border-white outline-none w-full"
                           />
                         </div>
                         <div className="col-span-2">
-                          <span className="text-gray-500">Quantity: </span>
+                          <span className="text-gray-500">{t('rfq.quantity')}</span>
                           <input
                             type="text"
                             value={item.quantity}
@@ -183,19 +175,17 @@ export default function RFQBasket() {
                 onClick={() => setShowAddForm(true)}
                 className="w-full py-3 border border-dashed border-white/20 rounded-xl text-gray-400 hover:border-white/40 hover:text-white transition-colors flex items-center justify-center gap-2"
               >
-                <Plus size={18} />
-                Add Another Item
-              </button>
+                <Plus size={18} />{t('rfq.addAnother')}</button>
             </div>
           )}
 
           {/* Add item form */}
           {showAddForm && (
             <div className="mt-6 bg-white/5 border border-white/10 rounded-xl p-4">
-              <h4 className="font-medium text-white mb-4">Add New Item</h4>
+              <h4 className="font-medium text-white mb-4">{t('rfq.addNew')}</h4>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-gray-400 block mb-1">Material *</label>
+                  <label className="text-sm text-gray-400 block mb-1">{t('rfq.material')}</label>
                   <input
                     type="text"
                     value={newItem.material}
@@ -205,7 +195,7 @@ export default function RFQBasket() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-gray-400 block mb-1">Form</label>
+                  <label className="text-sm text-gray-400 block mb-1">{t('rfq.form')}</label>
                   <input
                     type="text"
                     value={newItem.form}
@@ -215,7 +205,7 @@ export default function RFQBasket() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-gray-400 block mb-1">Specification</label>
+                  <label className="text-sm text-gray-400 block mb-1">{t('rfq.specification')}</label>
                   <input
                     type="text"
                     value={newItem.specification}
@@ -225,7 +215,7 @@ export default function RFQBasket() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-gray-400 block mb-1">Quantity *</label>
+                  <label className="text-sm text-gray-400 block mb-1">{t('rfq.quantity')}</label>
                   <input
                     type="text"
                     value={newItem.quantity}
@@ -250,64 +240,52 @@ export default function RFQBasket() {
                   onClick={handleAddItem}
                   disabled={!newItem.material || !newItem.quantity}
                   className="px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  Add Item
-                </button>
+                >{t('rfq.addItem')}</button>
                 <button
                   onClick={() => setShowAddForm(false)}
                   className="px-4 py-2 border border-white/20 text-white rounded-lg hover:bg-white/10 transition-colors"
-                >
-                  Cancel
-                </button>
+                >Cancel</button>
               </div>
             </div>
           )}
         </div>
 
         {/* Footer with submit */}
-        {itemCount > 0 && !submitSuccess && (
-          <div className="p-6 border-t border-white/10 bg-white/5">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1">
-                <label className="text-sm text-gray-400 block mb-2">Your email for quote delivery</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                  className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-white outline-none"
-                />
-              </div>
-              <div className="flex items-end gap-3">
-                <button
-                  onClick={() => clearBasket()}
-                  className="px-4 py-3 border border-white/20 text-gray-400 rounded-lg hover:text-white hover:border-white/40 transition-colors"
-                >
-                  Clear
-                </button>
-                <button
-                  onClick={handleSubmit}
-                  disabled={!email || isSubmitting}
-                  className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
-                >
-                  {isSubmitting ? (
-                    <>Submitting...</>
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      Submit RFQ
-                    </>
-                  )}
-                </button>
-              </div>
+        {itemCount > 0 && !submitSuccess && (<div className="p-6 border-t border-white/10 bg-white/5">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
+              <label className="text-sm text-gray-400 block mb-2">Your email for quote delivery</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-white outline-none"
+              />
             </div>
-            <p className="text-xs text-gray-500 mt-3">
-              We typically respond within 24-48 hours with pricing and availability.
-            </p>
+            <div className="flex items-end gap-3">
+              <button
+                onClick={() => clearBasket()}
+                className="px-4 py-3 border border-white/20 text-gray-400 rounded-lg hover:text-white hover:border-white/40 transition-colors"
+              >Clear</button>
+              <button
+                onClick={handleSubmit}
+                disabled={!email || isSubmitting}
+                className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>Submitting...</>) : (<>
+                    <Send size={18} />{t('rfq.submit')}</>
+                )}
+              </button>
+            </div>
           </div>
+          <p className="text-xs text-gray-500 mt-3">We typically respond within 24-48 hours with pricing and availability.</p>
+        </div>
         )}
       </div>
     </div>
   );
 }
+
 

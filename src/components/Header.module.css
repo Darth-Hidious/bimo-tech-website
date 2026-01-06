@@ -63,7 +63,11 @@
   height: 44px;
   padding: 5px;
   border-radius: 99em;
-  position: relative;
+
+  /* Absolute centering to ensure it stays in the middle of the viewport */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 
   /* Optional: Keep a subtle pill background for nav items if desired, or remove for cleaner look. 
      User asked for "not pill shaped mess", so let's make it cleaner but keep the active blob 
@@ -155,6 +159,11 @@
      User said "animations... that's bad", implying they liked them or wanted them fixed.
      Let's keep a simplified active indicator. */
 
+/* The blob (::after) - Adjusted for dynamic width if possible, or fixed stride */
+/* Since we want a "normal header", maybe we ditch the complex blob for a simple active pill? 
+     User said "animations... that's bad", implying they liked them or wanted them fixed.
+     Let's keep a simplified active indicator. */
+
 .navIndicator {
   position: absolute;
   left: 0;
@@ -168,10 +177,61 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
+/* Right Section containing CTA and Language */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 102;
+}
+
+/* CTA Button */
+.ctaButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 99em;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+  opacity: 0.9;
+}
+
+/* Chevron */
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* Company Dropdown Position */
+.companyDropdownPosition {
+  top: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  min-width: 180px;
+}
+
+.companyDropdownPosition.open {
+  transform: translateX(-50%) translateY(0);
+}
+
 /* Language Dropdown */
 .langContainer {
   position: relative;
-  z-index: 102;
 }
 
 .langButton {
@@ -218,6 +278,8 @@
   transform: translateY(-10px);
   pointer-events: none;
   transition: all 0.2s ease;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .dropdownMenu.open {
@@ -236,7 +298,8 @@
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
+  /* Added gap for icon and text */
 }
 
 .dropdownItem:hover {

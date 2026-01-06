@@ -43,3 +43,4 @@ class ChatResponse(BaseModel):
     data: Optional[Any] = None
     suggested_actions: List[str] = []
 
+

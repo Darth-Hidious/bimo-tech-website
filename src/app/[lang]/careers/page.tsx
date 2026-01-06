@@ -1,16 +1,12 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, MapPin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowRight, ArrowUpRight, MapPin, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/context/LanguageContext';
-
-const openings = [
-  { title: 'Materials Engineer', department: 'R&D', location: 'Warsaw, Poland', type: 'Full-time', description: 'Develop and characterize advanced refractory materials for aerospace and energy applications.' },
-  { title: 'Process Engineer', department: 'Production', location: 'Warsaw, Poland', type: 'Full-time', description: 'Optimize manufacturing processes for high-purity metal production and component fabrication.' },
-  { title: 'Quality Assurance Specialist', department: 'Quality', location: 'Warsaw, Poland', type: 'Full-time', description: 'Ensure material and process compliance with aerospace and nuclear industry standards.' },
-  { title: 'Research Scientist - HEA', department: 'R&D', location: 'Warsaw, Poland', type: 'Full-time', description: 'Lead research on High-Entropy Alloys for extreme environment applications.' },
-];
+import { cms } from '@/lib/cms/firestoreAdapter';
+import type { JobOpening } from '@/lib/cms/types';
 
 const values = [
   { title: 'Scientific rigor', description: 'Every decision grounded in data and research. We don\'t guess, we measure.' },
@@ -21,22 +17,40 @@ const values = [
 
 export default function CareersPage() {
   const { language } = useLanguage();
+  const [openings, setOpenings] = useState<JobOpening[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await cms.getCareers();
+        setOpenings(data);
+      } catch (e) {
+        console.error("Failed to load careers", e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
+
+  if (loading) {
+    return (
+      <main style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Loader2 className="animate-spin text-white" size={48} />
+      </main>
+    );
+  }
 
   return (
     <main style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh' }}>
       {/* Header */}
       <section style={{ paddingTop: '140px', paddingBottom: '80px' }}>
         <div className="container-main">
-          <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#666', textTransform: 'uppercase', marginBottom: '24px' }}>
-            Careers
-          </p>
-          <h1 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 300, lineHeight: 1.1, maxWidth: '800px', marginBottom: '32px' }}>
-            Build the materials that shape 
-            <span style={{ color: '#666' }}> the future</span>
+          <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '24px', fontWeight: 500 }}>Careers</p>
+          <h1 style={{ fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 500, lineHeight: 1.1, maxWidth: '800px', marginBottom: '32px' }}>Build the materials that shape <span style={{ color: '#888' }}>the future</span>
           </h1>
-          <p style={{ fontSize: '18px', color: '#888', maxWidth: '600px', lineHeight: 1.6 }}>
-            Join a team of scientists and engineers working on breakthrough materials for space, fusion, and aerospace.
-          </p>
+          <p style={{ fontSize: '18px', color: '#bbb', maxWidth: '600px', lineHeight: 1.6 }}>Join a team of scientists and engineers working on breakthrough materials for space, fusion, and aerospace.</p>
         </div>
       </section>
 
@@ -45,24 +59,20 @@ export default function CareersPage() {
         <div className="container-main">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
             <div>
-              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#666', textTransform: 'uppercase', marginBottom: '24px' }}>
-                Culture
-              </p>
-              <h2 style={{ fontSize: '36px', fontWeight: 300, marginBottom: '24px' }}>What drives us</h2>
-              <p style={{ fontSize: '16px', color: '#888', lineHeight: 1.6 }}>
-                We're a team of 30+ scientists, engineers, and specialists united by a passion for 
-                pushing the boundaries of materials science.
-              </p>
+              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '24px', fontWeight: 500 }}>Culture</p>
+              <h2 style={{ fontSize: 'clamp(28px, 4vw, 36px)', fontWeight: 500, marginBottom: '24px' }}>What drives us</h2>
+              <p style={{ fontSize: '16px', color: '#bbb', lineHeight: 1.6 }}>We're a team of 30+ scientists, engineers, and specialists united by a passion for
+                pushing the boundaries of materials science.</p>
             </div>
             <div>
               {values.map((value, index) => (
-                <div key={value.title} style={{ 
-                  borderBottom: index < values.length - 1 ? '1px solid #222' : 'none', 
+                <div key={value.title} style={{
+                  borderBottom: index < values.length - 1 ? '1px solid #222' : 'none',
                   paddingBottom: '24px',
                   marginBottom: '24px'
                 }}>
-                  <h3 style={{ fontSize: '20px', fontWeight: 300, marginBottom: '8px' }}>{value.title}</h3>
-                  <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>{value.description}</p>
+                  <h3 style={{ fontSize: '20px', fontWeight: 500, marginBottom: '8px' }}>{value.title}</h3>
+                  <p style={{ fontSize: '14px', color: '#999', lineHeight: 1.6 }}>{value.description}</p>
                 </div>
               ))}
             </div>
@@ -75,19 +85,17 @@ export default function CareersPage() {
         <div className="container-main">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px' }}>
             <div>
-              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#666', textTransform: 'uppercase', marginBottom: '16px' }}>
-                Openings
-              </p>
-              <h2 style={{ fontSize: '32px', fontWeight: 300 }}>Current positions</h2>
+              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '16px', fontWeight: 500 }}>Openings</p>
+              <h2 style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 500 }}>Current positions</h2>
             </div>
-            <span style={{ fontSize: '14px', color: '#666' }}>{openings.length} roles</span>
+            <span style={{ fontSize: '14px', color: '#999' }}>{openings.length} roles</span>
           </div>
 
           {openings.map((job, index) => (
-            <Link 
+            <Link
               key={job.title}
               href={`/${language}/contact`}
-              style={{ 
+              style={{
                 display: 'block',
                 padding: '28px 0',
                 borderTop: index === 0 ? '1px solid #333' : 'none',
@@ -96,9 +104,9 @@ export default function CareersPage() {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '24px' }}>
                 <div style={{ flex: 1 }}>
-                  <h3 style={{ fontSize: '22px', fontWeight: 300, marginBottom: '8px' }}>{job.title}</h3>
-                  <p style={{ fontSize: '14px', color: '#888', marginBottom: '12px' }}>{job.description}</p>
-                  <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', fontSize: '13px', color: '#555' }}>
+                  <h3 style={{ fontSize: '22px', fontWeight: 500, marginBottom: '8px' }}>{job.title}</h3>
+                  <p style={{ fontSize: '14px', color: '#bbb', marginBottom: '12px' }}>{job.description}</p>
+                  <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', fontSize: '13px', color: '#888' }}>
                     <span>{job.department}</span>
                     <span>·</span>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -108,7 +116,7 @@ export default function CareersPage() {
                     <span>{job.type}</span>
                   </div>
                 </div>
-                <ArrowUpRight size={20} style={{ color: '#444', flexShrink: 0 }} />
+                <ArrowUpRight size={20} style={{ color: '#666', flexShrink: 0 }} />
               </div>
             </Link>
           ))}
@@ -118,27 +126,19 @@ export default function CareersPage() {
       {/* Benefits */}
       <section style={{ padding: '80px 0', borderTop: '1px solid #222' }}>
         <div className="container-main">
-          <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#666', textTransform: 'uppercase', marginBottom: '48px' }}>
-            Benefits
-          </p>
+          <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '48px', fontWeight: 500 }}>Benefits</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '48px' }}>
             <div>
-              <h3 style={{ fontSize: '28px', fontWeight: 300, marginBottom: '16px' }}>Research freedom</h3>
-              <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>
-                20% time for personal research projects. Access to state-of-the-art equipment and facilities.
-              </p>
+              <h3 style={{ fontSize: '28px', fontWeight: 500, marginBottom: '16px' }}>Research freedom</h3>
+              <p style={{ fontSize: '14px', color: '#bbb', lineHeight: 1.6 }}>20% time for personal research projects. Access to state-of-the-art equipment and facilities.</p>
             </div>
             <div>
-              <h3 style={{ fontSize: '28px', fontWeight: 300, marginBottom: '16px' }}>Growth</h3>
-              <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>
-                Conference attendance, training programs, and pathways to leadership for those who want it.
-              </p>
+              <h3 style={{ fontSize: '28px', fontWeight: 500, marginBottom: '16px' }}>Growth</h3>
+              <p style={{ fontSize: '14px', color: '#bbb', lineHeight: 1.6 }}>Conference attendance, training programs, and pathways to leadership for those who want it.</p>
             </div>
             <div>
-              <h3 style={{ fontSize: '28px', fontWeight: 300, marginBottom: '16px' }}>Impact</h3>
-              <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>
-                Work on materials that will power fusion reactors and enable deep space exploration.
-              </p>
+              <h3 style={{ fontSize: '28px', fontWeight: 500, marginBottom: '16px' }}>Impact</h3>
+              <p style={{ fontSize: '14px', color: '#bbb', lineHeight: 1.6 }}>Work on materials that will power fusion reactors and enable deep space exploration.</p>
             </div>
           </div>
         </div>
@@ -147,22 +147,19 @@ export default function CareersPage() {
       {/* CTA */}
       <section style={{ padding: '100px 0', borderTop: '1px solid #222', textAlign: 'center' }}>
         <div className="container-main">
-          <h2 style={{ fontSize: '36px', fontWeight: 300, marginBottom: '20px' }}>Don't see the right role?</h2>
-          <p style={{ fontSize: '16px', color: '#888', marginBottom: '40px', maxWidth: '500px', margin: '0 auto 40px' }}>
-            We're always looking for exceptional talent. Send us your CV and tell us why you want to join.
-          </p>
-          <Link 
+          <h2 style={{ fontSize: '36px', fontWeight: 500, marginBottom: '20px' }}>Don't see the right role?</h2>
+          <p style={{ fontSize: '16px', color: '#bbb', marginBottom: '40px', maxWidth: '500px', margin: '0 auto 40px' }}>We're always looking for exceptional talent. Send us your CV and tell us why you want to join.</p>
+          <Link
             href={`/${language}/contact`}
-            style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '12px', 
-              padding: '16px 32px', 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '16px 32px',
               border: '1px solid #fff',
               fontSize: '14px'
             }}
-          >
-            Get in touch <ArrowRight size={18} />
+          >Get in touch<ArrowRight size={18} />
           </Link>
         </div>
       </section>

@@ -4,7 +4,8 @@
     "products": "Produkty",
     "news": "Aktualności",
     "careers": "Kariera",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "about": "O nas"
   },
   "hero": {
     "title": "Zaawansowane Materiały",
@@ -85,6 +86,29 @@
       "subtitle": "Centrala",
       "description": "Zainteresowany naszą technologią lub możliwościami partnerstwa? Skontaktuj się z naszym zespołem w Warszawie.",
       "button": "Skontaktuj się"
+    }
+  },
+  "services": {
+    "hero": {
+      "label": "Natychmiastowa Produkcja",
+      "title": "Obróbka CNC na Żądanie",
+      "description": "Wgraj swoje pliki CAD, otrzymaj natychmiastową wycenę i rozpocznij produkcję w kilka minut.",
+      "button": "Błyskawiczna Wycena"
+    },
+    "catalog": {
+      "title": "Nasze Możliwości",
+      "description": "Kompleksowe usługi produkcyjne dla zaawansowanych branż."
+    },
+    "process": {
+      "title": "Jak to działa",
+      "step1": "Wgraj Projekt",
+      "step1Desc": "Wgraj bezpiecznie pliki 3D do analizy.",
+      "step2": "Otrzymaj Wycenę",
+      "step2Desc": "Wybierz materiały i zobacz cenę.",
+      "step3": "Produkcja",
+      "step3Desc": "Produkujemy Twoje części z kontrolą jakości.",
+      "step4": "Dostawa",
+      "step4Desc": "Szybka dostawa pod Twoje drzwi."
     }
   },
   "products": {
@@ -276,7 +300,7 @@
     },
     "info": {
       "location": "Lokalizacja",
-      "address": "ul. Pawińskiego 5B, 02-106 Warszawa, Polska",
+      "address": "Francuska 11, 54-405 Wrocław, Poland",
       "phone": "Telefon",
       "email": "Email",
       "hours": "Godziny pracy",
@@ -323,13 +347,98 @@
   },
   "footer": {
     "company": "Bimo Tech Sp. z o.o.",
-    "tagline": "Zaawansowane materiały dla kosmosu, fuzji i lotnictwa. Warszawa, Polska.",
+    "tagline": "Zaawansowane materiały dla kosmosu, fuzji i lotnictwa. Wrocław, Poland.",
     "navigate": "Nawigacja",
     "contact": "Kontakt",
-    "address": "ul. Pawińskiego 5B, 02-106 Warszawa, Polska",
+    "address": "Francuska 11, 54-405 Wrocław, Poland",
     "privacy": "Prywatność",
     "terms": "Regulamin",
     "impressum": "Impressum",
     "copyright": "© {year} Bimo Tech Sp. z o.o."
+  },
+  "privacyPage": {
+    "title": "Polityka Prywatności",
+    "lastUpdated": "Ostatnia aktualizacja: Styczeń 2026",
+    "intro": "Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych przez Bimo Tech Sp. z o.o. ('my') w związku z korzystaniem z naszej strony internetowej i usług. Zobowiązujemy się do ochrony Twojej prywatności zgodnie z RODO (Ogólne Rozporządzenie o Ochronie Danych) i polskimi przepisami.",
+    "controller": {
+      "title": "1. Administrator Danych",
+      "content": "Administratorem Twoich danych osobowych jest Bimo Tech Sp. z o.o. z siedzibą przy ul. Francuskiej 11, 54-405 Wrocław, Polska. W sprawach ochrony danych możesz skontaktować się z nami pod adresem info@bimotech.pl."
+    },
+    "dataCollection": {
+      "title": "2. Gromadzone Dane",
+      "content": "Gromadzimy dane osobowe przekazywane bezpośrednio (np. przy kontakcie, zapytaniu ofertowym, rekrutacji) oraz dane zbierane automatycznie przez pliki cookies. Może to obejmować: dane kontaktowe (imię, email, telefon, firma), dane biznesowe oraz dane techniczne (adres IP)."
+    },
+    "purpose": {
+      "title": "3. Cel i Podstawa Przetwarzania",
+      "content": "Przetwarzamy dane w celach: (a) Wykonania umowy lub podjęcia działań przedumownych (np. realizacja zamówień) - Art. 6 ust. 1 lit. b RODO; (b) Prawnie uzasadnionych interesów (np. obsługa zapytań, marketing, bezpieczeństwo) - Art. 6 ust. 1 lit. f RODO; (c) Obowiązków prawnych (np. księgowość) - Art. 6 ust. 1 lit. c RODO."
+    },
+    "sharing": {
+      "title": "4. Odbiorcy Danych",
+      "content": "Możemy udostępniać dane zaufanym dostawcom usług (np. wsparcie IT, hosting, księgowość), którzy przetwarzają dane w naszym imieniu. Nie sprzedajemy danych osobowych."
+    },
+    "rights": {
+      "title": "5. Twoje Prawa",
+      "content": "Zgodnie z RODO masz prawo dostępu, sprostowania, usunięcia, ograniczenia przetwarzania oraz przenoszenia danych. Masz również prawo do sprzeciwu. Aby skorzystać z tych praw, skontaktuj się z nami."
+    }
+  },
+  "termsPage": {
+    "title": "Ogólne Warunki Sprzedaży",
+    "intro": "Niniejsze Ogólne Warunki Sprzedaży ('OWS') dotyczą wszystkich umów sprzedaży i dostaw towarów oraz usług przez Bimo Tech Sp. z o.o. ('Sprzedawca') na rzecz klientów biznesowych ('Kupujący').",
+    "orders": {
+      "title": "1. Zamówienia i Umowy",
+      "content": "Wszelkie zamówienia muszą być składane w formie pisemnej (email). Umowa zostaje zawarta dopiero po pisemnym potwierdzeniu zamówienia przez Sprzedawcę. Oferty nie są wiążące, chyba że wyraźnie zaznaczono inaczej."
+    },
+    "delivery": {
+      "title": "2. Dostawa i Ryzyko",
+      "content": "O ile nie uzgodniono inaczej, dostawy realizowane są na warunkach Ex Works (Incoterms 2020) z magazynu we Wrocławiu. Ryzyko przechodzi na Kupującego z chwilą wydania towaru przewoźnikowi."
+    },
+    "prices": {
+      "title": "3. Ceny i Płatności",
+      "content": "Ceny są cenami netto w EUR lub PLN i nie obejmują podatku VAT ani kosztów transportu. Płatności należy dokonywać w terminie wskazanym na fakturze (zazwyczaj 14 lub 30 dni). Opóźnienia mogą skutkować naliczeniem odsetek ustawowych."
+    },
+    "warranty": {
+      "title": "4. Gwarancja i Odpowiedzialność",
+      "content": "Sprzedawca gwarantuje zgodność towarów ze specyfikacją. Odpowiedzialność za wady jest ograniczona do wymiany towaru lub zwrotu ceny. Łączna odpowiedzialność Sprzedawcy jest ograniczona do wartości zamówienia. Odpowiedzialność za szkody pośrednie jest wyłączona."
+    },
+    "law": {
+      "title": "5. Prawo Właściwe",
+      "content": "Niniejsze OWS podlegają prawu polskiemu. Sądem właściwym dla wszelkich sporów jest sąd właściwy dla siedziby Sprzedawcy."
+    }
+  },
+  "impressum": {
+    "title": "O firmie",
+    "isoTitle": "POLITYKA ZINTEGROWANEGO SYSTEMU ZARZĄDZANIA JAKOŚCIĄ I ŚRODOWISKIEM WG ISO 9001:2015 ORAZ ISO 14001:2015",
+    "description": "Bimo Tech sp. z o.o. działa z pasją i specjalizuje się w dostarczaniu materiałów, produktów oraz usług dla przemysłu, stale spełniając lub przekraczając oczekiwania klientów. Nasza historia sięga 1992 roku, kiedy rozpoczęliśmy działalność jako BIMO, a od 2013 roku działamy pod obecną nazwą.",
+    "specialization": "Od początku istnienia specjalizujemy się w produkcji oraz dystrybucji materiałów i komponentów, a także urządzeń dla przemysłu i nauki.",
+    "sectors": "Dostarczamy rozwiązania dla sektora Big Science i przemysłu kosmicznego.",
+    "quality": "Wykonujemy materiały, komponenty i urządzenia, które odpowiadają najwyższym standardom jakości i niezawodności.",
+    "peopleTitle": "Naszym największym atutem są ludzie",
+    "peopleDesc": "Kompetencje, zaangażowanie i świadomość wagi realizowanych projektów naszego zespołu budują zaufanie klientów. To właśnie dzięki naszej kadrze jesteśmy w stanie sprostać najbardziej wymagającym wyzwaniom.",
+    "servicesTitle": "Kompleksowa realizacja projektów – od koncepcji do uruchomienia",
+    "servicesDesc": "Potrafimy przełożyć wymagania naukowe na konkretne rozwiązania inżynieryjne. Nasze usługi obejmują:",
+    "serviceList": [
+      "Obliczenia.",
+      "Projektowanie szczegółowe.",
+      "Sporządzanie dokumentacji technicznej.",
+      "Kooperację z partnerami.",
+      "Zakupy i produkcję.",
+      "Montaż, integrację oraz testowanie aż do końcowego uruchomienia."
+    ],
+    "excellence": "Dążymy do doskonałości.",
+    "environment": "Zapewniamy najwyższą jakość zarządzania i obsługi, minimalizując jednocześnie wpływ na środowisko. Nieustannie rozwijamy naszą obecność na rynku europejskim i doskonalimy się, aby sprostać światowym standardom jakości i zrównoważonego rozwoju we wszystkim, co robimy.",
+    "partner": "Dołącz do grona naszych partnerów i przekonaj się, jak możemy pomóc Twojej firmie osiągnąć sukces.",
+    "ceoName": "Marcin Orzechowski",
+    "ceoRole": "Prezes",
+    "companyName": "BIMO TECH Sp. z o.o.",
+    "address": "ul. Francuska 11, 54-405 Wrocław",
+    "legal": "REGON 022181645, NIP 8943047189, KRS 0000468797",
+    "representedBy": "Reprezentowana przez",
+    "contact": "Kontakt",
+    "registerEntry": "Wpis do rejestru",
+    "ids": "Identyfikatory podatkowe",
+    "bankAccounts": "Konta bankowe",
+    "shareCapital": "Kapitał zakładowy",
+    "registrationDate": "Data rejestracji",
+    "vatId": "NIP"
   }
 }

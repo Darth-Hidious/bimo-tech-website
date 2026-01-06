@@ -24,22 +24,18 @@ const Footer = () => {
                 style={{ opacity: 0.8, height: '32px', width: 'auto' }}
               />
             </Link>
-            <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6, maxWidth: '300px' }}>
-              Advanced materials for space, fusion, and aerospace. Warsaw, Poland.
-            </p>
+            <p style={{ fontSize: '15px', color: '#999', lineHeight: 1.6, maxWidth: '300px' }}>Advanced materials for space, fusion, and aerospace. Wrocław, Poland.</p>
           </div>
 
           {/* Navigation */}
           <div>
-            <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#444', textTransform: 'uppercase', marginBottom: '20px' }}>
-              Navigate
-            </p>
+            <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#777', textTransform: 'uppercase', marginBottom: '20px', fontWeight: 500 }}>Navigate</p>
             <ul style={{ listStyle: 'none' }}>
               {['Products', 'News', 'Careers', 'Contact'].map((item) => (
                 <li key={item} style={{ marginBottom: '12px' }}>
-                  <Link 
-                    href={`/${language}/${item.toLowerCase()}`} 
-                    style={{ fontSize: '14px', color: '#888' }}
+                  <Link
+                    href={`/${language}/${item.toLowerCase()}`}
+                    style={{ fontSize: '15px', color: '#bbb' }}
                   >
                     {item}
                   </Link>
@@ -50,16 +46,11 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#444', textTransform: 'uppercase', marginBottom: '20px' }}>
-              Contact
-            </p>
-            <p style={{ fontSize: '14px', color: '#888', marginBottom: '12px' }}>
+            <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#777', textTransform: 'uppercase', marginBottom: '20px', fontWeight: 500 }}>Contact</p>
+            <p style={{ fontSize: '15px', color: '#bbb', marginBottom: '12px' }}>
               <a href="mailto:info@bimotech.pl">info@bimotech.pl</a>
             </p>
-            <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.6 }}>
-              ul. Pawińskiego 5B<br />
-              02-106 Warsaw, Poland
-            </p>
+            <p style={{ fontSize: '15px', color: '#999', lineHeight: 1.6 }}>Francuska 11<br />54-405 Wroclaw, Poland</p>
           </div>
         </div>
       </div>
@@ -67,15 +58,15 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div style={{ borderTop: '1px solid #222' }}>
         <div className="container-main" style={{ padding: '20px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <p style={{ fontSize: '12px', color: '#444' }}>
+          <p style={{ fontSize: '12px', color: '#777' }}>
             © {currentYear} Bimo Tech Sp. z o.o.
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
-            {['Privacy', 'Terms', 'Impressum'].map((item) => (
-              <Link 
+            {['Privacy', 'Terms', 'Impressum', 'Admin'].map((item) => (
+              <Link
                 key={item}
-                href={`/${language}/${item.toLowerCase()}`} 
-                style={{ fontSize: '12px', color: '#444' }}
+                href={item === 'Admin' ? '/admin' : `/${language}/${item.toLowerCase()}`}
+                style={{ fontSize: '12px', color: '#777' }}
               >
                 {item}
               </Link>
@@ -88,4 +79,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 

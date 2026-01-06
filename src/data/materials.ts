@@ -267,3 +267,4 @@ export function searchMaterials(query: string): Material[] {
   );
 }
 
+

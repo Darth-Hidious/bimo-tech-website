@@ -165,3 +165,4 @@ async def save_supplier_quote(quote_data: dict) -> str:
         print(f"Error saving quote: {e}")
         return ""
 
+

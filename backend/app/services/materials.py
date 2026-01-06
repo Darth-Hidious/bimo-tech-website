@@ -164,3 +164,4 @@ def get_materials_by_capability(capability: str) -> List[Dict[str, Any]]:
     
     return results
 
+

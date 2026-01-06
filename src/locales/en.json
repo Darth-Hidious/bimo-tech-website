@@ -4,7 +4,8 @@
     "products": "Products",
     "news": "News",
     "careers": "Careers",
-    "contact": "Contact"
+    "contact": "Contact",
+    "about": "About Us"
   },
   "hero": {
     "title": "Advanced Materials",
@@ -51,7 +52,7 @@
       "label": "About",
       "title": "Built by scientists.",
       "description": "Bimo Tech was founded by material scientists with decades of experience in advanced materials research. We bridge the gap between cutting-edge science and industrial applications.",
-      "location": "Based in Warsaw, Poland. Working globally.",
+      "location": "Based in Wrocław, Poland. Working globally.",
       "joinTeam": "Join the team"
     },
     "cta": {
@@ -83,8 +84,31 @@
     "contact": {
       "title": "Contact",
       "subtitle": "HQ",
-      "description": "Interested in our technology or partnership opportunities? Connect with our team in Warsaw, Poland.",
+      "description": "Interested in our technology or partnership opportunities? Connect with our team in Wrocław, Poland.",
       "button": "Get in Touch"
+    }
+  },
+  "services": {
+    "hero": {
+      "label": "Instant Manufacturing",
+      "title": "CNC Machining on Demand",
+      "description": "Upload your CAD files, get an instant quote, and start production in minutes. From prototype to mass production.",
+      "button": "Get Instant Quote"
+    },
+    "catalog": {
+      "title": "Our Capabilities",
+      "description": "Comprehensive manufacturing services for advanced industries."
+    },
+    "process": {
+      "title": "How it Works",
+      "step1": "Upload Design",
+      "step1Desc": "Upload your 3D files securely for instant analysis.",
+      "step2": "Get Quote",
+      "step2Desc": "Select materials and get real-time pricing.",
+      "step3": "Production",
+      "step3Desc": "We manufacture your parts with strict quality control.",
+      "step4": "Delivery",
+      "step4Desc": "Fast global shipping to your doorstep."
     }
   },
   "products": {
@@ -276,7 +300,7 @@
     },
     "info": {
       "location": "Location",
-      "address": "ul. Pawińskiego 5B, 02-106 Warsaw, Poland",
+      "address": "Francuska 11, 54-405 Wroclaw, Poland",
       "phone": "Phone",
       "email": "Email",
       "hours": "Business Hours",
@@ -323,13 +347,98 @@
   },
   "footer": {
     "company": "Bimo Tech Sp. z o.o.",
-    "tagline": "Advanced materials for space, fusion, and aerospace. Warsaw, Poland.",
+    "tagline": "Advanced materials for space, fusion, and aerospace. Wrocław, Poland.",
     "navigate": "Navigate",
     "contact": "Contact",
-    "address": "ul. Pawińskiego 5B, 02-106 Warsaw, Poland",
+    "address": "Francuska 11, 54-405 Wroclaw, Poland",
     "privacy": "Privacy",
     "terms": "Terms",
     "impressum": "Impressum",
     "copyright": "© {year} Bimo Tech Sp. z o.o."
+  },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 2026",
+    "intro": "This Privacy Policy describes how Bimo Tech Sp. z o.o. ('we', 'us', or 'our') collects, uses, and shares your personal data in connection with our website and services. We are committed to protecting your privacy in accordance with the General Data Protection Regulation (GDPR) and applicable Polish laws.",
+    "controller": {
+      "title": "1. Data Controller",
+      "content": "The controller of your personal data is Bimo Tech Sp. z o.o., with its registered office at Francuska 11, 54-405 Wroclaw, Poland. You can contact us regarding data protection matters at info@bimotech.pl."
+    },
+    "dataCollection": {
+      "title": "2. Data We Collect",
+      "content": "We collect personal data that you provide to us directly (e.g., when you contact us, request a quote, or apply for a job) and data collected automatically via cookies. This may include: contact information (name, email, phone, company), business details, and technical data (IP address, browser type)."
+    },
+    "purpose": {
+      "title": "3. Purpose and Legal Basis",
+      "content": "We process your data for the following purposes: (a) Performance of a contract or taking steps prior to entering into a contract (e.g., processing orders, RFQs) - Art. 6(1)(b) GDPR; (b) Legitimate interests (e.g., answering inquiries, marketing our services, website security) - Art. 6(1)(f) GDPR; (c) Legal obligations (e.g., tax and accounting) - Art. 6(1)(c) GDPR."
+    },
+    "sharing": {
+      "title": "4. Data Sharing",
+      "content": "We may share your data with trusted third-party service providers (e.g., IT support, hosting, accounting) who process data on our behalf. We do not sell your personal data."
+    },
+    "rights": {
+      "title": "5. Your Rights",
+      "content": "Under GDPR, you have the right to access, rectify, delete, restrict processing, and port your data. You also have the right to object to processing based on legitimate interests. To exercise these rights, please contact us."
+    }
+  },
+  "termsPage": {
+    "title": "General Terms and Conditions of Sale",
+    "intro": "These General Terms and Conditions of Sale ('GTC') apply to all sales and deliveries of goods and services by Bimo Tech Sp. z o.o. ('Seller') to business customers ('Buyer').",
+    "orders": {
+      "title": "1. Orders and Contracts",
+      "content": "All orders must be placed in writing (email or via our platform). A contract is concluded only upon written confirmation of the order by the Seller. Our offers are non-binding unless explicitly stated otherwise."
+    },
+    "delivery": {
+      "title": "2. Delivery and Risk",
+      "content": "Unless agreed otherwise, deliveries are made Ex Works (Incoterms 2020) from our facility in Wroclaw. The risk of accidental loss or damage to the goods passes to the Buyer upon handover to the carrier."
+    },
+    "prices": {
+      "title": "3. Prices and Payment",
+      "content": "Prices are net prices in EUR or PLN and do not include VAT or shipping costs. Payments are due within the timeframe specified on the invoice (typically 14 or 30 days). Late payments may incur statutory interest."
+    },
+    "warranty": {
+      "title": "4. Warranty and Liability",
+      "content": "The Seller warrants that the goods meet the agreed specifications. Liability for defects is limited to the replacement of goods or refund of the purchase price. The Seller's aggregate liability is limited to the value of the order. Indirect or consequential damages are excluded."
+    },
+    "law": {
+      "title": "5. Governing Law",
+      "content": "These GTC are governed by Polish law. The exclusive place of jurisdiction for all disputes is the court competent for the Seller's registered office."
+    }
+  },
+  "impressum": {
+    "title": "About Company",
+    "isoTitle": "INTEGRATED QUALITY AND ENVIRONMENTAL MANAGEMENT SYSTEM POLICY ACCORDING TO ISO 9001:2015 AND ISO 14001:2015",
+    "description": "Bimo Tech Sp. z o.o. operates with passion and specializes in supplying materials, products, and services for industry, constantly meeting or exceeding customer expectations. Our history dates back to 1992 when we started as BIMO, and since 2013 we have been operating under the current name.",
+    "specialization": "Since our inception, we have specialized in the production and distribution of materials, components, and devices for industry and science.",
+    "sectors": "We provide solutions for the Big Science sector and the space industry.",
+    "quality": "We manufacture materials, components, and devices that meet the highest standards of quality and reliability.",
+    "peopleTitle": "Our greatest asset is our people",
+    "peopleDesc": "The competence, commitment, and awareness of the importance of implemented projects by our team build customer trust. Thanks to our staff, we are able to meet the most demanding challenges.",
+    "servicesTitle": "Comprehensive project implementation – from concept to commissioning",
+    "servicesDesc": "We can translate scientific requirements into concrete engineering solutions. Our services include:",
+    "serviceList": [
+      "Calculations.",
+      "Detailed design.",
+      "Preparation of technical documentation.",
+      "Cooperation with partners.",
+      "Purchasing and production.",
+      "Assembly, integration, and testing up to final commissioning."
+    ],
+    "excellence": "We strive for excellence.",
+    "environment": "We ensure the highest quality of management and service, while minimizing our impact on the environment. We constantly develop our presence on the European market and improve ourselves to meet global quality and sustainable development standards in everything we do.",
+    "partner": "Join our group of partners and see how we can help your company achieve success.",
+    "ceoName": "Marcin Orzechowski",
+    "ceoRole": "CEO (Prezes)",
+    "companyName": "BIMO TECH Sp. z o.o.",
+    "address": "ul. Francuska 11, 54-405 Wrocław, Poland",
+    "legal": "REGON 022181645, NIP 8943047189, KRS 0000468797",
+    "representedBy": "Represented by",
+    "contact": "Contact",
+    "registerEntry": "Register Entry",
+    "ids": "Tax IDs",
+    "bankAccounts": "Bank Accounts",
+    "shareCapital": "Share Capital",
+    "registrationDate": "Registration Date",
+    "vatId": "VAT ID"
   }
 }
