@@ -75,6 +75,7 @@ export interface QuoteRequest {
     serviceId: string;
     materialId: string;
     quantity: number;
+    description?: string;
     items?: QuoteRequestItem[];
 
     finishRequested?: string;
