@@ -44,7 +44,7 @@ export interface ManufacturingService {
 export interface Material {
     id: string;
     name: string;
-    category: 'aluminum' | 'steel' | 'copper' | 'plastic' | 'other';
+    category: 'aluminum' | 'steel' | 'copper' | 'plastic' | 'refractory' | 'structural' | 'other';
     priceMultiplier: number;
     properties: Record<string, string>;
     imageUrl?: string;
