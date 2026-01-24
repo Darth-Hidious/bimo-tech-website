@@ -326,6 +326,104 @@ export async function askBimo(question: string): Promise<string> {
 }
 
 // =============================================================================
+// SPEC EXTRACTION FLOW - AI extracts structured data from natural language
+// =============================================================================
+
+export const extractSpecsFlow = ai.defineFlow(
+    {
+        name: 'extractSpecsFlow',
+        inputSchema: z.object({
+            rawText: z.string().describe('Raw text containing material specifications, requirements, or project description'),
+        }),
+        outputSchema: z.object({
+            extracted: z.object({
+                material: z.string().optional().describe('Detected material type'),
+                materialConfidence: z.number().min(0).max(100).optional(),
+                form: z.string().optional().describe('Product form (sheet, rod, wire, tube, etc.)'),
+                formConfidence: z.number().min(0).max(100).optional(),
+                dimensions: z.string().optional().describe('Dimensions or size specifications'),
+                dimensionsConfidence: z.number().min(0).max(100).optional(),
+                quantity: z.number().optional().describe('Quantity needed'),
+                quantityConfidence: z.number().min(0).max(100).optional(),
+                standard: z.string().optional().describe('Industry standard (ASTM, AMS, ISO, etc.)'),
+                standardConfidence: z.number().min(0).max(100).optional(),
+                application: z.string().optional().describe('Intended application or industry'),
+                applicationConfidence: z.number().min(0).max(100).optional(),
+                additionalNotes: z.string().optional().describe('Any other relevant information'),
+            }),
+            summary: z.string().describe('Brief summary of the extracted requirements'),
+            suggestedService: z.string().optional().describe('Suggested manufacturing service ID'),
+            overallConfidence: z.number().min(0).max(100).describe('Overall confidence in extraction'),
+        }),
+    },
+    async ({ rawText }) => {
+        const extractionPrompt = `
+You are an expert in materials science and manufacturing. Extract structured information from the following specification text.
+
+TEXT TO ANALYZE:
+"""
+${rawText}
+"""
+
+Extract the following fields with confidence scores (0-100):
+- material: The type of metal/material (e.g., "Tungsten", "Titanium Ti-6Al-4V", "Molybdenum TZM")
+- form: Product form (sheet, plate, rod, bar, wire, tube, foil, powder, etc.)
+- dimensions: Size specifications with units
+- quantity: Number of pieces or weight needed
+- standard: Industry standards mentioned (ASTM, AMS, ISO, MIL-SPEC, etc.)
+- application: Intended use or industry (aerospace, medical, nuclear, etc.)
+
+Also suggest the most appropriate manufacturing service:
+- "cnc-milling" for complex machined parts
+- "cnc-turning" for cylindrical/rotational parts
+- "sheet-metal" for sheet/plate fabrication
+- "3d-printing" for additive manufacturing
+- "wire-edm" for precision cutting
+
+Provide confidence scores based on how clearly the information was stated.
+`;
+
+        const result = await ai.generate({
+            system: 'You are a materials specification parser. Extract structured data accurately. Return valid JSON only.',
+            messages: [{ role: 'user', content: [{ text: extractionPrompt }] }],
+            output: {
+                format: 'json',
+                schema: z.object({
+                    extracted: z.object({
+                        material: z.string().optional(),
+                        materialConfidence: z.number().optional(),
+                        form: z.string().optional(),
+                        formConfidence: z.number().optional(),
+                        dimensions: z.string().optional(),
+                        dimensionsConfidence: z.number().optional(),
+                        quantity: z.number().optional(),
+                        quantityConfidence: z.number().optional(),
+                        standard: z.string().optional(),
+                        standardConfidence: z.number().optional(),
+                        application: z.string().optional(),
+                        applicationConfidence: z.number().optional(),
+                        additionalNotes: z.string().optional(),
+                    }),
+                    summary: z.string(),
+                    suggestedService: z.string().optional(),
+                    overallConfidence: z.number(),
+                }),
+            },
+        });
+
+        if (result.output) {
+            return result.output;
+        }
+
+        return {
+            extracted: {},
+            summary: "Could not parse specifications. Please provide more details.",
+            overallConfidence: 0,
+        };
+    }
+);
+
+// =============================================================================
 // QUOTE ANALYSIS FLOW
 // =============================================================================
 

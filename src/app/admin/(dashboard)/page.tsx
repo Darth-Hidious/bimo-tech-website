@@ -63,8 +63,8 @@ export default function AdminDashboard() {
                 {statCards.map((card) => (
                     <Link key={card.label} href={card.href} className={styles.statCard} style={{ textDecoration: 'none', display: 'block' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                            <card.icon size={20} style={{ color: '#666' }} />
-                            <ArrowUpRight size={16} style={{ color: '#444' }} />
+                            <card.icon size={20} style={{ color: 'var(--bimo-text-disabled)' }} />
+                            <ArrowUpRight size={16} style={{ color: 'var(--bimo-text-disabled)' }} />
                         </div>
                         <div className={styles.statLabel}>{card.label}</div>
                         <div className={styles.statValue}>

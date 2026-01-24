@@ -86,8 +86,8 @@ export default function AdminActivityPage() {
                     <h1 className={styles.pageTitle}>Activity Log</h1>
                 </header>
                 <div className={styles.panel} style={{ textAlign: 'center', padding: '48px' }}>
-                    <Shield size={48} style={{ color: '#333', marginBottom: '16px' }} />
-                    <p style={{ color: '#666' }}>You don&apos;t have permission to view activity logs.</p>
+                    <Shield size={48} style={{ color: 'var(--bimo-border)', marginBottom: '16px' }} />
+                    <p style={{ color: 'var(--bimo-text-disabled)' }}>You don&apos;t have permission to view activity logs.</p>
                 </div>
             </div>
         );
@@ -96,7 +96,7 @@ export default function AdminActivityPage() {
     if (loading) {
         return (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -111,7 +111,7 @@ export default function AdminActivityPage() {
             <div className={styles.panel}>
                 {logs.length === 0 ? (
                     <div className={styles.emptyState}>
-                        <Activity size={48} style={{ color: '#333', marginBottom: '16px' }} />
+                        <Activity size={48} style={{ color: 'var(--bimo-border)', marginBottom: '16px' }} />
                         <p>No activity recorded yet.</p>
                     </div>
                 ) : (
@@ -127,32 +127,32 @@ export default function AdminActivityPage() {
                                         display: 'flex',
                                         gap: '16px',
                                         padding: '16px 0',
-                                        borderBottom: '1px solid #1a1a1a',
+                                        borderBottom: '1px solid var(--bimo-bg-secondary)',
                                         alignItems: 'flex-start'
                                     }}
                                 >
                                     <div style={{
                                         width: '36px',
                                         height: '36px',
-                                        backgroundColor: '#1a1a1a',
+                                        backgroundColor: 'var(--bimo-bg-secondary)',
                                         borderRadius: '50%',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         flexShrink: 0
                                     }}>
-                                        <ActionIcon size={16} style={{ color: '#666' }} />
+                                        <ActionIcon size={16} style={{ color: 'var(--bimo-text-disabled)' }} />
                                     </div>
 
                                     <div style={{ flex: 1 }}>
                                         <div style={{ color: '#ccc', fontSize: '14px', marginBottom: '4px' }}>
-                                            <span style={{ color: '#fff' }}>{log.userEmail}</span>
+                                            <span style={{ color: 'var(--bimo-text-primary)' }}>{log.userEmail}</span>
                                             {' '}{getActionLabel(log)}{' '}
                                             {log.resourceName && (
                                                 <span style={{ color: '#6b9fff' }}>{log.resourceName}</span>
                                             )}
                                             {!log.resourceName && log.resourceType !== 'session' && (
-                                                <span style={{ color: '#888' }}>{log.resourceType}</span>
+                                                <span style={{ color: 'var(--bimo-text-secondary)' }}>{log.resourceType}</span>
                                             )}
                                         </div>
                                         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>

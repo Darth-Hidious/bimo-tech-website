@@ -66,7 +66,7 @@ export default function AdminContactsPage() {
     if (loading) {
         return (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -78,7 +78,7 @@ export default function AdminContactsPage() {
                     <span className={styles.sectionTitle}>Inquiries</span>
                     <h1 className={styles.pageTitle}>Contact Submissions</h1>
                 </div>
-                <span style={{ color: '#666', fontSize: '14px' }}>{contacts.length} messages</span>
+                <span style={{ color: 'var(--bimo-text-disabled)', fontSize: '14px' }}>{contacts.length} messages</span>
             </header>
 
             <div className={styles.panel}>
@@ -95,10 +95,10 @@ export default function AdminContactsPage() {
                     <tbody>
                         {contacts.map((item) => (
                             <tr key={item.id}>
-                                <td style={{ fontFamily: 'var(--font-mono)', color: '#666' }}>
+                                <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--bimo-text-disabled)' }}>
                                     {item.createdAt ? formatDate(item.createdAt) : '—'}
                                 </td>
-                                <td style={{ color: '#fff' }}>{item.name}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{item.name}</td>
                                 <td style={{ color: '#6b9fff' }}>{item.email}</td>
                                 <td style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     {item.message}
@@ -130,29 +130,29 @@ export default function AdminContactsPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '500px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '500px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
-                            <h2 style={{ fontSize: '18px', color: '#fff' }}>Message Details</h2>
-                            <button onClick={() => setViewDialogOpen(false)} style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer' }}>
+                            <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)' }}>Message Details</h2>
+                            <button onClick={() => setViewDialogOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--bimo-text-disabled)', cursor: 'pointer' }}>
                                 <X size={20} />
                             </button>
                         </div>
 
                         <div style={{ marginBottom: '24px' }}>
                             <span className={styles.formLabel}>From</span>
-                            <p style={{ color: '#fff', marginBottom: '4px' }}>{selectedItem.name}</p>
+                            <p style={{ color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{selectedItem.name}</p>
                             <p style={{ color: '#6b9fff', fontSize: '14px' }}>{selectedItem.email}</p>
                         </div>
 
                         <div style={{ marginBottom: '24px' }}>
                             <span className={styles.formLabel}>Received</span>
-                            <p style={{ color: '#999' }}>{selectedItem.createdAt ? formatDate(selectedItem.createdAt) : '—'}</p>
+                            <p style={{ color: 'var(--bimo-text-secondary)' }}>{selectedItem.createdAt ? formatDate(selectedItem.createdAt) : '—'}</p>
                         </div>
 
                         <div>
                             <span className={styles.formLabel}>Message</span>
                             <div style={{
-                                backgroundColor: '#0a0a0a', border: '1px solid #222', padding: '16px',
+                                backgroundColor: '#0a0a0a', border: '1px solid var(--bimo-border)', padding: '16px',
                                 color: '#ccc', whiteSpace: 'pre-wrap', marginTop: '8px', fontSize: '14px', lineHeight: 1.6
                             }}>
                                 {selectedItem.message}
@@ -172,15 +172,15 @@ export default function AdminContactsPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '400px' }}>
-                        <h2 style={{ fontSize: '18px', color: '#fff', marginBottom: '16px' }}>Delete Message</h2>
-                        <p style={{ color: '#999', marginBottom: '24px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '400px' }}>
+                        <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)', marginBottom: '16px' }}>Delete Message</h2>
+                        <p style={{ color: 'var(--bimo-text-secondary)', marginBottom: '24px' }}>
                             Delete message from &ldquo;{itemToDelete?.name}&rdquo;? This cannot be undone.
                         </p>
                         <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
                             <button onClick={() => setDeleteDialogOpen(false)} className={styles.btnSecondary}>Cancel</button>
                             <button onClick={handleDelete} style={{
-                                padding: '12px 24px', backgroundColor: '#dc2626', color: '#fff',
+                                padding: '12px 24px', backgroundColor: '#dc2626', color: 'var(--bimo-text-primary)',
                                 border: 'none', fontSize: '13px', cursor: 'pointer'
                             }} disabled={saving}>
                                 {saving ? 'Deleting...' : 'Delete'}

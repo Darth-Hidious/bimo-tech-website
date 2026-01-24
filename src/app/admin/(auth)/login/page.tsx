@@ -144,12 +144,12 @@ export default function AdminLoginPage() {
         return (
             <div style={{
                 minHeight: '100vh',
-                backgroundColor: '#000',
+                backgroundColor: 'var(--bimo-bg-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -157,7 +157,7 @@ export default function AdminLoginPage() {
     return (
         <div style={{
             minHeight: '100vh',
-            backgroundColor: '#000',
+            backgroundColor: 'var(--bimo-bg-primary)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -166,7 +166,7 @@ export default function AdminLoginPage() {
             <div style={{
                 width: '100%',
                 maxWidth: '400px',
-                border: '1px solid #222',
+                border: '1px solid var(--bimo-border)',
                 padding: '48px 32px'
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -177,10 +177,10 @@ export default function AdminLoginPage() {
                         height={40}
                         style={{ marginBottom: '24px' }}
                     />
-                    <h1 style={{ fontSize: '24px', color: '#fff', marginBottom: '8px' }}>
+                    <h1 style={{ fontSize: '24px', color: 'var(--bimo-text-primary)', marginBottom: '8px' }}>
                         {isSignUp ? 'Request Access' : 'Admin Login'}
                     </h1>
-                    <p style={{ color: '#666', fontSize: '14px' }}>
+                    <p style={{ color: 'var(--bimo-text-disabled)', fontSize: '14px' }}>
                         {isSignUp ? 'Create an account to request access' : 'Sign in to manage content'}
                     </p>
                 </div>
@@ -260,7 +260,7 @@ export default function AdminLoginPage() {
                         style={{
                             background: 'none',
                             border: 'none',
-                            color: '#666',
+                            color: 'var(--bimo-text-disabled)',
                             cursor: 'pointer',
                             fontSize: '13px'
                         }}

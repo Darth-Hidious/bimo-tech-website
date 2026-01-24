@@ -9,16 +9,31 @@
 }
 
 :root {
-  --warm-off-white: #ffffff;
-  --warm-off-white-dim: #cccccc;
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --background-dark: #1a1a1a;
-  --background-gradient-1: #222222;
-  --background-gradient-2: #1a1a1a;
-  --font-primary: "PP Neue Montreal", sans-serif;
-  --font-secondary: "PPSupplyMono", monospace;
-  --font-sans: "PP Neue Montreal", sans-serif;
+  /* Bimo Tech Color Palette */
+  --bimo-bg-primary: #000624;
+  --bimo-bg-secondary: #000418;
+  --bimo-bg-elevated: #0a0f38;
+  --bimo-text-primary: #FFFFFF;
+  --bimo-text-secondary: #E8E8E8;
+  --bimo-text-disabled: #A0A0A0;
+  --bimo-accent: #8D99AE;
+  --bimo-accent-alt: #EDF2F4;
+  --bimo-success: #2ECC9A;
+  --bimo-warning: #F5A623;
+  --bimo-error: #E05A5A;
+  --bimo-border: rgba(141, 153, 174, 0.2);
+
+  /* Legacy variables - mapped to new palette */
+  --warm-off-white: var(--bimo-text-primary);
+  --warm-off-white-dim: var(--bimo-text-secondary);
+  --text-primary: var(--bimo-text-primary);
+  --text-secondary: var(--bimo-text-secondary);
+  --background-dark: var(--bimo-bg-primary);
+  --background-gradient-1: var(--bimo-bg-secondary);
+  --background-gradient-2: var(--bimo-bg-primary);
+  --font-primary: var(--font-ibm-plex-sans, "PP Neue Montreal", sans-serif);
+  --font-secondary: var(--font-ibm-plex-mono, "PPSupplyMono", monospace);
+  --font-sans: var(--font-inter, "PP Neue Montreal", sans-serif);
   --font-size-small: 10px;
   --font-size-regular: 1rem;
   --font-size-medium: 1.5rem;
@@ -38,7 +53,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #0f0f0f;
+  background-color: var(--bimo-bg-primary);
 }
 
 .heroSection {
@@ -49,7 +64,7 @@
   height: 100vh;
   z-index: 1;
   overflow: hidden;
-  background-color: #000;
+  background-color: var(--bimo-bg-primary);
 }
 
 .heroSection #container {
@@ -384,5 +399,324 @@
 
   .contactEmail {
     font-size: 10px;
+  }
+}
+
+/* ========================================
+   BIMO TECH 2030 - AI INTERACTION LAYER
+   ======================================== */
+
+.hero2030 {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 90%;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* AI Prompt Container */
+.aiPromptContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.aiPromptLabel {
+  font-family: var(--font-primary);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--bimo-text-primary);
+  text-align: center;
+  margin: 0;
+}
+
+.aiInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem 1.25rem;
+  background: var(--bimo-bg-elevated);
+  border: 1px solid var(--bimo-border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aiInputWrapper:focus-within {
+  border-color: var(--bimo-accent);
+  box-shadow: 0 0 0 3px rgba(58, 123, 255, 0.15);
+}
+
+.aiInputIcon {
+  color: var(--bimo-text-disabled);
+  flex-shrink: 0;
+}
+
+.aiInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--bimo-text-primary);
+}
+
+.aiInput::placeholder {
+  color: var(--bimo-text-disabled);
+}
+
+.aiMicButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bimo-bg-secondary);
+  border: 1px solid var(--bimo-border);
+  border-radius: 6px;
+  color: var(--bimo-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aiMicButton:hover {
+  background: var(--bimo-accent);
+  border-color: var(--bimo-accent);
+  color: #fff;
+}
+
+/* Intent Selection Section */
+.intentSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.intentLabel {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--bimo-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.intentButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.intentButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: var(--bimo-bg-elevated);
+  border: 1px solid var(--bimo-border);
+  border-radius: 8px;
+  color: var(--bimo-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.intentButton:hover {
+  border-color: var(--bimo-accent);
+  background: var(--bimo-bg-secondary);
+  transform: translateY(-2px);
+}
+
+.intentIcon {
+  color: var(--bimo-accent);
+}
+
+.intentTitle {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--bimo-text-primary);
+  line-height: 1.3;
+}
+
+.intentDesc {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--bimo-text-secondary);
+  line-height: 1.4;
+}
+
+/* Hero Headline - Simplified 2030 */
+.heroHeadline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  color: var(--bimo-text-primary);
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.titleStatic {
+  color: var(--bimo-text-primary);
+}
+
+.titleCarouselWrapper {
+  display: inline-block;
+  height: 1.2em;
+  overflow: hidden;
+  vertical-align: bottom;
+  position: relative;
+}
+
+.titleCarousel {
+  display: flex;
+  flex-direction: column;
+  animation: textCarousel 12.5s linear infinite;
+}
+
+.titleSlide {
+  height: 1.2em;
+  display: flex;
+  align-items: center;
+  color: var(--bimo-accent);
+  white-space: nowrap;
+}
+
+@keyframes textCarousel {
+  0%, 15% {
+    transform: translateY(0);
+  }
+  20%, 35% {
+    transform: translateY(-16.666%);
+  }
+  40%, 55% {
+    transform: translateY(-33.333%);
+  }
+  60%, 75% {
+    transform: translateY(-50%);
+  }
+  80%, 95% {
+    transform: translateY(-66.666%);
+  }
+  100% {
+    transform: translateY(-83.333%);
+  }
+}
+
+.heroSubtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--bimo-text-secondary);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: var(--bimo-accent);
+  color: var(--bimo-oak);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.primaryCta:hover {
+  background: #5a1233;
+  transform: translateY(-1px);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  color: var(--bimo-text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--bimo-border);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.secondaryCta:hover {
+  border-color: var(--bimo-text-secondary);
+  background: var(--bimo-bg-elevated);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero2030 {
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .aiPromptLabel {
+    font-size: 1.25rem;
+  }
+
+  .intentButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .intentButton {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .intentIcon {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .heroCtas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    justify-content: center;
   }
 }

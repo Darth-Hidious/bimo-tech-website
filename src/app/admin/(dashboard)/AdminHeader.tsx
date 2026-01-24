@@ -3,20 +3,14 @@
 import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Bell, LogOut, X } from 'lucide-react';
-import styles from '../admin.module.css';
-
-
-
 import { useRouter } from 'next/navigation';
 import { useAdminNotifications } from '@/hooks/useAdminNotifications';
-
 
 export default function AdminHeader() {
     const { user, signOut } = useAuth();
     const router = useRouter();
     const [showNotifications, setShowNotifications] = useState(false);
-    const { notifications, loading } = useAdminNotifications();
-
+    const { notifications } = useAdminNotifications();
 
     const unreadCount = notifications.filter(n => !n.read).length;
 
@@ -37,8 +31,8 @@ export default function AdminHeader() {
             left: 0,
             right: 0,
             height: '64px',
-            backgroundColor: '#000',
-            borderBottom: '1px solid #222',
+            backgroundColor: 'var(--bimo-bg-primary)',
+            borderBottom: '1px solid var(--bimo-border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
@@ -53,7 +47,7 @@ export default function AdminHeader() {
                     style={{
                         background: 'none',
                         border: 'none',
-                        color: '#999',
+                        color: 'var(--bimo-text-disabled)',
                         cursor: 'pointer',
                         padding: '8px',
                         position: 'relative'
@@ -79,8 +73,8 @@ export default function AdminHeader() {
                         top: '100%',
                         right: 0,
                         width: '320px',
-                        backgroundColor: '#111',
-                        border: '1px solid #333',
+                        backgroundColor: 'var(--bimo-bg-secondary)',
+                        border: '1px solid var(--bimo-border)',
                         marginTop: '8px'
                     }}>
                         <div style={{
@@ -88,12 +82,12 @@ export default function AdminHeader() {
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             padding: '16px',
-                            borderBottom: '1px solid #222'
+                            borderBottom: '1px solid var(--bimo-border)'
                         }}>
-                            <span style={{ color: '#fff', fontSize: '14px', fontWeight: 500 }}>Notifications</span>
+                            <span style={{ color: 'var(--bimo-text-primary)', fontSize: '14px', fontWeight: 500 }}>Notifications</span>
                             <button
                                 onClick={() => setShowNotifications(false)}
-                                style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer' }}
+                                style={{ background: 'none', border: 'none', color: 'var(--bimo-text-disabled)', cursor: 'pointer' }}
                             >
                                 <X size={16} />
                             </button>
@@ -101,7 +95,7 @@ export default function AdminHeader() {
 
                         <div style={{ maxHeight: '300px', overflow: 'auto' }}>
                             {notifications.length === 0 ? (
-                                <p style={{ padding: '24px', textAlign: 'center', color: '#666', fontSize: '13px' }}>
+                                <p style={{ padding: '24px', textAlign: 'center', color: 'var(--bimo-text-disabled)', fontSize: '13px' }}>
                                     No notifications
                                 </p>
                             ) : (
@@ -114,7 +108,7 @@ export default function AdminHeader() {
                                         }}
                                         style={{
                                             padding: '12px 16px',
-                                            borderBottom: '1px solid #1a1a1a',
+                                            borderBottom: '1px solid var(--bimo-border)',
                                             backgroundColor: n.read ? 'transparent' : 'rgba(255,255,255,0.02)',
                                             cursor: 'pointer',
                                             transition: 'background-color 0.2s'
@@ -126,18 +120,17 @@ export default function AdminHeader() {
                                             <span style={{
                                                 color: n.type === 'rfq' ? '#60a5fa' :
                                                     n.type === 'signup' ? '#34d399' :
-                                                        n.type === 'product' ? '#fbbf24' : '#fff',
+                                                        n.type === 'product' ? '#fbbf24' : 'var(--bimo-text-primary)',
                                                 fontSize: '13px',
                                                 fontWeight: 500
                                             }}>
                                                 {n.title}
                                             </span>
-                                            <span style={{ color: '#555', fontSize: '11px' }}>{formatTime(n.timestamp)}</span>
+                                            <span style={{ color: 'var(--bimo-text-disabled)', fontSize: '11px' }}>{formatTime(n.timestamp)}</span>
                                         </div>
-                                        <p style={{ color: '#888', fontSize: '12px', margin: 0 }}>{n.message}</p>
+                                        <p style={{ color: 'var(--bimo-text-secondary)', fontSize: '12px', margin: 0 }}>{n.message}</p>
                                     </div>
                                 ))
-
                             )}
                         </div>
                     </div>
@@ -146,13 +139,13 @@ export default function AdminHeader() {
 
             {/* User Info */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span style={{ color: '#888', fontSize: '13px' }}>{user?.email}</span>
+                <span style={{ color: 'var(--bimo-text-secondary)', fontSize: '13px' }}>{user?.email}</span>
                 <button
                     onClick={signOut}
                     style={{
                         background: 'none',
                         border: 'none',
-                        color: '#666',
+                        color: 'var(--bimo-text-disabled)',
                         cursor: 'pointer',
                         padding: '8px',
                         display: 'flex',

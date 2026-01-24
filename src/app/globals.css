@@ -2,9 +2,39 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ========================================
+   BIMO TECH 2030 DESIGN SYSTEM
+   ======================================== */
+
+/* Color Palette */
+:root {
+  /* Backgrounds */
+  --bimo-bg-primary: #000624;
+  --bimo-bg-secondary: #000418;
+  --bimo-bg-elevated: #0a0f38;
+  --bimo-bg-surface: #e0cba8;      /* Pale Oak - Tables, forms (light mode) */
+
+  /* Text Colors */
+  --bimo-text-primary: #FFFFFF;
+  --bimo-text-secondary: #E8E8E8;
+  --bimo-text-disabled: #A0A0A0;
+
+  /* Accents */
+  --bimo-accent: #8D99AE;          /* Slate */
+  --bimo-accent-alt: #EDF2F4;      /* Light */
+  --bimo-success: #2ECC9A;         /* Controlled Green - Feasible */
+  --bimo-warning: #F5A623;         /* Amber Technical - Constraints */
+  --bimo-error: #E05A5A;           /* Muted Red - Errors */
+
+  /* Borders */
+  --bimo-border: rgba(141, 153, 174, 0.2);
+  --bimo-border-light: rgba(141, 153, 174, 0.1);
+}
+
 @theme {
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: var(--font-space-mono), 'JetBrains Mono', monospace;
+  --font-heading: var(--font-ibm-plex-sans), var(--font-inter), -apple-system, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), 'JetBrains Mono', monospace;
 }
 
 * {
@@ -15,73 +45,84 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 17px;
-  /* Base size - slightly reduced for better proportions */
+  font-size: 16px;
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bimo-bg-primary);
+  color: var(--bimo-text-primary);
   font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography - Enhanced Readability */
+/* Typography - Bimo Tech 2030 System
+   Primary: Inter (body, UI)
+   Secondary: IBM Plex Sans (headings)
+   Mono: IBM Plex Mono (data, parameters)
+*/
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #fff;
+  letter-spacing: -0.01em;
+  color: var(--bimo-text-primary);
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 600;
+  font-size: clamp(1.75rem, 4vw, 2rem);  /* 28-32px */
+  font-weight: 500;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.375rem, 3vw, 1.625rem);  /* 22-26px */
   font-weight: 600;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);  /* 18-20px */
   font-weight: 600;
 }
 
 p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #d0d0d0;
-  font-weight: 450;
+  font-size: 0.9375rem;  /* 15-16px */
+  line-height: 1.5;
+  color: var(--bimo-text-secondary);
+  font-weight: 400;
 }
 
-/* Small text - minimum 14px for accessibility */
+/* Small text - minimum 13px for data labels */
 small,
 .text-sm {
-  font-size: 0.875rem;
-  /* 14px at 16px base */
-  line-height: 1.6;
-  color: #b0b0b0;
-  font-weight: 450;
+  font-size: 0.8125rem;  /* 13px */
+  line-height: 1.3;
+  color: var(--bimo-text-secondary);
+  font-weight: 400;
 }
 
 /* Labels and captions */
 .label,
 .caption {
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;  /* 12px */
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #999;
-  font-weight: 600;
+  color: var(--bimo-text-disabled);
+  font-weight: 500;
+}
+
+/* Data/Parameter styling */
+.data-value,
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;  /* 13px */
+  color: var(--bimo-text-primary);
 }
 
 a {
@@ -91,11 +132,11 @@ a {
 }
 
 a:hover {
-  color: #fff;
+  color: var(--bimo-text-primary);
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(58, 123, 255, 0.3);
 }
 
 /* Container - The fix for centering */
@@ -122,43 +163,85 @@ a:hover {
   }
 }
 
-/* Button styles */
+/* Mobile bottom nav clearance - prevents footer overlap */
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 100px !important;
+  }
+}
+
+/* Button styles - Bimo Tech 2030 */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 32px;
-  border: 1px solid #fff;
-  background: transparent;
+  padding: 14px 28px;
+  border: 1px solid var(--bimo-accent);
+  background: var(--bimo-accent);
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #fff;
-  color: #000;
+  background: transparent;
+  color: var(--bimo-accent);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 32px;
-  border: 1px solid #444;
+  padding: 14px 28px;
+  border: 1px solid var(--bimo-border);
   background: transparent;
-  color: #ccc;
-  font-size: 0.875rem;
+  color: var(--bimo-text-secondary);
+  font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-  border-color: #888;
-  color: #fff;
+  border-color: var(--bimo-text-secondary);
+  color: var(--bimo-text-primary);
+}
+
+/* Intent Path buttons - Three equal paths */
+.btn-intent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 20px 24px;
+  border: 1px solid var(--bimo-border);
+  background: var(--bimo-bg-elevated);
+  color: var(--bimo-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.btn-intent:hover {
+  border-color: var(--bimo-accent);
+  background: var(--bimo-bg-secondary);
+}
+
+.btn-intent .intent-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bimo-text-primary);
+}
+
+.btn-intent .intent-desc {
+  font-size: 0.8125rem;
+  color: var(--bimo-text-secondary);
+  line-height: 1.4;
 }
 
 /* Form inputs */
@@ -175,16 +258,16 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: var(--bimo-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--bimo-bg-elevated);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--bimo-text-disabled);
 }
 
 /* Custom Scrollbar Utility */
@@ -198,20 +281,52 @@ select {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #333;
+    background-color: var(--bimo-bg-elevated);
     border-radius: 9999px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: var(--bimo-text-disabled);
   }
 }
 
 /* Focus states for accessibility */
 :focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--bimo-accent);
   outline-offset: 2px;
 }
+
+/* AI Chat interface styling */
+.ai-panel {
+  background: var(--bimo-bg-secondary);
+}
+
+.ai-message {
+  background: var(--bimo-bg-elevated);
+  color: var(--bimo-text-primary);
+}
+
+.ai-input {
+  background: var(--bimo-bg-elevated);
+  border: 1px solid var(--bimo-border);
+  color: var(--bimo-text-primary);
+}
+
+/* Status colors */
+.status-success { color: var(--bimo-success); }
+.status-warning { color: var(--bimo-warning); }
+.status-error { color: var(--bimo-error); }
+
+/* Card/Panel surfaces */
+.card,
+.panel {
+  background: var(--bimo-bg-elevated);
+  border: 1px solid var(--bimo-border);
+}
+
+/* Section backgrounds */
+.section-primary { background: var(--bimo-bg-primary); }
+.section-secondary { background: var(--bimo-bg-secondary); }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {

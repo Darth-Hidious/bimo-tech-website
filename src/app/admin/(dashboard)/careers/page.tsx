@@ -96,7 +96,7 @@ export default function AdminCareersPage() {
     if (loading) {
         return (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -127,7 +127,7 @@ export default function AdminCareersPage() {
                     <tbody>
                         {careers.map((item) => (
                             <tr key={item.id}>
-                                <td style={{ color: '#fff' }}>{item.title}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{item.title}</td>
                                 <td><span className={styles.statusPill}>{item.department}</span></td>
                                 <td>{item.location}</td>
                                 <td><span className={`${styles.statusPill} ${styles.statusPillSuccess}`}>{item.type}</span></td>
@@ -158,10 +158,10 @@ export default function AdminCareersPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '500px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '500px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
-                            <h2 style={{ fontSize: '18px', color: '#fff' }}>{editingItem ? 'Edit Position' : 'Add Position'}</h2>
-                            <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer' }}>
+                            <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)' }}>{editingItem ? 'Edit Position' : 'Add Position'}</h2>
+                            <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--bimo-text-disabled)', cursor: 'pointer' }}>
                                 <X size={20} />
                             </button>
                         </div>
@@ -237,15 +237,15 @@ export default function AdminCareersPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '400px' }}>
-                        <h2 style={{ fontSize: '18px', color: '#fff', marginBottom: '16px' }}>Delete Position</h2>
-                        <p style={{ color: '#999', marginBottom: '24px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '400px' }}>
+                        <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)', marginBottom: '16px' }}>Delete Position</h2>
+                        <p style={{ color: 'var(--bimo-text-secondary)', marginBottom: '24px' }}>
                             Delete &ldquo;{itemToDelete?.title}&rdquo;? This cannot be undone.
                         </p>
                         <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
                             <button onClick={() => setDeleteDialogOpen(false)} className={styles.btnSecondary}>Cancel</button>
                             <button onClick={handleDelete} style={{
-                                padding: '12px 24px', backgroundColor: '#dc2626', color: '#fff',
+                                padding: '12px 24px', backgroundColor: '#dc2626', color: 'var(--bimo-text-primary)',
                                 border: 'none', fontSize: '13px', cursor: 'pointer'
                             }} disabled={saving}>
                                 {saving ? 'Deleting...' : 'Delete'}

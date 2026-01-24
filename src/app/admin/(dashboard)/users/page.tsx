@@ -142,8 +142,8 @@ export default function AdminUsersPage() {
                     <h1 className={styles.pageTitle}>User Management</h1>
                 </header>
                 <div className={styles.panel} style={{ textAlign: 'center', padding: '48px' }}>
-                    <Shield size={48} style={{ color: '#333', marginBottom: '16px' }} />
-                    <p style={{ color: '#666' }}>You don&apos;t have permission to manage users.</p>
+                    <Shield size={48} style={{ color: 'var(--bimo-border)', marginBottom: '16px' }} />
+                    <p style={{ color: 'var(--bimo-text-disabled)' }}>You don&apos;t have permission to manage users.</p>
                 </div>
             </div>
         );
@@ -152,7 +152,7 @@ export default function AdminUsersPage() {
     if (loading) {
         return (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -181,11 +181,11 @@ export default function AdminUsersPage() {
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             padding: '12px 0',
-                            borderBottom: '1px solid #222'
+                            borderBottom: '1px solid var(--bimo-border)'
                         }}>
                             <div>
-                                <span style={{ color: '#fff' }}>{user.displayName}</span>
-                                <span style={{ color: '#666', marginLeft: '8px', fontSize: '13px' }}>{user.email}</span>
+                                <span style={{ color: 'var(--bimo-text-primary)' }}>{user.displayName}</span>
+                                <span style={{ color: 'var(--bimo-text-disabled)', marginLeft: '8px', fontSize: '13px' }}>{user.email}</span>
                             </div>
                             <div style={{ display: 'flex', gap: '8px' }}>
                                 <button
@@ -193,7 +193,7 @@ export default function AdminUsersPage() {
                                     style={{
                                         background: '#48bb78',
                                         border: 'none',
-                                        color: '#fff',
+                                        color: 'var(--bimo-text-primary)',
                                         padding: '6px 12px',
                                         cursor: 'pointer',
                                         display: 'flex',
@@ -241,7 +241,7 @@ export default function AdminUsersPage() {
                     <tbody>
                         {users.filter(u => u.status !== 'pending').map((user) => (
                             <tr key={user.uid}>
-                                <td style={{ color: '#fff' }}>{user.displayName}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{user.displayName}</td>
                                 <td style={{ color: '#6b9fff' }}>{user.email}</td>
                                 <td>{getStatusBadge(user.status)}</td>
                                 <td>
@@ -251,8 +251,8 @@ export default function AdminUsersPage() {
                                         disabled={user.uid === profile?.uid}
                                         style={{
                                             background: 'transparent',
-                                            border: '1px solid #333',
-                                            color: '#fff',
+                                            border: '1px solid var(--bimo-border)',
+                                            color: 'var(--bimo-text-primary)',
                                             padding: '6px 12px',
                                             fontSize: '12px',
                                             cursor: user.uid === profile?.uid ? 'not-allowed' : 'pointer',
@@ -264,7 +264,7 @@ export default function AdminUsersPage() {
                                         <option value="viewer">Viewer</option>
                                     </select>
                                 </td>
-                                <td style={{ color: '#666', fontSize: '13px' }}>
+                                <td style={{ color: 'var(--bimo-text-disabled)', fontSize: '13px' }}>
                                     {user.lastLoginAt ? new Date(user.lastLoginAt).toLocaleDateString() : '—'}
                                 </td>
                             </tr>
@@ -279,10 +279,10 @@ export default function AdminUsersPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '450px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '450px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
-                            <h2 style={{ fontSize: '18px', color: '#fff' }}>Add New User</h2>
-                            <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer' }}>
+                            <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)' }}>Add New User</h2>
+                            <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--bimo-text-disabled)', cursor: 'pointer' }}>
                                 <X size={20} />
                             </button>
                         </div>

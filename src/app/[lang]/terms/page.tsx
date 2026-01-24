@@ -7,14 +7,14 @@ export default function TermsPage() {
     const { t } = useLanguage();
 
     return (
-        <main style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', paddingTop: '140px' }}>
+        <main style={{ backgroundColor: 'var(--bimo-bg-primary)', color: 'var(--bimo-text-primary)', minHeight: '100vh', paddingTop: '140px' }}>
             <div className="container-main" style={{ maxWidth: '800px', paddingBottom: '80px' }}>
                 <h1 style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 500, marginBottom: '24px' }}>
                     {t('termsPage.title')}
                 </h1>
 
                 <section style={{ marginBottom: '60px' }}>
-                    <p style={{ fontSize: '18px', lineHeight: 1.6, color: '#ccc' }}>
+                    <p style={{ fontSize: '18px', lineHeight: 1.6, color: 'var(--bimo-text-secondary)' }}>
                         {t('termsPage.intro')}
                     </p>
                 </section>
@@ -28,10 +28,10 @@ export default function TermsPage() {
                         'law'
                     ].map((section) => (
                         <section key={section}>
-                            <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '16px', color: '#fff' }}>
+                            <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '16px', color: 'var(--bimo-text-primary)' }}>
                                 {t(`termsPage.${section}.title`)}
                             </h2>
-                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#999' }}>
+                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--bimo-text-disabled)' }}>
                                 {t(`termsPage.${section}.content`)}
                             </p>
                         </section>

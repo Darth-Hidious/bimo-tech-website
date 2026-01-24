@@ -41,28 +41,28 @@ export default function ContactPage() {
   };
 
   return (
-    <main style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh' }}>
+    <main style={{ backgroundColor: 'var(--bimo-bg-primary)', color: 'var(--bimo-text-primary)', minHeight: '100vh' }}>
       {/* Header */}
       <section style={{ paddingTop: '140px', paddingBottom: '80px' }}>
         <div className="container-main">
-          <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '24px', fontWeight: 500 }}>Contact</p>
-          <h1 style={{ fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 500, lineHeight: 1.1, maxWidth: '800px', marginBottom: '32px' }}>Let's discuss your <span style={{ color: '#888' }}>requirements</span>
+          <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: 'var(--bimo-text-disabled)', textTransform: 'uppercase', marginBottom: '24px', fontWeight: 500 }}>Contact</p>
+          <h1 style={{ fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 500, lineHeight: 1.1, maxWidth: '800px', marginBottom: '32px' }}>Let's discuss your <span style={{ color: 'var(--bimo-text-secondary)' }}>requirements</span>
           </h1>
-          <p style={{ fontSize: '18px', color: '#bbb', maxWidth: '600px', lineHeight: 1.6 }}>Whether you need standard materials or custom solutions, our team is ready to help.</p>
+          <p style={{ fontSize: '18px', color: 'var(--bimo-text-secondary)', maxWidth: '600px', lineHeight: 1.6 }}>Whether you need standard materials or custom solutions, our team is ready to help.</p>
         </div>
       </section>
 
       {/* Contact Grid */}
-      <section style={{ padding: '60px 0', borderTop: '1px solid #222' }}>
+      <section style={{ padding: '60px 0', borderTop: '1px solid var(--bimo-border)' }}>
         <div className="container-main">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '80px' }}>
             {/* Form */}
             <div>
-              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '32px', fontWeight: 500 }}>Send a message</p>
+              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: 'var(--bimo-text-disabled)', textTransform: 'uppercase', marginBottom: '32px', fontWeight: 500 }}>Send a message</p>
               <form onSubmit={handleSubmit}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Name</label>
+                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Name</label>
                     <input
                       type="text"
                       value={formData.name}
@@ -71,9 +71,9 @@ export default function ContactPage() {
                         width: '100%',
                         background: 'transparent',
                         border: 'none',
-                        borderBottom: '1px solid #333',
+                        borderBottom: '1px solid var(--bimo-border)',
                         padding: '12px 0',
-                        color: '#fff',
+                        color: 'var(--bimo-text-primary)',
                         fontSize: '15px',
                         outline: 'none'
                       }}
@@ -81,7 +81,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Email</label>
+                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Email</label>
                     <input
                       type="email"
                       value={formData.email}
@@ -90,9 +90,9 @@ export default function ContactPage() {
                         width: '100%',
                         background: 'transparent',
                         border: 'none',
-                        borderBottom: '1px solid #333',
+                        borderBottom: '1px solid var(--bimo-border)',
                         padding: '12px 0',
-                        color: '#fff',
+                        color: 'var(--bimo-text-primary)',
                         fontSize: '15px',
                         outline: 'none'
                       }}
@@ -102,7 +102,7 @@ export default function ContactPage() {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Company</label>
+                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Company</label>
                     <input
                       type="text"
                       value={formData.company}
@@ -111,16 +111,16 @@ export default function ContactPage() {
                         width: '100%',
                         background: 'transparent',
                         border: 'none',
-                        borderBottom: '1px solid #333',
+                        borderBottom: '1px solid var(--bimo-border)',
                         padding: '12px 0',
-                        color: '#fff',
+                        color: 'var(--bimo-text-primary)',
                         fontSize: '15px',
                         outline: 'none'
                       }}
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Subject</label>
+                    <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Subject</label>
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -128,25 +128,25 @@ export default function ContactPage() {
                         width: '100%',
                         background: 'transparent',
                         border: 'none',
-                        borderBottom: '1px solid #333',
+                        borderBottom: '1px solid var(--bimo-border)',
                         padding: '12px 0',
-                        color: '#fff',
+                        color: 'var(--bimo-text-primary)',
                         fontSize: '15px',
                         outline: 'none'
                       }}
                       required
                     >
-                      <option value="" style={{ background: '#000' }}>Select...</option>
-                      <option value="quote" style={{ background: '#000' }}>Request a quote</option>
-                      <option value="technical" style={{ background: '#000' }}>Technical inquiry</option>
-                      <option value="partnership" style={{ background: '#000' }}>Partnership</option>
-                      <option value="careers" style={{ background: '#000' }}>Careers</option>
-                      <option value="other" style={{ background: '#000' }}>Other</option>
+                      <option value="" style={{ background: 'var(--bimo-bg-primary)' }}>Select...</option>
+                      <option value="quote" style={{ background: 'var(--bimo-bg-primary)' }}>Request a quote</option>
+                      <option value="technical" style={{ background: 'var(--bimo-bg-primary)' }}>Technical inquiry</option>
+                      <option value="partnership" style={{ background: 'var(--bimo-bg-primary)' }}>Partnership</option>
+                      <option value="careers" style={{ background: 'var(--bimo-bg-primary)' }}>Careers</option>
+                      <option value="other" style={{ background: 'var(--bimo-bg-primary)' }}>Other</option>
                     </select>
                   </div>
                 </div>
                 <div style={{ marginBottom: '32px' }}>
-                  <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Message</label>
+                  <label style={{ display: 'block', fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 500 }}>Message</label>
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -155,9 +155,9 @@ export default function ContactPage() {
                       width: '100%',
                       background: 'transparent',
                       border: 'none',
-                      borderBottom: '1px solid #333',
+                      borderBottom: '1px solid var(--bimo-border)',
                       padding: '12px 0',
-                      color: '#fff',
+                      color: 'var(--bimo-text-primary)',
                       fontSize: '15px',
                       outline: 'none',
                       resize: 'none'
@@ -173,9 +173,9 @@ export default function ContactPage() {
                     alignItems: 'center',
                     gap: '12px',
                     padding: '16px 32px',
-                    border: '1px solid #fff',
-                    background: success ? '#222' : 'transparent',
-                    color: success ? '#4ade80' : '#fff',
+                    border: '1px solid var(--bimo-text-primary)',
+                    background: success ? 'var(--bimo-border)' : 'transparent',
+                    color: success ? '#4ade80' : 'var(--bimo-text-primary)',
                     fontSize: '14px',
                     cursor: submitting || success ? 'default' : 'pointer',
                     transition: 'all 0.2s'
@@ -190,25 +190,25 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div>
-              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: '#999', textTransform: 'uppercase', marginBottom: '32px', fontWeight: 500 }}>Direct contact</p>
+              <p style={{ fontSize: '14px', letterSpacing: '0.2em', color: 'var(--bimo-text-disabled)', textTransform: 'uppercase', marginBottom: '32px', fontWeight: 500 }}>Direct contact</p>
               <div style={{ marginBottom: '48px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                  <Mail size={18} style={{ color: '#888' }} />
-                  <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', fontWeight: 500 }}>Email</span>
+                  <Mail size={18} style={{ color: 'var(--bimo-text-secondary)' }} />
+                  <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', fontWeight: 500 }}>Email</span>
                 </div>
                 <a href="mailto:info@bimotech.pl" style={{ fontSize: '28px', fontWeight: 500 }}>info@bimotech.pl</a>
               </div>
               <div style={{ marginBottom: '48px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                  <Phone size={18} style={{ color: '#888' }} />
-                  <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', fontWeight: 500 }}>Phone</span>
+                  <Phone size={18} style={{ color: 'var(--bimo-text-secondary)' }} />
+                  <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', fontWeight: 500 }}>Phone</span>
                 </div>
                 <a href="tel:+48123456789" style={{ fontSize: '28px', fontWeight: 500 }}>+48 123 456 789</a>
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                  <MapPin size={18} style={{ color: '#888' }} />
-                  <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#888', textTransform: 'uppercase', fontWeight: 500 }}>Address</span>
+                  <MapPin size={18} style={{ color: 'var(--bimo-text-secondary)' }} />
+                  <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'var(--bimo-text-secondary)', textTransform: 'uppercase', fontWeight: 500 }}>Address</span>
                 </div>
                 <p style={{ fontSize: '22px', fontWeight: 500, lineHeight: 1.5 }}>Bimo Tech Sp. z o.o.<br />Francuska 11<br />54-405 Wroclaw, Poland</p>
               </div>
@@ -218,20 +218,20 @@ export default function ContactPage() {
       </section>
 
       {/* Response Time */}
-      <section style={{ padding: '80px 0', borderTop: '1px solid #222', backgroundColor: '#0a0a0a' }}>
+      <section style={{ padding: '80px 0', borderTop: '1px solid var(--bimo-border)', backgroundColor: 'var(--bimo-bg-secondary)' }}>
         <div className="container-main">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px' }}>
             <div>
               <p style={{ fontSize: '48px', fontWeight: 500, marginBottom: '12px' }}>24h</p>
-              <p style={{ fontSize: '14px', color: '#999' }}>Typical response time for general inquiries</p>
+              <p style={{ fontSize: '14px', color: 'var(--bimo-text-disabled)' }}>Typical response time for general inquiries</p>
             </div>
             <div>
               <p style={{ fontSize: '48px', fontWeight: 500, marginBottom: '12px' }}>48h</p>
-              <p style={{ fontSize: '14px', color: '#999' }}>For technical quotes and specifications</p>
+              <p style={{ fontSize: '14px', color: 'var(--bimo-text-disabled)' }}>For technical quotes and specifications</p>
             </div>
             <div>
               <p style={{ fontSize: '48px', fontWeight: 500, marginBottom: '12px' }}>1 week</p>
-              <p style={{ fontSize: '14px', color: '#999' }}>For custom engineering proposals</p>
+              <p style={{ fontSize: '14px', color: 'var(--bimo-text-disabled)' }}>For custom engineering proposals</p>
             </div>
           </div>
         </div>

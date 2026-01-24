@@ -1,7 +1,7 @@
 /* Admin Dashboard - Matching Main Website Style */
 
 .bgWrapper {
-    background-color: #000;
+    background-color: var(--bimo-bg-primary);
     min-height: 100vh;
     width: 100%;
 }
@@ -29,7 +29,7 @@
     font-size: 24px;
     font-weight: 500;
     letter-spacing: -0.02em;
-    color: #fff;
+    color: var(--bimo-text-primary);
     margin-bottom: 48px;
 }
 
@@ -39,7 +39,7 @@
     gap: 12px;
     padding: 12px 16px;
     font-size: 14px;
-    color: #999;
+    color: var(--bimo-text-disabled);
     cursor: pointer;
     transition: all 0.2s;
     border: none;
@@ -48,11 +48,11 @@
 }
 
 .navItem:hover {
-    color: #fff;
+    color: var(--bimo-text-primary);
 }
 
 .navItemActive {
-    color: #fff;
+    color: var(--bimo-text-primary);
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -65,7 +65,7 @@
     font-size: 12px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #666;
+    color: var(--bimo-text-disabled);
     margin-bottom: 8px;
     display: block;
 }
@@ -73,14 +73,14 @@
 .pageTitle {
     font-size: clamp(24px, 3vw, 32px);
     font-weight: 500;
-    color: #fff;
+    color: var(--bimo-text-primary);
     letter-spacing: -0.02em;
 }
 
 /* Panels/Cards */
 .panel {
     background: transparent;
-    border: 1px solid #222;
+    border: 1px solid var(--bimo-border);
     padding: 32px;
     margin-bottom: 24px;
 }
@@ -98,15 +98,15 @@
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #666;
-    border-bottom: 1px solid #222;
+    color: var(--bimo-text-disabled);
+    border-bottom: 1px solid var(--bimo-border);
 }
 
 .dataTable td {
     padding: 20px 12px;
     font-size: 14px;
-    color: #ccc;
-    border-bottom: 1px solid #111;
+    color: var(--bimo-text-secondary);
+    border-bottom: 1px solid rgba(141, 153, 174, 0.1);
     vertical-align: middle;
 }
 
@@ -120,9 +120,9 @@
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    border: 1px solid #fff;
+    border: 1px solid var(--bimo-text-primary);
     background: transparent;
-    color: #fff;
+    color: var(--bimo-text-primary);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -130,8 +130,8 @@
 }
 
 .btnPrimary:hover {
-    background: #fff;
-    color: #000;
+    background: var(--bimo-text-primary);
+    color: var(--bimo-bg-primary);
 }
 
 .btnSecondary {
@@ -139,9 +139,9 @@
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    border: 1px solid #333;
+    border: 1px solid var(--bimo-border);
     background: transparent;
-    color: #999;
+    color: var(--bimo-text-disabled);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -149,8 +149,8 @@
 }
 
 .btnSecondary:hover {
-    border-color: #666;
-    color: #fff;
+    border-color: var(--bimo-text-disabled);
+    color: var(--bimo-text-primary);
 }
 
 .btnIcon {
@@ -161,13 +161,13 @@
     height: 36px;
     border: none;
     background: transparent;
-    color: #666;
+    color: var(--bimo-text-disabled);
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .btnIcon:hover {
-    color: #fff;
+    color: var(--bimo-text-primary);
 }
 
 .btnIconDanger:hover {
@@ -182,8 +182,8 @@
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    border: 1px solid #333;
-    color: #999;
+    border: 1px solid var(--bimo-border);
+    color: var(--bimo-text-disabled);
 }
 
 .statusPillSuccess {
@@ -211,21 +211,21 @@
 
 .statCard {
     padding: 24px;
-    border: 1px solid #222;
+    border: 1px solid var(--bimo-border);
 }
 
 .statLabel {
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #666;
+    color: var(--bimo-text-disabled);
     margin-bottom: 8px;
 }
 
 .statValue {
     font-size: 32px;
     font-weight: 500;
-    color: #fff;
+    color: var(--bimo-text-primary);
     letter-spacing: -0.02em;
 }
 
@@ -239,7 +239,7 @@
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #666;
+    color: var(--bimo-text-disabled);
     margin-bottom: 8px;
 }
 
@@ -247,27 +247,27 @@
     width: 100%;
     padding: 12px 16px;
     background: transparent;
-    border: 1px solid #333;
-    color: #fff;
+    border: 1px solid var(--bimo-border);
+    color: var(--bimo-text-primary);
     font-size: 14px;
     transition: border-color 0.2s;
 }
 
 .formInput:focus {
     outline: none;
-    border-color: #fff;
+    border-color: var(--bimo-text-primary);
 }
 
 .formInput::placeholder {
-    color: #555;
+    color: var(--bimo-text-disabled);
 }
 
 .formTextarea {
     width: 100%;
     padding: 12px 16px;
     background: transparent;
-    border: 1px solid #333;
-    color: #fff;
+    border: 1px solid var(--bimo-border);
+    color: var(--bimo-text-primary);
     font-size: 14px;
     min-height: 120px;
     resize: vertical;
@@ -276,14 +276,14 @@
 
 .formTextarea:focus {
     outline: none;
-    border-color: #fff;
+    border-color: var(--bimo-text-primary);
 }
 
 /* Empty State */
 .emptyState {
     text-align: center;
     padding: 80px 24px;
-    color: #555;
+    color: var(--bimo-text-disabled);
 }
 
 .emptyState svg {

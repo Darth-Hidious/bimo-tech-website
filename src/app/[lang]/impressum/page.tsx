@@ -8,7 +8,7 @@ export default function ImpressumPage() {
     const { t } = useLanguage();
 
     return (
-        <main style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', paddingTop: '140px', paddingBottom: '80px' }}>
+        <main style={{ backgroundColor: 'var(--bimo-bg-primary)', color: 'var(--bimo-text-primary)', minHeight: '100vh', paddingTop: '140px', paddingBottom: '80px' }}>
             <div className="container-main">
                 <h1 style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 500, marginBottom: '60px' }}>
                     {t('impressum.title')}
@@ -22,7 +22,7 @@ export default function ImpressumPage() {
                                 {t('impressum.isoTitle')}
                             </h2>
 
-                            <div style={{ display: 'grid', gap: '24px', maxWidth: '800px', fontSize: '16px', lineHeight: 1.7, color: '#ccc' }}>
+                            <div style={{ display: 'grid', gap: '24px', maxWidth: '800px', fontSize: '16px', lineHeight: 1.7, color: 'var(--bimo-text-secondary)' }}>
                                 <p>{t('impressum.description')}</p>
                                 <p>{t('impressum.specialization')}</p>
                                 <p>{t('impressum.sectors')}</p>
@@ -32,13 +32,13 @@ export default function ImpressumPage() {
 
                         <section style={{ marginBottom: '80px', maxWidth: '800px' }}>
                             <h3 style={{ fontSize: '24px', fontWeight: 500, marginBottom: '24px' }}>{t('impressum.peopleTitle')}</h3>
-                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#ccc' }}>{t('impressum.peopleDesc')}</p>
+                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--bimo-text-secondary)' }}>{t('impressum.peopleDesc')}</p>
                         </section>
 
                         <section style={{ marginBottom: '80px', maxWidth: '800px' }}>
                             <h3 style={{ fontSize: '24px', fontWeight: 500, marginBottom: '24px' }}>{t('impressum.servicesTitle')}</h3>
-                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#ccc', marginBottom: '16px' }}>{t('impressum.servicesDesc')}</p>
-                            <ul style={{ paddingLeft: '20px', color: '#ccc', lineHeight: 1.8 }}>
+                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--bimo-text-secondary)', marginBottom: '16px' }}>{t('impressum.servicesDesc')}</p>
+                            <ul style={{ paddingLeft: '20px', color: 'var(--bimo-text-secondary)', lineHeight: 1.8 }}>
                                 {(Array.isArray(t('impressum.serviceList')) ? t('impressum.serviceList') : []).map((service: string, index: number) => (
                                     <li key={index}>{service}</li>
                                 ))}
@@ -47,8 +47,8 @@ export default function ImpressumPage() {
 
                         <section style={{ marginBottom: '40px', maxWidth: '800px' }}>
                             <h3 style={{ fontSize: '24px', fontWeight: 500, marginBottom: '24px' }}>{t('impressum.excellence')}</h3>
-                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#ccc', marginBottom: '24px' }}>{t('impressum.environment')}</p>
-                            <p style={{ fontSize: '18px', fontWeight: 500, color: '#fff' }}>{t('impressum.partner')}</p>
+                            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--bimo-text-secondary)', marginBottom: '24px' }}>{t('impressum.environment')}</p>
+                            <p style={{ fontSize: '18px', fontWeight: 500, color: 'var(--bimo-text-primary)' }}>{t('impressum.partner')}</p>
                         </section>
                     </div>
 
@@ -57,37 +57,37 @@ export default function ImpressumPage() {
                         position: 'sticky',
                         top: '120px',
                         padding: '32px',
-                        backgroundColor: '#111',
-                        border: '1px solid #333',
+                        backgroundColor: 'var(--bimo-bg-secondary)',
+                        border: '1px solid var(--bimo-border)',
                         borderRadius: '8px',
                         fontSize: '14px',
-                        color: '#ccc',
+                        color: 'var(--bimo-text-secondary)',
                         lineHeight: 1.6
                     }}>
-                        <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '20px', borderBottom: '1px solid #333', paddingBottom: '12px' }}>
+                        <h4 style={{ color: 'var(--bimo-text-primary)', fontSize: '16px', fontWeight: 600, marginBottom: '20px', borderBottom: '1px solid var(--bimo-border)', paddingBottom: '12px' }}>
                             Impressum
                         </h4>
 
                         <div style={{ marginBottom: '24px' }}>
-                            <strong style={{ display: 'block', color: '#fff', marginBottom: '4px' }}>{t('impressum.companyName')}</strong>
+                            <strong style={{ display: 'block', color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{t('impressum.companyName')}</strong>
                             {t('impressum.address')}
                         </div>
 
                         <div style={{ marginBottom: '24px' }}>
-                            <strong style={{ display: 'block', color: '#fff', marginBottom: '4px' }}>{t('impressum.representedBy')}:</strong>
+                            <strong style={{ display: 'block', color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{t('impressum.representedBy')}:</strong>
                             {t('impressum.ceoName')} ({t('impressum.ceoRole')})<br />
                             Beata Urszula Orzechowska (Prokurent)
                         </div>
 
                         <div style={{ marginBottom: '24px' }}>
-                            <strong style={{ display: 'block', color: '#fff', marginBottom: '4px' }}>{t('impressum.contact')}:</strong>
+                            <strong style={{ display: 'block', color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{t('impressum.contact')}:</strong>
                             E-Mail: info@bimotech.pl<br />
                             {/* Assuming phone is available or general contact */}
                             {t('contact.info.phone')}: +48 71 341 84 81
                         </div>
 
                         <div style={{ marginBottom: '24px' }}>
-                            <strong style={{ display: 'block', color: '#fff', marginBottom: '4px' }}>{t('impressum.registerEntry')}:</strong>
+                            <strong style={{ display: 'block', color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{t('impressum.registerEntry')}:</strong>
                             Sąd Rejonowy dla Wrocławia-Fabrycznej<br />
                             VI Wydział Gospodarczy KRS<br />
                             KRS: 0000468797<br />
@@ -95,14 +95,14 @@ export default function ImpressumPage() {
                         </div>
 
                         <div style={{ marginBottom: '24px' }}>
-                            <strong style={{ display: 'block', color: '#fff', marginBottom: '4px' }}>{t('impressum.ids')}:</strong>
+                            <strong style={{ display: 'block', color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{t('impressum.ids')}:</strong>
                             {t('impressum.vatId')}: PL8943047189<br />
                             REGON: 02218164500000<br />
                             {t('impressum.shareCapital')}: <SecureData>50 000 PLN</SecureData>
                         </div>
 
                         <div>
-                            <strong style={{ display: 'block', color: '#fff', marginBottom: '4px' }}>{t('impressum.bankAccounts')}:</strong>
+                            <strong style={{ display: 'block', color: 'var(--bimo-text-primary)', marginBottom: '4px' }}>{t('impressum.bankAccounts')}:</strong>
                             <div style={{ fontSize: '12px', fontFamily: 'monospace' }}>
                                 <SecureData>
                                     <div style={{ padding: '4px 0' }}>54 1020 5242 0000 2102 0336 5343</div>
@@ -128,8 +128,8 @@ function SecureData({ children }: { children: React.ReactNode }) {
             onMouseLeave={() => setRevealed(false)}
             style={{
                 cursor: 'pointer',
-                color: revealed ? 'inherit' : '#666',
-                borderBottom: revealed ? 'none' : '1px dotted #444',
+                color: revealed ? 'inherit' : 'var(--bimo-text-disabled)',
+                borderBottom: revealed ? 'none' : '1px dotted var(--bimo-border)',
                 transition: 'all 0.2s ease',
                 display: 'inline-block',
                 minWidth: '100px'

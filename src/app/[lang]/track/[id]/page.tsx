@@ -64,13 +64,13 @@ export default function TrackingPage() {
     };
 
     if (loading) return (
-        <div className="min-h-screen bg-black flex items-center justify-center text-white">
-            <Loader2 className="animate-spin text-[#333]" size={32} />
+        <div className="min-h-screen bg-[var(--bimo-bg-primary)] flex items-center justify-center text-white">
+            <Loader2 className="animate-spin text-[var(--bimo-text-disabled)]" size={32} />
         </div>
     );
 
     if (error) return (
-        <div className="min-h-screen bg-black flex items-center justify-center text-white flex-col gap-6">
+        <div className="min-h-screen bg-[var(--bimo-bg-primary)] flex items-center justify-center text-white flex-col gap-6">
             <AlertCircle className="text-red-900" size={48} />
             <h1 className="text-2xl font-light tracking-wide">{error}</h1>
             <Link href="/" className="text-sm uppercase tracking-widest border-b border-white pb-1 hover:text-gray-400 transition-colors">Return Home</Link>
@@ -80,13 +80,13 @@ export default function TrackingPage() {
     if (!quote) return null;
 
     return (
-        <main className="min-h-screen bg-black text-white pt-40">
+        <main className="min-h-screen bg-[var(--bimo-bg-primary)] text-white pt-40">
             <div className="max-w-7xl mx-auto px-6 pb-32">
 
                 <TrackingHeader id={id} quote={quote} />
 
                 {/* Main Grid */}
-                <div className="grid lg:grid-cols-3 gap-12 border-t border-[#222] pt-12">
+                <div className="grid lg:grid-cols-3 gap-12 border-t border-[var(--bimo-border)] pt-12">
 
                     {/* Left Panel: Details & Timeline */}
                     <div className="lg:col-span-2 space-y-20">

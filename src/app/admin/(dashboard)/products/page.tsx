@@ -175,14 +175,14 @@ export default function AdminProductsPage() {
                                         </div>
                                     )}
                                 </td>
-                                <td style={{ color: '#fff' }}>{item.name}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{item.name}</td>
                                 <td>
                                     <div style={{
                                         width: '32px', height: '32px',
-                                        background: 'linear-gradient(135deg, #222, #000)',
-                                        borderRadius: '6px', border: '1px solid #333',
+                                        background: 'linear-gradient(135deg, var(--bimo-border), var(--bimo-bg-primary))',
+                                        borderRadius: '6px', border: '1px solid var(--bimo-border)',
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        color: '#999', fontSize: '12px', fontWeight: 'bold'
+                                        color: 'var(--bimo-text-secondary)', fontSize: '12px', fontWeight: 'bold'
                                     }}>
                                         {item.symbol || item.name.charAt(0)}
                                     </div>
@@ -195,13 +195,13 @@ export default function AdminProductsPage() {
                                             {item.category}
                                         </span>
                                     ) : (
-                                        <span className={styles.statusPill} style={{ borderColor: '#333', color: '#666' }}>
+                                        <span className={styles.statusPill} style={{ borderColor: 'var(--bimo-border)', color: 'var(--bimo-text-disabled)' }}>
                                             —
                                         </span>
                                     )}
                                 </td>
                                 <td>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#666', fontSize: '13px' }}>
+                                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--bimo-text-disabled)', fontSize: '13px' }}>
                                         <Box size={14} />
                                         {item.products?.length || 0} variants
                                     </span>
@@ -227,7 +227,7 @@ export default function AdminProductsPage() {
                         {loading && (
                             <tr>
                                 <td colSpan={6} style={{ textAlign: 'center', padding: '48px' }}>
-                                    <Loader2 className="animate-spin" size={24} style={{ margin: '0 auto', color: '#666' }} />
+                                    <Loader2 className="animate-spin" size={24} style={{ margin: '0 auto', color: 'var(--bimo-text-disabled)' }} />
                                 </td>
                             </tr>
                         )}
@@ -244,13 +244,13 @@ export default function AdminProductsPage() {
                     />
                     <div style={{
                         position: 'fixed', top: 0, right: 0, bottom: 0, width: '600px', maxWidth: '100vw',
-                        backgroundColor: '#0a0a0a', borderLeft: '1px solid #222', zIndex: 100,
+                        backgroundColor: '#0a0a0a', borderLeft: '1px solid var(--bimo-border)', zIndex: 100,
                         display: 'flex', flexDirection: 'column',
                         boxShadow: '-10px 0 30px rgba(0,0,0,0.5)',
                         animation: 'slideIn 0.3s ease-out'
                     }}>
-                        <div style={{ padding: '24px', borderBottom: '1px solid #222', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#fff' }}>
+                        <div style={{ padding: '24px', borderBottom: '1px solid var(--bimo-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h2 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--bimo-text-primary)' }}>
                                 {isCreating ? 'New Product Family' : 'Edit Product Family'}
                             </h2>
                             <button onClick={() => { setIsCreating(false); setEditingId(null); }} className={styles.btnIcon}>
@@ -263,7 +263,7 @@ export default function AdminProductsPage() {
 
                                 {/* Section 1: Basic Info */}
                                 <section>
-                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#666', marginBottom: '16px' }}>
+                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--bimo-text-disabled)', marginBottom: '16px' }}>
                                         General Information
                                     </h3>
                                     <div style={{ display: 'grid', gap: '20px' }}>
@@ -299,7 +299,7 @@ export default function AdminProductsPage() {
                                                     <option value="plastic">Plastic</option>
                                                     <option value="composite">Composite</option>
                                                 </select>
-                                                <div style={{ position: 'absolute', right: '12px', top: '38px', pointerEvents: 'none', color: '#666' }}>
+                                                <div style={{ position: 'absolute', right: '12px', top: '38px', pointerEvents: 'none', color: 'var(--bimo-text-disabled)' }}>
                                                     <ChevronRight size={14} style={{ transform: 'rotate(90deg)' }} />
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ export default function AdminProductsPage() {
                                         <div className={styles.formGroup}>
                                             <label className={styles.formLabel}>
                                                 Description
-                                                <span style={{ fontSize: '9px', background: '#222', padding: '2px 6px', borderRadius: '4px', marginLeft: '8px', color: '#888' }}>
+                                                <span style={{ fontSize: '9px', background: 'var(--bimo-border)', padding: '2px 6px', borderRadius: '4px', marginLeft: '8px', color: 'var(--bimo-text-secondary)' }}>
                                                     MDX SUPPORTED
                                                 </span>
                                             </label>
@@ -325,12 +325,12 @@ export default function AdminProductsPage() {
 
                                 {/* Section 2: Visuals */}
                                 <section>
-                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#666', marginBottom: '16px' }}>
+                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--bimo-text-disabled)', marginBottom: '16px' }}>
                                         Visuals
                                     </h3>
                                     <div className={styles.formGroup} style={{ marginBottom: 0 }}>
                                         <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                                            <div style={{ width: '120px', height: '120px', background: '#111', borderRadius: '8px', border: '1px dashed #333', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <div style={{ width: '120px', height: '120px', background: 'var(--bimo-bg-secondary)', borderRadius: '8px', border: '1px dashed var(--bimo-border)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                 {formData.imageUrl ? (
                                                     <>
                                                         <Image
@@ -341,7 +341,7 @@ export default function AdminProductsPage() {
                                                         />
                                                         <button
                                                             onClick={() => setFormData(prev => ({ ...prev, imageUrl: '' }))}
-                                                            style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.6)', border: 'none', color: '#fff', padding: '4px', borderRadius: '4px', cursor: 'pointer' }}
+                                                            style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.6)', border: 'none', color: 'var(--bimo-text-primary)', padding: '4px', borderRadius: '4px', cursor: 'pointer' }}
                                                         >
                                                             <X size={12} />
                                                         </button>
@@ -351,7 +351,7 @@ export default function AdminProductsPage() {
                                                 )}
                                             </div>
                                             <div style={{ flex: 1 }}>
-                                                <p style={{ fontSize: '13px', color: '#888', marginBottom: '12px', lineHeight: '1.4' }}>
+                                                <p style={{ fontSize: '13px', color: 'var(--bimo-text-secondary)', marginBottom: '12px', lineHeight: '1.4' }}>
                                                     Upload a representative image for this material family. Square ratio recommended (e.g. 500x500px).
                                                 </p>
                                                 <label className={styles.btnSecondary} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
@@ -373,17 +373,17 @@ export default function AdminProductsPage() {
                                 {/* Section 3: Forms/Variants */}
                                 <section>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                                        <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#666', marginBottom: 0 }}>
+                                        <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--bimo-text-disabled)', marginBottom: 0 }}>
                                             Available Forms
                                         </h3>
-                                        <button onClick={addSubProduct} style={{ fontSize: '11px', color: '#fff', background: '#222', border: 'none', padding: '6px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+                                        <button onClick={addSubProduct} style={{ fontSize: '11px', color: 'var(--bimo-text-primary)', background: 'var(--bimo-border)', border: 'none', padding: '6px 10px', borderRadius: '4px', cursor: 'pointer' }}>
                                             + Add Form
                                         </button>
                                     </div>
 
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: '#222', borderRadius: '8px', overflow: 'hidden', border: '1px solid #222' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'var(--bimo-border)', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--bimo-border)' }}>
                                         {(!formData.products || formData.products.length === 0) && (
-                                            <div style={{ padding: '24px', textAlign: 'center', background: '#111', color: '#444', fontSize: '14px' }}>
+                                            <div style={{ padding: '24px', textAlign: 'center', background: 'var(--bimo-bg-secondary)', color: '#444', fontSize: '14px' }}>
                                                 No forms added yet.
                                             </div>
                                         )}
@@ -391,13 +391,13 @@ export default function AdminProductsPage() {
                                             <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'center', background: '#0a0a0a', padding: '12px 16px' }}>
                                                 <div style={{ flex: 1 }}>
                                                     <input
-                                                        style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '14px', width: '100%', outline: 'none', fontWeight: 500 }}
+                                                        style={{ background: 'transparent', border: 'none', color: 'var(--bimo-text-primary)', fontSize: '14px', width: '100%', outline: 'none', fontWeight: 500 }}
                                                         value={sub.name}
                                                         onChange={e => updateSubProduct(idx, 'name', e.target.value)}
                                                         placeholder="Form Name"
                                                     />
                                                     <input
-                                                        style={{ background: 'transparent', border: 'none', color: '#666', fontSize: '12px', width: '100%', outline: 'none', marginTop: '2px' }}
+                                                        style={{ background: 'transparent', border: 'none', color: 'var(--bimo-text-disabled)', fontSize: '12px', width: '100%', outline: 'none', marginTop: '2px' }}
                                                         value={sub.sizes}
                                                         onChange={e => updateSubProduct(idx, 'sizes', e.target.value)}
                                                         placeholder="Dimensions / Sizes..."
@@ -413,7 +413,7 @@ export default function AdminProductsPage() {
                             </div>
                         </div>
 
-                        <div style={{ padding: '24px', borderTop: '1px solid #222', display: 'flex', justifyContent: 'flex-end', gap: '12px', background: '#0a0a0a' }}>
+                        <div style={{ padding: '24px', borderTop: '1px solid var(--bimo-border)', display: 'flex', justifyContent: 'flex-end', gap: '12px', background: '#0a0a0a' }}>
                             <button onClick={() => { setIsCreating(false); setEditingId(null); }} className={styles.btnSecondary} style={{ width: '100px', justifyContent: 'center' }}>
                                 Cancel
                             </button>

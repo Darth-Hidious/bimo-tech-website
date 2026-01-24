@@ -1,0 +1,268 @@
+/* Command Palette - Spotlight/Raycast style */
+
+.trigger {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(0, 6, 36, 0.9);
+    border: 1px solid var(--bimo-border);
+    color: var(--bimo-text-disabled);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+.trigger:hover {
+    border-color: var(--bimo-text-primary);
+    color: var(--bimo-text-primary);
+}
+
+.triggerText {
+    font-size: 11px;
+    font-family: var(--font-ibm-plex-mono), monospace;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+/* Backdrop */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 200;
+    animation: fadeIn 0.15s ease;
+}
+
+/* Main Palette */
+.palette {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 560px;
+    background: var(--bimo-bg-primary);
+    border: 1px solid var(--bimo-border);
+    z-index: 201;
+    overflow: hidden;
+    animation: slideIn 0.2s ease;
+}
+
+/* Input Section */
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--bimo-border);
+}
+
+.searchIcon {
+    color: var(--bimo-text-disabled);
+    flex-shrink: 0;
+}
+
+.input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--bimo-text-primary);
+    font-size: 16px;
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--bimo-text-disabled);
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: 1px solid var(--bimo-border);
+    color: var(--bimo-text-disabled);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.closeButton:hover {
+    border-color: var(--bimo-text-primary);
+    color: var(--bimo-text-primary);
+}
+
+/* Results */
+.results {
+    max-height: 360px;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.groupLabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bimo-text-disabled);
+    padding: 8px 12px 4px;
+}
+
+.resultItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 12px;
+    background: transparent;
+    border: none;
+    color: var(--bimo-text-secondary);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.resultItem:hover,
+.resultItem.selected {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--bimo-text-primary);
+}
+
+.resultIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--bimo-border);
+    color: var(--bimo-text-disabled);
+    flex-shrink: 0;
+}
+
+.resultItem:hover .resultIcon,
+.resultItem.selected .resultIcon {
+    border-color: var(--bimo-text-secondary);
+    color: var(--bimo-text-primary);
+}
+
+.resultContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.resultTitle {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+}
+
+.resultDescription {
+    display: block;
+    font-size: 12px;
+    color: var(--bimo-text-disabled);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.resultArrow {
+    color: var(--bimo-text-disabled);
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+.resultItem:hover .resultArrow,
+.resultItem.selected .resultArrow {
+    opacity: 1;
+}
+
+/* Empty State */
+.emptyState {
+    padding: 32px;
+    text-align: center;
+    color: var(--bimo-text-disabled);
+}
+
+.emptyHint {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    gap: 16px;
+    padding: 12px 20px;
+    border-top: 1px solid var(--bimo-border);
+}
+
+.footerHint {
+    font-size: 11px;
+    color: var(--bimo-text-disabled);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footerHint kbd {
+    font-family: var(--font-ibm-plex-mono), monospace;
+    font-size: 10px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--bimo-border);
+    border-radius: 3px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .trigger {
+        bottom: 100px; /* Above mobile nav */
+        right: 16px;
+        padding: 8px 12px;
+    }
+
+    .palette {
+        top: 10%;
+        width: calc(100% - 32px);
+    }
+
+    .results {
+        max-height: 50vh;
+    }
+
+    .footer {
+        display: none;
+    }
+}

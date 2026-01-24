@@ -5,7 +5,7 @@ import Providers from "@/components/Providers";
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#000000',
+  themeColor: '#000624',  // Prussian Blue - Bimo Tech 2030
 }
 
 export const metadata: Metadata = {
@@ -96,23 +96,23 @@ const organizationJsonLd = {
   url: 'https://bimotech.pl',
   logo: 'https://bimotech.pl/logo.png',
   description: 'Leading European supplier of refractory metals, advanced alloys, and sputtering targets for aerospace, nuclear, and industrial applications.',
-  foundingDate: '1992',
+  foundingDate: '2013',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Francuska 11',
-    addressLocality: 'Wroclaw',
+    addressLocality: 'Wrocław',
     postalCode: '54-405',
     addressCountry: 'PL',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: '52.2118',
-    longitude: '20.9823',
+    latitude: '51.0988',
+    longitude: '17.0326',
   },
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      telephone: '+48-123-456-789',
+      telephone: '+48-71-341-84-81',
       contactType: 'sales',
       email: 'info@bimotech.pl',
       availableLanguage: ['English', 'German', 'Polish'],
@@ -145,18 +145,25 @@ const organizationJsonLd = {
   ],
 };
 
-import { Inter, Space_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
-  weight: "400",
+const ibmPlexSans = IBM_Plex_Sans({
+  weight: ["400", "500", "600"],
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-ibm-plex-sans",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500"],
   subsets: ["latin"],
-  variable: "--font-space-mono",
+  variable: "--font-ibm-plex-mono",
   display: "swap",
 });
 
@@ -176,7 +183,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${spaceMono.variable} bg-black text-white antialiased`}>
+      <body className={`${inter.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased`}>
         <Providers>
           {children}
         </Providers>

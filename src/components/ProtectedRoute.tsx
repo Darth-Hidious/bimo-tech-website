@@ -48,12 +48,12 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
         return (
             <div style={{
                 minHeight: '100vh',
-                backgroundColor: '#000',
+                backgroundColor: 'var(--bimo-bg-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }

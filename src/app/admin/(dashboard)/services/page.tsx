@@ -152,7 +152,7 @@ export default function AdminServicesPage() {
     if (loading) {
         return (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -191,7 +191,7 @@ export default function AdminServicesPage() {
                                         </div>
                                     )}
                                 </td>
-                                <td style={{ color: '#fff' }}>{item.name}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{item.name}</td>
                                 <td style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     {item.tagline}
                                 </td>
@@ -224,9 +224,9 @@ export default function AdminServicesPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, overflow: 'auto', padding: '24px'
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '600px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '600px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
-                            <h2 style={{ fontSize: '18px', color: '#fff' }}>{editingItem ? 'Edit Service' : 'Add Service'}</h2>
+                            <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)' }}>{editingItem ? 'Edit Service' : 'Add Service'}</h2>
                             <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer' }}>
                                 <X size={20} />
                             </button>
@@ -249,7 +249,7 @@ export default function AdminServicesPage() {
                             <label className={styles.formLabel}>Service Image</label>
                             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                                 {formData.imageUrl && (
-                                    <div style={{ position: 'relative', width: '80px', height: '80px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #333' }}>
+                                    <div style={{ position: 'relative', width: '80px', height: '80px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--bimo-border)' }}>
                                         <Image
                                             src={formData.imageUrl}
                                             alt="Preview"
@@ -319,15 +319,15 @@ export default function AdminServicesPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '400px' }}>
-                        <h2 style={{ fontSize: '18px', color: '#fff', marginBottom: '16px' }}>Delete Service</h2>
-                        <p style={{ color: '#999', marginBottom: '24px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '400px' }}>
+                        <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)', marginBottom: '16px' }}>Delete Service</h2>
+                        <p style={{ color: 'var(--bimo-text-secondary)', marginBottom: '24px' }}>
                             Delete &ldquo;{itemToDelete?.name}&rdquo;? This cannot be undone.
                         </p>
                         <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
                             <button onClick={() => setDeleteDialogOpen(false)} className={styles.btnSecondary}>Cancel</button>
                             <button onClick={handleDelete} style={{
-                                padding: '12px 24px', backgroundColor: '#dc2626', color: '#fff',
+                                padding: '12px 24px', backgroundColor: '#dc2626', color: 'var(--bimo-text-primary)',
                                 border: 'none', fontSize: '13px', cursor: 'pointer'
                             }} disabled={saving}>
                                 {saving ? 'Deleting...' : 'Delete'}

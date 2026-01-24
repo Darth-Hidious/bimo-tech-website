@@ -68,7 +68,7 @@ export default function RFQBasket() {
       />
 
       {/* Modal */}
-      <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
+      <div className="relative bg-[var(--bimo-bg-secondary)] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
         <div className="p-6 border-b border-white/10 flex justify-between items-center">
           <div className="flex items-center gap-3">

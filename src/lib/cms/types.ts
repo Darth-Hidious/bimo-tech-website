@@ -102,11 +102,15 @@ export interface QuoteRequest {
 
 export interface NewsItem {
     id?: string;
+    slug?: string;
     date: string;
     title: string;
     description: string;
+    content?: string; // Full article content (markdown supported)
     category: string;
     featured?: boolean;
+    author?: string;
+    imageUrl?: string;
 }
 
 export interface JobOpening {

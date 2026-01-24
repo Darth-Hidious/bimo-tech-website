@@ -44,14 +44,14 @@
     width: 100% !important;
     height: 100% !important;
     object-fit: contain;
-    opacity: 0.7;
+    opacity: 0.6;
     transition: all 0.3s ease;
-    filter: grayscale(100%) brightness(100%);
+    filter: brightness(0) invert(1);
 }
 
-.brandLogo:hover img {
+.brandLogo:hover img,
+.brandLogo:hover .logoImage {
     opacity: 1;
-    filter: grayscale(0%) brightness(100%);
     transform: scale(1.05);
 }
 

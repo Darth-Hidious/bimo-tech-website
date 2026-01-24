@@ -155,10 +155,10 @@ export default function AdminQuotesPage() {
                     <tbody>
                         {quotes.map((quote) => (
                             <tr key={quote.id}>
-                                <td style={{ color: '#888', fontSize: '13px' }}>
+                                <td style={{ color: 'var(--bimo-text-secondary)', fontSize: '13px' }}>
                                     {new Date(quote.createdAt).toLocaleDateString()}
                                 </td>
-                                <td style={{ color: '#fff' }}>{quote.customerName}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{quote.customerName}</td>
                                 <td>{quote.company || '-'}</td>
                                 <td>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#ccc', fontSize: '13px' }}>
@@ -187,7 +187,7 @@ export default function AdminQuotesPage() {
                         {loading && (
                             <tr>
                                 <td colSpan={6} style={{ textAlign: 'center', padding: '48px' }}>
-                                    <Loader2 className="animate-spin" size={24} style={{ margin: '0 auto', color: '#666' }} />
+                                    <Loader2 className="animate-spin" size={24} style={{ margin: '0 auto', color: 'var(--bimo-text-disabled)' }} />
                                 </td>
                             </tr>
                         )}
@@ -204,17 +204,17 @@ export default function AdminQuotesPage() {
                     />
                     <div style={{
                         position: 'fixed', top: 0, right: 0, bottom: 0, width: '600px', maxWidth: '100vw',
-                        backgroundColor: '#0a0a0a', borderLeft: '1px solid #222', zIndex: 100,
+                        backgroundColor: '#0a0a0a', borderLeft: '1px solid var(--bimo-border)', zIndex: 100,
                         display: 'flex', flexDirection: 'column',
                         boxShadow: '-10px 0 30px rgba(0,0,0,0.5)',
                         animation: 'slideIn 0.3s ease-out'
                     }}>
-                        <div style={{ padding: '24px', borderBottom: '1px solid #222', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ padding: '24px', borderBottom: '1px solid var(--bimo-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div>
-                                <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#fff' }}>
+                                <h2 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--bimo-text-primary)' }}>
                                     Quote #{selectedQuote.id?.slice(-6).toUpperCase()}
                                 </h2>
-                                <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
+                                <p style={{ fontSize: '12px', color: 'var(--bimo-text-disabled)', marginTop: '4px' }}>
                                     Received {new Date(selectedQuote.createdAt).toLocaleString()}
                                 </p>
                             </div>
@@ -291,7 +291,7 @@ export default function AdminQuotesPage() {
 
                                 {/* Project Details */}
                                 <section>
-                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#666', marginBottom: '16px' }}>
+                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--bimo-text-disabled)', marginBottom: '16px' }}>
                                         Project Specifications
                                     </h3>
                                     <div className="grid grid-cols-2 gap-4">
@@ -312,7 +312,7 @@ export default function AdminQuotesPage() {
 
                                 {/* Customer Info */}
                                 <section>
-                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#666', marginBottom: '16px' }}>
+                                    <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--bimo-text-disabled)', marginBottom: '16px' }}>
                                         Customer
                                     </h3>
                                     <div className="bg-white/5 p-4 rounded border border-white/10 space-y-3">
@@ -341,7 +341,7 @@ export default function AdminQuotesPage() {
                         </div>
 
                         {/* Actions Footer */}
-                        <div style={{ padding: '24px', borderTop: '1px solid #222', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0a0a0a' }}>
+                        <div style={{ padding: '24px', borderTop: '1px solid var(--bimo-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0a0a0a' }}>
                             <div className="flex gap-2">
                                 <span className="text-xs text-gray-500 uppercase tracking-widest mr-2 pt-2">Mark as:</span>
                                 <button

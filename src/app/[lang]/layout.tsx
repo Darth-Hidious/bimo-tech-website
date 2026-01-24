@@ -1,5 +1,6 @@
 import { LanguageProvider } from "../../context/LanguageContext";
 import Header from "../../components/Header";
+import CommandPalette from "../../components/CommandPalette";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -41,6 +42,7 @@ export default async function LangLayout({
         <LanguageProvider initialLang={lang}>
             <Header />
             {children}
+            <CommandPalette />
         </LanguageProvider>
     );
 }

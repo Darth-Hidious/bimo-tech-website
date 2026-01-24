@@ -5,6 +5,7 @@ import Link from 'next/link';
 import * as THREE from "three";
 import { Pane } from "tweakpane";
 import { useLanguage } from "../context/LanguageContext";
+import { Package, Settings, Beaker, ArrowRight } from 'lucide-react';
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -230,21 +231,21 @@ export default function Hero() {
       },
       holographic: {
         sphereCount: isMobile ? 3 : 5,
-        ambientIntensity: 0.12,
-        diffuseIntensity: 1.2,
-        specularIntensity: 2.5,
-        specularPower: 3,
-        fresnelPower: 0.8,
-        backgroundColor: new THREE.Color(0x0a0a15),
-        sphereColor: new THREE.Color(0x050510),
-        lightColor: new THREE.Color(0xccaaff),
+        ambientIntensity: 0.08,
+        diffuseIntensity: 1.0,
+        specularIntensity: 2.2,
+        specularPower: 4,
+        fresnelPower: 0.9,
+        backgroundColor: new THREE.Color(0x000624),
+        sphereColor: new THREE.Color(0x000418),
+        lightColor: new THREE.Color(0xFFFFFF),       // White
         lightPosition: new THREE.Vector3(0.9, 0.9, 1.2),
         smoothness: 0.8,
         contrast: 1.6,
-        fogDensity: 0.06,
+        fogDensity: 0.08,
         cursorGlowIntensity: 1.2,
-        cursorGlowRadius: 2.2,
-        cursorGlowColor: new THREE.Color(0xaa77ff)
+        cursorGlowRadius: 2.0,
+        cursorGlowColor: new THREE.Color(0x8D99AE)   // Slate glow
       }
     };
 
@@ -1237,26 +1238,66 @@ export default function Hero() {
           {/* Center logo removed */}
         </div>
 
-        <div className={styles.hero}>
-          <h1>Where vision meets<br />innovation in<br />advanced materials</h1>
-        </div>
+        {/* BIMO TECH 2030 - Simplified Hero */}
+        <div className={styles.hero2030}>
+          {/* Value Proposition */}
+          <div className={styles.heroHeadline}>
+            <h1 className={styles.heroTitle}>
+              <span className={styles.titleStatic}>Precision </span>
+              <span className={styles.titleCarouselWrapper}>
+                <span className={styles.titleCarousel}>
+                  <span className={styles.titleSlide}>Refractory Metals</span>
+                  <span className={styles.titleSlide}>Sputtering Targets</span>
+                  <span className={styles.titleSlide}>High-Entropy Alloys</span>
+                  <span className={styles.titleSlide}>Tungsten Components</span>
+                  <span className={styles.titleSlide}>Custom Machining</span>
+                  <span className={styles.titleSlide}>Refractory Metals</span>
+                </span>
+              </span>
+            </h1>
+            <p className={styles.heroSubtitle}>Tungsten, Molybdenum, Tantalum, Niobium — engineered for extreme environments.</p>
+            <div className={styles.heroCtas}>
+              <Link href={`/${language}/quote`} className={styles.primaryCta}>
+                Request Quote <ArrowRight size={18} />
+              </Link>
+              <Link href={`/${language}/products`} className={styles.secondaryCta}>
+                Browse Materials
+              </Link>
+            </div>
+          </div>
 
-        <div className={styles.contactInfo}>
-          <p className={styles.contactHeading}>+Get in touch</p>
-          <span className={styles.contactEmail}>info@bimotech.pl</span>
-        </div>
-
-        <div className={styles.footerLinks}>
-          <Link href={`/${language}/products`} className={styles.footerLink}>Materials</Link>
-          <Link href={`/${language}/news`} className={styles.footerLink}>Research</Link>
-          <Link href={`/${language}/news`} className={styles.footerLink}>Innovation</Link>
-          <Link href={`/${language}/impressum`} className={styles.footerLink}>About</Link>
-          <Link href={`/${language}/contact`} className={styles.footerLink}>Contact</Link>
+          {/* Intent Selection */}
+          <div className={styles.intentSection}>
+            <p className={styles.intentLabel}>What are you looking for?</p>
+            <div className={styles.intentButtons}>
+              <Link href={`/${language}/products`} className={styles.intentButton}>
+                <Package size={24} className={styles.intentIcon} />
+                <div>
+                  <span className={styles.intentTitle}>Materials Supply</span>
+                  <span className={styles.intentDesc}>Refractory metals, semi-finished products, reliable supplier.</span>
+                </div>
+              </Link>
+              <Link href={`/${language}/services`} className={styles.intentButton}>
+                <Settings size={24} className={styles.intentIcon} />
+                <div>
+                  <span className={styles.intentTitle}>Manufacturing</span>
+                  <span className={styles.intentDesc}>Custom components, precision machining, finishing.</span>
+                </div>
+              </Link>
+              <Link href={`/${language}/contact`} className={styles.intentButton}>
+                <Beaker size={24} className={styles.intentIcon} />
+                <div>
+                  <span className={styles.intentTitle}>R&D Partnership</span>
+                  <span className={styles.intentDesc}>Advanced materials research, new alloy development.</span>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className={styles.coordinates}>
-          <p>BimoTech • Innovation</p>
-          <p>advancing tomorrow's materials</p>
+          <p>BimoTech • Advanced Materials</p>
+          <p>Wrocław, Poland</p>
         </div>
       </section>
 

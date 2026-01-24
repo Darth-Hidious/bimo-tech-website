@@ -17,9 +17,13 @@ export default function AdminNewsPage() {
 
     const [formData, setFormData] = useState({
         title: '',
+        slug: '',
         date: '',
         description: '',
+        content: '',
         category: '',
+        author: '',
+        imageUrl: '',
         featured: false,
     });
 
@@ -40,7 +44,7 @@ export default function AdminNewsPage() {
 
     const openCreateDialog = () => {
         setEditingItem(null);
-        setFormData({ title: '', date: '', description: '', category: '', featured: false });
+        setFormData({ title: '', slug: '', date: '', description: '', content: '', category: '', author: '', imageUrl: '', featured: false });
         setDialogOpen(true);
     };
 
@@ -48,9 +52,13 @@ export default function AdminNewsPage() {
         setEditingItem(item);
         setFormData({
             title: item.title,
+            slug: item.slug || '',
             date: item.date,
             description: item.description,
+            content: item.content || '',
             category: item.category,
+            author: item.author || '',
+            imageUrl: item.imageUrl || '',
             featured: item.featured || false,
         });
         setDialogOpen(true);
@@ -96,7 +104,7 @@ export default function AdminNewsPage() {
     if (loading) {
         return (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-                <Loader2 className="animate-spin" size={32} style={{ color: '#666' }} />
+                <Loader2 className="animate-spin" size={32} style={{ color: 'var(--bimo-text-disabled)' }} />
             </div>
         );
     }
@@ -126,8 +134,8 @@ export default function AdminNewsPage() {
                     <tbody>
                         {news.map((item) => (
                             <tr key={item.id}>
-                                <td style={{ fontFamily: 'var(--font-mono)', color: '#666' }}>{item.date}</td>
-                                <td style={{ color: '#fff' }}>{item.title}</td>
+                                <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--bimo-text-disabled)' }}>{item.date}</td>
+                                <td style={{ color: 'var(--bimo-text-primary)' }}>{item.title}</td>
                                 <td>
                                     <span className={styles.statusPill}>{item.category}</span>
                                 </td>
@@ -158,26 +166,38 @@ export default function AdminNewsPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '500px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '700px', maxHeight: '90vh', overflowY: 'auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
-                            <h2 style={{ fontSize: '18px', color: '#fff' }}>{editingItem ? 'Edit News' : 'Add News'}</h2>
-                            <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer' }}>
+                            <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)' }}>{editingItem ? 'Edit News Article' : 'Add News Article'}</h2>
+                            <button onClick={() => setDialogOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--bimo-text-disabled)', cursor: 'pointer' }}>
                                 <X size={20} />
                             </button>
                         </div>
 
-                        <div className={styles.formGroup}>
-                            <label className={styles.formLabel}>Title</label>
-                            <input
-                                type="text"
-                                className={styles.formInput}
-                                value={formData.title}
-                                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                placeholder="News title"
-                            />
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>Title</label>
+                                <input
+                                    type="text"
+                                    className={styles.formInput}
+                                    value={formData.title}
+                                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                    placeholder="News title"
+                                />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>Slug (URL)</label>
+                                <input
+                                    type="text"
+                                    className={styles.formInput}
+                                    value={formData.slug}
+                                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                                    placeholder="my-article-slug"
+                                />
+                            </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
                             <div className={styles.formGroup}>
                                 <label className={styles.formLabel}>Date</label>
                                 <input
@@ -185,7 +205,7 @@ export default function AdminNewsPage() {
                                     className={styles.formInput}
                                     value={formData.date}
                                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                                    placeholder="December 2024"
+                                    placeholder="January 2026"
                                 />
                             </div>
                             <div className={styles.formGroup}>
@@ -198,15 +218,48 @@ export default function AdminNewsPage() {
                                     placeholder="Award, Research..."
                                 />
                             </div>
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>Author</label>
+                                <input
+                                    type="text"
+                                    className={styles.formInput}
+                                    value={formData.author}
+                                    onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                                    placeholder="Bimo Tech Team"
+                                />
+                            </div>
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label className={styles.formLabel}>Description</label>
+                            <label className={styles.formLabel}>Description (preview text)</label>
                             <textarea
                                 className={styles.formTextarea}
                                 value={formData.description}
                                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                placeholder="Brief description..."
+                                placeholder="Brief description shown in cards..."
+                                style={{ minHeight: '60px' }}
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.formLabel}>Full Content (Markdown supported)</label>
+                            <textarea
+                                className={styles.formTextarea}
+                                value={formData.content}
+                                onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                                placeholder="Full article content. Use ## for headings, **bold**, *italic*, - for lists..."
+                                style={{ minHeight: '200px', fontFamily: 'var(--font-mono)', fontSize: '13px' }}
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.formLabel}>Image URL (optional)</label>
+                            <input
+                                type="text"
+                                className={styles.formInput}
+                                value={formData.imageUrl}
+                                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                                placeholder="https://..."
                             />
                         </div>
 
@@ -226,15 +279,15 @@ export default function AdminNewsPage() {
                     position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100
                 }}>
-                    <div style={{ backgroundColor: '#111', border: '1px solid #333', padding: '32px', width: '100%', maxWidth: '400px' }}>
-                        <h2 style={{ fontSize: '18px', color: '#fff', marginBottom: '16px' }}>Delete News</h2>
-                        <p style={{ color: '#999', marginBottom: '24px' }}>
+                    <div style={{ backgroundColor: 'var(--bimo-bg-secondary)', border: '1px solid var(--bimo-border)', padding: '32px', width: '100%', maxWidth: '400px' }}>
+                        <h2 style={{ fontSize: '18px', color: 'var(--bimo-text-primary)', marginBottom: '16px' }}>Delete News</h2>
+                        <p style={{ color: 'var(--bimo-text-secondary)', marginBottom: '24px' }}>
                             Delete &ldquo;{itemToDelete?.title}&rdquo;? This cannot be undone.
                         </p>
                         <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
                             <button onClick={() => setDeleteDialogOpen(false)} className={styles.btnSecondary}>Cancel</button>
                             <button onClick={handleDelete} style={{
-                                padding: '12px 24px', backgroundColor: '#dc2626', color: '#fff',
+                                padding: '12px 24px', backgroundColor: '#dc2626', color: 'var(--bimo-text-primary)',
                                 border: 'none', fontSize: '13px', cursor: 'pointer'
                             }} disabled={saving}>
                                 {saving ? 'Deleting...' : 'Delete'}
