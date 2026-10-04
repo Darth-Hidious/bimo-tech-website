@@ -32,7 +32,7 @@ export default function Home() {
       <section className="section--white">
         <div className="wrap proof">
           <div className="proof__logos" aria-label="Customers and programmes">
-            <span className="label">Trusted on</span>
+            <span className="label proof__label">Trusted on</span>
             <img className="logo-esa" src="/img/logos/logo_esa.svg" alt="ESA" />
             <img className="logo-ariane" src="/img/logos/logo_arianegroup.svg" alt="ArianeGroup" />
             <img className="logo-f4e" src="/img/logos/logo_f4e.svg" alt="Fusion for Energy" />
@@ -169,7 +169,7 @@ export default function Home() {
             <h2 className="title">Wrocław and Oxford.</h2>
             <p className="lead">Made in Wrocław, where the Bimo group has worked since 1992. Oxford is our contact point for UK customers and research partners.</p>
           </div>
-          <div className="grid grid--2">
+          <div className="grid grid--2 pair">
             <Photo img="wroclaw" ratio="16 / 9" />
             <Photo img="oxford" ratio="16 / 9" />
           </div>

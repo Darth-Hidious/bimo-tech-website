@@ -50,6 +50,20 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
             placeholder="TZM, Inconel 625, 6N, RCC-M"
           />
         </label>
+        <label className="field explorer__select">
+          Element
+          <select className="input" value={el ?? ""} onChange={(e) => setEl(e.target.value || null)}>
+            <option value="">All elements</option>
+            {cells
+              .filter((c) => c.symbol && listed.has(c.symbol))
+              .sort((a, b) => (a.z ?? 0) - (b.z ?? 0))
+              .map((c) => (
+                <option key={c.symbol} value={c.symbol}>
+                  {c.symbol} · {c.z}
+                </option>
+              ))}
+          </select>
+        </label>
         {el || q ? (
           <button type="button" className="btn btn--ghost" onClick={() => { setEl(null); setQ(""); }}>
             Clear{el ? ` ${el}` : ""}

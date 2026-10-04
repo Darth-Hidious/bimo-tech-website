@@ -19,7 +19,7 @@ export default function IndustriesPage() {
           <h1 className="display">Where our metals go</h1>
           <p className="lead">The same catalog and workshop serve very different jobs. Pick yours to see what we supply and make for it.</p>
         </div>
-        <div className="grid grid--3">
+        <div className="grid grid--3 industries-grid">
           {industries.map((i) => (
             <Link href={`/industries/${i.slug}/`} key={i.slug} className="way">
               <Photo img={i.img} ratio="4 / 3" />

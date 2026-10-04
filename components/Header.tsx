@@ -54,6 +54,9 @@ export default function Header() {
             Request a quote
           </Link>
         </div>
+        <Link href="/contact/" className="btn btn--primary header-quote">
+          Quote{count > 0 ? ` · ${count}` : ""}
+        </Link>
         <details className="menu" ref={menu}>
           <summary aria-label="Menu">
             Menu <span aria-hidden="true">☰</span>

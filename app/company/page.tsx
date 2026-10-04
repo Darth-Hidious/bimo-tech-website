@@ -25,7 +25,7 @@ export default function CompanyPage() {
               Wrocław and work with UK customers and research partners from Oxford.
             </p>
           </div>
-          <div className="grid grid--2">
+          <div className="grid grid--2 pair">
             <div className="place">
               <Photo img="wroclaw" ratio="16 / 10" />
               <h2 className="subtitle">Wrocław, Poland</h2>
