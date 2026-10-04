@@ -1,25 +1,11 @@
 import type { NextConfig } from "next";
 
+// Static export: every page is pre-rendered HTML, so the site can be served
+// by nginx or Apache as plain files, or deployed to Vercel unchanged.
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.firebasestorage.app',
-        pathname: '/**',
-      },
-    ],
-  },
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

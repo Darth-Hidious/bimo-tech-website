@@ -1,94 +1,47 @@
-# BimoTech
+# Bimo Materials website
 
-BimoTech is an advanced localized manufacturing platform connecting businesses with top-tier suppliers for CNC machining, 3D printing, injection molding, and more. The platform features an AI-powered assistant ("Bimo") to guide users through the quoting and prototyping process.
+The website for Bimo Materials (bimomaterials.com): specialty metals, powders, sputtering targets, high-purity metals and new alloys. Part of the Bimo group, alongside Bimo Tech and PRISM by Mirdyne.
 
-## Features
+Built with Next.js 16 (App Router) as a **static export**: every page is pre-rendered HTML, so the full text is in the initial response for visitors, search engines and AI assistants. The `out/` folder can be served by nginx or Apache as plain files, or the repository can be deployed to Vercel as it is.
 
-- **AI-Powered Discovery**: Integrated "Bimo" AI agent (built with Google Genkit) helps users find the right manufacturing processes and materials.
-- **Smart Quoting Engine**: Streamlined RFQ process with real-time status tracking.
-- **Dynamic Catalog**: Comprehensive database of services, materials, and machines managed via a custom admin dashboard.
-- **Admin Dashboard**: Powerful tools for administrators to manage products, services, suppliers, and quote requests.
-- **Global Reach**: Built-in internationalization (i18n) support for multi-language access.
-- **Modern UI/UX**: Premium aesthetic with dark mode, glassmorphism, and GSAP/Three.js animations.
-
-## Tech Stack
-
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: 
-  - [Tailwind CSS 4](https://tailwindcss.com/)
-  - [GSAP](https://gsap.com/) (Animations)
-  - [Three.js](https://threejs.org/) (3D Visuals)
-- **Backend & Database**: 
-  - [Firebase](https://firebase.google.com/) (Firestore, Auth, Storage)
-  - [Google Genkit](https://firebase.google.com/docs/genkit) (Generative AI)
-- **Testing**: [Vitest](https://vitest.dev/)
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v18+)
-- Python 3.x (for i18n scripts)
-- Firebase Account
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-org/bimo-tech-website.git
-   cd bimo-tech-website
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Configure Environment Variables:
-   Create a `.env.local` file in the root directory and add your Firebase and Google GenAI credentials.
-   ```bash
-   NEXT_PUBLIC_FIREBASE_API_KEY=...
-   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
-   NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
-   # ... other Firebase config
-   GOOGLE_GENAI_API_KEY=... 
-   ```
-
-4. Run the Development Server:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Scripts & Utilities
-
-The project includes several utility scripts in the `scripts/` directory for database seeding and localization.
-
-- **Seeding Data**:
-  ```bash
-  npx tsx scripts/seed-services.ts  # Populate initial services data
-  npx tsx scripts/seed-admin.ts     # Create/reset admin users
-  ```
-
-- **Internationalization (i18n)**:
-  ```bash
-  python3 scripts/extract_i18n.py   # Extract hardcoded strings for translation
-  python3 scripts/translate_i18n.py # Translate extracted strings using AI
-  ```
-
-## Project Structure
-
-- `src/app`: Next.js App Router pages and layouts.
-- `src/components`: Reusable UI components.
-- `src/lib`: Utility functions, Firebase configuration, and shared logic.
-- `scripts`: Database seeding and i18n automation scripts.
-- `public`: Static assets (images, fonts).
-
-## Testing
-
-Run unit and integration tests with:
+## Run it
 
 ```bash
-npm run test
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # writes the static site to out/
+npm run lint     # type check
 ```
+
+## Where things live
+
+| Path | What |
+| --- | --- |
+| `lib/catalog.ts` | The catalog: 8 material families, 14 material pages, grades, forms, properties |
+| `lib/site.ts` | Images and their credits, the homepage path and outcomes, services, industries, history, news, contact details |
+| `lib/elements.ts` | Periodic table layout and atomic numbers |
+| `app/` | One folder per page. `materials/[family]/[material]` generates a page per material |
+| `components/` | Header, footer, photo with credit line, element tile, strips, quote form, materials explorer |
+| `app/globals.css` | The design system: tokens at the top, then components |
+| `public/img/own/` | Our own photographs (Bimo group, project SPARK) |
+| `public/img/ext/` | Licensed third-party photographs. Every one is credited in `lib/site.ts` and on /credits |
+
+To add a material, add an entry to its family in `lib/catalog.ts`. Its page, its card, the search index, the sitemap and the periodic table update on the next build.
+
+## Design
+
+A sibling of the PRISM design system with its own identity:
+
+- Steel ground `#f3f4f5`, graphite story sections `#11161b`, logo blue `#1b6cb6`, copper `#d9823f` for the one main action per screen.
+- Archivo, set at 110 % width for headlines to echo the wide logo; IBM Plex Mono for grades, purities and standards. Both self-hosted, no Google requests.
+- The periodic-table element tile is the brand's own mark.
+- Every photograph carries a credit line.
+
+## Before launch
+
+1. **Quote form delivery.** Set `NEXT_PUBLIC_QUOTE_ENDPOINT` at build time to a form handler (CRM webhook, Formspree, a serverless function). Without it the form opens the visitor's email program.
+2. **Contact details.** `lib/site.ts → company`: Bimo Materials' own email and phone.
+3. **Photographs.** Slots marked "Photo needed" render as labelled placeholders until a photo is added in `lib/site.ts`.
+4. **Logo permissions** for ESA, ArianeGroup, Fusion for Energy and ITER on the homepage.
+5. **Privacy notice.** `app/privacy` is a draft and is set to noindex.
+6. **Facts to confirm** with the team: stocked grades (TZM, WLa, WCu), which manufacturing services run in-house, testing scope.
