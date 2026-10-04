@@ -24,7 +24,7 @@ npm run lint     # type check
 | `components/` | Header, footer, photo with credit line, element tile, strips, quote form, materials explorer |
 | `app/globals.css` | The design system: tokens at the top, then components |
 | `public/img/own/` | Our own photographs (Bimo group, project SPARK) |
-| `public/img/ext/` | Licensed third-party photographs. Every one is credited in `lib/site.ts` and on /credits |
+| `public/img/ext/`, `public/img/web/` | Licensed photographs from PRISM's library, Wikimedia Commons and Flickr. Each one's author, licence and source is in `lib/site.ts` and listed on /credits |
 
 To add a material, add an entry to its family in `lib/catalog.ts`. Its page, its card, the search index, the sitemap and the periodic table update on the next build.
 
@@ -35,13 +35,13 @@ A sibling of the PRISM design system with its own identity:
 - Steel ground `#f3f4f5`, graphite story sections `#11161b`, logo blue `#1b6cb6`, copper `#d9823f` for the one main action per screen.
 - Archivo, set at 110 % width for headlines to echo the wide logo; IBM Plex Mono for grades, purities and standards. Both self-hosted, no Google requests.
 - The periodic-table element tile is the brand's own mark.
-- Every photograph carries a credit line.
+- Photo credits are collected on one page, /credits, generated from `lib/site.ts`.
 
 ## Before launch
 
 1. **Quote form delivery.** Set `NEXT_PUBLIC_QUOTE_ENDPOINT` at build time to a form handler (CRM webhook, Formspree, a serverless function). Without it the form opens the visitor's email program.
 2. **Contact details.** `lib/site.ts → company`: Bimo Materials' own email and phone.
-3. **Photographs.** Slots marked "Photo needed" render as labelled placeholders until a photo is added in `lib/site.ts`.
+3. **Photographs.** Several pages use licensed stand-ins (forging, cold spray, delivery, nuclear steel, water treatment). Replace them with your own shots when you have them: change `src` in `lib/site.ts` and drop the licence fields.
 4. **Logo permissions** for ESA, ArianeGroup, Fusion for Energy and ITER on the homepage.
 5. **Privacy notice.** `app/privacy` is a draft and is set to noindex.
 6. **Facts to confirm** with the team: stocked grades (TZM, WLa, WCu), which manufacturing services run in-house, testing scope.

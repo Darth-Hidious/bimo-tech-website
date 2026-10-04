@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { creditText } from "@/components/Photo";
 import { images, industries, type Img } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -35,7 +34,6 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           <h1 className="display">{i.name}</h1>
           <p className="hero__lead">{i.intro}</p>
         </div>
-        {img.src ? <p className="hero__credit">{creditText(img)}</p> : null}
       </section>
 
       <section className="section">

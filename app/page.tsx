@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Photo, { creditText } from "@/components/Photo";
+import Photo from "@/components/Photo";
 import Strip from "@/components/Strip";
 import QuoteForm from "@/components/QuoteForm";
 import { images, outcomes, path, timeline } from "@/lib/site";
@@ -26,7 +26,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <p className="hero__credit">{creditText(images.hearth)}</p>
       </section>
 
       {/* 2 · Who we are, in one breath */}

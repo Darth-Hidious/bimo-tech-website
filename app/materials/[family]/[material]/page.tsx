@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Element from "@/components/Element";
+import Photo from "@/components/Photo";
 import QuoteButton from "@/components/QuoteButton";
+import type { ImageKey } from "@/lib/site";
 import { allMaterials } from "@/lib/catalog";
 
 export const dynamicParams = false;
@@ -48,6 +50,8 @@ export default async function MaterialPage({ params }: { params: Params }) {
                 </Link>
               </div>
             </div>
+            <div className="material__side">
+              {m.img ? <Photo img={m.img as ImageKey} ratio="16 / 10" priority /> : null}
             <dl className="rows material__facts">
               {m.z ? (
                 <div className="kv"><dt>Atomic number</dt><dd className="mono num">{m.z}</dd></div>
@@ -64,6 +68,7 @@ export default async function MaterialPage({ params }: { params: Params }) {
               ) : null}
               <div className="kv"><dt>Used for</dt><dd>{m.uses.join(" · ")}</dd></div>
             </dl>
+            </div>
           </div>
         </div>
       </section>

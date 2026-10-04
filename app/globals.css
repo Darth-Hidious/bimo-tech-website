@@ -399,3 +399,5 @@ ul { margin: 0; padding: 0; list-style: none; }
 .prose { max-width: 760px; display: flex; flex-direction: column; gap: 18px; }
 .prose h2 { margin-top: 18px; }
 .contact-list { margin: 8px 0; }
+.material__side { display: flex; flex-direction: column; gap: 16px; }
+.history { list-style: none; padding: 0; margin: 0; }

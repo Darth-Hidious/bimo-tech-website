@@ -16,6 +16,7 @@ export type Material = {
   grades?: string[];
   uses: string[];
   standards?: string[];
+  img?: string; // key in lib/site.ts images
 };
 
 export type Group = { title: string; body: string };
@@ -47,6 +48,7 @@ export const families: Family[] = [
     materials: [
       {
         slug: "tungsten",
+        img: "tungstenRod",
         name: "Tungsten",
         symbol: "W",
         z: 74,
@@ -60,6 +62,7 @@ export const families: Family[] = [
       },
       {
         slug: "molybdenum",
+        img: "powderJars",
         name: "Molybdenum",
         symbol: "Mo",
         z: 42,
@@ -85,6 +88,7 @@ export const families: Family[] = [
       },
       {
         slug: "niobium",
+        img: "refractoryStock",
         name: "Niobium",
         symbol: "Nb",
         z: 41,
@@ -141,6 +145,7 @@ export const families: Family[] = [
     materials: [
       {
         slug: "titanium",
+        img: "specialty",
         name: "Titanium and titanium alloys",
         symbol: "Ti",
         z: 22,

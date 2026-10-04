@@ -58,21 +58,97 @@ export const images = {
   },
   prism: { src: "/img/own/prism-recipes.png", alt: "PRISM's generative models building alloy recipes step by step, drawn as a branching tree", credit: "Mirdyne, PRISM" },
 
-  // Slots still waiting for a photo. The image search fills these in.
-  pvd: { alt: "PVD coating chamber", credit: "" },
-  delivery: { alt: "Crated metal parts ready to ship", credit: "" },
-  highPurity: { alt: "High-purity metal pellets", credit: "" },
-  nuclearSteel: { alt: "Stainless steel forged bars", credit: "" },
-  electrode: { alt: "Resistance welding electrode tips", credit: "" },
-  forging: { alt: "A hot billet in a forging press", credit: "" },
-  coldSpray: { alt: "A cold spray nozzle coating a part", credit: "" },
-  waterTreatment: { alt: "A water treatment plant", credit: "" },
-  wroclaw: { alt: "Wrocław, Poland", credit: "" },
-  oxford: { alt: "Oxford, United Kingdom", credit: "" },
-  refractoryStock: { alt: "Refractory metal sheet, rod and wire", credit: "" },
-  targets: { alt: "Sputtering targets", credit: "" },
-  specialty: { alt: "Titanium and nickel alloy bar stock", credit: "" },
-  drawing: { alt: "An engineering drawing of a part", credit: "" },
+  // Photographs from Wikimedia Commons and Flickr, used under their licences.
+  pvd: {
+    src: "/img/web/pvd-chamber.jpg", alt: "An open magnetron sputtering chamber with rainbow-coloured coating deposits",
+    credit: "Pavlína Jáchimová, Czech Academy of Sciences", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=140988843",
+  },
+  delivery: {
+    src: "/img/web/delivery.jpg", alt: "Large plywood export crates in a factory hall, ready to ship",
+    credit: "Julo", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=2349802",
+  },
+  highPurity: {
+    src: "/img/web/high-purity.jpg", alt: "High-purity gallium crystals",
+    credit: "Maxim Bilovitskiy", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=45344107",
+  },
+  nuclearSteel: {
+    src: "/img/web/nuclear-steel.jpg", alt: "Bundles of seamless steel pipe with capped ends in a mill yard",
+    credit: "Seamless Steel Pipes", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=152450316",
+  },
+  electrode: {
+    src: "/img/web/electrode.jpg", alt: "Resistance spot-welding electrode caps, shanks and holders",
+    credit: "Szanto Juraj", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=66260815",
+  },
+  forging: {
+    src: "/img/web/forging.jpg", alt: "A forging press with a glowing part in a drop-forging shop",
+    credit: "F.Broer", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=485602",
+  },
+  coldSpray: {
+    src: "/img/web/cold-spray.jpg", alt: "A robot-held thermal-spray gun coating cylindrical parts",
+    credit: "Zhangabay", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=182066282",
+  },
+  waterTreatment: {
+    src: "/img/web/water-treatment.jpg", alt: "Aerial view of the Daugavgrīva wastewater treatment plant in Riga",
+    credit: "Mosbatho", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    source: "https://commons.wikimedia.org/wiki/File:Daugavgr%C4%ABva_wastewater_treatment_plant,_2022.jpg",
+  },
+  wroclaw: {
+    src: "/img/web/wroclaw.jpg", alt: "The Market Square and Old Town Hall in Wrocław, from above",
+    credit: "Maksym Kozlenko", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=82281101",
+  },
+  oxford: {
+    src: "/img/web/oxford.jpg", alt: "The Radcliffe Camera in Oxford, from above",
+    credit: "Diliff", license: "CC BY 2.5", licenseUrl: "https://creativecommons.org/licenses/by/2.5/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=1284604",
+  },
+  refractoryStock: {
+    src: "/img/web/refractory-stock.jpg", alt: "A niobium sheet with small offcuts",
+    credit: "Dschwen", license: "CC BY 2.5", licenseUrl: "https://creativecommons.org/licenses/by/2.5/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=509951",
+  },
+  targets: {
+    src: "/img/web/targets.jpg", alt: "A titanium sputtering target with oxide colours and an erosion track",
+    credit: "范皓程", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=194880002",
+  },
+  specialty: {
+    src: "/img/web/specialty-alloys.jpg", alt: "Titanium tube, bar, threaded rod, wire, sheet and powder",
+    credit: "Mark Fergus", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=35482877",
+  },
+  drawing: {
+    src: "/img/web/drawing.jpg", alt: "A hand-drawn engineering drawing of a spring with its title block",
+    credit: "futureshape", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    source: "https://www.flickr.com/photos/55231259@N00/6786363010",
+  },
+  tungstenRod: {
+    src: "/img/web/tungsten.jpg", alt: "A tungsten rod",
+    credit: "Hi-Res Images of Chemical Elements", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=28869671",
+  },
+  machinedPart: {
+    src: "/img/web/machined-part.jpg", alt: "CNC-machined plates with pockets and bores",
+    credit: "ferdy001", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    source: "https://www.flickr.com/photos/26524277@N04/6991262873",
+  },
+  powderJars: {
+    src: "/img/web/powder-jars.jpg", alt: "Molybdenum powder in a glass dish",
+    credit: "Plansee Group", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/w/index.php?curid=76339726",
+  },
+  qualityLab: {
+    src: "/img/web/quality-lab.jpg", alt: "A technician loading a laser flash analyser in a materials-testing laboratory",
+    credit: "Idaho National Laboratory", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    source: "https://www.flickr.com/photos/30369883@N03/9195522020",
+  },
 } satisfies Record<string, Img>;
 
 export type ImageKey = keyof typeof images;
@@ -105,7 +181,7 @@ export const services: Service[] = [
   { id: "casting-printing", name: "Casting and metal 3D printing", line: "Iron, steel and alloy castings, and laser powder-bed printing.", detail: ["Castings in iron, steel and alloys", "Laser powder-bed fusion", "Printing powders from our own range"], img: "printer" },
   { id: "pvd-coating", name: "PVD coating", line: "Physical vapour deposition in high vacuum.", detail: ["TiN, TiCN, TiAlN, AlTiN", "CrN, AlCrN", "DLC"], img: "pvd" },
   { id: "cold-spray", name: "Cold spray", line: "Metal coatings applied by a cold gas process, without melting the part underneath.", detail: ["Cold gas process", "The substrate is not melted"], img: "coldSpray" },
-  { id: "testing", name: "Testing and certificates", line: "Every lot carries its chemistry, process and inspection record.", detail: ["Material testing on request", "Records per lot"], img: "coupon" },
+  { id: "testing", name: "Testing and certificates", line: "Every lot carries its chemistry, process and inspection record.", detail: ["Material testing on request", "Records per lot"], img: "qualityLab" },
 ];
 
 export const projectSteps = [

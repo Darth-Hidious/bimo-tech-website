@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ family: s
 const FAMILY_IMAGE: Record<string, ImageKey> = {
   "refractory-metals": "refractoryStock",
   "specialty-alloys": "specialty",
-  powders: "powder",
+  powders: "powderJars",
   "sputtering-targets": "targets",
   "high-purity": "highPurity",
   "nuclear-grade": "nuclearSteel",

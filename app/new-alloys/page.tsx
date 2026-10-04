@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Photo, { creditText } from "@/components/Photo";
+import Photo from "@/components/Photo";
 import { images, type ImageKey } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,7 +31,6 @@ export default function NewAlloysPage() {
           <h1 className="display">New alloys</h1>
           <p className="hero__lead">When no existing alloy survives the job, we develop one, then make it in any form we sell.</p>
         </div>
-        <p className="hero__credit">{creditText(images.buttonDark)}</p>
       </section>
 
       <section className="section">
