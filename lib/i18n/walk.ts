@@ -5,7 +5,7 @@
 /** Keys whose values are never translated: identifiers, paths, codes, people's names and licences. */
 export const KEEP = new Set([
   "slug", "symbol", "src", "img", "image", "href", "licenseUrl", "license", "source", "credit", "date", "year",
-  "n", "id", "email", "phone", "tiles", "elements", "programmes", "side", "lat", "lon", "z", "meltingC", "density",
+  "n", "id", "email", "phone", "brand", "logo", "tiles", "elements", "programmes", "side", "lat", "lon", "z", "meltingC", "density",
 ]);
 
 /** Returns a copy of `value` with every translatable string passed through `f`. Arrays keep their parent's key. */

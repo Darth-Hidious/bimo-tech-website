@@ -24,6 +24,7 @@ function build(lang: Lang) {
     news: localize(lang, site.news),
     company: localize(lang, site.company),
     places: localize(lang, site.places),
+    group: localize(lang, site.group),
   };
 }
 

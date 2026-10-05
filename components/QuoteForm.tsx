@@ -8,17 +8,22 @@ import { useLang } from "@/components/LangProvider";
 
 const NEEDS = [msg("A material"), msg("A part"), msg("A coating"), msg("A new alloy")];
 
-// Where the form posts. Set NEXT_PUBLIC_QUOTE_ENDPOINT at build time to a
-// form handler (CRM, Formspree, a serverless function). Without it the form
-// opens the visitor's email program with the request filled in.
-const ENDPOINT = process.env.NEXT_PUBLIC_QUOTE_ENDPOINT ?? "";
+// Where the form posts: the site's own mail sender (app/api/quote/route.ts) unless another handler is set.
+// When the sender is not set up (503), missing (404, e.g. static hosting) or unreachable, the form opens
+// the visitor's email program with the request filled in instead.
+const ENDPOINT = process.env.NEXT_PUBLIC_QUOTE_ENDPOINT || "/api/quote/";
 
 type Status = { kind: "idle" | "sending" | "sent" | "mail" | "error"; text?: string };
+
+class NoSender extends Error {}
 
 export default function QuoteForm({ email, compact = false }: { email: string; compact?: boolean }) {
   const { lang, t, href } = useLang();
   const [items, setItems] = useState<string[]>([]);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [started, setStarted] = useState(0); // when the form appeared; the server drops instant (bot) sends
+
+  useEffect(() => setStarted(Date.now()), []);
 
   useEffect(() => {
     const sync = () => setItems(readBasket());
@@ -41,17 +46,29 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
     data.set("basket", items.join("; "));
     data.set("language", lang);
 
-    if (ENDPOINT) {
-      setStatus({ kind: "sending" });
-      try {
-        const res = await fetch(ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
-        if (!res.ok) throw new Error(String(res.status));
-        setStatus({ kind: "sent", text: t("Thank you. Your request is with our team, and we will reply by email.") });
-        form.reset();
-      } catch {
-        setStatus({ kind: "error", text: t("Sending failed. Please email {email} instead.", { email }) });
+    data.set("page", window.location.href);
+    setStatus({ kind: "sending" });
+    try {
+      const res = await fetch(ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      if (res.status === 503 || res.status === 404 || res.status === 405) throw new NoSender();
+      if (res.status === 400) {
+        setStatus({ kind: "error", text: t("Please check your email address.") });
+        return;
       }
+      if (res.status === 429) {
+        setStatus({ kind: "error", text: t("Too many requests. Please try again in a minute.") });
+        return;
+      }
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus({ kind: "sent", text: t("Thank you. Your request is with our team, and we will reply by email.") });
+      form.reset();
       return;
+    } catch (err) {
+      if (!(err instanceof NoSender || err instanceof TypeError)) {
+        setStatus({ kind: "error", text: t("Sending failed. Please email {email} instead.", { email }) });
+        return;
+      }
+      // No mail sender here (or offline): fall through to the visitor's email program.
     }
 
     const c = colon(lang);
@@ -74,6 +91,12 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
 
   return (
     <form className="quote" onSubmit={onSubmit} noValidate={false}>
+      {/* Only bots fill these: hidden from people and screen readers. */}
+      <input type="hidden" name="started" value={started || ""} />
+      <label className="quote__trap" aria-hidden="true">
+        Website
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+      </label>
       <fieldset className="radio-chips">
         <legend>{t("I need")}</legend>
         {NEEDS.map((n, i) => (

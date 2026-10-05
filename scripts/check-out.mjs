@@ -1,4 +1,4 @@
-// Checks the built site (out/) for each language:
+// Checks the built site (the pre-rendered HTML in .next/server/app) for each language:
 //   - <html lang>, canonical and the 11 hreflang links (10 languages + x-default) on every page
 //   - no English left on translated pages: visible text, alt texts, labels, placeholders, <title>
 //     and meta descriptions are searched for English sentences that have a different translation.
@@ -9,17 +9,24 @@ import { join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const out = join(root, "out");
+const out = join(root, ".next/server/app");
 const LANGS = ["en", "pl", "de", "fr", "es", "it", "cs", "sk", "hu", "ja"];
 const HTML_LANG = { en: "en-GB" };
 const keys = JSON.parse(readFileSync(join(root, "lib/i18n/keys.json"), "utf8")).all;
 
+// Pre-rendered pages: /materials/powders/ is materials/powders.html, / is index.html, /de/ is de.html.
+const SKIP = new Set(["_not-found", "_global-error", "api", "404", "500", "index"]);
 const pages = (dir) =>
   readdirSync(dir).flatMap((n) => {
     const p = join(dir, n);
-    if (statSync(p).isDirectory()) return n === "_next" || (dir === out && (LANGS.includes(n) || n === "404" || n === "_not-found")) ? [] : pages(p);
-    return n === "index.html" ? [p] : [];
+    if (statSync(p).isDirectory()) return dir === out && (LANGS.includes(n) || SKIP.has(n)) ? [] : pages(p);
+    return n.endsWith(".html") && !(dir === out && (SKIP.has(n.slice(0, -5)) || LANGS.includes(n.slice(0, -5)))) ? [p] : [];
   });
+const fileFor = (lang, path) => {
+  const rest = path === "/" ? "" : path.slice(1, -1);
+  if (lang === "en") return join(out, rest ? `${rest}.html` : "index.html");
+  return join(out, rest ? `${lang}/${rest}.html` : `${lang}.html`);
+};
 
 const decode = (s) =>
   s.replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
@@ -36,7 +43,7 @@ function readable(html) {
 }
 
 const problems = [];
-const englishPages = pages(out).map((p) => "/" + relative(out, dirname(p)).replace(/\\/g, "/") + "/").map((p) => p.replace(/^\/\.?\//, "/"));
+const englishPages = ["/", ...pages(out).map((p) => "/" + relative(out, p).replace(/\\/g, "/").slice(0, -5) + "/")];
 for (const lang of LANGS) {
   const dict = lang === "en" ? {} : JSON.parse(readFileSync(join(root, `lib/i18n/dict/${lang}.json`), "utf8"));
   // English sentences whose translation differs: finding one on a translated page means a string was not translated.
@@ -45,7 +52,7 @@ for (const lang of LANGS) {
   const tells = keys.filter((k) => k.length >= 14 && /\s/.test(k) && !/[{<]/.test(k) && dict[k] && dict[k] !== k && !kept.includes(k));
   let leaks = 0;
   for (const path of englishPages) {
-    const file = join(out, lang === "en" ? "" : lang, path, "index.html");
+    const file = fileFor(lang, path);
     if (!existsSync(file)) { problems.push(`${lang}: missing page ${path}`); continue; }
     const html = readFileSync(file, "utf8");
     const want = HTML_LANG[lang] ?? lang;

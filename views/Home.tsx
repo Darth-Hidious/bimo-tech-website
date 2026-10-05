@@ -22,7 +22,7 @@ export function homeMeta(lang: Lang) {
 export default function Home({ lang }: { lang: Lang }) {
   const t = tr(lang);
   const to = (p: string) => href(lang, p);
-  const { images, outcomes, path, places, timeline, company } = content(lang);
+  const { images, outcomes, path, places, timeline, company, group } = content(lang);
   // The hero walks the path of the metal: the first six stops, each with its largest photo.
   const HERO: ImageKey[] = ["hearth", "melt", "powder", "printer", "pvd", "qualityLab"];
   const heroSlides: Slide[] = HERO.map((k, i) => ({ src: images[k].src!, alt: images[k].alt, n: path[i].n, title: path[i].title }));
@@ -168,12 +168,16 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="lead">
               {t("In SPARK we are developing refractory high-entropy alloys for rocket engines, with ArianeGroup. ESA chose it as one of 16 winners from 40 proposals.")}
             </p>
+            <p className="spark__mirdyne">
+              <img src="/img/group/mirdyne-lockup-ink.png" alt="Mirdyne" width={110} height={30} />
+              <span>{t("New alloys are designed with PRISM, the platform of our group company Mirdyne in Giessen.")}</span>
+            </p>
             <div className="btns">
               <Link href={to("/new-alloys/")} className="btn btn--dark">
                 {t("The SPARK project")} <span className="arrow">→</span>
               </Link>
               <a href="https://prism.mirdyne.com/" className="btn btn--ghost">
-                {t("How PRISM designs alloys")} ↗
+                {t("PRISM by Mirdyne")} ↗
               </a>
             </div>
           </div>
@@ -190,14 +194,24 @@ export default function Home({ lang }: { lang: Lang }) {
           </div>
           <div className="where">
             <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław and Oxford marked.")} />
-            <dl className="where__list">
-              {places.map((p) => (
-                <div key={p.lat}>
-                  <dt>{p.name}</dt>
-                  <dd>{p.role}</dd>
-                </div>
-              ))}
-            </dl>
+            <ol className="chain" aria-label={t("The Bimo group")}>
+              {group.map((g) => {
+                const external = g.href.startsWith("http");
+                return (
+                  <li key={g.brand} className="chain__item">
+                    <a href={external ? g.href : to(g.href)} className="chain__link">
+                      <img className="chain__logo" src={g.logo} alt={g.brand} height={28} />
+                      <span className="chain__role">{g.role}</span>
+                      <span className="chain__line">{g.line}</span>
+                      <span className="chain__place mono">
+                        {g.place}
+                        {external ? " ↗" : ""}
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
           <ol className="timeline">
             {timeline.map((e) => (

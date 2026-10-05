@@ -262,6 +262,7 @@ h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .li
 @keyframes hero-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .hero__play { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,.45); background: rgba(10,13,16,.35); color: #fff; font-size: 10px; cursor: pointer; display: grid; place-items: center; }
 .hero__play:hover, .hero__dot:hover span { border-color: #fff; background-color: rgba(255,255,255,.55); }
+.quote__trap { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .hero__img, .hero__img.is-on { transform: none; transition: opacity .6s ease; } }
 @media (max-width: 640px) {
@@ -465,10 +466,27 @@ h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .li
   position: absolute; top: -9px; left: 16px; display: grid; gap: 2px; white-space: nowrap;
   font-size: 13px; line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,.85);
 }
-/* Oxford reads to the left, Wrocław to the right. */
+/* Oxford reads to the left, Wrocław to the right, Giessen (between them) underneath. */
 .globe__pin--left .globe__tag { right: 16px; left: auto; text-align: right; }
+.globe__pin--below .globe__tag { top: 14px; left: 0; transform: translateX(-50%); text-align: center; justify-items: center; }
 .globe__tag b { font-weight: 700; color: #fff; }
 .globe__tag span { font-size: 12px; color: rgba(255,255,255,.82); }
+/* The Bimo group beside the globe: designs → makes → supplies, joined by one line */
+.chain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; position: relative; }
+.chain::before { content: ""; position: absolute; left: 5px; top: 14px; bottom: 14px; width: 2px; background: var(--rule); }
+.chain__item { position: relative; padding-left: 28px; }
+.chain__item::before { content: ""; position: absolute; left: 0; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--steel); border: 2px solid var(--blue); }
+.chain__link { display: grid; gap: 4px; padding: 14px 16px; border-radius: var(--radius); color: var(--ink); }
+.chain__link:hover { background: var(--surface); }
+.chain__logo { height: 28px; width: auto; margin-bottom: 6px; justify-self: start; }
+/* Only white Bimo Tech artwork exists: print it in ink, like a one-colour logo. */
+.chain__logo[src*="-white"] { filter: brightness(0); opacity: .88; }
+.chain__role { font-size: 19px; font-weight: 500; }
+.chain__line { color: var(--ink-2); font-size: 15px; line-height: 1.45; }
+.chain__place { font-size: 12px; color: var(--ink-3); letter-spacing: .02em; }
+.spark__mirdyne { display: flex; align-items: center; gap: 14px; margin: 4px 0 6px; color: var(--ink-2); font-size: 15px; line-height: 1.45; }
+.spark__mirdyne img { height: 26px; width: auto; flex: none; }
+@media (max-width: 640px) { .spark__mirdyne { flex-direction: column; align-items: flex-start; gap: 8px; } }
 .where__list { margin: 0; display: grid; border-top: 2px solid var(--ink); }
 .where__list div { display: grid; gap: 2px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .where__list dt { font-size: 20px; font-weight: 500; }

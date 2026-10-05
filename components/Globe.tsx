@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createGlobe, type Globe as GlobeApi, type GlobeView } from "@/lib/globe";
 
-export type Place = { name: string; role: string; lat: number; lon: number; side?: "left" | "right" };
+export type Place = { name: string; role: string; lat: number; lon: number; side?: "left" | "below" };
 
 // From the Atlantic to central Europe, closing in on the way.
 const FROM = { lon: -58, lat: 16, zoom: 0.9 };
@@ -113,7 +113,7 @@ export default function Globe({ places, label }: { places: Place[]; label: strin
           ref={(n) => {
             pins.current[i] = n;
           }}
-          className={`globe__pin${pl.side === "left" ? " globe__pin--left" : ""}`}
+          className={`globe__pin${pl.side ? ` globe__pin--${pl.side}` : ""}`}
           data-show="false"
           aria-hidden="true"
         >

@@ -341,7 +341,37 @@ export const company = {
 };
 
 /** Where we work, pinned on the globe. */
-export const places = [
+export const places: { name: string; role: string; lat: number; lon: number; side?: "left" | "below" }[] = [
   { name: "Wrocław", role: "Made here", lat: 51.108, lon: 17.039 },
-  { name: "Oxford", role: "Bimo Materials Ltd", lat: 51.752, lon: -1.258, side: "left" as const },
+  { name: "Oxford", role: "Bimo Materials Ltd", lat: 51.752, lon: -1.258, side: "left" },
+  // Giessen sits between Oxford and Wrocław at this zoom, so its label goes underneath.
+  { name: "Giessen", role: "Mirdyne · designed here", lat: 50.587, lon: 8.678, side: "below" },
+];
+
+/** The Bimo group: one company designs the alloys, one makes them, one has supplied metals since 1992. */
+export const group: { brand: string; logo: string; role: string; line: string; place: string; href: string }[] = [
+  {
+    brand: "Mirdyne",
+    logo: "/img/group/mirdyne-lockup-ink.png",
+    role: "Designs the alloys",
+    line: "PRISM, Mirdyne’s alloy-design platform, proposes compositions for the job.",
+    place: "Giessen",
+    href: "https://prism.mirdyne.com/",
+  },
+  {
+    brand: "Bimo Materials",
+    logo: "/img/brand/bimo-materials-logo.png",
+    role: "Develops and makes them",
+    line: "Melting, powder, printing, machining, coating and testing.",
+    place: "Wrocław · Oxford",
+    href: "/company/",
+  },
+  {
+    brand: "Bimo Tech",
+    logo: "/img/group/bimo-tech-white.png", // white artwork; shown in ink on light grounds
+    role: "Supplies metals and parts",
+    line: "Metals and parts for science and industry since 1992.",
+    place: "Wrocław",
+    href: "https://www.bimotech.pl/",
+  },
 ];

@@ -16,7 +16,7 @@ import * as site from "../lib/site.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OTHER = ["pl", "de", "fr", "es", "it", "cs", "sk", "hu", "ja"];
-const DATA = [families, site.images, site.path, site.outcomes, site.services, site.projectSteps, site.industries, site.timeline, site.news, site.company, site.places];
+const DATA = [families, site.images, site.path, site.outcomes, site.services, site.projectSteps, site.industries, site.timeline, site.news, site.company, site.places, site.group];
 
 function files(dir) {
   return readdirSync(dir).flatMap((n) => {
