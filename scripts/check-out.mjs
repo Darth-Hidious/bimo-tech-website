@@ -40,7 +40,9 @@ const englishPages = pages(out).map((p) => "/" + relative(out, dirname(p)).repla
 for (const lang of LANGS) {
   const dict = lang === "en" ? {} : JSON.parse(readFileSync(join(root, `lib/i18n/dict/${lang}.json`), "utf8"));
   // English sentences whose translation differs: finding one on a translated page means a string was not translated.
-  const tells = keys.filter((k) => k.length >= 14 && /\s/.test(k) && !/[{<]/.test(k) && dict[k] && dict[k] !== k);
+  // (Skip English that a translation keeps on purpose, such as a postal address in Latin script.)
+  const kept = Object.values(dict).join("\n");
+  const tells = keys.filter((k) => k.length >= 14 && /\s/.test(k) && !/[{<]/.test(k) && dict[k] && dict[k] !== k && !kept.includes(k));
   let leaks = 0;
   for (const path of englishPages) {
     const file = join(out, lang === "en" ? "" : lang, path, "index.html");

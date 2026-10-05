@@ -4,7 +4,7 @@ import Element from "@/components/Element";
 import Photo from "@/components/Photo";
 import QuoteButton from "@/components/QuoteButton";
 import { content } from "@/lib/content";
-import { href, inSentence, num, type Lang } from "@/lib/i18n/config";
+import { comma, href, inSentence, num, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
 import type { ImageKey } from "@/lib/site";
@@ -69,7 +69,7 @@ export default function Family({ lang, family: slug }: { lang: Lang; family: str
         <section className="section--white section--tight">
           <div className="wrap">
             <h2 className="label" style={{ marginBottom: 18 }}>{t("Melting point, °C")}</h2>
-            <div className="mpchart" role="img" aria-label={withMelting.map((m) => `${m.chartName ?? m.name} ${num(lang, m.meltingC!)} °C`).join(", ")}>
+            <div className="mpchart" role="img" aria-label={withMelting.map((m) => `${m.chartName ?? m.name} ${num(lang, m.meltingC!)} °C`).join(comma(lang))}>
               {withMelting.map((m) => (
                 <div className="mpchart__row" key={m.slug}>
                   <span className="mpchart__name">{m.chartName ?? m.name}</span>

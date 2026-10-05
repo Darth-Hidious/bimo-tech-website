@@ -96,3 +96,6 @@ export const pct = (lang: Lang, n: number, digits = 5) =>
 
 /** "Label: value" with the language's colon: a space before it in French, full width in Japanese. */
 export const colon = (lang: Lang) => (lang === "fr" ? " : " : lang === "ja" ? "：" : ": ");
+
+/** The separator for a short list: "sheet, plate, rod" — 板、厚板、棒 in Japanese. */
+export const comma = (lang: Lang) => (lang === "ja" ? "、" : ", ");

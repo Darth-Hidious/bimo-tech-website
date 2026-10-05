@@ -184,6 +184,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .menu__panel { position: absolute; left: 0; right: 0; top: var(--header-h); background: var(--surface); border-bottom: 1px solid var(--rule); padding: 12px var(--gutter) 24px; display: flex; flex-direction: column; }
 .menu__panel a { color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--rule-soft); font-size: 18px; font-weight: 500; }
 .menu__panel .btn { margin-top: 18px; justify-content: center; }
+/* Long words (German and Hungarian compounds such as "Widerstandsschweißelektroden") hyphenate in
+   headings and short links instead of running off a phone screen; where the browser has no hyphenation
+   dictionary they still break. */
+h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .linklist a, .crumbs { hyphens: auto; overflow-wrap: anywhere; }
+
 /* Language menu: the same page in every language */
 .langs { position: relative; }
 .langs summary {
