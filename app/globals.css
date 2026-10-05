@@ -241,7 +241,29 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Home ---------- */
 .hero { position: relative; min-height: min(86vh, 820px); display: flex; align-items: flex-end; color: #fff; background: var(--graphite); overflow: hidden; }
-.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.hero__slides { position: absolute; inset: 0; }
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; opacity: 0; transform: scale(1.02); transition: opacity 1.2s ease, transform 7s linear; }
+.hero__img.is-on { opacity: 1; transform: scale(1.08); }
+.hero__nav { position: absolute; z-index: 2; left: 0; right: 0; bottom: 28px; display: flex; justify-content: flex-end; align-items: center; gap: 18px; pointer-events: none; }
+.hero__nav > * { pointer-events: auto; }
+.hero__caption { font-size: 14px; color: rgba(255,255,255,.9); text-shadow: 0 1px 4px rgba(0,0,0,.7); white-space: nowrap; }
+.hero__caption .mono { color: var(--blue-on-graphite); margin-right: 6px; }
+.hero__dots { display: flex; align-items: center; gap: 6px; }
+.hero__dot { width: 34px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; display: flex; align-items: center; }
+.hero__dot span { position: relative; display: block; width: 100%; height: 3px; border-radius: 2px; background: rgba(255,255,255,.32); overflow: hidden; }
+.hero__dot.is-on span { background: rgba(255,255,255,.32); }
+.hero__dot.is-on span::after { content: ""; position: absolute; inset: 0; background: #fff; transform-origin: left; }
+.hero__dot.is-running span::after { animation: hero-fill var(--every) linear forwards; }
+@keyframes hero-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hero__play { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,.45); background: rgba(10,13,16,.35); color: #fff; font-size: 10px; cursor: pointer; display: grid; place-items: center; }
+.hero__play:hover, .hero__dot:hover span { border-color: #fff; background-color: rgba(255,255,255,.55); }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .hero__img, .hero__img.is-on { transform: none; transition: opacity .6s ease; } }
+@media (max-width: 640px) {
+  .hero__nav { bottom: 14px; flex-wrap: wrap; justify-content: space-between; row-gap: 2px; }
+  .hero__caption { font-size: 13px; flex-basis: 100%; }
+  .hero__dot { width: 22px; }
+}
 .hero__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,13,16,.86) 0%, rgba(10,13,16,.62) 42%, rgba(10,13,16,.12) 78%), linear-gradient(0deg, rgba(10,13,16,.55) 0%, rgba(10,13,16,0) 40%); }
 .hero__content { position: relative; padding-block: 140px 88px; display: flex; flex-direction: column; gap: 24px; }
 .hero__content .display { max-width: 15ch; }
@@ -438,7 +460,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: absolute; top: -9px; left: 16px; display: grid; gap: 2px; white-space: nowrap;
   font-size: 13px; line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,.85);
 }
-/* Oxford reads to the left: it sits close to Wrocław and ITER at this zoom. */
+/* Oxford reads to the left, Wrocław to the right. */
 .globe__pin--left .globe__tag { right: 16px; left: auto; text-align: right; }
 .globe__tag b { font-weight: 700; color: #fff; }
 .globe__tag span { font-size: 12px; color: rgba(255,255,255,.82); }
@@ -486,7 +508,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
   /* Hero */
   .hero { min-height: 560px; }
-  .hero__content { padding-block: 96px 48px; gap: 18px; }
+  .hero__content { padding-block: 96px 104px; gap: 18px; }
   .pagehero { min-height: 360px; }
   .pagehero__content { padding-block: 88px 40px; }
 

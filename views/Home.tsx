@@ -3,6 +3,7 @@ import Photo from "@/components/Photo";
 import Strip from "@/components/Strip";
 import QuoteForm from "@/components/QuoteForm";
 import Globe from "@/components/Globe";
+import HeroSlides, { type Slide } from "@/components/HeroSlides";
 import { content } from "@/lib/content";
 import { href, num, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
@@ -22,6 +23,9 @@ export default function Home({ lang }: { lang: Lang }) {
   const t = tr(lang);
   const to = (p: string) => href(lang, p);
   const { images, outcomes, path, places, timeline, company } = content(lang);
+  // The hero walks the path of the metal: the first six stops, each with its largest photo.
+  const HERO: ImageKey[] = ["hearth", "melt", "powder", "printer", "pvd", "qualityLab"];
+  const heroSlides: Slide[] = HERO.map((k, i) => ({ src: images[k].src!, alt: images[k].alt, n: path[i].n, title: path[i].title }));
   const ways: { n: string; t: string; l: string; href: string; c: string; img: ImageKey }[] = [
     { n: "01", t: t("Buy materials"), l: t("Metals, powders and targets from stock or to order, from a test batch to a container."), href: "/materials/", c: t("Browse materials"), img: "tungstenCrystals" },
     { n: "02", t: t("Get parts made"), l: t("Machined, forged, printed, coated and tested to your drawing."), href: "/manufacturing/", c: t("Manufacturing"), img: "machining" },
@@ -32,8 +36,7 @@ export default function Home({ lang }: { lang: Lang }) {
     <>
       {/* 1 · Hero: real metal, two lines, two buttons */}
       <section className="hero">
-        <img className="hero__img" src={images.hearth.src} alt={images.hearth.alt} fetchPriority="high" />
-        <div className="hero__shade" />
+        <HeroSlides slides={heroSlides} />
         <div className="wrap hero__content">
           <h1 className="display">{t("Specialty metals, from raw stock to finished part.")}</h1>
           <p className="hero__lead">
@@ -186,7 +189,7 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="lead">{t("Made in Wrocław, where the Bimo group has worked since 1992. Oxford is our contact point for UK customers and research partners.")}</p>
           </div>
           <div className="where">
-            <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław, Oxford and ITER marked.")} />
+            <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław and Oxford marked.")} />
             <dl className="where__list">
               {places.map((p) => (
                 <div key={p.lat}>

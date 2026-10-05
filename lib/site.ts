@@ -344,5 +344,4 @@ export const company = {
 export const places = [
   { name: "Wrocław", role: "Made here", lat: 51.108, lon: 17.039 },
   { name: "Oxford", role: "Bimo Materials Ltd", lat: 51.752, lon: -1.258, side: "left" as const },
-  { name: "ITER", role: "Titanium and steel supplied", lat: 43.708, lon: 5.776 },
 ];
