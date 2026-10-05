@@ -55,10 +55,10 @@ export default function Material({ lang, family, material }: { lang: Lang; famil
                   <div className="kv"><dt>{t("Atomic number")}</dt><dd className="mono num">{m.z}</dd></div>
                 ) : null}
                 {m.meltingC ? (
-                  <div className="kv"><dt>{t("Melting point")}</dt><dd className="mono num">{num(lang, m.meltingC)} °C</dd></div>
+                  <div className="kv"><dt>{t("Melting point")}</dt><dd className="mono num">{num(lang, m.meltingC)} °C</dd></div>
                 ) : null}
                 {m.density ? (
-                  <div className="kv"><dt>{t("Density")}</dt><dd className="mono num">{num(lang, m.density)} g/cm³</dd></div>
+                  <div className="kv"><dt>{t("Density")}</dt><dd className="mono num">{num(lang, m.density)} g/cm³</dd></div>
                 ) : null}
                 <div className="kv"><dt>{t("Forms")}</dt><dd>{m.forms.join(" · ")}</dd></div>
                 {m.standards ? (

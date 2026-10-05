@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { atomicNumber, cells } from "@/lib/elements";
+import { hasAll, norm, words } from "@/lib/search";
 import { rich } from "@/lib/i18n/rich";
 import { useLang } from "@/components/LangProvider";
 
@@ -13,7 +14,7 @@ export type FamilySummary = {
   elements: string[];
   tiles: string[];
   items: { name: string; en: string; href?: string }[]; // en: the English name, so English searches work in every language
-  searchText: string; // this language and English
+  searchText: string; // this language and English, normalised with norm() from lib/search.ts
 };
 
 // The catalog's front door: search, or pick an element on the periodic table.
@@ -32,13 +33,16 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
 
   const listed = useMemo(() => new Set(families.flatMap((f) => f.elements)), [families]);
 
-  const needle = q.trim().toLowerCase();
-  const shown = families.filter(
-    (f) => (!el || f.elements.includes(el)) && (!needle || f.searchText.includes(needle)),
-  );
-  // Show the matching items inside a family when searching.
-  const itemMatches = (f: FamilySummary) =>
-    needle ? f.items.filter((i) => i.name.toLowerCase().includes(needle) || i.en.toLowerCase().includes(needle)) : [];
+  const needle = q.trim();
+  const ws = useMemo(() => words(q), [q]);
+  const shown = families.filter((f) => (!el || f.elements.includes(el)) && (!ws.length || hasAll(f.searchText, ws)));
+  // Show the matching items inside a family when searching: those with every word, else those with any.
+  const itemMatches = (f: FamilySummary) => {
+    if (!ws.length) return [];
+    const text = (i: FamilySummary["items"][number]) => norm(`${i.name} ${i.en}`);
+    const all = f.items.filter((i) => hasAll(text(i), ws));
+    return all.length ? all : f.items.filter((i) => ws.some((w) => (w.length > 2 || /[^\x00-\x7f]/.test(w)) && text(i).includes(w)));
+  };
 
   return (
     <div className="explorer">
@@ -112,7 +116,7 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
               t("{shown} of {total} material families", { shown: shown.length, total: families.length }),
               el ? t("with {element}", { element: el }) : "",
               needle ? t("matching “{query}”", { query: q.trim() }) : "",
-            ].filter(Boolean).join(" ")}
+            ].filter(Boolean).join(" · ")}
       </p>
 
       <ul className="families">

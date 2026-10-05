@@ -24,7 +24,7 @@
   --blue-on-graphite: #7db2e6;
 
   --sans: "Google Sans", ui-sans-serif, system-ui, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
-  --mono: "Google Sans Code Variable", "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --mono: "Google Sans Code Variable", "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", monospace;
 
   --max: 1320px;
   --gutter: clamp(20px, 4.4vw, 64px);
@@ -188,6 +188,12 @@ ul { margin: 0; padding: 0; list-style: none; }
    headings and short links instead of running off a phone screen; where the browser has no hyphenation
    dictionary they still break. */
 h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .linklist a, .crumbs { hyphens: auto; overflow-wrap: anywhere; }
+
+/* Japanese: headings set for Latin type (tight tracking, line-height 1) crowd kanji; widths in ch are
+   half a kanji wide. */
+:lang(ja) .display, :lang(ja) .title, :lang(ja) .subtitle { letter-spacing: 0; line-height: 1.3; }
+:lang(ja) .hero__content .display { max-width: 12em; }
+:lang(ja) .kicker, :lang(ja) .label { letter-spacing: .04em; }
 
 /* Language menu: the same page in every language */
 .langs { position: relative; }

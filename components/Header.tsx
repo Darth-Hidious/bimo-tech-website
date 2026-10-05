@@ -31,10 +31,12 @@ function Languages({ rest, className }: { rest: string; className: string }) {
   );
 }
 
-export default function Header() {
+export default function Header({ languagesToHome = false }: { languagesToHome?: boolean }) {
   const path = usePathname() ?? "/";
   const { lang, t, href: to } = useLang();
-  const { rest } = splitPath(path);
+  const { rest: here } = splitPath(path);
+  // On the 404 page the current address exists in no language: link each language's home instead.
+  const rest = languagesToHome ? "/" : here;
   const [count, setCount] = useState(0);
   const menu = useRef<HTMLDetailsElement>(null);
   const langMenu = useRef<HTMLDetailsElement>(null);
@@ -68,7 +70,7 @@ export default function Header() {
         </nav>
         <div className="site-header__actions">
           <details className="langs" ref={langMenu}>
-            <summary aria-label={t("Language: {name}", { name: NATIVE[lang] })}>
+            <summary aria-label={`${lang.toUpperCase()} · ${t("Language: {name}", { name: NATIVE[lang] })}`}>
               <span aria-hidden="true">{lang.toUpperCase()}</span>
             </summary>
             <Languages rest={rest} className="langs__panel" />

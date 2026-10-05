@@ -57,7 +57,7 @@ export default function Footer({ lang }: { lang: Lang }) {
             <h3 style={{ marginTop: 28 }}>{t("The Bimo group")}</h3>
             <ul>
               <li><a href="https://www.bimotech.pl/">Bimo Tech ↗</a></li>
-              <li><a href="https://prism.mirdyne.com/">PRISM by Mirdyne ↗</a></li>
+              <li><a href="https://prism.mirdyne.com/">{t("PRISM by Mirdyne")} ↗</a></li>
             </ul>
           </div>
         </div>

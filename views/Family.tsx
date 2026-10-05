@@ -71,7 +71,7 @@ export default function Family({ lang, family: slug }: { lang: Lang; family: str
         <section className="section--white section--tight">
           <div className="wrap">
             <h2 className="label" style={{ marginBottom: 18 }}>{t("Melting point, °C")}</h2>
-            <div className="mpchart" role="img" aria-label={withMelting.map((m) => `${m.chartName ?? m.name} ${num(lang, m.meltingC!)} °C`).join(comma(lang))}>
+            <div className="mpchart" role="img" aria-label={withMelting.map((m) => `${m.chartName ?? m.name} ${num(lang, m.meltingC!)} °C`).join(comma(lang))}>
               {withMelting.map((m) => (
                 <div className="mpchart__row" key={m.slug}>
                   <span className="mpchart__name">{m.chartName ?? m.name}</span>
@@ -103,7 +103,7 @@ export default function Family({ lang, family: slug }: { lang: Lang; family: str
                 <Element symbol={m.symbol} z={m.z ?? null} />
                 <h2 className="subtitle">{m.name}</h2>
                 <p className="mono muted">
-                  {[m.density ? `${num(lang, m.density)} g/cm³` : null, m.grades?.length ? t("{n} grades", { n: m.grades.length }) : null, m.forms.slice(0, 3).join(" · ")]
+                  {[m.density ? `${num(lang, m.density)} g/cm³` : null, m.grades?.length ? t("{n} grades", { n: m.grades.length }) : null, m.forms.slice(0, 3).join(" · ")]
                     .filter(Boolean)
                     .join(" · ")}
                 </p>

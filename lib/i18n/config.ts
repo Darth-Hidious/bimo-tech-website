@@ -86,7 +86,7 @@ export const date = (lang: Lang, iso: string) =>
 
 /** Quotation marks around a quoted sentence, as each language writes them. */
 export const QUOTES: Record<Lang, [string, string]> = {
-  en: ["“", "”"], pl: ["„", "”"], de: ["„", "“"], fr: ["« ", " »"], es: ["«", "»"], it: ["«", "»"],
+  en: ["“", "”"], pl: ["„", "”"], de: ["„", "“"], fr: ["«\u00a0", "\u00a0»"], es: ["«", "»"], it: ["«", "»"],
   cs: ["„", "“"], sk: ["„", "“"], hu: ["„", "”"], ja: ["「", "」"],
 };
 

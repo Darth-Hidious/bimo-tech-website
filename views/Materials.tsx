@@ -4,6 +4,7 @@ import { content } from "@/lib/content";
 import { href, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
+import { norm } from "@/lib/search";
 
 export function materialsMeta(lang: Lang) {
   const t = tr(lang);
@@ -36,9 +37,8 @@ export default function Materials({ lang }: { lang: Lang }) {
         ...(x.materials ?? []).flatMap((m) => [m.name, m.symbol, m.summary, ...(m.grades ?? []), ...(m.standards ?? []), ...m.forms]),
         ...(x.groups ?? []).flatMap((g) => [g.title, g.body]),
       ])
-      .join(" ")
-      .toLowerCase();
-    return { slug: f.slug, name: f.name, short: f.short, elements: f.elements, tiles: f.tiles, items, searchText };
+      .join(" ");
+    return { slug: f.slug, name: f.name, short: f.short, elements: f.elements, tiles: f.tiles, items, searchText: norm(searchText) };
   });
 
   return (

@@ -73,7 +73,7 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
 
     const c = colon(lang);
     const lines = [
-      `${t("I need")}${c}${data.get("need") ?? ""}`,
+      `${t("I need")}${c}${t(String(data.get("need") ?? ""))}`,
       `${t("Material or grade")}${c}${data.get("material") ?? ""}`,
       `${t("Form and size")}${c}${data.get("form") ?? ""}`,
       `${t("Quantity")}${c}${data.get("quantity") ?? ""}`,
@@ -101,7 +101,7 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
         <legend>{t("I need")}</legend>
         {NEEDS.map((n, i) => (
           <label key={n}>
-            <input type="radio" name="need" value={t(n)} defaultChecked={i === 0} />
+            <input type="radio" name="need" value={n} defaultChecked={i === 0} />
             <span>{t(n)}</span>
           </label>
         ))}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import { content } from "@/lib/content";
-import { date, href, QUOTES, type Lang } from "@/lib/i18n/config";
+import { comma, date, href, QUOTES, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
 import type { ImageKey } from "@/lib/site";
@@ -82,7 +82,7 @@ export default function NewAlloys({ lang }: { lang: Lang }) {
             </dl>
             <blockquote className="quote-block">
               <p>{QUOTES[lang][0]}{t("I believe our work is a vital step towards sustainable European propulsion.")}{QUOTES[lang][1]}</p>
-              <footer>Marcin Orzechowski, CEO</footer>
+              <footer>Marcin Orzechowski{comma(lang)}{t("CEO")}</footer>
             </blockquote>
           </div>
         </div>
