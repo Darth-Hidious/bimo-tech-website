@@ -99,6 +99,11 @@ export const images = {
     credit: "Mosbatho", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
     source: "https://commons.wikimedia.org/wiki/File:Daugavgr%C4%ABva_wastewater_treatment_plant,_2022.jpg",
   },
+  earth: {
+    src: "/img/earth/earth-s2cloudless-4096.webp", alt: "Satellite map of the Earth without clouds, used for the globe",
+    credit: "EOxCloudless 2016 by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2016)",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/", source: "https://cloudless.eox.at",
+  },
   wroclaw: {
     src: "/img/web/wroclaw.jpg", alt: "The Market Square and Old Town Hall in Wrocław, from above",
     credit: "Maksym Kozlenko", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -334,3 +339,10 @@ export const company = {
   address: ["ul. Francuska 11", "54-405 Wrocław, Poland"],
   oxford: "Oxford, United Kingdom",
 };
+
+/** Where we work, pinned on the globe. */
+export const places = [
+  { name: "Wrocław", role: "Made here", lat: 51.108, lon: 17.039 },
+  { name: "Oxford", role: "Bimo Materials Ltd", lat: 51.752, lon: -1.258, side: "left" as const },
+  { name: "ITER", role: "Titanium and steel supplied", lat: 43.708, lon: 5.776 },
+];

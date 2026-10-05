@@ -1,7 +1,7 @@
 /* Bimo Materials design system.
    A sibling of PRISM: sentence headlines, near-square corners, hairlines, credit
    lines under photos. Its own: steel ground, graphite story sections, logo blue,
-   copper for the one main action per screen, Archivo set semi-expanded. */
+   copper for the one main action per screen, Google Sans and Google Sans Code. */
 
 :root {
   --steel: #f3f4f5;
@@ -23,8 +23,8 @@
   --on-graphite-2: #b9c3cd;
   --blue-on-graphite: #7db2e6;
 
-  --sans: "Archivo Variable", "Archivo", ui-sans-serif, system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: "Google Sans", ui-sans-serif, system-ui, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  --mono: "Google Sans Code Variable", "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --max: 1320px;
   --gutter: clamp(20px, 4.4vw, 64px);
@@ -59,7 +59,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Type */
 .display, .title, .subtitle {
   font-family: var(--sans);
-  font-stretch: 110%;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -320,7 +319,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .families > li { border-bottom: 1px solid var(--rule); }
 .family-row { display: grid; grid-template-columns: 210px minmax(0, 0.9fr) minmax(0, 1.4fr) 24px; gap: 20px; align-items: center; padding: 18px 0; color: var(--ink); }
 .family-row:hover { text-decoration: none; background: linear-gradient(90deg, transparent, var(--blue-tint) 30%, transparent); }
-.family-row__name { font-stretch: 110%; font-weight: 700; font-size: 22px; }
+.family-row__name { font-weight: 700; font-size: 22px; }
 .family-row__short { color: var(--ink-2); }
 .family-hits { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 0 18px 230px; font-size: 14px; }
 .family-hits li { padding: 3px 10px; border-radius: 999px; background: var(--blue-tint); }
@@ -401,6 +400,41 @@ ul { margin: 0; padding: 0; list-style: none; }
 .contact-list { margin: 8px 0; }
 .material__side { display: flex; flex-direction: column; gap: 16px; }
 .history { list-style: none; padding: 0; margin: 0; }
+
+/* Globe: the real Earth turning to Europe (components/Globe.tsx, the same globe as the PRISM site) */
+.where { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 40px; align-items: center; margin-top: 8px; }
+.where--page { grid-template-columns: minmax(0, 1fr); margin: 0 0 40px; }
+.where--page .globe { aspect-ratio: 16 / 9; }
+.globe {
+  position: relative; width: 100%; aspect-ratio: 5 / 4; overflow: hidden; border-radius: 5px;
+  background: radial-gradient(70% 80% at 50% 50%, var(--graphite-2) 0%, var(--graphite) 70%);
+}
+.globe__canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.globe__pin { position: absolute; top: 0; left: 0; z-index: 2; width: 0; height: 0; opacity: 0; transition: opacity .7s ease; pointer-events: none; }
+.globe__pin[data-show="true"] { opacity: 1; }
+.globe__pin i {
+  position: absolute; top: -5px; left: -5px; width: 10px; height: 10px; border-radius: 50%; background: #fff;
+  box-shadow: 0 0 0 5px rgba(255,255,255,.22), 0 0 18px rgba(255,255,255,.6);
+}
+.globe__tag {
+  position: absolute; top: -9px; left: 16px; display: grid; gap: 2px; white-space: nowrap;
+  font-size: 13px; line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,.85);
+}
+/* Oxford reads to the left: it sits close to Wrocław and ITER at this zoom. */
+.globe__pin--left .globe__tag { right: 16px; left: auto; text-align: right; }
+.globe__tag b { font-weight: 700; color: #fff; }
+.globe__tag span { font-size: 12px; color: rgba(255,255,255,.82); }
+.where__list { margin: 0; display: grid; border-top: 2px solid var(--ink); }
+.where__list div { display: grid; gap: 2px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.where__list dt { font-size: 20px; font-weight: 500; }
+.where__list dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 860px) {
+  .where { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .where--page .globe, .globe { aspect-ratio: 1 / 1; }
+  /* The pins say it already; the list stays for screens without WebGL 2. */
+  .where:has(.globe) .where__list { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .globe__pin { transition: none; } }
 
 /* ---------- Phones and touch ---------- */
 .header-quote { display: none; }

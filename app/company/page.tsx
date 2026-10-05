@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Photo from "@/components/Photo";
-import { company, news, timeline } from "@/lib/site";
+import { company, news, places, timeline } from "@/lib/site";
+import Globe from "@/components/Globe";
 
 export const metadata: Metadata = {
   title: "Company",
@@ -24,6 +25,9 @@ export default function CompanyPage() {
               Bimo Materials is part of the Bimo group, which has supplied metals to science and industry since 1992. We make in
               Wrocław and work with UK customers and research partners from Oxford.
             </p>
+          </div>
+          <div className="where where--page">
+            <Globe places={places} label="A satellite view of the Earth turning to Europe, with Wrocław, Oxford and ITER marked." />
           </div>
           <div className="grid grid--2 pair">
             <div className="place">

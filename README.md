@@ -33,7 +33,8 @@ To add a material, add an entry to its family in `lib/catalog.ts`. Its page, its
 A sibling of the PRISM design system with its own identity:
 
 - Steel ground `#f3f4f5`, graphite story sections `#11161b`, logo blue `#1b6cb6`, copper `#d9823f` for the one main action per screen.
-- Archivo, set at 110 % width for headlines to echo the wide logo; IBM Plex Mono for grades, purities and standards. Both self-hosted, no Google requests.
+- Google Sans for text and headlines, Google Sans Code for grades, purities and standards. Both open source (SIL OFL) and self-hosted through Fontsource, so no requests go to Google.
+- A real globe (WebGL 2, EOxCloudless satellite map) in the Company sections, ported from the PRISM site (`lib/globe.ts`, `components/Globe.tsx`).
 - The periodic-table element tile is the brand's own mark.
 - Photo credits are collected on one page, /credits, generated from `lib/site.ts`.
 

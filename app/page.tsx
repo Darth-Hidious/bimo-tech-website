@@ -2,7 +2,8 @@ import Link from "next/link";
 import Photo from "@/components/Photo";
 import Strip from "@/components/Strip";
 import QuoteForm from "@/components/QuoteForm";
-import { images, outcomes, path, timeline } from "@/lib/site";
+import { images, outcomes, path, places, timeline } from "@/lib/site";
+import Globe from "@/components/Globe";
 
 export default function Home() {
   return (
@@ -169,9 +170,16 @@ export default function Home() {
             <h2 className="title">Wrocław and Oxford.</h2>
             <p className="lead">Made in Wrocław, where the Bimo group has worked since 1992. Oxford is our contact point for UK customers and research partners.</p>
           </div>
-          <div className="grid grid--2 pair">
-            <Photo img="wroclaw" ratio="16 / 9" />
-            <Photo img="oxford" ratio="16 / 9" />
+          <div className="where">
+            <Globe places={places} label="A satellite view of the Earth turning to Europe, with Wrocław, Oxford and ITER marked." />
+            <dl className="where__list">
+              {places.map((p) => (
+                <div key={p.name}>
+                  <dt>{p.name}</dt>
+                  <dd>{p.role}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
           <ol className="timeline">
             {timeline.map((t) => (
