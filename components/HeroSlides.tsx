@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLang } from "@/components/LangProvider";
+import { colon } from "@/lib/i18n/config";
 
 export type Slide = { src: string; alt: string; n: string; title: string };
 
@@ -12,7 +13,7 @@ const EVERY = 6000; // ms per photo
  * headline. Without JavaScript the first photo stays. Reduced motion: no autoplay, no zoom.
  */
 export default function HeroSlides({ slides }: { slides: Slide[] }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hold, setHold] = useState(false); // paused while the pointer or focus is on the controls
@@ -53,7 +54,7 @@ export default function HeroSlides({ slides }: { slides: Slide[] }) {
       >
         <p className="hero__caption" aria-live={playing ? "off" : "polite"}>
           <span className="mono">{s.n}</span> {s.title}
-          <span className="visually-hidden">: {s.alt}</span>
+          <span className="visually-hidden">{colon(lang)}{s.alt}</span>
         </p>
         <div className="hero__dots">
           {slides.map((sl, k) => (

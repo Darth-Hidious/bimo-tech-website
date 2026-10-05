@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { onBasketChange, readBasket, removeFromBasket } from "@/lib/basket";
-import { colon, msg } from "@/lib/i18n/config";
+import { colon, comma, msg } from "@/lib/i18n/config";
 import { rich } from "@/lib/i18n/rich";
 import { useLang } from "@/components/LangProvider";
 
@@ -81,7 +81,7 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
       "",
       String(data.get("message") ?? ""),
       "",
-      `${data.get("name") ?? ""}, ${data.get("organisation") ?? ""}`,
+      [data.get("name"), data.get("organisation")].filter(Boolean).join(comma(lang)),
       String(data.get("email") ?? ""),
     ].filter((l, i, a) => l !== "" || a[i - 1] !== "");
     const mailto = `mailto:${email}?subject=${encodeURIComponent(t("Quote request"))}&body=${encodeURIComponent(lines.join("\n"))}`;

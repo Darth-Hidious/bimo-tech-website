@@ -34,7 +34,7 @@ export type Family = {
   groups?: Group[];
 };
 
-const REFRACTORY_FORMS = ["Sheet", "Plate", "Rod", "Wire", "Tube", "Powder", "Forging"];
+const REFRACTORY_FORMS = ["Sheet", "Plate", "Rod", "Wire", "Tube", "Powder", "Forgings"];
 
 export const families: Family[] = [
   {
@@ -155,7 +155,7 @@ export const families: Family[] = [
         density: 4.51,
         summary:
           "High strength and stiffness at low density, with excellent corrosion resistance. Biocompatible and non-magnetic.",
-        forms: ["Bar", "Plate", "Sheet", "Tube", "Wire", "Forging", "Powder"],
+        forms: ["Bar", "Plate", "Sheet", "Tube", "Wire", "Forgings", "Powder"],
         uses: ["Aerospace", "Medical", "Chemical plant", "ITER construction"],
       },
       {

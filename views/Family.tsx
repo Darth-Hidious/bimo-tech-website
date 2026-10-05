@@ -4,7 +4,7 @@ import Element from "@/components/Element";
 import Photo from "@/components/Photo";
 import QuoteButton from "@/components/QuoteButton";
 import { content } from "@/lib/content";
-import { comma, href, inSentence, num, type Lang } from "@/lib/i18n/config";
+import { comma, href, inSentence, LOCALE, num, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
 import type { ImageKey } from "@/lib/site";
@@ -36,6 +36,8 @@ export default function Family({ lang, family: slug }: { lang: Lang; family: str
   if (!f) notFound();
   const withMelting = (f.materials ?? []).filter((m) => m.meltingC).sort((a, b) => b.meltingC! - a.meltingC!);
   const ask = to(`/contact/?item=${encodeURIComponent(f.name)}`);
+  // High-purity elements are listed alphabetically: re-sort them in each language.
+  const groups = f.slug === "high-purity" ? [...(f.groups ?? [])].sort((a, b) => a.title.localeCompare(b.title, LOCALE[lang])) : (f.groups ?? []);
 
   return (
     <>
@@ -117,7 +119,7 @@ export default function Family({ lang, family: slug }: { lang: Lang; family: str
         <section className="section">
           <div className="wrap">
             <dl className="rows group-rows">
-              {f.groups.map((g) => (
+              {groups.map((g) => (
                 <div key={g.title} className="group-row">
                   <dt className="subtitle">{g.title}</dt>
                   <dd>{g.body}</dd>

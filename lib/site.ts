@@ -10,7 +10,7 @@ export type Img = {
   source?: string;
 };
 
-const OWN = "Bimo group, project SPARK";
+export const OWN = "Bimo group, project SPARK";
 
 export const images = {
   hearth: { src: "/img/own/arc-melting-hearth-1600.jpg", alt: "Raw metal pieces weighed and staged in the water-cooled copper hearth before a melt", credit: OWN },

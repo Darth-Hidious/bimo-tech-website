@@ -3,7 +3,7 @@ import { content } from "@/lib/content";
 import { href, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
-import type { Img } from "@/lib/site";
+import { OWN, type Img } from "@/lib/site";
 
 export function creditsMeta(lang: Lang) {
   const t = tr(lang);
@@ -36,7 +36,7 @@ export default function Credits({ lang }: { lang: Lang }) {
               <img src={i.src} alt="" loading="lazy" />
               <div>
                 <p>{i.alt}</p>
-                <p className="muted">{i.credit}</p>
+                <p className="muted">{i.credit === OWN ? t("Bimo group, project SPARK") : i.credit}</p>
               </div>
             </li>
           ))}
