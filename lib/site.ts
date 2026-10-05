@@ -368,7 +368,7 @@ export const group: { brand: string; logo: string; role: string; line: string; p
   },
   {
     brand: "Bimo Tech",
-    logo: "/img/group/bimo-tech-white.png", // white artwork; shown in ink on light grounds
+    logo: "/img/group/bimo-tech.png",
     role: "Supplies metals and parts",
     line: "Metals and parts for science and industry since 1992.",
     place: "Wrocław",

@@ -485,8 +485,6 @@ h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .li
 .chain__link { display: grid; gap: 4px; padding: 14px 16px; border-radius: var(--radius); color: var(--ink); }
 .chain__link:hover { background: var(--surface); }
 .chain__logo { height: 28px; width: auto; margin-bottom: 6px; justify-self: start; }
-/* Only white Bimo Tech artwork exists: print it in ink, like a one-colour logo. */
-.chain__logo[src*="-white"] { filter: brightness(0); opacity: .88; }
 .chain__role { font-size: 19px; font-weight: 500; }
 .chain__line { color: var(--ink-2); font-size: 15px; line-height: 1.45; }
 .chain__place { font-size: 12px; color: var(--ink-3); letter-spacing: .02em; }
