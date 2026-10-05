@@ -193,7 +193,7 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="lead">{t("Made in Wrocław, where the Bimo group has worked since 1992. Oxford is our contact point for UK customers and research partners.")}</p>
           </div>
           <div className="where">
-            <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław and Oxford marked.")} />
+            <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław, Oxford and Giessen marked.")} />
             <ol className="chain" aria-label={t("The Bimo group")}>
               {group.map((g) => {
                 const external = g.href.startsWith("http");

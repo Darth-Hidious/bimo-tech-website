@@ -33,7 +33,7 @@ export default function Company({ lang }: { lang: Lang }) {
             </p>
           </div>
           <div className="where where--page">
-            <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław and Oxford marked.")} />
+            <Globe places={places} label={t("A satellite view of the Earth turning to Europe, with Wrocław, Oxford and Giessen marked.")} />
           </div>
           <div className="grid grid--2 pair">
             <div className="place">
