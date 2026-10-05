@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import LangProvider from "@/components/LangProvider";
 import { HTML_LANG, type Lang } from "@/lib/i18n/config";
 import { OG_IMAGE, SITE } from "@/lib/i18n/meta";
+import { IS_LIVE } from "@/lib/site-url";
 import { clientDict, tr } from "@/lib/i18n/server";
 
 /** Site-wide metadata for a language. Pages add their own title, description and hreflang links. */
@@ -22,6 +23,7 @@ export function rootMetadata(lang: Lang): Metadata {
       apple: "/img/brand/apple-touch-icon.png",
     },
     openGraph: { type: "website", siteName: "Bimo Materials", images: [OG_IMAGE] },
+    ...(IS_LIVE ? {} : { robots: { index: false, follow: false } }),
   };
 }
 

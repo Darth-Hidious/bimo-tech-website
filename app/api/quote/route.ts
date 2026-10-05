@@ -1,13 +1,16 @@
 // Sends a quote request from the site's form to the sales inbox, through Resend (resend.com).
 //
-// Set in the Vercel project (Settings → Environment Variables), then redeploy:
-//   RESEND_API_KEY   API key from resend.com, for a domain verified there (bimomaterials.com)
-//   QUOTE_TO         where requests go, e.g. info@bimomaterials.com (several: comma-separated)
-//   QUOTE_FROM       the sender, on the verified domain, e.g. "Bimo Materials website <quotes@bimomaterials.com>"
-// Without them this answers 503 and the form falls back to opening the visitor's email program.
+// The only setting needed is RESEND_API_KEY (Vercel → Settings → Environment Variables), for a Resend
+// account where the site's domain is verified. Everything else follows the domain (lib/site-url.ts):
+//   to    info@<domain>, or CONTACT_EMAIL, or QUOTE_TO (several: comma-separated)
+//   from  "Bimo Materials website <website@<domain>>", or QUOTE_FROM
+// Without a key this answers 503 and the form falls back to opening the visitor's email program.
 //
 // Junk is dropped quietly: a hidden field only bots fill in, a minimum time between page load and
 // sending, and limits on every field. Replies go straight to the visitor (Reply-To).
+
+import { contactEmail, SITE_DOMAIN } from "@/lib/site-url";
+import { company } from "@/lib/site";
 
 const MAX = { short: 200, message: 5000, basket: 2000 };
 const EMAIL = /^[^\s@<>()"',;:]+@[^\s@<>()"',;:]+\.[^\s@<>()"',;:]{2,}$/;
@@ -27,8 +30,10 @@ function tooMany(ip: string) {
 }
 
 export async function POST(req: Request) {
-  const { RESEND_API_KEY: key, QUOTE_TO: to, QUOTE_FROM: from } = process.env;
-  if (!key || !to || !from) return Response.json({ error: "not-configured" }, { status: 503 });
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return Response.json({ error: "not-configured" }, { status: 503 });
+  const to = process.env.QUOTE_TO || contactEmail(company.email);
+  const from = process.env.QUOTE_FROM || `Bimo Materials website <website@${SITE_DOMAIN}>`;
 
   let data: FormData;
   try {

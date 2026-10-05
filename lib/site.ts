@@ -333,7 +333,7 @@ export const news = [
 ];
 
 export const company = {
-  // Placeholders until Bimo Materials has its own contact details.
+  // Shown only before launch. Live, the address is info@ on the site's own domain, or CONTACT_EMAIL (lib/site-url.ts).
   email: "info@bimomaterials.com",
   phone: "",
   address: ["ul. Francuska 11", "54-405 Wrocław, Poland"],

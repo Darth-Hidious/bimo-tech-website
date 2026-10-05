@@ -4,6 +4,7 @@ import { families as FAMILIES, type Family, type Material } from "./catalog";
 import * as site from "./site";
 import type { Lang } from "./i18n/config";
 import { localize } from "./i18n/server";
+import { contactEmail } from "./site-url";
 
 function build(lang: Lang) {
   const families: Family[] = localize(lang, FAMILIES);
@@ -22,7 +23,7 @@ function build(lang: Lang) {
     industries: localize(lang, site.industries),
     timeline: localize(lang, site.timeline),
     news: localize(lang, site.news),
-    company: localize(lang, site.company),
+    company: { ...localize(lang, site.company), email: contactEmail(site.company.email) },
     places: localize(lang, site.places),
     group: localize(lang, site.group),
   };

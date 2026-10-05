@@ -3,8 +3,10 @@
 
 import type { Metadata } from "next";
 import { href, LANGS, OG_LOCALE, type Lang } from "./config";
+import { IS_LIVE, SITE } from "../site-url";
 
-export const SITE = "https://bimomaterials.com";
+export { SITE };
+
 export const OG_IMAGE = "/img/brand/og-image.jpg";
 
 /** hreflang alternates for a path: every language plus x-default (English). */
@@ -33,6 +35,7 @@ export function pageMeta(lang: Lang, path: string, { title, description, absolut
       alternateLocale: LANGS.filter((l) => l !== lang).map((l) => OG_LOCALE[l]),
       images: [OG_IMAGE],
     },
-    ...(noindex ? { robots: { index: false, follow: true } } : {}),
+    // Hidden from search engines until the site runs on its own domain (see lib/site-url.ts).
+    ...(noindex || !IS_LIVE ? { robots: { index: false, follow: IS_LIVE } } : {}),
   };
 }

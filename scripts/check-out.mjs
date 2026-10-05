@@ -7,6 +7,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { SITE, IS_LIVE } from "../lib/site-url.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, ".next/server/app");
@@ -57,8 +58,11 @@ for (const lang of LANGS) {
     const html = readFileSync(file, "utf8");
     const want = HTML_LANG[lang] ?? lang;
     if (!html.includes(`<html lang="${want}"`)) problems.push(`${lang}${path}: html lang is not ${want}`);
-    const url = `https://bimomaterials.com${lang === "en" ? "" : "/" + lang}${path}`;
+    const url = `${SITE}${lang === "en" ? "" : "/" + lang}${path}`;
     if (!html.includes(`<link rel="canonical" href="${url}"/>`)) problems.push(`${lang}${path}: canonical is not ${url}`);
+    // Before launch every page is noindex; once live only the privacy draft is.
+    const noindex = /<meta name="robots" content="noindex/.test(html);
+    if (noindex !== (!IS_LIVE || path === "/privacy/")) problems.push(`${lang}${path}: robots noindex is ${noindex}, expected ${!IS_LIVE || path === "/privacy/"}`);
     const alts = html.match(/<link rel="alternate" hrefLang="[^"]+" href="[^"]+"\/>/g) ?? [];
     if (alts.length !== 11) problems.push(`${lang}${path}: ${alts.length} hreflang links, expected 11`);
     if (lang === "en") continue;
@@ -71,7 +75,7 @@ for (const lang of LANGS) {
   }
   if (leaks > 15) problems.push(`${lang}: … ${leaks - 15} more English strings`);
 }
-console.log(`${englishPages.length} pages × ${LANGS.length} languages checked`);
+console.log(`${englishPages.length} pages × ${LANGS.length} languages checked for ${SITE} (${IS_LIVE ? "live: indexable" : "before launch: noindex"})`);
 if (problems.length) {
   console.error(problems.join("\n"));
   process.exit(1);
