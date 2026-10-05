@@ -7,6 +7,7 @@
 export type Material = {
   slug: string;
   name: string;
+  chartName?: string; // shorter name for the melting-point chart, when `name` is long
   symbol: string; // shown on the element tile
   z?: number; // atomic number, for pure elements
   meltingC?: number;
@@ -147,6 +148,7 @@ export const families: Family[] = [
         slug: "titanium",
         img: "specialty",
         name: "Titanium and titanium alloys",
+        chartName: "Titanium",
         symbol: "Ti",
         z: 22,
         meltingC: 1668,
@@ -159,6 +161,7 @@ export const families: Family[] = [
       {
         slug: "nickel-alloys",
         name: "Nickel and nickel alloys",
+        chartName: "Nickel",
         symbol: "Ni",
         z: 28,
         meltingC: 1455,
@@ -187,6 +190,7 @@ export const families: Family[] = [
       {
         slug: "copper-alloys",
         name: "Copper and copper alloys",
+        chartName: "Copper",
         symbol: "Cu",
         z: 29,
         meltingC: 1085,
@@ -216,6 +220,7 @@ export const families: Family[] = [
       {
         slug: "aluminium",
         name: "Aluminium and aluminium alloys",
+        chartName: "Aluminium",
         symbol: "Al",
         z: 13,
         meltingC: 660,

@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "lint": "tsc --noEmit"
+    "build": "node --no-warnings scripts/i18n.mjs check && next build",
+    "lint": "tsc --noEmit",
+    "i18n": "node --no-warnings scripts/i18n.mjs extract"
   },
   "dependencies": {
     "@fontsource-variable/google-sans-code": "^5.3.1",

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { atomicNumber, cells } from "@/lib/elements";
+import { rich } from "@/lib/i18n/rich";
+import { useLang } from "@/components/LangProvider";
 
 export type FamilySummary = {
   slug: string;
@@ -10,12 +12,13 @@ export type FamilySummary = {
   short: string;
   elements: string[];
   tiles: string[];
-  items: { name: string; href?: string }[];
-  searchText: string;
+  items: { name: string; en: string; href?: string }[]; // en: the English name, so English searches work in every language
+  searchText: string; // this language and English
 };
 
 // The catalog's front door: search, or pick an element on the periodic table.
 export default function MaterialsExplorer({ families }: { families: FamilySummary[] }) {
+  const { t, href } = useLang();
   const [q, setQ] = useState("");
   const [el, setEl] = useState<string | null>(null);
 
@@ -35,13 +38,13 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
   );
   // Show the matching items inside a family when searching.
   const itemMatches = (f: FamilySummary) =>
-    needle ? f.items.filter((i) => i.name.toLowerCase().includes(needle)) : [];
+    needle ? f.items.filter((i) => i.name.toLowerCase().includes(needle) || i.en.toLowerCase().includes(needle)) : [];
 
   return (
     <div className="explorer">
       <div className="explorer__top">
         <label className="field explorer__search">
-          Search by element, alloy, grade or standard
+          {t("Search by element, alloy, grade or standard")}
           <input
             className="input"
             type="search"
@@ -51,9 +54,9 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
           />
         </label>
         <label className="field explorer__select">
-          Element
+          {t("Element")}
           <select className="input" value={el ?? ""} onChange={(e) => setEl(e.target.value || null)}>
-            <option value="">All elements</option>
+            <option value="">{t("All elements")}</option>
             {cells
               .filter((c) => c.symbol && listed.has(c.symbol))
               .sort((a, b) => (a.z ?? 0) - (b.z ?? 0))
@@ -66,13 +69,13 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
         </label>
         {el || q ? (
           <button type="button" className="btn btn--ghost" onClick={() => { setEl(null); setQ(""); }}>
-            Clear{el ? ` ${el}` : ""}
+            {el ? t("Clear {element}", { element: el }) : t("Clear")}
           </button>
         ) : null}
       </div>
 
       <div className="ptable-wrap">
-        <div className="ptable" role="group" aria-label="Periodic table. Highlighted elements are in our catalog.">
+        <div className="ptable" role="group" aria-label={t("Periodic table. Highlighted elements are in our catalog.")}>
           {cells.map((c, i) =>
             c.gap || !c.symbol ? (
               <span key={i} className="ptable__gap" style={{ gridRow: c.row, gridColumn: c.col }} aria-hidden="true" />
@@ -84,7 +87,7 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
                 style={{ gridRow: c.row, gridColumn: c.col }}
                 onClick={() => setEl(el === c.symbol ? null : c.symbol)}
                 aria-pressed={el === c.symbol}
-                aria-label={`${c.symbol}, atomic number ${c.z}`}
+                aria-label={t("{symbol}, atomic number {z}", { symbol: c.symbol, z: c.z ?? "" })}
               >
                 <small>{c.z}</small>
                 {c.symbol}
@@ -98,14 +101,18 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
           )}
         </div>
         <p className="ptable__legend">
-          <span className="ptable__key" /> {listed.size} elements in the catalog. Pick one to see where we have it.
+          <span className="ptable__key" /> {t("{n} elements in the catalog. Pick one to see where we have it.", { n: listed.size })}
         </p>
       </div>
 
       <p className="explorer__count" role="status">
         {shown.length === families.length && !el && !needle
-          ? `${families.length} families`
-          : `${shown.length} of ${families.length} families${el ? ` with ${el}` : ""}${needle ? ` matching “${q.trim()}”` : ""}`}
+          ? t("{n} material families", { n: families.length })
+          : [
+              t("{shown} of {total} material families", { shown: shown.length, total: families.length }),
+              el ? t("with {element}", { element: el }) : "",
+              needle ? t("matching “{query}”", { query: q.trim() }) : "",
+            ].filter(Boolean).join(" ")}
       </p>
 
       <ul className="families">
@@ -113,7 +120,7 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
           const hits = itemMatches(f);
           return (
             <li key={f.slug}>
-              <Link href={`/materials/${f.slug}/`} className="family-row">
+              <Link href={href(`/materials/${f.slug}/`)} className="family-row">
                 <span className="tiles" aria-hidden="true">
                   {f.tiles.map((t) => (
                     <span key={t} className={`el el--sm${t === el ? " el--dark" : ""}`}>
@@ -141,7 +148,7 @@ export default function MaterialsExplorer({ families }: { families: FamilySummar
       </ul>
       {shown.length === 0 ? (
         <p className="muted">
-          Nothing in the published catalog matches. We source many materials to order: <Link href="/contact/">ask us</Link>.
+          {rich(t("Nothing in the published catalog matches. We source many materials to order: <0>ask us</0>."), [<Link href={href("/contact/")} />])}
         </p>
       ) : null}
     </div>

@@ -184,8 +184,26 @@ ul { margin: 0; padding: 0; list-style: none; }
 .menu__panel { position: absolute; left: 0; right: 0; top: var(--header-h); background: var(--surface); border-bottom: 1px solid var(--rule); padding: 12px var(--gutter) 24px; display: flex; flex-direction: column; }
 .menu__panel a { color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--rule-soft); font-size: 18px; font-weight: 500; }
 .menu__panel .btn { margin-top: 18px; justify-content: center; }
+/* Language menu: the same page in every language */
+.langs { position: relative; }
+.langs summary {
+  list-style: none; cursor: pointer; min-height: 40px; padding: 0 10px; display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 13px; color: var(--ink-2); border: 1px solid var(--rule); border-radius: var(--radius);
+}
+.langs summary::-webkit-details-marker { display: none; }
+.langs summary::after { content: ""; width: 6px; height: 6px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); }
+.langs[open] summary { color: var(--ink); border-color: var(--ink-3); }
+.langs__panel {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; margin: 0; padding: 6px; list-style: none; min-width: 180px;
+  display: grid; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: 0 12px 32px rgba(17, 22, 27, .12);
+}
+.langs__panel a { display: block; padding: 8px 12px; border-radius: 3px; color: var(--ink); font-size: 15px; }
+.langs__panel a:hover { background: var(--steel); }
+.langs__panel a[aria-current="true"], .menu__langs a[aria-current="true"] { color: var(--blue-text); font-weight: 500; }
+.menu__langs { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.menu__panel .menu__langs a { display: inline-block; padding: 8px 0; border-bottom: 0; font-size: 15px; font-weight: 400; }
 @media (max-width: 1060px) {
-  .site-nav, .site-header__actions .basket, .site-header__actions .btn { display: none; }
+  .site-nav, .site-header__actions .basket, .site-header__actions .btn, .langs { display: none; }
   .menu { display: block; }
   .site-header__logo img { height: 34px; }
 }
