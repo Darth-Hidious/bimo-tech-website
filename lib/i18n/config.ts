@@ -59,14 +59,17 @@ export function fill(s: string, vars?: Record<string, string | number>) {
   return s.replace(/\{(\w+)\}/g, (all, k: string) => (k in vars ? String(vars[k]) : all));
 }
 
+/** Trade names that keep their capital inside a sentence. */
+const PROPER = ["Stellite"];
+
 /**
  * Lower-cases a name for use inside a sentence. German nouns keep their capital, and Japanese
  * has no case.
  */
 export function inSentence(lang: Lang, s: string) {
   if (lang === "de" || lang === "ja") return s;
-  // Leave words that start with an acronym alone ("PVD coating", "HEA targets").
-  if (/^.\p{Lu}/u.test(s)) return s;
+  // Leave words that start with an acronym ("PVD coating") or a trade name ("Stellite") alone.
+  if (/^.\p{Lu}/u.test(s) || PROPER.some((p) => s.startsWith(p))) return s;
   return s.charAt(0).toLocaleLowerCase(LOCALE[lang]) + s.slice(1);
 }
 
@@ -80,3 +83,9 @@ export const num = (lang: Lang, n: number, digits = 2) =>
 /** A date such as 15 April 2025, in the language's format. */
 export const date = (lang: Lang, iso: string) =>
   new Date(iso + "T12:00:00Z").toLocaleDateString(LOCALE[lang], { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+
+/** Quotation marks around a quoted sentence, as each language writes them. */
+export const QUOTES: Record<Lang, [string, string]> = {
+  en: ["“", "”"], pl: ["„", "”"], de: ["„", "“"], fr: ["« ", " »"], es: ["«", "»"], it: ["«", "»"],
+  cs: ["„", "“"], sk: ["„", "“"], hu: ["„", "”"], ja: ["「", "」"],
+};
