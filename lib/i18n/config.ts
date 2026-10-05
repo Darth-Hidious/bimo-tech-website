@@ -89,3 +89,10 @@ export const QUOTES: Record<Lang, [string, string]> = {
   en: ["“", "”"], pl: ["„", "”"], de: ["„", "“"], fr: ["« ", " »"], es: ["«", "»"], it: ["«", "»"],
   cs: ["„", "“"], sk: ["„", "“"], hu: ["„", "”"], ja: ["「", "」"],
 };
+
+/** A percentage in the language's format: 99.99999% in English, 99,99999 % in German and French. */
+export const pct = (lang: Lang, n: number, digits = 5) =>
+  (n / 100).toLocaleString(LOCALE[lang], { style: "percent", maximumFractionDigits: digits });
+
+/** "Label: value" with the language's colon: a space before it in French, full width in Japanese. */
+export const colon = (lang: Lang) => (lang === "fr" ? " : " : lang === "ja" ? "：" : ": ");

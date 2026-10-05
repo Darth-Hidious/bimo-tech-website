@@ -4,7 +4,7 @@ import Element from "@/components/Element";
 import Photo from "@/components/Photo";
 import QuoteButton from "@/components/QuoteButton";
 import { content } from "@/lib/content";
-import { href, inSentence, num, type Lang } from "@/lib/i18n/config";
+import { colon, href, inSentence, num, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
 import type { ImageKey } from "@/lib/site";
@@ -17,7 +17,7 @@ export function materialMeta(lang: Lang, family: string, material: string) {
   if (!m) return {};
   // "Tungsten: sheet, plate, rod": the name and the forms people search for, in their language.
   const forms = m.forms.slice(0, 3).map((x) => inSentence(lang, x)).join(", ");
-  return pageMeta(lang, `/materials/${family}/${material}/`, { title: `${m.name}: ${forms}`, description: m.summary });
+  return pageMeta(lang, `/materials/${family}/${material}/`, { title: `${m.name}${colon(lang)}${forms}`, description: m.summary });
 }
 
 export default function Material({ lang, family, material }: { lang: Lang; family: string; material: string }) {

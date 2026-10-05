@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { onBasketChange, readBasket, removeFromBasket } from "@/lib/basket";
-import { msg } from "@/lib/i18n/config";
+import { colon, msg } from "@/lib/i18n/config";
 import { rich } from "@/lib/i18n/rich";
 import { useLang } from "@/components/LangProvider";
 
@@ -54,12 +54,13 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
       return;
     }
 
+    const c = colon(lang);
     const lines = [
-      `${t("I need")}: ${data.get("need") ?? ""}`,
-      `${t("Material or grade")}: ${data.get("material") ?? ""}`,
-      `${t("Form and size")}: ${data.get("form") ?? ""}`,
-      `${t("Quantity")}: ${data.get("quantity") ?? ""}`,
-      items.length ? `${t("In your quote")}: ${items.join("; ")}` : "",
+      `${t("I need")}${c}${data.get("need") ?? ""}`,
+      `${t("Material or grade")}${c}${data.get("material") ?? ""}`,
+      `${t("Form and size")}${c}${data.get("form") ?? ""}`,
+      `${t("Quantity")}${c}${data.get("quantity") ?? ""}`,
+      items.length ? `${t("In your quote")}${c}${items.join("; ")}` : "",
       "",
       String(data.get("message") ?? ""),
       "",

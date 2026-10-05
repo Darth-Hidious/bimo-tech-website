@@ -5,7 +5,7 @@ import QuoteForm from "@/components/QuoteForm";
 import Globe from "@/components/Globe";
 import HeroSlides, { type Slide } from "@/components/HeroSlides";
 import { content } from "@/lib/content";
-import { href, num, type Lang } from "@/lib/i18n/config";
+import { href, pct, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
 import type { ImageKey } from "@/lib/site";
@@ -71,7 +71,7 @@ export default function Home({ lang }: { lang: Lang }) {
               <div className="kv"><dt>{t("ESA FIRST! Propulsion award")}</dt><dd className="mono">2025</dd></div>
               <div className="kv"><dt>{t("Titanium and steel for ITER")}</dt><dd className="mono">2022</dd></div>
               <div className="kv"><dt>{t("Quality and environment")}</dt><dd className="mono">ISO 9001 · ISO 14001</dd></div>
-              <div className="kv"><dt>{t("Purity up to")}</dt><dd className="mono">7N · {num(lang, 99.99999, 5)}%</dd></div>
+              <div className="kv"><dt>{t("Purity up to")}</dt><dd className="mono">7N · {pct(lang, 99.99999)}</dd></div>
             </dl>
           </div>
         </div>
