@@ -254,7 +254,7 @@ function company(x: Ctx): string {
       "https://prism.mirdyne.com/",
       "https://www.bimotech.pl/",
     ]),
-    `## ${t("News")}: ${t("Latest from the workshop.")}`,
+    `## ${t("News")}: ${t("Latest from the Bimo Group.")}`,
     list(c.news.map((n) => `**${date(lang, n.date)} · ${n.tag}**${colon(lang)}${n.title}. ${n.body}`)),
   );
 }

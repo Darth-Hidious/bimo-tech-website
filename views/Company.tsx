@@ -97,7 +97,7 @@ export default function Company({ lang }: { lang: Lang }) {
         <div className="wrap">
           <div className="head">
             <p className="kicker">{t("News")}</p>
-            <h2 className="title">{t("Latest from the workshop.")}</h2>
+            <h2 className="title">{t("Latest from the Bimo Group.")}</h2>
           </div>
           <ul className="news rows">
             {news.map((n) => (
