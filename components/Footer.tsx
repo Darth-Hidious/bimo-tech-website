@@ -19,9 +19,6 @@ export default function Footer({ lang }: { lang: Lang }) {
               <br />
               {company.oxford}
             </p>
-            <p>
-              <a href={`mailto:${company.email}`}>{company.email}</a>
-            </p>
             <p>ISO 9001:2015 · ISO 14001:2015</p>
           </div>
           <div>

@@ -84,6 +84,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section--graphite { background: var(--graphite); color: var(--on-graphite); }
 .section--graphite .lead, .section--graphite .muted { color: var(--on-graphite-2); }
 .section--graphite .kicker, .section--graphite a:not(.btn) { color: var(--blue-on-graphite); }
+.quote-email { margin-top: 20px; font-size: clamp(18px, 1.55vw, 22px); }
+.section--graphite .quote-email a, .quote-email a { color: var(--copper); }
+.section--graphite .quote-email a:hover, .quote-email a:hover { color: #e69553; }
 .section--graphite .label { color: var(--on-graphite-2); }
 .head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-bottom: clamp(36px, 4vw, 56px); }
 .head .kicker { grid-column: 1 / -1; }
