@@ -132,5 +132,5 @@ Redeploy after changing any of them.
 4. **Logo permissions** for ESA, ArianeGroup, Fusion for Energy and ITER on the homepage.
 5. **Privacy notice.** `views/Privacy.tsx` is a draft and is set to noindex.
 6. **Facts to confirm** with the team: stocked grades (TZM, WLa, WCu), which manufacturing services run in-house, testing scope.
-7. **Redirects from the old site.** The old bimomaterials.com keeps English under `/en/` and has its own page addresses in every language. Map each old address that Google has indexed to its new page with a permanent (301) redirect, so rankings carry over. On Vercel this goes in `vercel.json`, on nginx or Apache in the server configuration.
+7. **Redirects from the old site.** Done: the retired site that ran on this domain (`/en/products`, `/pl/services/cnc-milling`, `/en/news/…`, `/en/products?material=tungsten` …) redirects permanently to the matching page here, in the same language (`lib/legacy-redirects.ts`, used by `next.config.ts`). Add a line there if Search Console reports another old address as not found.
 8. **Native-speaker read.** Have someone in sales read each language before launch, Polish and German first. Open choices: Polish addresses the reader as "Ty" (informal); Czech and Slovak write Wrocław as Vratislav and Vroclav, Polish writes Oxford as Oksford.
