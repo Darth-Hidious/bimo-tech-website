@@ -239,6 +239,9 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="kicker">{t("Request a quote")}</p>
             <h2 className="title">{t("Send us a drawing or a specification.")}</h2>
             <p className="lead">{t("We reply with a price and a lead time.")}</p>
+            <p className="quote-email">
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </p>
           </div>
           <QuoteForm email={company.email} compact />
         </div>
