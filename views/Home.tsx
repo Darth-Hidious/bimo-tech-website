@@ -45,7 +45,7 @@ export default function Home({ lang }: { lang: Lang }) {
         <div className="wrap hero__content">
           <h1 className="display">{t("Specialty metals, from raw stock to finished part.")}</h1>
           <p className="hero__lead">
-            {t("Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry. Made in Wrocław by a group in metals since 1992, with an office in Oxford.")}
+            {t("Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry.")}
           </p>
           <div className="btns">
             <Link href={to("/materials/")} className="btn btn--light">

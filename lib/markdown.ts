@@ -42,7 +42,7 @@ function home(x: Ctx): string {
   ];
   return blocks(
     `# Bimo Materials · ${t("Specialty metals, powders and new alloys")}`,
-    `**${t("Specialty metals, from raw stock to finished part.")}** ${t("Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry. Made in Wrocław by a group in metals since 1992, with an office in Oxford.")}`,
+    `**${t("Specialty metals, from raw stock to finished part.")}** ${t("Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry.")}`,
     `${link(t("Browse materials"), url("/materials/"))} · ${link(t("Request a quote"), url("/contact/"))}`,
     t("The Bimo group has supplied metals to science and industry since 1992. Bimo Materials also melts, powders, prints, coats and tests them."),
     list([
