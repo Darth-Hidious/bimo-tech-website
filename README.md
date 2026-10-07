@@ -102,6 +102,17 @@ If spam gets through, add a rate-limit or bot-protection rule for `/api/quote/` 
 
 Once bimomaterials.com shows Verified in Resend, delete `QUOTE_FROM` and `QUOTE_TO` and redeploy. Keep the key only in Vercel, never in the code: the repository may change hands, the Vercel settings stay with the project.
 
+### Vercel settings checklist
+
+All variables are listed, with placeholders, in `.env.example`.
+
+1. **Project → Settings → Git**: connected to this repository, production branch `main`.
+2. **Project → Settings → Environment Variables**, environment Production: `RESEND_API_KEY` = the Resend key. Nothing else is required.
+3. **Deployments → newest → ⋯ → Redeploy**, so the new variable takes effect.
+4. Check: `npm run check:agents -- https://bimomaterials.com`, then send the contact form once.
+
+Environment Variables is in the *project's* settings (open the project first), not the team's. If it is missing or read-only, your role in the Vercel team cannot manage production variables: ask the team owner to make you Owner or Member, or to add the variable.
+
 ### Optional settings (Vercel → Settings → Environment Variables)
 
 | Variable | Default | Use it to |

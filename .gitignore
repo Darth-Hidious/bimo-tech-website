@@ -3,3 +3,6 @@ node_modules
 out
 next-env.d.ts
 *.tsbuildinfo
+# Local settings and keys stay out of git; .env.example is the template.
+.env*
+!.env.example
