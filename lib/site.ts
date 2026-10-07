@@ -336,14 +336,12 @@ export const company = {
   // Shown on the site, receives quote requests and sends the visitor's copy. CONTACT_EMAIL overrides it (lib/site-url.ts).
   email: "info@bimomaterials.com",
   phone: "",
-  address: ["ul. Francuska 11", "54-405 Wrocław, Poland"],
+  address: ["Wrocław, Poland"],
   oxford: "Oxford, United Kingdom",
 };
 
-/** The Wrocław address above, field by field, for search engines (lib/structured-data.ts). Not translated. */
+/** The Wrocław address above (city only), field by field, for search engines (lib/structured-data.ts). Not translated. */
 export const postalAddress = {
-  streetAddress: "ul. Francuska 11",
-  postalCode: "54-405",
   addressLocality: "Wrocław",
   addressCountry: "PL",
 };

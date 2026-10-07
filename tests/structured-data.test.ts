@@ -14,15 +14,14 @@ describe("Organization JSON-LD", () => {
     expect(org.url).toBe(`${SITE}/`);
     expect(org.description.length).toBeGreaterThan(40);
     expect(org.logo).toBe(`${SITE}/img/brand/bimo-materials-logo.png`);
-    expect(org.address).toEqual({ "@type": "PostalAddress", streetAddress: "ul. Francuska 11", postalCode: "54-405", addressLocality: "Wrocław", addressCountry: "PL" });
+    expect(org.address).toEqual({ "@type": "PostalAddress", addressLocality: "Wrocław", addressCountry: "PL" });
     expect(org.contactPoint).toHaveLength(1);
     expect(org.contactPoint[0]).toMatchObject({ "@type": "ContactPoint", contactType: "sales", email: "info@bimomaterials.com" });
     expect(org.hasOfferCatalog.itemListElement).toHaveLength(8);
   });
 
   it("uses the same address as the contact page", () => {
-    expect(company.address[0]).toBe(postalAddress.streetAddress);
-    expect(company.address[1]).toBe(`${postalAddress.postalCode} ${postalAddress.addressLocality}, Poland`);
+    expect(company.address).toEqual([`${postalAddress.addressLocality}, Poland`]);
   });
 
   it("names the website and its publisher", () => {
