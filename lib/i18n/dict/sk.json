@@ -13,7 +13,6 @@
   "4N, 5N, 6N. Ingots, granules, pellets, targets.": "4N, 5N, 6N. Ingoty, granule, pelety, terče.",
   "4N, 5N. Sheets, ingots, pellets, targets, granules.": "4N, 5N. Plechy, ingoty, pelety, terče, granule.",
   "4N, 5N. Sheets, ingots, powder, targets.": "4N, 5N. Plechy, ingoty, prášok, terče.",
-  "Wrocław, Poland": "Vroclav, Poľsko",
   "5N, 5N5, 6N. Ingots, pellets, powder, targets, rods, wires, flat bars.": "5N, 5N5, 6N. Ingoty, pelety, prášok, terče, tyče, drôty, ploché tyče.",
   "5N, 6N, 7N. Blocks, powder, targets.": "5N, 6N, 7N. Bloky, prášok, terče.",
   "5N, 6N, 7N. Ingots, flakes, powder, sheets, targets.": "5N, 6N, 7N. Ingoty, vločky, prášok, plechy, terče.",
@@ -440,6 +439,7 @@
   "Requirement": "Požiadavka",
   "Resistance spot-welding electrode caps, shanks and holders": "Čiapočky, drieky a držiaky elektród na odporové bodové zváranie",
   "Resistance welding": "Odporové zváranie",
+  "Resistance welding electrodes": "Elektródy na odporové zváranie",
   "Resistance welding electrodes in pure tungsten, WLa, WT and WCu, molybdenum, and electrodes with tungsten or molybdenum inserts.": "Elektródy na odporové zváranie z čistého volfrámu, WLa, WT a WCu, z molybdénu a elektródy s volfrámovými alebo molybdénovými vložkami.",
   "Results": "Výsledky",
   "Rhenium": "Rénium",
@@ -614,6 +614,7 @@
   "Wrocław": "Vroclav",
   "Wrocław · Oxford": "Vroclav · Oxford",
   "Wrocław and Oxford.": "Vroclav a Oxford.",
+  "Wrocław, Poland": "Vroclav, Poľsko",
   "Your email program should open with the request filled in. If it does not, write to {email}.": "Mal by sa otvoriť váš e-mailový program s vyplneným dopytom. Ak sa neotvorí, napíšte na {email}.",
   "Zinc (Zn)": "Zinok (Zn)",
   "Zirconium": "Zirkónium"

@@ -13,7 +13,6 @@
   "4N, 5N, 6N. Ingots, granules, pellets, targets.": "4N、5N、6N。インゴット、顆粒、ペレット、ターゲット。",
   "4N, 5N. Sheets, ingots, pellets, targets, granules.": "4N、5N。板、インゴット、ペレット、ターゲット、顆粒。",
   "4N, 5N. Sheets, ingots, powder, targets.": "4N、5N。板、インゴット、粉末、ターゲット。",
-  "Wrocław, Poland": "ポーランド・ヴロツワフ",
   "5N, 5N5, 6N. Ingots, pellets, powder, targets, rods, wires, flat bars.": "5N、5N5、6N。インゴット、ペレット、粉末、ターゲット、棒、線、平角棒。",
   "5N, 6N, 7N. Blocks, powder, targets.": "5N、6N、7N。ブロック、粉末、ターゲット。",
   "5N, 6N, 7N. Ingots, flakes, powder, sheets, targets.": "5N、6N、7N。インゴット、フレーク、粉末、板、ターゲット。",
@@ -440,6 +439,7 @@
   "Requirement": "要求仕様",
   "Resistance spot-welding electrode caps, shanks and holders": "抵抗スポット溶接用の電極キャップ、シャンク、ホルダー",
   "Resistance welding": "抵抗溶接",
+  "Resistance welding electrodes": "抵抗溶接用電極",
   "Resistance welding electrodes in pure tungsten, WLa, WT and WCu, molybdenum, and electrodes with tungsten or molybdenum inserts.": "純タングステン、WLa、WT、WCu、モリブデン製の抵抗溶接用電極と、タングステンまたはモリブデンのインサート付き電極。",
   "Results": "効果",
   "Rhenium": "レニウム",
@@ -614,6 +614,7 @@
   "Wrocław": "ヴロツワフ",
   "Wrocław · Oxford": "ヴロツワフ・オックスフォード",
   "Wrocław and Oxford.": "ヴロツワフとオックスフォード",
+  "Wrocław, Poland": "ポーランド・ヴロツワフ",
   "Your email program should open with the request filled in. If it does not, write to {email}.": "メールソフトが起動し、依頼内容が入力された状態で表示されます。起動しない場合は、{email}までご連絡ください。",
   "Zinc (Zn)": "亜鉛（Zn）",
   "Zirconium": "ジルコニウム"

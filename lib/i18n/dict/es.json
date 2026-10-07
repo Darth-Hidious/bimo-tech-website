@@ -13,7 +13,6 @@
   "4N, 5N, 6N. Ingots, granules, pellets, targets.": "4N, 5N, 6N. Lingotes, gránulos, pellets, blancos.",
   "4N, 5N. Sheets, ingots, pellets, targets, granules.": "4N, 5N. Chapas, lingotes, pellets, blancos, gránulos.",
   "4N, 5N. Sheets, ingots, powder, targets.": "4N, 5N. Chapas, lingotes, polvo, blancos.",
-  "Wrocław, Poland": "Wrocław, Polonia",
   "5N, 5N5, 6N. Ingots, pellets, powder, targets, rods, wires, flat bars.": "5N, 5N5, 6N. Lingotes, pellets, polvo, blancos, varillas, alambres, pletinas.",
   "5N, 6N, 7N. Blocks, powder, targets.": "5N, 6N, 7N. Bloques, polvo, blancos.",
   "5N, 6N, 7N. Ingots, flakes, powder, sheets, targets.": "5N, 6N, 7N. Lingotes, escamas, polvo, chapas, blancos.",
@@ -440,6 +439,7 @@
   "Requirement": "Requisitos",
   "Resistance spot-welding electrode caps, shanks and holders": "Caperuzas, vástagos y portaelectrodos para soldadura por puntos",
   "Resistance welding": "Soldadura por resistencia",
+  "Resistance welding electrodes": "Electrodos para soldadura por resistencia",
   "Resistance welding electrodes in pure tungsten, WLa, WT and WCu, molybdenum, and electrodes with tungsten or molybdenum inserts.": "Electrodos de soldadura por resistencia de tungsteno puro, WLa, WT y WCu, de molibdeno, y electrodos con insertos de tungsteno o molibdeno.",
   "Results": "Resultados",
   "Rhenium": "Renio",
@@ -614,6 +614,7 @@
   "Wrocław": "Wrocław",
   "Wrocław · Oxford": "Wrocław · Oxford",
   "Wrocław and Oxford.": "Wrocław y Oxford.",
+  "Wrocław, Poland": "Wrocław, Polonia",
   "Your email program should open with the request filled in. If it does not, write to {email}.": "Su programa de correo electrónico debería abrirse con la solicitud ya rellenada. Si no se abre, escriba a {email}.",
   "Zinc (Zn)": "Zinc (Zn)",
   "Zirconium": "Circonio"

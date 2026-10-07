@@ -388,7 +388,7 @@ export const families: Family[] = [
   },
   {
     slug: "welding-electrodes",
-    name: "Welding electrodes",
+    name: "Resistance welding electrodes",
     short: "Tungsten, WLa, WCu, molybdenum and TZM electrodes",
     intro:
       "Resistance welding electrodes in pure tungsten, WLa, WT and WCu, molybdenum, and electrodes with tungsten or molybdenum inserts.",

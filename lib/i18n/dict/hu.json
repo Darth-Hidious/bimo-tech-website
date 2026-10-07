@@ -13,7 +13,6 @@
   "4N, 5N, 6N. Ingots, granules, pellets, targets.": "4N, 5N, 6N. Tömbök, granulátum, pelletek, targetek.",
   "4N, 5N. Sheets, ingots, pellets, targets, granules.": "4N, 5N. Lemezek, tömbök, pelletek, targetek, granulátum.",
   "4N, 5N. Sheets, ingots, powder, targets.": "4N, 5N. Lemezek, tömbök, por, targetek.",
-  "Wrocław, Poland": "Wrocław, Lengyelország",
   "5N, 5N5, 6N. Ingots, pellets, powder, targets, rods, wires, flat bars.": "5N, 5N5, 6N. Tömbök, pelletek, por, targetek, rudak, huzalok, laposrudak.",
   "5N, 6N, 7N. Blocks, powder, targets.": "5N, 6N, 7N. Blokkok, por, targetek.",
   "5N, 6N, 7N. Ingots, flakes, powder, sheets, targets.": "5N, 6N, 7N. Tömbök, pelyhek, por, lemezek, targetek.",
@@ -440,6 +439,7 @@
   "Requirement": "Követelmény",
   "Resistance spot-welding electrode caps, shanks and holders": "Ponthegesztő elektródasapkák, elektródaszárak és elektródatartók",
   "Resistance welding": "Ellenállás-hegesztés",
+  "Resistance welding electrodes": "Ellenállás-hegesztő elektródák",
   "Resistance welding electrodes in pure tungsten, WLa, WT and WCu, molybdenum, and electrodes with tungsten or molybdenum inserts.": "Ellenállás-hegesztő elektródák tiszta volfrámból, WLa, WT és WCu anyagból, molibdénből, valamint volfrám- vagy molibdénbetétes elektródák.",
   "Results": "Eredmények",
   "Rhenium": "Rénium",
@@ -614,6 +614,7 @@
   "Wrocław": "Wrocław",
   "Wrocław · Oxford": "Wrocław · Oxford",
   "Wrocław and Oxford.": "Wrocław és Oxford.",
+  "Wrocław, Poland": "Wrocław, Lengyelország",
   "Your email program should open with the request filled in. If it does not, write to {email}.": "Levelezőprogramjában megnyílik a kitöltött ajánlatkérés. Ha nem nyílik meg, írjon erre a címre: {email}.",
   "Zinc (Zn)": "Cink (Zn)",
   "Zirconium": "Cirkónium"
