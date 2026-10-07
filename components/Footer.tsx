@@ -6,7 +6,7 @@ import { tr } from "@/lib/i18n/server";
 export default function Footer({ lang }: { lang: Lang }) {
   const t = tr(lang);
   const to = (p: string) => href(lang, p);
-  const { families, industries, company } = content(lang);
+  const { families, industries } = content(lang);
   return (
     <footer className="site-footer">
       <div className="wrap">
@@ -14,11 +14,6 @@ export default function Footer({ lang }: { lang: Lang }) {
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <img src="/img/brand/bimo-materials-logo-white-header.png" alt="Bimo Materials" width={125} height={40} style={{ height: 40, width: "auto", alignSelf: "flex-start" }} />
             <p>{t("Specialty metals, powders, targets and new alloys. Wrocław and Oxford.")}</p>
-            <p>
-              {company.address.join(", ")}
-              <br />
-              {company.oxford}
-            </p>
             <p>ISO 9001:2015 · ISO 14001:2015</p>
           </div>
           <div>
