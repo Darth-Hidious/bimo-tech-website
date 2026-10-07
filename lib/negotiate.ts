@@ -38,3 +38,23 @@ export function prefersMarkdown(accept: string | null | undefined): boolean {
   if (!named || named.q <= 0) return false;
   return named.q >= quality(ranges, "text", "html");
 }
+
+/**
+ * The site language a browser asks for first, from its Accept-Language header ("es-CO,es;q=0.9,en;q=0.8"
+ * is Spanish). Only this site's languages count, in the order of preference the header gives; null when
+ * none of them is asked for. English counts too, so "en-US,es" stays English.
+ */
+export function preferredLang<L extends string>(acceptLanguage: string | null | undefined, langs: readonly L[]): L | null {
+  if (!acceptLanguage) return null;
+  const ranked = acceptLanguage
+    .split(",")
+    .map((part, i) => {
+      const [tag, ...params] = part.trim().toLowerCase().split(";");
+      const qParam = params.map((p) => p.trim()).find((p) => p.startsWith("q="));
+      const q = qParam ? Number(qParam.slice(2)) : 1;
+      return { lang: tag.trim().split("-")[0], q: Number.isFinite(q) ? q : 0, i };
+    })
+    .filter((r) => r.q > 0 && (langs as readonly string[]).includes(r.lang))
+    .sort((a, b) => b.q - a.q || a.i - b.i);
+  return ranked.length ? (ranked[0].lang as L) : null;
+}

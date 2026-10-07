@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { prefersMarkdown } from "@/lib/negotiate";
+import { preferredLang, prefersMarkdown } from "@/lib/negotiate";
 
 describe("prefersMarkdown", () => {
   it.each([
@@ -24,4 +24,22 @@ describe("prefersMarkdown", () => {
     "text/markdown;q=0",
     "application/json",
   ])("serves HTML for %s", (accept) => expect(prefersMarkdown(accept)).toBe(false));
+});
+
+describe("preferredLang", () => {
+  const LANGS = ["en", "pl", "de", "fr", "es", "it", "cs", "sk", "hu", "ja"] as const;
+  it.each([
+    ["es-CO,es;q=0.9,en;q=0.8", "es"],
+    ["es-419", "es"],
+    ["pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7", "pl"],
+    ["en-US,en;q=0.9,es;q=0.8", "en"],
+    ["en-GB", "en"],
+    ["pt-BR,pt;q=0.9,es;q=0.8,en;q=0.7", "es"], // Portuguese is not offered: next choice
+    ["de;q=0.5, fr", "fr"],
+    ["ja", "ja"],
+    ["zh-CN,zh;q=0.9", null],
+    ["es;q=0", null],
+    ["", null],
+    [null, null],
+  ])("%s → %s", (header, want) => expect(preferredLang(header, LANGS)).toBe(want));
 });

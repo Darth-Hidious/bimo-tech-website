@@ -42,7 +42,8 @@ English, Polish, German, French, Spanish, Italian, Czech, Slovak, Hungarian and 
 - `<html lang>`, a canonical link and `hreflang` links to the same page in all ten languages (plus `x-default`, English) on every page, and the same pairs in `sitemap.xml`.
 - Titles, descriptions, headings and image alt texts are translated with the product terms buyers search for in each country, not word for word.
 - Numbers and dates follow each language (3.422 °C in German, 3 422 °C in French).
-- The language menu links to the same page in each language. Nobody is redirected by browser language.
+- The language menu links to the same page in each language.
+- A visitor who arrives from outside the site (Google, a link, a typed address) on an English page, with a browser set to one of the other nine languages, is sent to the same page in that language (`proxy.ts`, temporary 307). A Spanish phone in Colombia opening bimomaterials.com lands on `/es/`. The browser's language decides, not the visitor's location: it is what they read, and it works for travellers and VPNs. Clicks inside the site are never redirected, so choosing English in the menu sticks; search engine bots are never redirected, so every language stays indexed. No cookies.
 
 Translations are keyed by the English text. Pages and data call `t("…")`; data text in `lib/catalog.ts` and `lib/site.ts` is translated automatically (identifiers, codes, links and credits are left alone, see `lib/i18n/walk.ts`). The build stops if any language misses a string or breaks a `{placeholder}`. Product slugs stay English in every language.
 
