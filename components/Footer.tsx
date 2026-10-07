@@ -13,7 +13,11 @@ export default function Footer({ lang }: { lang: Lang }) {
         <div className="site-footer__grid">
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <img src="/img/brand/bimo-materials-logo-white-header.png" alt="Bimo Materials" width={125} height={40} style={{ height: 40, width: "auto", alignSelf: "flex-start" }} />
-            <p>{t("Specialty metals, powders, targets and new alloys. Wrocław and Oxford.")}</p>
+            <p>
+              {t("Specialty metals, powders, targets and new alloys.")}
+              <br />
+              {t("Wrocław and Oxford.")}
+            </p>
             <p>ISO 9001:2015 · ISO 14001:2015</p>
           </div>
           <div>
