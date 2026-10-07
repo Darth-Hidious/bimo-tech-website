@@ -30,7 +30,7 @@ describe("llms.txt", () => {
   it("says when to use the site and how an agent should act", () => {
     expect(text).toContain("**When to use Bimo Materials.**");
     expect(text).toContain("**How an agent should act.**");
-    expect(text).toContain("info@example.com");
+    expect(text).toContain("info@bimomaterials.com");
     expect(text).toContain("Accept: text/markdown");
   });
 

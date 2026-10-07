@@ -16,7 +16,7 @@ describe("Organization JSON-LD", () => {
     expect(org.logo).toBe(`${SITE}/img/brand/bimo-materials-logo.png`);
     expect(org.address).toEqual({ "@type": "PostalAddress", streetAddress: "ul. Francuska 11", postalCode: "54-405", addressLocality: "Wrocław", addressCountry: "PL" });
     expect(org.contactPoint).toHaveLength(1);
-    expect(org.contactPoint[0]).toMatchObject({ "@type": "ContactPoint", contactType: "sales", email: "info@example.com" });
+    expect(org.contactPoint[0]).toMatchObject({ "@type": "ContactPoint", contactType: "sales", email: "info@bimomaterials.com" });
     expect(org.hasOfferCatalog.itemListElement).toHaveLength(8);
   });
 

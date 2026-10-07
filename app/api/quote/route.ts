@@ -1,16 +1,21 @@
-// Sends a quote request from the site's form to the sales inbox, through Resend (resend.com).
+// Sends a quote request from the site's form through Resend (resend.com), as two emails:
+//   1. the request, to the sales inbox. Replying answers the visitor (Reply-To).
+//   2. a copy for the visitor, in the site language they used. Replying reaches the sales inbox.
 //
 // The only setting needed is RESEND_API_KEY (Vercel → Settings → Environment Variables), for a Resend
-// account where the site's domain is verified. Everything else follows the domain (lib/site-url.ts):
-//   to    info@<domain>, or CONTACT_EMAIL, or QUOTE_TO (several: comma-separated)
-//   from  "Bimo Materials website <website@<domain>>", or QUOTE_FROM
+// account where bimomaterials.com is verified. The address is the company's (lib/site.ts):
+//   to    info@bimomaterials.com, or CONTACT_EMAIL, or QUOTE_TO (several: comma-separated)
+//   from  "Bimo Materials <info@bimomaterials.com>", or QUOTE_FROM
 // Without a key this answers 503 and the form falls back to opening the visitor's email program.
 //
 // Junk is dropped quietly: a hidden field only bots fill in, a minimum time between page load and
-// sending, and limits on every field. Replies go straight to the visitor (Reply-To).
+// sending, and limits on every field. The visitor's copy repeats only the short fields, never the free
+// text, so the form cannot be used to send someone else a message.
 
-import { contactEmail, SITE_DOMAIN } from "@/lib/site-url";
+import { contactEmail } from "@/lib/site-url";
 import { company } from "@/lib/site";
+import { colon, isLang, type Lang } from "@/lib/i18n/config";
+import { tr } from "@/lib/i18n/server";
 
 const MAX = { short: 200, message: 5000, items: 30 };
 const EMAIL = /^[^\s@<>()"',;:]+@[^\s@<>()"',;:]+\.[^\s@<>()"',;:]{2,}$/;
@@ -30,11 +35,58 @@ function tooMany(ip: string) {
   return hits.length > 5;
 }
 
+type Mail = { from: string; to: string[]; reply_to: string; subject: string; text: string };
+
+async function sendMail(key: string, mail: Mail): Promise<boolean> {
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify(mail),
+    });
+    if (res.ok) return true;
+    console.error("quote: Resend answered", res.status, await res.text().catch(() => ""));
+  } catch (err) {
+    console.error("quote: could not reach Resend", err);
+  }
+  return false;
+}
+
+type Items = { name: string; form: string; quantity: string }[];
+type Fields = { need: string; material: string; form: string; quantity: string };
+
+/** The visitor's copy, in their language, from strings the site already translates. */
+function visitorCopy(lang: Lang, f: Fields, items: Items, contact: string): { subject: string; text: string } {
+  const t = tr(lang);
+  const c = colon(lang);
+  // "need" is one of the form's options; anything else (a bot, an old form) is left out rather than failing.
+  let need = "";
+  try {
+    need = f.need ? t(f.need) : "";
+  } catch {}
+  const text = [
+    t("Thank you. Your request is with our team, and we will reply by email."),
+    "",
+    need ? `${t("I need")}${c}${need}` : "",
+    f.material ? `${t("Material or grade")}${c}${f.material}` : "",
+    f.form ? `${t("Form and size")}${c}${f.form}` : "",
+    f.quantity ? `${t("Quantity")}${c}${f.quantity}` : "",
+    ...(items.length ? ["", `${t("In your quote")}${c}`, ...items.map((it) => ["- " + it.name, it.form, it.quantity].filter(Boolean).join(" · "))] : []),
+    "",
+    "Bimo Materials",
+    contact,
+  ]
+    .filter((l, i, a) => l !== "" || (i > 0 && a[i - 1] !== ""))
+    .join("\n");
+  return { subject: `Bimo Materials · ${t("Quote request")}`, text };
+}
+
 export async function POST(req: Request) {
   const key = process.env.RESEND_API_KEY;
   if (!key) return Response.json({ error: "not-configured" }, { status: 503 });
-  const to = process.env.QUOTE_TO || contactEmail(company.email);
-  const from = process.env.QUOTE_FROM || `Bimo Materials website <website@${SITE_DOMAIN}>`;
+  const inbox = contactEmail(company.email);
+  const to = process.env.QUOTE_TO || inbox;
+  const from = process.env.QUOTE_FROM || `Bimo Materials <${inbox}>`;
 
   let data: FormData;
   try {
@@ -94,19 +146,13 @@ export async function POST(req: Request) {
 
   const subject = `Quote request: ${f.material || items.map((it) => it.name).join(", ") || f.need || "website"}`.slice(0, 150);
 
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from, to: to.split(",").map((s) => s.trim()), reply_to: email, subject, text }),
-    });
-    if (!res.ok) {
-      console.error("quote: Resend answered", res.status, await res.text().catch(() => ""));
-      return Response.json({ error: "send-failed" }, { status: 502 });
-    }
-  } catch (err) {
-    console.error("quote: could not reach Resend", err);
-    return Response.json({ error: "send-failed" }, { status: 502 });
-  }
+  const sent = await sendMail(key, { from, to: to.split(",").map((s) => s.trim()), reply_to: email, subject, text });
+  if (!sent) return Response.json({ error: "send-failed" }, { status: 502 });
+
+  // The request reached the team; the visitor's copy is a courtesy, so a failure here is only logged.
+  const lang: Lang = isLang(f.language) ? f.language : "en";
+  const copy = visitorCopy(lang, f, items, inbox);
+  await sendMail(key, { from, to: [email], reply_to: inbox, ...copy });
+
   return Response.json({ ok: true });
 }

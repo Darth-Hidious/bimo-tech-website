@@ -28,7 +28,7 @@ describe("pageMarkdown", () => {
     expect(home).toMatch(/^# Bimo Materials · Specialty metals, powders and new alloys\n/);
     expect(home).toContain("## From raw metal to tested part.");
     expect(home).toContain(`[Refractory metals](${SITE}/materials/refractory-metals/)`);
-    expect(home).toContain("info@example.com");
+    expect(home).toContain("info@bimomaterials.com");
 
     const tungsten = pageMarkdown("en", "/materials/refractory-metals/tungsten/")!;
     expect(tungsten).toContain("# Tungsten");

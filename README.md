@@ -67,10 +67,10 @@ A sibling of the PRISM design system with its own identity:
 
 ## Hand-over: putting the site on a domain
 
-The site finds its own address. On every build Vercel tells it the project's production domain, and canonical links, `hreflang`, the sitemap, `robots.txt` and the contact address all follow (`lib/site-url.ts`). Nothing in the code names a domain.
+The site finds its own address. On every build Vercel tells it the project's production domain, and canonical links, `hreflang`, the sitemap and `robots.txt` all follow (`lib/site-url.ts`). Nothing in the code names the site's domain. The email address is fixed instead: info@bimomaterials.com, whatever domain the site runs on (`lib/site.ts → company.email`).
 
 - **On a `.vercel.app` address** (as now) every page is marked noindex. The link can be shared, but it does not appear in Google before launch.
-- **On a real domain** the pages become indexable, and the contact address becomes `info@` that domain (`info@bimotech.pl` for `materials.bimotech.pl`, `info@bimomaterials.com` for `www.bimomaterials.com`).
+- **On a real domain** the pages become indexable.
 
 ### Steps
 
@@ -80,12 +80,19 @@ The site finds its own address. On every build Vercel tells it the project's pro
 
 ### Quote form email (optional, recommended)
 
-Without it the form still works: it opens the visitor's own email program, addressed to `info@` your domain. To have requests arrive directly:
+Without it the form still works: it opens the visitor's own email program, addressed to info@bimomaterials.com. To have requests arrive directly:
 
-1. Create a free account at [resend.com](https://resend.com) and add the same domain (Domains → Add domain). Resend shows three DNS records (on a `send.` subdomain plus a DKIM key, so the company's mailboxes are untouched). Add them on your DNS server and wait until Resend says Verified.
+1. Create a free account at [resend.com](https://resend.com) and add `bimomaterials.com` (Domains → Add domain), even while the site runs on another domain. Resend shows three DNS records (on a `send.` subdomain plus a DKIM key, so the company's mailboxes are untouched). Add them on your DNS server and wait until Resend says Verified.
 2. Create an API key (API Keys → Create, sending access) and add it in Vercel as the environment variable `RESEND_API_KEY` (Settings → Environment Variables, Production). Redeploy.
 
-**Testing before the domain is verified.** Resend can already send from its own test address, but only to the email of the Resend account owner. Set these three in Vercel (Settings → Environment Variables, Production), then redeploy:
+Each request then sends two emails, both from `Bimo Materials <info@bimomaterials.com>`:
+
+- **The request**, to info@bimomaterials.com, with every field and each quote-basket item with its form, size and quantity. Replying answers the customer.
+- **A copy for the customer**, in the language they used on the site: a thank-you and the material, form, size, quantity and basket items they sent (not their free-text message, so the form cannot be used to send strangers a message). Replying reaches info@bimomaterials.com. If this copy fails, the request still counts as sent and the failure is logged.
+
+If spam gets through, add a rate-limit or bot-protection rule for `/api/quote/` in the Vercel project's Firewall. Failures are logged in the project's Logs.
+
+**Testing before the domain is verified.** Resend can already send from its own test address, but only to the email of the Resend account owner, so the customer's copy is not delivered in this mode (it is logged as failed, and the form still says the request was sent). Set these three in Vercel (Settings → Environment Variables, Production), then redeploy:
 
 | Variable | Value |
 | --- | --- |
@@ -93,17 +100,15 @@ Without it the form still works: it opens the visitor's own email program, addre
 | `QUOTE_FROM` | `Bimo Materials website <onboarding@resend.dev>` |
 | `QUOTE_TO` | the Resend account owner's email |
 
-Once the domain shows Verified in Resend, delete `QUOTE_FROM` and `QUOTE_TO` (or point `QUOTE_TO` at the sales inbox) and redeploy. Keep the key only in Vercel, never in the code: the repository may change hands, the Vercel settings stay with the project.
-
-Requests then arrive at `info@` your domain, sent from `website@` your domain, and replying answers the customer. If spam gets through, add a rate-limit or bot-protection rule for `/api/quote/` in the Vercel project's Firewall. Failures are logged in the project's Logs.
+Once bimomaterials.com shows Verified in Resend, delete `QUOTE_FROM` and `QUOTE_TO` and redeploy. Keep the key only in Vercel, never in the code: the repository may change hands, the Vercel settings stay with the project.
 
 ### Optional settings (Vercel → Settings → Environment Variables)
 
 | Variable | Default | Use it to |
 | --- | --- | --- |
-| `CONTACT_EMAIL` | `info@` the domain | show and receive at another address |
+| `CONTACT_EMAIL` | `info@bimomaterials.com` | show, send from and receive at another address |
 | `QUOTE_TO` | the contact address | send requests elsewhere, several separated by commas |
-| `QUOTE_FROM` | `Bimo Materials website <website@` the domain `>` | change the sender (must be on the domain verified in Resend) |
+| `QUOTE_FROM` | `Bimo Materials <info@bimomaterials.com>` | change the sender (must be on the domain verified in Resend) |
 | `SITE_URL` | the project's production domain | force an address, e.g. on a server outside Vercel |
 
 Redeploy after changing any of them.
@@ -111,7 +116,7 @@ Redeploy after changing any of them.
 ## Before launch
 
 1. **Domain and quote email.** See "Hand-over" above.
-2. **Contact details.** `lib/site.ts → company`: Bimo Materials' own email and phone.
+2. **Contact details.** `lib/site.ts → company`: the email is info@bimomaterials.com; add the phone number.
 3. **Photographs.** Several pages use licensed stand-ins (forging, cold spray, delivery, nuclear steel, water treatment). Replace them with your own shots when you have them: change `src` in `lib/site.ts` and drop the licence fields.
 4. **Logo permissions** for ESA, ArianeGroup, Fusion for Energy and ITER on the homepage.
 5. **Privacy notice.** `views/Privacy.tsx` is a draft and is set to noindex.

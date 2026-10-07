@@ -25,7 +25,7 @@ describe("the quote mail sender", () => {
     vi.unstubAllEnvs();
     vi.unstubAllGlobals();
   });
-  const sent = () => JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
+  const sent = (n = 0) => JSON.parse((fetchMock.mock.calls[n] as unknown as [string, RequestInit])[1].body as string);
 
   it("lists each basket item with its own form, size and quantity", async () => {
     const res = await send([
@@ -35,7 +35,8 @@ describe("the quote mail sender", () => {
     ]);
     expect(res.status).toBe(200);
     const mail = sent();
-    expect(mail.to).toEqual(["info@example.com"]);
+    expect(mail.from).toBe("Bimo Materials <info@bimomaterials.com>");
+    expect(mail.to).toEqual(["info@bimomaterials.com"]);
     expect(mail.reply_to).toBe("buyer@example.org");
     expect(mail.subject).toBe("Quote request: Tungsten, TZM");
     expect(mail.text).toContain("Quote basket:\n- Tungsten: form and size rod Ø20 × 300 mm, quantity 5 pieces\n- TZM: form and size (not given), quantity 2 kg");
@@ -55,6 +56,44 @@ describe("the quote mail sender", () => {
     const text: string = sent().text;
     expect(text).toContain("- Nickel Bcc: x@example.net: form and size (not given)");
     expect(text.match(/^- /gm)).toHaveLength(30);
+  });
+
+  it("sends the visitor a copy from the company address, in their language, without the free text", async () => {
+    const res = await send([
+      ...base,
+      ["language", "de"],
+      ["material", "TZM"],
+      ["message", "Visit https://spam.example now"],
+      ["item", "Wolfram"], ["item_form", "Stab Ø20"], ["item_quantity", "5 Stück"],
+    ]);
+    expect(res.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const copy = sent(1);
+    expect(copy.from).toBe("Bimo Materials <info@bimomaterials.com>");
+    expect(copy.to).toEqual(["buyer@example.org"]);
+    expect(copy.reply_to).toBe("info@bimomaterials.com");
+    expect(copy.subject).toBe("Bimo Materials · Angebotsanfrage");
+    expect(copy.text).toContain("Werkstoff oder Sorte: TZM");
+    expect(copy.text).toContain("- Wolfram · Stab Ø20 · 5 Stück");
+    expect(copy.text).toContain("info@bimomaterials.com");
+    expect(copy.text).not.toContain("spam.example");
+  });
+
+  it("still reports success when only the visitor's copy fails", async () => {
+    fetchMock.mockImplementationOnce(async () => new Response("{}", { status: 200 }));
+    fetchMock.mockImplementationOnce(async () => new Response("bad", { status: 422 }));
+    const error = vi.spyOn(console, "error").mockImplementation(() => {});
+    expect((await send(base)).status).toBe(200);
+    expect(error).toHaveBeenCalledOnce();
+    error.mockRestore();
+  });
+
+  it("reports failure when the request cannot reach the team, and sends no copy", async () => {
+    fetchMock.mockImplementationOnce(async () => new Response("bad", { status: 500 }));
+    const error = vi.spyOn(console, "error").mockImplementation(() => {});
+    expect((await send(base)).status).toBe(502);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    error.mockRestore();
   });
 
   it("answers 503 without an API key, so the form opens the visitor's email program", async () => {

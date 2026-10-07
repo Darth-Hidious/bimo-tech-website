@@ -333,7 +333,7 @@ export const news = [
 ];
 
 export const company = {
-  // Shown only before launch. Live, the address is info@ on the site's own domain, or CONTACT_EMAIL (lib/site-url.ts).
+  // Shown on the site, receives quote requests and sends the visitor's copy. CONTACT_EMAIL overrides it (lib/site-url.ts).
   email: "info@bimomaterials.com",
   phone: "",
   address: ["ul. Francuska 11", "54-405 Wrocław, Poland"],
