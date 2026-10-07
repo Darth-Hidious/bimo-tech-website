@@ -331,9 +331,22 @@ h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .li
 .section:not(.section--graphite) .radio-chips span { border-color: var(--rule); }
 .quote__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 @media (max-width: 560px) { .quote__grid { grid-template-columns: minmax(0, 1fr); } }
-.quote__basket ul { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.quote__basket li { display: inline-flex; align-items: center; gap: 6px; padding: 4px 4px 4px 12px; border-radius: 999px; border: 1px solid currentColor; font-size: 14px; }
-.quote__basket button { width: 28px; height: 28px; border: 0; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; font-size: 16px; }
+.quote__basket { border: 0; padding: 0; margin: 0; min-width: 0; }
+.quote__basket legend { padding: 0; margin-bottom: 8px; }
+.quote__items { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.quote__item { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr) minmax(0, 1fr) 40px; gap: 8px; align-items: center; }
+.quote__items-head { margin-bottom: 6px; font-size: 13px; color: var(--ink-3); }
+.section--graphite .quote__items-head { color: var(--on-graphite-2); }
+.quote__item-name { font-size: 15px; font-weight: 500; overflow-wrap: anywhere; }
+.quote__item-remove { width: 40px; height: 40px; border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; font-size: 16px; }
+@media (max-width: 560px) {
+  .quote__item { grid-template-columns: minmax(0, 1fr) 40px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .quote__item .input { grid-column: 1 / -1; }
+  .quote__items-head { display: none; }
+  .quote__item-name { grid-row: 1; grid-column: 1; }
+  .quote__item-remove { grid-row: 1; grid-column: 2; }
+  .section--graphite .quote__item { border-color: var(--graphite-rule); }
+}
 .quote__send { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
 .quote__note { font-size: 13px; color: var(--ink-3); flex: 1; min-width: 220px; }
 .section--graphite .quote__note { color: var(--on-graphite-2); }

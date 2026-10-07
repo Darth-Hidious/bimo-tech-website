@@ -85,6 +85,16 @@ Without it the form still works: it opens the visitor's own email program, addre
 1. Create a free account at [resend.com](https://resend.com) and add the same domain (Domains → Add domain). Resend shows three DNS records (on a `send.` subdomain plus a DKIM key, so the company's mailboxes are untouched). Add them on your DNS server and wait until Resend says Verified.
 2. Create an API key (API Keys → Create, sending access) and add it in Vercel as the environment variable `RESEND_API_KEY` (Settings → Environment Variables, Production). Redeploy.
 
+**Testing before the domain is verified.** Resend can already send from its own test address, but only to the email of the Resend account owner. Set these three in Vercel (Settings → Environment Variables, Production), then redeploy:
+
+| Variable | Value |
+| --- | --- |
+| `RESEND_API_KEY` | the key from Resend → API Keys |
+| `QUOTE_FROM` | `Bimo Materials website <onboarding@resend.dev>` |
+| `QUOTE_TO` | the Resend account owner's email |
+
+Once the domain shows Verified in Resend, delete `QUOTE_FROM` and `QUOTE_TO` (or point `QUOTE_TO` at the sales inbox) and redeploy. Keep the key only in Vercel, never in the code: the repository may change hands, the Vercel settings stay with the project.
+
 Requests then arrive at `info@` your domain, sent from `website@` your domain, and replying answers the customer. If spam gets through, add a rate-limit or bot-protection rule for `/api/quote/` in the Vercel project's Firewall. Failures are logged in the project's Logs.
 
 ### Optional settings (Vercel → Settings → Environment Variables)

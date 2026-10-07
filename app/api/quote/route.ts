@@ -12,12 +12,13 @@
 import { contactEmail, SITE_DOMAIN } from "@/lib/site-url";
 import { company } from "@/lib/site";
 
-const MAX = { short: 200, message: 5000, basket: 2000 };
+const MAX = { short: 200, message: 5000, items: 30 };
 const EMAIL = /^[^\s@<>()"',;:]+@[^\s@<>()"',;:]+\.[^\s@<>()"',;:]{2,}$/;
 
 const field = (data: FormData, name: string, max = MAX.short) =>
   String(data.get(name) ?? "").replace(/\r/g, "").trim().slice(0, max);
 const oneLine = (s: string) => s.replace(/\s+/g, " ");
+const fieldAll = (data: FormData, name: string) => data.getAll(name).map((v) => oneLine(String(v).trim().slice(0, MAX.short)));
 
 // Best effort per running instance: a few requests a minute per address.
 const recent = new Map<string, number[]>();
@@ -60,18 +61,27 @@ export async function POST(req: Request) {
     quantity: oneLine(field(data, "quantity")),
     name: oneLine(field(data, "name")),
     organisation: oneLine(field(data, "organisation")),
-    basket: oneLine(field(data, "basket", MAX.basket)),
     message: field(data, "message", MAX.message),
     language: oneLine(field(data, "language", 5)),
     page: oneLine(field(data, "page", 300)),
   };
+
+  // The materials added with "Add to quote": one row each, with its own form, size and quantity.
+  const forms = fieldAll(data, "item_form");
+  const quantities = fieldAll(data, "item_quantity");
+  const items = fieldAll(data, "item")
+    .slice(0, MAX.items)
+    .map((name, i) => ({ name, form: forms[i] ?? "", quantity: quantities[i] ?? "" }))
+    .filter((it) => it.name);
 
   const text = [
     `Need: ${f.need}`,
     `Material or grade: ${f.material}`,
     `Form and size: ${f.form}`,
     `Quantity: ${f.quantity}`,
-    f.basket ? `Quote basket: ${f.basket}` : "",
+    ...(items.length
+      ? ["", "Quote basket:", ...items.map((it) => `- ${it.name}: form and size ${it.form || "(not given)"}, quantity ${it.quantity || "(not given)"}`)]
+      : []),
     "",
     f.message || "(no message)",
     "",
@@ -82,7 +92,7 @@ export async function POST(req: Request) {
     .filter((l, i, a) => l !== "" || a[i - 1] !== "")
     .join("\n");
 
-  const subject = `Quote request: ${f.material || f.basket || f.need || "website"}`.slice(0, 150);
+  const subject = `Quote request: ${f.material || items.map((it) => it.name).join(", ") || f.need || "website"}`.slice(0, 150);
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
