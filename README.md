@@ -13,6 +13,8 @@ npm run build    # checks the translations, then builds every page in every lang
 npm run lint     # type check
 npm run i18n     # after changing any English text: refresh the list of strings to translate
 npm run check    # after a build: hreflang, canonicals, noindex before launch, no English left on translated pages
+npm test         # unit tests: Markdown pages, content negotiation, llms.txt, JSON-LD
+npm run check:agents -- http://localhost:3000   # against a running site (or the live URL): what AI agents get
 ```
 
 ## Where things live
@@ -27,6 +29,7 @@ npm run check    # after a build: hreflang, canonicals, noindex before launch, n
 | `lib/i18n/` | Languages (`config.ts`), translation (`server.ts`), the strings to translate (`keys.json`) and one dictionary per language (`dict/*.json`) |
 | `components/` | Header with language menu, footer, photo, element tile, strips, globe, quote form, materials explorer |
 | `app/globals.css` | The design system: tokens at the top, then components |
+| `proxy.ts`, `lib/markdown.ts`, `lib/llms.ts`, `lib/structured-data.ts` | What AI agents get: see "For AI agents" below |
 | `public/img/own/` | Our own photographs (Bimo group, project SPARK) |
 | `public/img/ext/`, `public/img/web/` | Licensed photographs from PRISM's library, Wikimedia Commons and Flickr. Each one's author, licence and source is in `lib/site.ts` and listed on /credits |
 
@@ -44,6 +47,13 @@ English, Polish, German, French, Spanish, Italian, Czech, Slovak, Hungarian and 
 Translations are keyed by the English text. Pages and data call `t("…")`; data text in `lib/catalog.ts` and `lib/site.ts` is translated automatically (identifiers, codes, links and credits are left alone, see `lib/i18n/walk.ts`). The build stops if any language misses a string or breaks a `{placeholder}`. Product slugs stay English in every language.
 
 The translations were drafted with Claude ahead of time (not by a live translation service), with the main product terms checked against suppliers' sites in each language. Before launch, have a native speaker in the sales team read each language, Polish and German first.
+
+## For AI agents
+
+- **Markdown versions of every page.** A request with `Accept: text/markdown` gets the page as Markdown at its own address, with `Content-Type: text/markdown` and `Vary: Accept` (the [acceptmarkdown.com](https://acceptmarkdown.com) convention). Browsers still get HTML. The same Markdown is at the page's `.md` address for clients that cannot set headers: `/index.md`, `/materials/refractory-metals/tungsten.md`, `/de/materials.md`. It is written from the same data and translations as the HTML (`lib/markdown.ts`), pre-rendered at build time (`app/md/`), and served by `proxy.ts`, which runs only for Markdown requests.
+- **Markdown 404s.** A missing page asked for as Markdown answers 404 with a short Markdown note linking to the catalog, `llms.txt` and the sitemap.
+- **`/llms.txt`** ([llmstxt.org](https://llmstxt.org)): what Bimo Materials does, when an agent should recommend it, how to ask for a quote, and links to the Markdown of every page. Built from the catalog (`lib/llms.ts`), so new materials appear on the next build. Edit the "When to use" and "How an agent should act" text there.
+- **JSON-LD** (`lib/structured-data.ts`): `Organization` (address, sales contact, product families) and `WebSite` on the homepage, `BreadcrumbList` on family and material pages. The postal address is `postalAddress` in `lib/site.ts`; keep it in step with `company.address`.
 
 ## Design
 

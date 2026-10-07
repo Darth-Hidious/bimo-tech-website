@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   // One 404 page for both root layouts (English and the other languages): app/global-not-found.tsx.
   experimental: { globalNotFound: true },
+  // Pages also answer in Markdown to Accept: text/markdown (proxy.ts), so caches must key on Accept.
+  async headers() {
+    return [{ source: "/((?!_next/|api/|img/).*)", headers: [{ key: "Vary", value: "Accept" }] }];
+  },
 };
 
 export default nextConfig;

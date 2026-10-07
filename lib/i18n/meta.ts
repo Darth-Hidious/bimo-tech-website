@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import { href, LANGS, OG_LOCALE, type Lang } from "./config";
 import { IS_LIVE, SITE } from "../site-url";
+import { mdHref } from "../routes";
 
 export { SITE };
 
@@ -24,7 +25,8 @@ export function pageMeta(lang: Lang, path: string, { title, description, absolut
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    alternates: { canonical: url, languages: languages(path) },
+    // The same page as Markdown, for AI agents (proxy.ts).
+    alternates: { canonical: url, languages: languages(path), types: { "text/markdown": mdHref(url) } },
     openGraph: {
       type: "website",
       siteName: "Bimo Materials",

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Element from "@/components/Element";
+import JsonLd from "@/components/JsonLd";
 import Photo from "@/components/Photo";
 import QuoteButton from "@/components/QuoteButton";
 import { content } from "@/lib/content";
 import { colon, comma, href, inSentence, num, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
+import { catalogBreadcrumbJsonLd } from "@/lib/structured-data";
 import type { ImageKey } from "@/lib/site";
 
 const find = (lang: Lang, family: string, material: string) =>
@@ -30,6 +32,7 @@ export default function Material({ lang, family, material }: { lang: Lang; famil
 
   return (
     <>
+      <JsonLd data={catalogBreadcrumbJsonLd(lang, m.family.slug, m.slug)} />
       <section className="section section--tight">
         <div className="wrap">
           <nav className="crumbs" aria-label={t("Breadcrumb")}>

@@ -3,11 +3,13 @@ import Photo from "@/components/Photo";
 import Strip from "@/components/Strip";
 import QuoteForm from "@/components/QuoteForm";
 import Globe from "@/components/Globe";
+import JsonLd from "@/components/JsonLd";
 import HeroSlides, { type Slide } from "@/components/HeroSlides";
 import { content } from "@/lib/content";
 import { href, pct, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import type { ImageKey } from "@/lib/site";
 
 export function homeMeta(lang: Lang) {
@@ -34,6 +36,9 @@ export default function Home({ lang }: { lang: Lang }) {
 
   return (
     <>
+      <JsonLd data={organizationJsonLd(lang)} />
+      <JsonLd data={websiteJsonLd(lang)} />
+
       {/* 1 · Hero: real metal, two lines, two buttons */}
       <section className="hero">
         <HeroSlides slides={heroSlides} />

@@ -340,6 +340,14 @@ export const company = {
   oxford: "Oxford, United Kingdom",
 };
 
+/** The Wrocław address above, field by field, for search engines (lib/structured-data.ts). Not translated. */
+export const postalAddress = {
+  streetAddress: "ul. Francuska 11",
+  postalCode: "54-405",
+  addressLocality: "Wrocław",
+  addressCountry: "PL",
+};
+
 /** Where we work, pinned on the globe. */
 export const places: { name: string; role: string; lat: number; lon: number; side?: "left" | "below" }[] = [
   { name: "Wrocław", role: "Made here", lat: 51.108, lon: 17.039 },

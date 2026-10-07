@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Element from "@/components/Element";
+import JsonLd from "@/components/JsonLd";
 import Photo from "@/components/Photo";
 import QuoteButton from "@/components/QuoteButton";
 import { content } from "@/lib/content";
 import { comma, href, inSentence, LOCALE, num, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
+import { catalogBreadcrumbJsonLd } from "@/lib/structured-data";
 import type { ImageKey } from "@/lib/site";
 
 export function familyMeta(lang: Lang, family: string) {
@@ -41,6 +43,7 @@ export default function Family({ lang, family: slug }: { lang: Lang; family: str
 
   return (
     <>
+      <JsonLd data={catalogBreadcrumbJsonLd(lang, f.slug)} />
       <section className="section section--tight">
         <div className="wrap">
           <nav className="crumbs" aria-label={t("Breadcrumb")}>
