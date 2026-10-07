@@ -238,7 +238,7 @@ function company(x: Ctx): string {
   const { t, url, c, lang } = x;
   return blocks(
     `# ${t("Wrocław and Oxford.")}`,
-    t("Bimo Materials is part of the Bimo group, which has supplied metals to science and industry since 1992. We make in Wrocław and work with UK customers and research partners from Oxford."),
+    t("Bimo Materials is part of the Bimo group, which has supplied metals to science and industry since 1992."),
     `## ${t("Wrocław, Poland")}`,
     `${t("Melting, powder, machining and testing.")} ${c.company.address.join(", ")}.`,
     `## ${t("Oxford, United Kingdom")}`,
