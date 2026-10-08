@@ -305,16 +305,12 @@ function privacy(x: Ctx): string {
     t("How Bimo Materials handles personal data on this website: what we collect, why, who processes it for us, and your rights under the GDPR."),
     `*${t("Last updated: {date}", { date: date(lang, privacyFacts.updated) })}*`,
     `## ${t("Who is responsible")}`,
-    richLinks(t("The controller of your personal data is {controller}. You can reach us about anything in this notice at <0>{email}</0>.", { controller: privacyFacts.controller, email }), mail),
+    richLinks(t("{controller} is the controller of your personal data. You can reach us about anything in this notice at <0>{email}</0>.", { controller: privacyFacts.controller, email }), mail),
     [
       privacyFacts.controller,
-      privacyFacts.registeredOffice,
-      privacyFacts.companyNumber && `${t("Company number")}${colon(lang)}${privacyFacts.companyNumber}`,
-      c.company.address.join(", "),
-      c.company.oxford,
-    ]
-      .filter(Boolean)
-      .join("  \n"),
+      t("{street}, {postcode} Wrocław, Poland", { street: privacyFacts.street, postcode: privacyFacts.postcode }),
+      `${t("VAT number")}${colon(lang)}${privacyFacts.vat}`,
+    ].join("  \n"),
     `## ${t("What we collect and why")}`,
     `### ${t("When you send the quote form")}`,
     t("We receive what you enter: your email address and, if you give them, your name, organisation, the material, form, size and quantity you need, your message and the items in your quote basket. We also record the language and address of the page you sent it from, so we know what you were looking at."),

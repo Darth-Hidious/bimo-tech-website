@@ -341,13 +341,15 @@ export const company = {
 };
 
 /**
- * Facts for the privacy notice (views/Privacy.tsx). Change `updated` whenever the notice's content
- * changes. Add the registered office and company number once they are final; they appear only when set.
+ * Facts for the privacy notice (views/Privacy.tsx, lib/markdown.ts), as on bimotech.pl/en/privacy.
+ * The address line is translated with the country name in each language. Change `updated` whenever
+ * the notice's content changes.
  */
 export const privacy = {
-  controller: "Bimo Materials Ltd",
-  registeredOffice: "", // e.g. the registered address in Oxford, as filed at Companies House
-  companyNumber: "",
+  controller: "Bimo Tech Sp. z o.o.",
+  street: "ul. Francuska 11",
+  postcode: "54-405",
+  vat: "PL8943047189",
   updated: "2026-10-08",
 };
 

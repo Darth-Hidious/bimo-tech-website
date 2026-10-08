@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { content } from "@/lib/content";
-import { date, href, type Lang } from "@/lib/i18n/config";
+import { colon, date, href, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { rich } from "@/lib/i18n/rich";
 import { tr } from "@/lib/i18n/server";
@@ -32,15 +32,13 @@ export default function Privacy({ lang }: { lang: Lang }) {
         <p className="muted">{t("Last updated: {date}", { date: date(lang, privacy.updated) })}</p>
 
         <h2 className="subtitle">{t("Who is responsible")}</h2>
-        <p>{rich(t("The controller of your personal data is {controller}. You can reach us about anything in this notice at <0>{email}</0>.", { controller: privacy.controller, email: company.email }), [mail])}</p>
+        <p>{rich(t("{controller} is the controller of your personal data. You can reach us about anything in this notice at <0>{email}</0>.", { controller: privacy.controller, email: company.email }), [mail])}</p>
         <p>
           {privacy.controller}
-          {privacy.registeredOffice ? <><br />{privacy.registeredOffice}</> : null}
-          {privacy.companyNumber ? <><br />{t("Company number")}: {privacy.companyNumber}</> : null}
           <br />
-          {company.address.join(", ")}
+          {t("{street}, {postcode} Wrocław, Poland", { street: privacy.street, postcode: privacy.postcode })}
           <br />
-          {company.oxford}
+          {t("VAT number")}{colon(lang)}{privacy.vat}
         </p>
 
         <h2 className="subtitle">{t("What we collect and why")}</h2>

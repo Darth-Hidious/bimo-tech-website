@@ -143,7 +143,6 @@
   "Cold spray": "Projection à froid (cold spray)",
   "Commissioning": "Mise en service",
   "Company": "Entreprise",
-  "Company number": "Numéro d’immatriculation",
   "Component and device development": "Développement de composants et d’équipements",
   "Components and devices": "Composants et équipements",
   "Construction": "Construction",
@@ -525,7 +524,7 @@
   "The best few, made into powder.": "Les meilleurs candidats, transformés en poudre.",
   "The Bimo group": "Le groupe Bimo",
   "The Bimo group has supplied metals to science and industry since 1992. Bimo Materials also melts, powders, prints, coats and tests them.": "Le groupe Bimo fournit des métaux à la recherche et à l’industrie depuis 1992. Bimo Materials les fond aussi, les transforme en poudre, les imprime, les revêt et les teste.",
-  "The controller of your personal data is {controller}. You can reach us about anything in this notice at <0>{email}</0>.": "Le responsable du traitement de vos données à caractère personnel est {controller}. Pour toute question relative à cette notice, vous pouvez nous joindre à l’adresse <0>{email}</0>.",
+  "{controller} is the controller of your personal data. You can reach us about anything in this notice at <0>{email}</0>.": "{controller} est le responsable du traitement de vos données à caractère personnel. Pour toute question relative à cette notice, vous pouvez nous joindre à l’adresse <0>{email}</0>.",
   "The design side": "Côté conception",
   "The highest elastic modulus of the refractory metals, 420 GPa, and excellent mechanical properties at high temperature.": "Le module d’élasticité le plus élevé des métaux réfractaires (420 GPa) et d’excellentes propriétés mécaniques à haute température.",
   "The highest melting point of any metal, the lowest thermal expansion of the refractory metals and high strength at temperature.": "Le point de fusion le plus élevé de tous les métaux, la plus faible dilatation thermique des métaux réfractaires et une résistance élevée à chaud.",
@@ -642,5 +641,7 @@
   "Latest from the Bimo Group.": "Les dernières nouvelles du groupe Bimo.",
   "Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry.": "Métaux réfractaires, poudres, cibles de pulvérisation et nouveaux alliages pour le spatial, la fusion et l’industrie.",
   "Resistance welding electrodes": "Électrodes de soudage par résistance",
-  "Specialty metals, powders, targets and new alloys.": "Métaux spéciaux, poudres, cibles et nouveaux alliages."
+  "Specialty metals, powders, targets and new alloys.": "Métaux spéciaux, poudres, cibles et nouveaux alliages.",
+  "VAT number": "N° de TVA intracommunautaire",
+  "{street}, {postcode} Wrocław, Poland": "{street}, {postcode} Wrocław, Pologne"
 }

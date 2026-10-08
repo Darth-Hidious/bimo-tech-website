@@ -143,7 +143,6 @@
   "Cold spray": "Hidegszórás",
   "Commissioning": "Üzembe helyezés",
   "Company": "Vállalat",
-  "Company number": "Cégjegyzékszám",
   "Component and device development": "Alkatrész- és berendezésfejlesztés",
   "Components and devices": "Alkatrészek és berendezések",
   "Construction": "Építőipar",
@@ -522,7 +521,7 @@
   "The best few, made into powder.": "A legjobb néhányból port gyártunk.",
   "The Bimo group": "A Bimo csoport",
   "The Bimo group has supplied metals to science and industry since 1992. Bimo Materials also melts, powders, prints, coats and tests them.": "A Bimo csoport 1992 óta szállít fémeket a tudomány és az ipar számára. A Bimo Materials ezenfelül olvasztja, porrá alakítja, nyomtatja, bevonja és bevizsgálja őket.",
-  "The controller of your personal data is {controller}. You can reach us about anything in this notice at <0>{email}</0>.": "Az Ön személyes adatainak adatkezelője: {controller}. A jelen tájékoztatóval kapcsolatos bármely ügyben elérhet minket a következő e-mail-címen: <0>{email}</0>.",
+  "{controller} is the controller of your personal data. You can reach us about anything in this notice at <0>{email}</0>.": "A {controller} az Ön személyes adatainak adatkezelője. A jelen tájékoztatóval kapcsolatos bármely ügyben elérhet minket a következő e-mail-címen: <0>{email}</0>.",
   "The design side": "A tervezési oldal",
   "The highest elastic modulus of the refractory metals, 420 GPa, and excellent mechanical properties at high temperature.": "A tűzálló fémek közül a legnagyobb rugalmassági modulus (420 GPa) és kiváló mechanikai tulajdonságok magas hőmérsékleten.",
   "The highest melting point of any metal, the lowest thermal expansion of the refractory metals and high strength at temperature.": "Az összes fém közül a legmagasabb olvadáspont, a tűzálló fémek közül a legkisebb hőtágulás és nagy melegszilárdság.",
@@ -642,5 +641,7 @@
   "Latest from the Bimo Group.": "Friss hírek a Bimo csoporttól.",
   "Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry.": "Tűzálló fémek, fémporok, porlasztási targetek és új ötvözetek az űripar, a fúziós energetika és az ipar számára.",
   "Resistance welding electrodes": "Ellenállás-hegesztő elektródák",
-  "Specialty metals, powders, targets and new alloys.": "Speciális fémek, fémporok, targetek és új ötvözetek."
+  "Specialty metals, powders, targets and new alloys.": "Speciális fémek, fémporok, targetek és új ötvözetek.",
+  "VAT number": "Közösségi adószám",
+  "{street}, {postcode} Wrocław, Poland": "{street}, {postcode} Wrocław, Lengyelország"
 }
