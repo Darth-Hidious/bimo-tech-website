@@ -60,7 +60,7 @@ export default function Privacy({ lang }: { lang: Lang }) {
           <li>{t("Resend (United States) delivers the messages sent with the quote form to our inbox.")}</li>
           <li>{t("home.pl S.A. (Poland) runs our email servers, where your messages are received and kept.")}</li>
         </ul>
-        <p>{t("Where data goes to the United States, providers certified under the EU–US Data Privacy Framework are covered by the European Commission’s adequacy decision (Article 45 GDPR); otherwise the European Commission’s standard contractual clauses apply (Article 46 GDPR). You can ask us for a copy of these safeguards.")}</p>
+        <p>{t("Vercel and Resend process data in the United States. These transfers are protected by the European Commission’s standard contractual clauses (Article 46(2)(c) GDPR), which are part of our data processing agreements with them. You can ask us for a copy.")}</p>
         <p>{t("We do not sell personal data or disclose it to any other recipients, unless the law requires it.")}</p>
 
         <h2 className="subtitle">{t("Cookies and tracking")}</h2>
@@ -68,7 +68,7 @@ export default function Privacy({ lang }: { lang: Lang }) {
         <p>{t("The quote basket is kept in your browser’s local storage, on your device only. It is not sent to us until you send the form, and you can clear it at any time by removing the items or clearing your browser’s data for this site.")}</p>
 
         <h2 className="subtitle">{t("How long we keep it")}</h2>
-        <p>{t("Quote requests and emails: as long as needed to handle your request and any business that follows, then up to three years after our last contact, so that we can answer follow-up questions. If you place an order, we keep the related records for the period that tax and accounting law requires. Server logs: kept by our hosting provider only as long as needed to run and secure the site, then deleted automatically.")}</p>
+        <p>{t("Quote requests and emails: deleted automatically 12 months after we receive them. You can ask us to delete them sooner at any time. If you place an order, we keep the records that tax and accounting law requires, such as invoices, for as long as that law requires. Server logs: kept by our hosting provider only as long as needed to run and secure the site, then deleted automatically.")}</p>
 
         <h2 className="subtitle">{t("Your rights")}</h2>
         <p>{rich(t("Under the GDPR and the UK GDPR you can ask us for access to your data and a copy of it, and to correct it. Under the conditions the GDPR sets, you can also ask us to delete it, to restrict how we use it, and, for data you gave us to prepare or carry out a contract, to send it to you or another company in a structured, commonly used, machine-readable format. You can object at any time, on grounds relating to your particular situation, to processing based on our legitimate interests. Write to <0>{email}</0>. We reply within one month; if a request is complex, we may need up to two months more and will tell you within the first month.", { email: company.email }), [mail])}</p>
