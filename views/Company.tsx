@@ -29,7 +29,7 @@ export default function Company({ lang }: { lang: Lang }) {
           <div className="head">
             <h1 className="display">{t("Wrocław and Oxford.")}</h1>
             <p className="lead">
-              {t("Bimo Materials is part of the Bimo group, which has supplied metals to science and industry since 1992. We make in Wrocław and work with UK customers and research partners from Oxford.")}
+              {t("Bimo Materials is part of the Bimo group, which has supplied metals to science and industry since 1992.")}
             </p>
           </div>
           <div className="where where--page">
@@ -97,7 +97,7 @@ export default function Company({ lang }: { lang: Lang }) {
         <div className="wrap">
           <div className="head">
             <p className="kicker">{t("News")}</p>
-            <h2 className="title">{t("Latest from the workshop.")}</h2>
+            <h2 className="title">{t("Latest from the Bimo Group.")}</h2>
           </div>
           <ul className="news rows">
             {news.map((n) => (

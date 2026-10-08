@@ -33,6 +33,11 @@ export function removeFromBasket(item: string) {
   write(readBasket().filter((x) => x !== item));
 }
 
+/** Empties the basket, once its items have been sent. */
+export function clearBasket() {
+  write([]);
+}
+
 export function onBasketChange(cb: () => void) {
   window.addEventListener(EVENT, cb);
   window.addEventListener("storage", cb);

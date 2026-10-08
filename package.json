@@ -7,7 +7,9 @@
     "build": "node --no-warnings scripts/i18n.mjs check && next build",
     "lint": "tsc --noEmit",
     "i18n": "node --no-warnings scripts/i18n.mjs extract",
-    "check": "node --no-warnings scripts/check-out.mjs"
+    "check": "node --no-warnings scripts/check-out.mjs",
+    "check:agents": "node scripts/check-agents.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "@fontsource-variable/google-sans-code": "^5.3.1",
@@ -20,6 +22,7 @@
     "@types/node": "^26.6.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
   }
 }

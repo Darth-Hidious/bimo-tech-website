@@ -32,7 +32,7 @@ export default function Privacy({ lang }: { lang: Lang }) {
         <p className="muted">{t("Last updated: {date}", { date: date(lang, privacy.updated) })}</p>
 
         <h2 className="subtitle">{t("Who is responsible")}</h2>
-        <p>{rich(t("The controller of your personal data is {controller}. You can reach us about anything in this notice at <0>{email}</0> or by post:", { controller: privacy.controller, email: company.email }), [mail])}</p>
+        <p>{rich(t("The controller of your personal data is {controller}. You can reach us about anything in this notice at <0>{email}</0>.", { controller: privacy.controller, email: company.email }), [mail])}</p>
         <p>
           {privacy.controller}
           {privacy.registeredOffice ? <><br />{privacy.registeredOffice}</> : null}

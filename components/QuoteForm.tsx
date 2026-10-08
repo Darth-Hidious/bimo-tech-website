@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { onBasketChange, readBasket, removeFromBasket } from "@/lib/basket";
+import { clearBasket, onBasketChange, readBasket, removeFromBasket } from "@/lib/basket";
 import { colon, comma, msg } from "@/lib/i18n/config";
 import { rich } from "@/lib/i18n/rich";
 import { useLang } from "@/components/LangProvider";
@@ -43,7 +43,6 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
     const form = e.currentTarget;
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    data.set("basket", items.join("; "));
     data.set("language", lang);
 
     data.set("page", window.location.href);
@@ -62,6 +61,7 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
       if (!res.ok) throw new Error(String(res.status));
       setStatus({ kind: "sent", text: t("Thank you. Your request is with our team, and we will reply by email.") });
       form.reset();
+      clearBasket();
       return;
     } catch (err) {
       if (!(err instanceof NoSender || err instanceof TypeError)) {
@@ -72,12 +72,16 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
     }
 
     const c = colon(lang);
+    // One line per basket item: "Tungsten · rod Ø20 × 300 mm · 5 pieces".
+    const forms = data.getAll("item_form").map(String);
+    const quantities = data.getAll("item_quantity").map(String);
+    const itemLines = items.map((it, i) => ["- " + it, forms[i]?.trim(), quantities[i]?.trim()].filter(Boolean).join(" · "));
     const lines = [
       `${t("I need")}${c}${t(String(data.get("need") ?? ""))}`,
       `${t("Material or grade")}${c}${data.get("material") ?? ""}`,
       `${t("Form and size")}${c}${data.get("form") ?? ""}`,
       `${t("Quantity")}${c}${data.get("quantity") ?? ""}`,
-      items.length ? `${t("In your quote")}${c}${items.join("; ")}` : "",
+      ...(itemLines.length ? [`${t("In your quote")}${c}`, ...itemLines] : []),
       "",
       String(data.get("message") ?? ""),
       "",
@@ -107,20 +111,30 @@ export default function QuoteForm({ email, compact = false }: { email: string; c
         ))}
       </fieldset>
 
+      {/* The materials added with "Add to quote", each with its own form, size and quantity. */}
       {items.length > 0 ? (
-        <div className="quote__basket">
-          <span className="field">{t("In your quote")}</span>
-          <ul>
+        <fieldset className="quote__basket">
+          <legend className="field">{t("In your quote")}</legend>
+          <div className="quote__item quote__items-head" aria-hidden="true">
+            <span />
+            <span>{t("Form and size")}</span>
+            <span>{t("Quantity")}</span>
+            <span />
+          </div>
+          <ul className="quote__items">
             {items.map((it) => (
-              <li key={it}>
-                {it}
-                <button type="button" onClick={() => removeFromBasket(it)} aria-label={t("Remove {item}", { item: it })}>
+              <li key={it} className="quote__item">
+                <input type="hidden" name="item" value={it} />
+                <span className="quote__item-name">{it}</span>
+                <input className="input" name="item_form" aria-label={`${it}: ${t("Form and size")}`} placeholder={t("e.g. rod Ø20 × 300 mm")} />
+                <input className="input" name="item_quantity" aria-label={`${it}: ${t("Quantity")}`} placeholder={t("e.g. 5 pieces, 2 kg")} />
+                <button type="button" className="quote__item-remove" onClick={() => removeFromBasket(it)} aria-label={t("Remove {item}", { item: it })}>
                   ×
                 </button>
               </li>
             ))}
           </ul>
-        </div>
+        </fieldset>
       ) : null}
 
       <div className="quote__grid">

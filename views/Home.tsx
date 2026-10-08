@@ -3,11 +3,13 @@ import Photo from "@/components/Photo";
 import Strip from "@/components/Strip";
 import QuoteForm from "@/components/QuoteForm";
 import Globe from "@/components/Globe";
+import JsonLd from "@/components/JsonLd";
 import HeroSlides, { type Slide } from "@/components/HeroSlides";
 import { content } from "@/lib/content";
 import { href, pct, type Lang } from "@/lib/i18n/config";
 import { pageMeta } from "@/lib/i18n/meta";
 import { tr } from "@/lib/i18n/server";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import type { ImageKey } from "@/lib/site";
 
 export function homeMeta(lang: Lang) {
@@ -34,13 +36,16 @@ export default function Home({ lang }: { lang: Lang }) {
 
   return (
     <>
+      <JsonLd data={organizationJsonLd(lang)} />
+      <JsonLd data={websiteJsonLd(lang)} />
+
       {/* 1 · Hero: real metal, two lines, two buttons */}
       <section className="hero">
         <HeroSlides slides={heroSlides} />
         <div className="wrap hero__content">
           <h1 className="display">{t("Specialty metals, from raw stock to finished part.")}</h1>
           <p className="hero__lead">
-            {t("Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry. Made in Wrocław by a group in metals since 1992, with an office in Oxford.")}
+            {t("Refractory metals, powders, sputtering targets and new alloys for space, fusion and industry.")}
           </p>
           <div className="btns">
             <Link href={to("/materials/")} className="btn btn--light">
@@ -234,6 +239,9 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="kicker">{t("Request a quote")}</p>
             <h2 className="title">{t("Send us a drawing or a specification.")}</h2>
             <p className="lead">{t("We reply with a price and a lead time.")}</p>
+            <p className="quote-email">
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </p>
           </div>
           <QuoteForm email={company.email} compact />
         </div>

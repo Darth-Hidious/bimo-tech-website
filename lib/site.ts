@@ -333,10 +333,10 @@ export const news = [
 ];
 
 export const company = {
-  // Shown only before launch. Live, the address is info@ on the site's own domain, or CONTACT_EMAIL (lib/site-url.ts).
+  // Shown on the site, receives quote requests and sends the visitor's copy. CONTACT_EMAIL overrides it (lib/site-url.ts).
   email: "info@bimomaterials.com",
   phone: "",
-  address: ["ul. Francuska 11", "54-405 Wrocław, Poland"],
+  address: ["Wrocław, Poland"],
   oxford: "Oxford, United Kingdom",
 };
 
@@ -349,6 +349,12 @@ export const privacy = {
   registeredOffice: "", // e.g. the registered address in Oxford, as filed at Companies House
   companyNumber: "",
   updated: "2026-10-08",
+};
+
+/** The Wrocław address above (city only), field by field, for search engines (lib/structured-data.ts). Not translated. */
+export const postalAddress = {
+  addressLocality: "Wrocław",
+  addressCountry: "PL",
 };
 
 /** Where we work, pinned on the globe. */
