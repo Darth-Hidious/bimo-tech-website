@@ -340,6 +340,17 @@ export const company = {
   oxford: "Oxford, United Kingdom",
 };
 
+/**
+ * Facts for the privacy notice (views/Privacy.tsx). Change `updated` whenever the notice's content
+ * changes. Add the registered office and company number once they are final; they appear only when set.
+ */
+export const privacy = {
+  controller: "Bimo Materials Ltd",
+  registeredOffice: "", // e.g. the registered address in Oxford, as filed at Companies House
+  companyNumber: "",
+  updated: "2026-10-08",
+};
+
 /** Where we work, pinned on the globe. */
 export const places: { name: string; role: string; lat: number; lon: number; side?: "left" | "below" }[] = [
   { name: "Wrocław", role: "Made here", lat: 51.108, lon: 17.039 },

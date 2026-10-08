@@ -60,9 +60,9 @@ for (const lang of LANGS) {
     if (!html.includes(`<html lang="${want}"`)) problems.push(`${lang}${path}: html lang is not ${want}`);
     const url = `${SITE}${lang === "en" ? "" : "/" + lang}${path}`;
     if (!html.includes(`<link rel="canonical" href="${url}"/>`)) problems.push(`${lang}${path}: canonical is not ${url}`);
-    // Before launch every page is noindex; once live only the privacy draft is.
+    // Before launch every page is noindex; once live, none is.
     const noindex = /<meta name="robots" content="noindex/.test(html);
-    if (noindex !== (!IS_LIVE || path === "/privacy/")) problems.push(`${lang}${path}: robots noindex is ${noindex}, expected ${!IS_LIVE || path === "/privacy/"}`);
+    if (noindex !== !IS_LIVE) problems.push(`${lang}${path}: robots noindex is ${noindex}, expected ${!IS_LIVE}`);
     const alts = html.match(/<link rel="alternate" hrefLang="[^"]+" href="[^"]+"\/>/g) ?? [];
     if (alts.length !== 11) problems.push(`${lang}${path}: ${alts.length} hreflang links, expected 11`);
     if (lang === "en") continue;

@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/company/",
     "/contact/",
     "/credits/",
+    "/privacy/",
   ];
   return paths.flatMap((p) => {
     const alternates = { languages: Object.fromEntries(Object.entries(languages(p)).map(([l, u]) => [l, SITE + u])) };

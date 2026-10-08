@@ -94,7 +94,7 @@ Redeploy after changing any of them.
 2. **Contact details.** `lib/site.ts → company`: Bimo Materials' own email and phone.
 3. **Photographs.** Several pages use licensed stand-ins (forging, cold spray, delivery, nuclear steel, water treatment). Replace them with your own shots when you have them: change `src` in `lib/site.ts` and drop the licence fields.
 4. **Logo permissions** for ESA, ArianeGroup, Fusion for Energy and ITER on the homepage.
-5. **Privacy notice.** `views/Privacy.tsx` is a draft and is set to noindex.
+5. **Privacy notice.** `views/Privacy.tsx` describes the setup as built: Vercel hosting, Resend for the form, mailboxes on home.pl, no cookies or tracking. Add the registered office and company number in `lib/site.ts` → `privacy`, and update the notice (and its `updated` date) if providers or retention change.
 6. **Facts to confirm** with the team: stocked grades (TZM, WLa, WCu), which manufacturing services run in-house, testing scope.
 7. **Redirects from the old site.** The old bimomaterials.com keeps English under `/en/` and has its own page addresses in every language. Map each old address that Google has indexed to its new page with a permanent (301) redirect, so rankings carry over. On Vercel this goes in `vercel.json`, on nginx or Apache in the server configuration.
 8. **Native-speaker read.** Have someone in sales read each language before launch, Polish and German first. Open choices: Polish addresses the reader as "Ty" (informal); Czech and Slovak write Wrocław as Vratislav and Vroclav, Polish writes Oxford as Oksford.

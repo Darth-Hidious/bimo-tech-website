@@ -449,6 +449,9 @@ h1, h2, h3, .display, .title, .subtitle, .site-footer li, .family-row__name, .li
 .credits img { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; }
 .prose { max-width: 760px; display: flex; flex-direction: column; gap: 18px; }
 .prose h2 { margin-top: 18px; }
+.prose h3 { font-size: 18px; font-weight: 500; margin-top: 4px; }
+.prose ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; list-style: disc; }
+.prose a { color: var(--blue-text); }
 .contact-list { margin: 8px 0; }
 .material__side { display: flex; flex-direction: column; gap: 16px; }
 .history { list-style: none; padding: 0; margin: 0; }
